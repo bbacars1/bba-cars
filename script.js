@@ -761,7 +761,7 @@ if (orderForm && customerName && customerPhone) {
 submitButton.textContent = "Yuborilmoqda...";
 const carName = document.querySelector(".car-page-info h1").textContent.trim();
 console.log("🚀 FETCH BOSHLANDI", carName, name, phone);
-       fetch("http://localhost:3000/order", {
+       fetch("https://bba-cars.onrender.com/order", {
     method: "POST",
     headers: {
         "Content-Type": "application/json"
