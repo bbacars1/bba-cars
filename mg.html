@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MG Cyberster | BBA CARS</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+
+        <div class="logo">BBA CARS</div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Bosh sahifa</a></li>
+            <li><a href="index.html#cars">Avtomobillar</a></li>
+            <li><a href="#">Biz haqimizda</a></li>
+            <li><a href="#">Aloqa</a></li>
+        </ul>
+
+    </nav>
+
+
+    <!-- AVTOMOBIL SAHIFASI -->
+    <main class="car-page">
+
+        <a href="index.html#cars" class="back-button">
+            ← Avtomobillarga qaytish
+        </a>
+
+
+        <div class="car-page-content">
+
+            <!-- RASM -->
+            <div class="car-page-image">
+
+                <img
+                    src="./images/mg-cyberster.jpg"
+                    alt="MG Cyberster"
+                >
+
+            </div>
+
+
+            <!-- MA'LUMOT -->
+            <div class="car-page-info">
+
+                <span class="page-status">
+                    Sotuvda
+                </span>
+
+                <h1>MG Cyberster</h1>
+
+                <p class="car-page-subtitle">
+                    Sport Car
+                </p>
+
+
+                <div class="car-page-details">
+
+                    <div>
+                        <span>Yili</span>
+                        <strong>2024</strong>
+                    </div>
+
+                    <div>
+                        <span>Yoqilg‘i</span>
+                        <strong>Elektr</strong>
+                    </div>
+
+                    <div>
+                        <span>Privod</span>
+                        <strong>2WD</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="car-page-price">
+
+                    <span>Narxi</span>
+
+                    <h2>$53,000</h2>
+
+                </div>
+
+
+                <div class="purchase-types">
+
+                    <h3>Sotib olish turlari</h3>
+
+                    <p>✓ Naqd to‘lov</p>
+                    <p>✓ Nasiya savdo</p>
+                    <p>✓ Trade-in</p>
+
+                </div>
+
+
+                <a href="https://t.me/bbacars_uzb"
+   target="_blank"
+   class="contact-button">
+    Bog‘lanish
+</a>
+<button class="buy-btn" id="openOrderModal">
+    Sotib olish →
+</button>
+<!-- ARIZA MODAL OYNASI -->
+<div class="order-modal" id="orderModal">
+
+    <div class="order-modal-content">
+
+        <button class="order-close" id="closeOrderModal">
+            &times;
+        </button>
+
+        <span class="order-label">BBA CARS</span>
+
+        <h2>Ariza qoldirish</h2>
+
+        <p>
+            MG Cyberster avtomobilini xarid qilish uchun
+            ma'lumotlaringizni qoldiring.
+        </p>
+
+        <form id="orderForm">
+
+            <div class="order-field">
+                <label>Ismingiz</label>
+                <input
+                    type="text"
+                    id="customerName"
+                    placeholder="Ismingizni kiriting"
+                    required
+                >
+            </div>
+
+            <div class="order-field">
+                <label>Telefon raqamingiz</label>
+                <input
+                    type="tel"
+                    id="customerPhone"
+                    placeholder="+998 90 123 45 67"
+                    required
+                >
+            </div>
+
+            <button type="submit" class="order-submit">
+                Ariza yuborish →
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+<!-- ARIZA MUVAFFAQIYATLI OYNASI -->
+<div class="success-modal" id="successModal">
+
+    <div class="success-modal-content">
+
+        <div class="success-icon">✓</div>
+
+        <span class="success-label">BBA CARS</span>
+
+        <h2>Arizangiz qabul qilindi!</h2>
+
+        <p>
+            Rahmat! Tez orada menejerimiz
+            siz bilan bog‘lanadi.
+        </p>
+
+        <button type="button" id="closeSuccessModal">
+            Tushunarli
+        </button>
+
+    </div>
+
+</div>
+            </div>
+
+        </div>
+        </div>
+
+    <!-- TEXNIK XUSUSIYATLAR -->
+    <section class="specifications">
+
+        <div class="spec-title">
+            <p>BBA CARS</p>
+            <h2>Texnik xususiyatlar</h2>
+            <span>MG Cyberster</span>
+        </div>
+
+        <div class="spec-grid">
+
+            <div class="spec-item">
+                <span>Yili</span>
+                <strong>2024</strong>
+            </div>
+
+            <div class="spec-item">
+                <span>Dvigatel turi</span>
+                <strong>Elektr</strong>
+            </div>
+
+            <div class="spec-item">
+                <span>Privod</span>
+                <strong>2WD</strong>
+            </div>
+
+            <div class="spec-item">
+                <span>Elektr yurish masofasi</span>
+                <strong>501km</strong>
+            </div>
+
+            <div class="spec-item">
+                <span>Batareya</span>
+                <strong>64 kWh</strong>
+            </div>
+
+            <div class="spec-item">
+                <span>0-100km/soat</span>
+                <strong>4.9 soniya</strong>
+            </div>
+
+            <div class="spec-item">
+                <span>O‘rindiqlar</span>
+                <strong>2</strong>
+            </div>
+
+            <div class="spec-item">
+                <span>Quvvat</span>
+                <strong>231 kW [ 314 ot kuchi ]</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    </main>
+<script src="script.js"></script>
+</body>
+
+</html>

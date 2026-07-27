@@ -1,0 +1,3693 @@
+:root {
+    /* BBA CARS PREMIUM COLORS */
+    --bba-black: #080a0d;
+    --bba-dark: #101318;
+    --bba-card: #15191f;
+
+    --bba-white: #f7f7f5;
+    --bba-gray: #9b9da1;
+    --bba-light: #ececea;
+
+    --bba-border: rgba(255, 255, 255, 0.10);
+
+    /* RADIUS */
+    --radius-small: 12px;
+    --radius-medium: 20px;
+    --radius-large: 28px;
+
+    /* SHADOW */
+    --premium-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.12);
+
+    /* TRANSITION */
+    --premium-transition:
+        0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    overflow-x: hidden;
+
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+/* PREMIUM INTERACTION */
+
+a,
+button {
+    transition:
+        opacity var(--premium-transition),
+        transform var(--premium-transition);
+}
+
+button:active,
+a:active {
+    transform: scale(0.97);
+}
+
+/* TEXT SELECTION */
+
+::selection {
+    background: #111;
+    color: #fff;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: Arial, sans-serif;
+    background: #080808;
+    color: white;
+}
+
+
+/* NAVBAR */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 7%;
+
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(15px);
+
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    opacity: 0.6;
+}
+
+
+/* HERO */
+
+.hero {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 7%;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,0.92) 0%,
+            rgba(0,0,0,0.65) 45%,
+            rgba(0,0,0,0.15) 100%
+        ),
+        url("images/hero-car.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-content {
+    max-width: 800px;
+   
+}
+
+.small-text {
+    font-size: 14px;
+    letter-spacing: 5px;
+
+    margin-bottom: 20px;
+
+    opacity: 0.7;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 4.5vw, 64px);
+
+    line-height: 1.05;
+
+    letter-spacing: -3px;
+
+    margin-bottom: 25px;
+}
+
+.description {
+    font-size: 19px;
+
+    color: #bdbdbd;
+
+    margin-bottom: 35px;
+}
+
+.cars-button {
+    padding: 17px 30px;
+
+    background: white;
+    color: black;
+
+    border: none;
+    border-radius: 50px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.cars-button:hover {
+    transform: translateY(-3px);
+
+    background: #dddddd;
+}
+
+/* CARS SECTION */
+
+.cars-section {
+    background: #f5f5f5;
+    color: #111;
+    padding: 100px 7%;
+    min-height: 100vh;
+}
+
+.section-title {
+    margin-bottom: 50px;
+}
+
+.section-title p {
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: #777;
+    margin-bottom: 12px;
+}
+
+.section-title h2 {
+    font-size: 55px;
+    letter-spacing: -2px;
+    margin-bottom: 10px;
+}
+
+.section-title span {
+    color: #777;
+    font-size: 17px;
+}
+
+
+/* CAR GRID */
+
+.cars-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+/* CAR CARD */
+
+.car-card {
+    width: 100%;
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.car-card:hover {
+    transform: translateY(-7px);
+}
+
+
+/* IMAGE */
+
+.car-image {
+    width: 100%;
+    height: 260px;
+    position: relative;
+    overflow: hidden;
+    background: #eeeeee;
+}
+
+.car-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: 0.5s;
+}
+.status {
+    position: absolute;
+
+    top: 20px;
+    left: 20px;
+
+    background: white;
+    color: black;
+
+    padding: 8px 15px;
+
+    border-radius: 50px;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* CAR INFORMATION */
+
+.car-info {
+    padding: 25px;
+}
+
+.car-info h3 {
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+.car-details {
+    display: flex;
+    gap: 10px;
+
+    margin-bottom: 30px;
+}
+
+.car-details span {
+    background: #f1f1f1;
+
+    padding: 7px 12px;
+
+    border-radius: 30px;
+
+    font-size: 12px;
+}
+
+
+/* PRICE */
+
+.price p {
+    color: #888;
+    font-size: 13px;
+
+    margin-bottom: 5px;
+}
+
+.price h4 {
+    font-size: 27px;
+
+    margin-bottom: 20px;
+}
+
+
+/* BUTTON */
+
+.details-button {
+    width: 100%;
+
+    padding: 15px;
+
+    border: none;
+    border-radius: 50px;
+
+    background: #111;
+    color: white;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.details-button:hover {
+    background: #333;
+}
+
+.status {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+
+    padding: 8px 14px;
+    border-radius: 50px;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status.unavailable {
+    background: #16803c;
+    color: white;
+}
+
+.status {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+
+    padding: 8px 15px;
+    border-radius: 50px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    z-index: 10;
+}
+
+.status.available {
+    background-color: #16a34a;
+    color: white;
+}
+
+.status.coming {
+    background-color: #f59e0b;
+    color: white;
+}
+
+.details-button {
+    display: block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+/* =========================
+   CAR DETAILS PAGE
+========================= */
+
+.car-page {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 50px 40px 80px;
+}
+
+.back-button {
+    display: inline-block;
+    margin-bottom: 30px;
+    color: #555;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.back-button:hover {
+    color: #000;
+}
+
+.car-page-content {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 55px;
+    align-items: start;
+}
+
+/* KATTA RASM */
+
+.car-page-image {
+    width: 100%;
+    height: 520px;
+    border-radius: 24px;
+    overflow: hidden;
+    background: #f3f3f3;
+}
+
+.car-page-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* O'NG TOMON */
+
+.car-page-info {
+    padding-top: 10px;
+}
+
+.page-status {
+    display: inline-block;
+    background: #16a34a;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.car-page-info h1 {
+    font-size: 42px;
+    line-height: 1.1;
+    margin: 0 0 12px;
+}
+
+.car-page-subtitle {
+    color: #777;
+    font-size: 16px;
+    margin-bottom: 35px;
+}
+
+/* XUSUSIYATLAR */
+
+.car-page-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 35px;
+}
+
+.car-page-details div {
+    background: #f4f4f4;
+    padding: 16px;
+    border-radius: 14px;
+}
+
+.car-page-details span {
+    display: block;
+    color: #888;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.car-page-details strong {
+    font-size: 15px;
+}
+
+/* NARX */
+
+.car-page-price {
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 25px 0;
+    margin-bottom: 30px;
+}
+
+.car-page-price span {
+    color: #777;
+    font-size: 14px;
+}
+
+.car-page-price h2 {
+    font-size: 38px;
+    margin: 5px 0 0;
+}
+
+/* SOTIB OLISH */
+
+.purchase-types {
+    margin-bottom: 30px;
+}
+
+.purchase-types h3 {
+    margin-bottom: 15px;
+}
+
+.purchase-types p {
+    margin: 10px 0;
+    color: #444;
+}
+
+/* BOG'LANISH */
+
+.contact-button {
+    width: 100%;
+    border: none;
+    background: #111;
+    color: white;
+    padding: 18px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.contact-button:hover {
+    background: #333;
+}
+
+/* TELEFON UCHUN */
+
+@media (max-width: 800px) {
+
+    .car-page {
+        padding: 30px 20px 60px;
+    }
+
+    .car-page-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .car-page-image {
+        height: 300px;
+    }
+
+    .car-page-info h1 {
+        font-size: 32px;
+    }
+
+    .car-page-details {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+.car-page-details div {
+    background: #f4f4f4;
+    padding: 16px;
+    border-radius: 14px;
+}
+
+.car-page-details span {
+    display: block;
+    color: #777;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.car-page-details strong {
+    display: block;
+    color: #111;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/* TEXNIK XUSUSIYATLAR */
+
+.specifications {
+    margin-top: 90px;
+    padding-top: 60px;
+    border-top: 1px solid #2c2c2c;
+}
+
+.spec-title {
+    margin-bottom: 35px;
+}
+
+.spec-title p {
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.spec-title h2 {
+    font-size: 36px;
+    margin: 0 0 10px;
+}
+
+.spec-title span {
+    color: #777;
+}
+
+.spec-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.spec-item {
+    background: #181818;
+    border: 1px solid #292929;
+    border-radius: 16px;
+    padding: 22px;
+}
+
+.spec-item span {
+    display: block;
+    color: #888;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.spec-item strong {
+    color: white;
+    font-size: 18px;
+}
+
+/* TELEFON */
+
+@media (max-width: 800px) {
+
+    .specifications {
+        margin-top: 50px;
+    }
+
+    .spec-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .spec-title h2 {
+        font-size: 28px;
+    }
+}
+
+/* NASIYA KALKULYATORI */
+
+.credit-section {
+    margin-top: 90px;
+    padding: 60px 0 100px;
+    border-top: 1px solid #2c2c2c;
+}
+
+.credit-title {
+    margin-bottom: 35px;
+}
+
+.credit-title p {
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: #888;
+}
+
+.credit-title h2 {
+    font-size: 36px;
+    margin: 10px 0;
+}
+
+.credit-title span {
+    color: #888;
+}
+
+.credit-calculator {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.credit-left,
+.credit-result {
+    background: #181818;
+    border: 1px solid #292929;
+    border-radius: 20px;
+    padding: 30px;
+}
+
+.credit-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 18px 0;
+    border-bottom: 1px solid #333;
+}
+
+.credit-row span {
+    color: #888;
+}
+
+.credit-row strong {
+    color: white;
+}
+
+.credit-left label {
+    display: block;
+    margin: 25px 0 10px;
+}
+
+#months {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+.credit-result span {
+    color: #888;
+}
+
+.credit-result h2 {
+    font-size: 42px;
+    margin: 10px 0 30px;
+}
+
+.credit-result p {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #333;
+}
+
+@media (max-width: 800px) {
+    .credit-calculator {
+        grid-template-columns: 1fr;
+    }
+}
+
+.contact-button {
+    display: block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+.details-button {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+.page-status.coming-soon {
+    background: #f5b800;
+    color: #111;
+}
+
+/* =========================
+   BIZ HAQIMIZDA
+========================= */
+
+.about-section {
+    background: #0b0d10;
+    padding: 100px 8%;
+    color: white;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: #9ca3af;
+    margin-bottom: 12px;
+}
+
+.about-section h2 {
+    font-size: 42px;
+    margin: 0 0 20px;
+}
+
+.about-description {
+    max-width: 750px;
+    font-size: 17px;
+    line-height: 1.7;
+    color: #b7bbc2;
+    margin-bottom: 45px;
+}
+
+.about-features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.about-feature {
+    padding: 30px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.about-feature h3 {
+    font-size: 20px;
+    margin: 0 0 10px;
+}
+
+.about-feature p {
+    color: #aeb3ba;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* =========================
+   ALOQA
+========================= */
+
+.contact-section {
+    background: #ffffff;
+    padding: 100px 8%;
+    color: #111;
+}
+
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: #777;
+    margin-bottom: 12px;
+}
+
+.contact-section h2 {
+    font-size: 42px;
+    margin: 0 0 15px;
+}
+
+.contact-description {
+    max-width: 650px;
+    color: #666;
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 40px;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.contact-card {
+    padding: 30px;
+    border-radius: 18px;
+    background: #f5f5f5;
+    border: 1px solid #e5e5e5;
+    transition: 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+}
+
+.contact-card span {
+    color: #777;
+    font-size: 14px;
+}
+
+.contact-card h3 {
+    font-size: 20px;
+    margin: 12px 0 8px;
+}
+
+.contact-card p {
+    color: #666;
+    margin: 0;
+}
+
+.contact-card a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.contact-card a:hover {
+    opacity: 0.6;
+}
+
+
+/* =========================
+   NEGA BBA CARS
+========================= */
+
+.why-section {
+    background: #0b0d12;
+    color: #ffffff;
+    padding: 90px 20px;
+}
+
+.why-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.why-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: #a5a5a5;
+    margin-bottom: 12px;
+}
+
+.why-container h2 {
+    font-size: 38px;
+    margin: 0 0 15px;
+}
+
+.why-description {
+    color: #a9a9a9;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.why-card {
+    padding: 28px;
+    min-height: 130px;
+    background: #12151c;
+    border: 1px solid #2b2e35;
+    border-radius: 18px;
+    transition: 0.3s ease;
+}
+
+.why-card:hover {
+    transform: translateY(-5px);
+    border-color: #555;
+}
+
+.why-card h3 {
+    font-size: 18px;
+    margin: 0 0 10px;
+}
+
+.why-card p {
+    margin: 0;
+    color: #a9a9a9;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    background: #080b12;
+    color: #fff;
+    padding: 70px 0 25px;
+    border-top: 1px solid #252a34;
+}
+
+.footer-container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 70px;
+    padding-bottom: 50px;
+}
+
+.footer-brand h2 {
+    font-size: 26px;
+    margin: 0 0 15px;
+    letter-spacing: 2px;
+}
+
+.footer-brand p {
+    color: #9ca3af;
+    line-height: 1.7;
+    max-width: 420px;
+    margin: 0;
+}
+
+.footer-links,
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-links h3,
+.footer-contact h3 {
+    font-size: 17px;
+    margin: 0 0 8px;
+}
+
+.footer-links a,
+.footer-contact a {
+    color: #9ca3af;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.footer-links a:hover,
+.footer-contact a:hover {
+    color: #fff;
+    transform: translateX(4px);
+}
+
+.footer-bottom {
+    border-top: 1px solid #252a34;
+    padding-top: 25px;
+}
+
+.footer-bottom p {
+    margin: 0;
+    color: #777f8c;
+    font-size: 14px;
+}
+
+/* =========================
+   TEZ ORADA
+========================= */
+
+.coming-section {
+    background: #0b0f17;
+    padding: 90px 0;
+    color: #fff;
+}
+
+.coming-container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.coming-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: #aab0bb;
+    margin-bottom: 10px;
+}
+
+.coming-header {
+    margin-bottom: 40px;
+}
+
+.coming-header h2 {
+    font-size: 38px;
+    margin: 0 0 10px;
+}
+
+.coming-header p {
+    color: #9ca3af;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+
+/* KARTALAR */
+
+.coming-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.coming-card {
+    background: #111620;
+    border: 1px solid #252b36;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: 0.3s ease;
+}
+
+.coming-card:hover {
+    transform: translateY(-7px);
+    border-color: #454c59;
+}
+
+
+/* RASM */
+
+.coming-image {
+    height: 230px;
+    position: relative;
+    overflow: hidden;
+    background: #171c25;
+}
+
+.coming-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.coming-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        transparent 45%,
+        rgba(0, 0, 0, 0.65)
+    );
+}
+
+.coming-image span {
+    position: absolute;
+    left: 18px;
+    bottom: 18px;
+    z-index: 2;
+
+    background: #fff;
+    color: #111;
+
+    padding: 8px 13px;
+    border-radius: 20px;
+
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+
+/* KARTA MA'LUMOTI */
+
+.coming-info {
+    padding: 24px;
+}
+
+.coming-info h3 {
+    font-size: 21px;
+    margin: 0 0 8px;
+}
+
+.coming-info p {
+    color: #9299a5;
+    margin: 0;
+    font-size: 14px;
+}
+
+/* =========================
+   FAQ SECTION
+========================= */
+
+.faq-section {
+    background: #0d1118;
+    padding: 90px 20px;
+    color: #fff;
+}
+
+.faq-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.faq-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: #aaa;
+    margin-bottom: 10px;
+}
+
+.faq-container h2 {
+    font-size: 36px;
+    margin: 0 0 12px;
+}
+
+.faq-description {
+    color: #aaa;
+    font-size: 15px;
+    margin: 0 0 40px;
+}
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.faq-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: 0.3s ease;
+}
+
+.faq-item:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.faq-item summary {
+    padding: 22px 25px;
+    cursor: pointer;
+    list-style: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-item summary span {
+    font-size: 26px;
+    font-weight: 300;
+    transition: transform 0.3s ease;
+}
+
+.faq-item[open] summary span {
+    transform: rotate(45deg);
+}
+
+.faq-item p {
+    margin: 0;
+    padding: 0 25px 22px;
+    max-width: 850px;
+
+    color: #aaa;
+    font-size: 15px;
+    line-height: 1.7;
+}
+/* HAMBURGER */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+}
+/* =========================
+   RESPONSIVE
+========================= */
+
+/* TABLET */
+@media (max-width: 900px) {
+    .cars-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* TELEFON */
+@media (max-width: 600px) {
+    .cars-container {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .car-card {
+        width: 100%;
+    }
+}
+
+/* MOBILE NAVBAR */
+@media (max-width: 600px) {
+
+    .navbar {
+        width: 100%;
+        height: 70px;
+        padding: 0 20px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+    }
+
+    .logo {
+        font-size: 20px;
+        white-space: nowrap;
+    }
+.cars-section {
+    padding-top: 60px;
+    padding-bottom: 70px;
+}
+
+.section-title {
+    margin-bottom: 35px;
+}
+
+.section-title h2 {
+    font-size: 42px;
+    line-height: 1.05;
+}
+    .menu-toggle {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-80%);
+
+    width: 44px;
+    height: 44px;
+
+    margin: 0 !important;
+    padding: 0;
+
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 50%;
+
+    color: white;
+    font-size: 27px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 10001;
+}
+inks {
+    display: none;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: auto;
+    background: #111;
+    flex-direction: column;
+    align-items: center;
+    list-style: none;
+    padding: 15px 0;
+    margin: 0;
+    gap: 0;
+    z-index: 10000;
+}
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links a {
+        display: block;
+        width: 100%;
+        padding: 15px 0;
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        left: 0 !important;
+        right: 0 !important;
+        padding: 0 20px !important;
+        box-sizing: border-box !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .nav-links {
+        display: none !important;
+        position: fixed !important;
+
+        top: 70px !important;
+        left: 0 !important;
+        right: 0 !important;
+
+        width: 100vw !important;
+        max-width: 100vw !important;
+        height: auto !important;
+
+        margin: 0 !important;
+        padding: 10px 0 !important;
+
+        background: #111 !important;
+
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 0 !important;
+
+        box-sizing: border-box !important;
+        z-index: 9999 !important;
+    }
+
+    .nav-links.active {
+        display: flex !important;
+    }
+
+    .nav-links li {
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+    .nav-links a {
+        display: block !important;
+        width: 100% !important;
+        padding: 15px 20px !important;
+        box-sizing: border-box !important;
+    }
+}
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden !important;
+}
+
+/* =========================
+   MOBILE RESPONSIVE FIX
+========================= */
+
+@media (max-width: 600px) {
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* Barcha sectionlar ekran ichida */
+    section {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Gridlar mobil telefonda 1 ustun */
+    .about-grid,
+    .why-grid,
+    .contact-grid,
+    .coming-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        width: 100%;
+        gap: 16px;
+    }
+
+    /* Kartalar ekrandan chiqmasin */
+    .about-card,
+    .why-card,
+    .contact-card,
+    .coming-card {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+}
+
+/* =========================
+   ABOUT + FOOTER MOBILE FIX
+========================= */
+
+@media (max-width: 600px) {
+
+    /* BIZ HAQIMIZDA */
+    .about-features {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        width: 100%;
+    }
+
+    .about-feature {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+
+    /* FOOTER */
+    .footer-top {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 32px;
+        width: 100%;
+    }
+
+    .footer-brand,
+    .footer-links,
+    .footer-contact {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .footer-links a,
+    .footer-contact a {
+        display: block;
+        width: fit-content;
+    }
+}
+
+/* =====================================
+   BBA CARS — PREMIUM MOBILE FOOTER
+===================================== */
+
+@media (max-width: 600px) {
+
+    .footer {
+        padding: 0;
+    }
+
+    .footer-container {
+        width: 100%;
+        padding: 48px 24px 20px;
+        box-sizing: border-box;
+    }
+
+    /* Asosiy footer grid */
+    .footer-top {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 28px;
+        row-gap: 32px;
+        width: 100%;
+        align-items: start;
+    }
+
+    /* BBA CARS tepada to'liq kenglikda */
+    .footer-brand {
+        grid-column: 1 / -1;
+        width: 100%;
+        padding-bottom: 24px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .footer-brand h2 {
+        margin: 0 0 12px;
+        font-size: 26px;
+        line-height: 1;
+        letter-spacing: 1px;
+    }
+
+    .footer-brand p {
+        max-width: 310px;
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.6;
+        opacity: 0.7;
+    }
+
+    /* Sahifalar va Bog'lanish yonma-yon */
+    .footer-links,
+    .footer-contact {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .footer-links h3,
+    .footer-contact h3 {
+        margin: 0 0 16px;
+        font-size: 15px;
+    }
+
+    .footer-links a,
+    .footer-contact a {
+        display: block;
+        width: fit-content;
+        max-width: 100%;
+        margin-bottom: 10px;
+        font-size: 14px;
+        line-height: 1.35;
+        text-decoration: none;
+    }
+
+    /* Pastki copyright */
+    .footer-bottom {
+        margin-top: 36px;
+        padding-top: 18px;
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .footer-bottom p {
+        margin: 0;
+        font-size: 12px;
+        line-height: 1.5;
+        opacity: 0.55;
+    }
+}
+/* =====================================
+   BBA CARS — PREMIUM MOBILE CONTACT
+===================================== */
+
+@media (max-width: 600px) {
+
+    .contact-section {
+        padding: 70px 0;
+    }
+
+    .contact-container {
+        width: 100%;
+        padding: 0 24px;
+        box-sizing: border-box;
+    }
+
+    .contact-label {
+        display: block;
+        margin-bottom: 12px;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        opacity: 0.55;
+    }
+
+    .contact-container h2 {
+        margin: 0;
+        max-width: 320px;
+        font-size: 42px;
+        line-height: 1.05;
+        letter-spacing: -1.5px;
+    }
+
+    .contact-description {
+        max-width: 330px;
+        margin: 22px 0 36px;
+        font-size: 15px;
+        line-height: 1.65;
+        opacity: 0.6;
+    }
+
+    .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .contact-card {
+        width: 100%;
+        min-height: auto;
+        padding: 24px 22px;
+        box-sizing: border-box;
+
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 20px;
+
+        transition:
+            transform 0.25s ease,
+            background 0.25s ease;
+    }
+
+    .contact-card span {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 12px;
+        opacity: 0.5;
+    }
+
+    .contact-card h3 {
+        margin: 0 0 5px;
+        font-size: 19px;
+        line-height: 1.3;
+        letter-spacing: -0.3px;
+    }
+
+    .contact-card p {
+        margin: 0;
+        font-size: 13px;
+        line-height: 1.5;
+        opacity: 0.55;
+    }
+
+    .contact-card a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .contact-card:active {
+        transform: scale(0.98);
+        background: rgba(0, 0, 0, 0.03);
+    }
+}
+
+/* =====================================
+   BBA CARS — PREMIUM NAVBAR
+===================================== */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    width: 100%;
+    min-height: 76px;
+    padding: 0 5%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: rgba(8, 10, 13, 0.92);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+.logo {
+    color: #f7f7f5;
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    white-space: nowrap;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 34px;
+
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.nav-links a {
+    position: relative;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+
+    transition:
+        color 0.3s ease,
+        opacity 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #fff;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+
+    left: 0;
+    bottom: -7px;
+
+    width: 0;
+    height: 1px;
+
+    background: #fff;
+
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+
+/* =====================================
+   PREMIUM MOBILE NAVBAR
+===================================== */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        min-height: 72px;
+        padding: 0 22px;
+    }
+
+    .logo {
+        position: relative;
+        z-index: 1002;
+
+        font-size: 19px;
+        letter-spacing: 1.8px;
+    }
+
+    /* HAMBURGER */
+    .menu-toggle {
+        position: relative;
+        z-index: 1002;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 44px;
+        height: 44px;
+
+        padding: 0;
+
+        color: #fff;
+        font-size: 25px;
+
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.10);
+        border-radius: 50%;
+
+        cursor: pointer;
+
+        transition:
+            background 0.3s ease,
+            transform 0.3s ease;
+    }
+
+    .menu-toggle:active {
+        transform: scale(0.92);
+        background: rgba(255, 255, 255, 0.12);
+    }
+
+    /* MOBILE MENU */
+    .nav-links {
+        position: absolute;
+
+        top: calc(100% + 10px);
+        left: 16px;
+        right: 16px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+
+        margin: 0;
+        padding: 12px;
+
+        background: rgba(15, 18, 22, 0.97);
+
+        border: 1px solid rgba(255, 255, 255, 0.10);
+        border-radius: 22px;
+
+        box-shadow:
+            0 25px 70px rgba(0, 0, 0, 0.35);
+
+        backdrop-filter: blur(22px);
+        -webkit-backdrop-filter: blur(22px);
+    }
+
+    .nav-links li {
+        width: 100%;
+    }
+
+    .nav-links a {
+        display: flex;
+        align-items: center;
+
+        width: 100%;
+        min-height: 52px;
+
+        padding: 0 17px;
+
+        color: rgba(255, 255, 255, 0.82);
+
+        font-size: 16px;
+        font-weight: 500;
+
+        border-radius: 14px;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:active {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.07);
+    }
+
+    .nav-links a::after {
+        display: none;
+    }
+}
+
+/* =====================================
+   BBA CARS — PREMIUM HERO
+===================================== */
+
+.hero {
+    position: relative;
+    min-height: calc(100vh - 76px);
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+}
+
+/* Premium qoramtir gradient */
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.05) 10%,
+            rgba(0, 0, 0, 0.18) 45%,
+            rgba(0, 0, 0, 0.82) 100%
+        );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.small-text {
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    letter-spacing: -2px;
+}
+
+.cars-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+
+    transition:
+        transform var(--premium-transition),
+        background var(--premium-transition),
+        box-shadow var(--premium-transition);
+}
+
+.cars-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.20);
+}
+
+
+/* MOBILE HERO */
+
+@media (max-width: 600px) {
+
+    .hero {
+        min-height: calc(100svh - 72px);
+        align-items: flex-end;
+    }
+
+    .hero::after {
+        background:
+            linear-gradient(
+                180deg,
+                rgba(0, 0, 0, 0.04) 15%,
+                rgba(0, 0, 0, 0.15) 38%,
+                rgba(0, 0, 0, 0.88) 100%
+            );
+    }
+
+    .hero-content {
+        width: 100%;
+        padding: 0 24px 64px;
+        box-sizing: border-box;
+    }
+
+    .small-text {
+        margin-bottom: 16px;
+        font-size: 11px;
+        letter-spacing: 4px;
+    }
+
+    .hero h1 {
+        max-width: 350px;
+        margin: 0;
+
+        font-size: clamp(42px, 12vw, 56px);
+        line-height: 0.98;
+        letter-spacing: -2.5px;
+    }
+
+    .description {
+        max-width: 310px;
+        margin: 22px 0 28px;
+
+        font-size: 15px;
+        line-height: 1.5;
+        opacity: 0.78;
+    }
+
+    .cars-button {
+        min-height: 54px;
+        padding: 0 25px;
+
+        border-radius: 999px;
+
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .cars-button:active {
+        transform: scale(0.97);
+    }
+}
+
+/* ==================================
+   BBA CARS - PREMIUM CAR CARDS
+================================== */
+
+.car-card {
+    background: #ffffff;
+    border-radius: 22px;
+    overflow: hidden;
+    border: 1px solid #e9e9e9;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.car-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
+}
+
+
+/* RASM */
+
+.car-image {
+    height: 250px;
+    background: #f4f4f4;
+    overflow: hidden;
+    position: relative;
+}
+
+.car-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.car-card:hover .car-image img {
+    transform: scale(1.04);
+}
+
+
+/* STATUS */
+
+.status {
+    top: 16px;
+    left: 16px;
+    padding: 8px 14px;
+    border-radius: 50px;
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+
+    z-index: 10;
+}
+
+
+/* MA'LUMOT */
+
+.car-info {
+    padding: 22px;
+}
+
+.car-info h3 {
+    font-size: 24px;
+    line-height: 1.15;
+    margin: 0 0 14px;
+    color: #111;
+}
+
+
+/* XUSUSIYATLAR */
+
+.car-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: 24px;
+}
+
+.car-details span {
+    background: #f4f4f4;
+    padding: 7px 11px;
+    border-radius: 30px;
+
+    font-size: 11px;
+    color: #555;
+}
+
+
+/* NARX */
+
+.price p {
+    color: #999;
+    font-size: 12px;
+    margin: 0 0 4px;
+}
+
+.price h4 {
+    font-size: 25px;
+    font-weight: 700;
+    color: #111;
+
+    margin: 0 0 18px;
+}
+
+
+/* BATAFSIL TUGMASI */
+
+.details-button {
+    display: block;
+    width: 100%;
+
+    padding: 14px 18px;
+
+    background: #111;
+    color: #fff;
+
+    border: 1px solid #111;
+    border-radius: 50px;
+
+    text-align: center;
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+.details-button:hover {
+    background: #292929;
+    border-color: #292929;
+}
+
+
+/* TELEFON */
+
+@media (max-width: 600px) {
+
+    .cars-section {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .car-card {
+        border-radius: 20px;
+    }
+
+    .car-image {
+        height: 230px;
+    }
+
+    .car-info {
+        padding: 20px;
+    }
+
+    .car-info h3 {
+        font-size: 22px;
+    }
+
+    .price h4 {
+        font-size: 23px;
+    }
+
+}
+
+/* MOBILDA KARTALARNI KENGAYTIRISH */
+@media (max-width: 600px) {
+
+    .cars-section {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .cars-container {
+        width: 100%;
+        max-width: none;
+    }
+
+    .car-card {
+        width: 100%;
+    }
+}
+
+/* MOBIL - MASHINA RASMLARI */
+@media (max-width: 600px) {
+
+    .car-image {
+        width: 100%;
+        height: 240px;
+        overflow: hidden;
+    }
+
+    .car-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+    }
+
+}
+
+/* MOBIL - KARTA ICHKI DIZAYNI */
+@media (max-width: 600px) {
+
+    .car-info {
+        padding: 20px 18px 18px;
+    }
+
+    .car-info h3 {
+        font-size: 23px;
+        margin-bottom: 14px;
+    }
+
+    .car-details {
+        margin-bottom: 24px;
+        gap: 8px;
+    }
+
+    .price {
+        margin-bottom: 16px;
+    }
+
+    .price h4 {
+        font-size: 24px;
+        margin-bottom: 0;
+    }
+
+    .details-button {
+        padding: 15px;
+        font-size: 14px;
+    }
+}
+
+/* MOBIL - PREMIUM KARTA VA STATUS */
+@media (max-width: 600px) {
+
+    .car-card {
+        border: 1px solid #e8e8e8;
+        border-radius: 22px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+    }
+
+    .status {
+        top: 14px;
+        left: 14px;
+        padding: 7px 13px;
+        border-radius: 50px;
+
+        font-size: 11px;
+        font-weight: 600;
+    }
+
+    .status.available {
+        background: #16a34a;
+        color: white;
+    }
+    .hero-content {
+    transform: translateY(-290px);
+}
+.section-title {
+    margin-bottom: 30px;
+}
+.cars-container {
+    gap: 32px;
+}
+.car-image {
+    height: 230px;
+}
+.car-info {
+    padding: 20px;
+}
+
+.car-info h3 {
+    font-size: 23px;
+    margin-bottom: 12px;
+}
+
+.car-details {
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.price {
+    margin-bottom: 14px;
+}
+.details-button {
+    padding: 13px 15px;
+    font-size: 14px;
+}
+.about-feature {
+    padding: 22px;
+}
+}
+
+/* ===== CAR FILTERS ===== */
+
+.car-filters {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 28px 0 35px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    border: 1px solid #d8d8d8;
+    background: #ffffff;
+    color: #111;
+    padding: 11px 20px;
+    border-radius: 50px;
+
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+}
+
+.filter-btn:hover {
+    background: #111;
+    color: #fff;
+    border-color: #111;
+}
+
+.filter-btn.active {
+    background: #111;
+    color: #fff;
+    border-color: #111;
+}
+
+/* Telefon */
+@media (max-width: 600px) {
+
+    .car-filters {
+        gap: 7px;
+        margin: 22px 0 28px;
+        flex-wrap: nowrap;
+    }
+
+    .filter-btn {
+        padding: 9px 13px;
+        font-size: 12px;
+        white-space: nowrap;
+    }
+}
+
+
+/* =========================
+   CAR SEARCH
+========================= */
+
+.car-search {
+    width: 100%;
+    margin: 25px 0 30px;
+}
+
+.car-search input {
+    width: 100%;
+    height: 58px;
+    padding: 0 22px;
+
+    border: 1px solid #dddddd;
+    border-radius: 16px;
+
+    background: #ffffff;
+    color: #111;
+
+    font-size: 15px;
+    font-family: inherit;
+
+    outline: none;
+    box-sizing: border-box;
+
+    transition: 0.3s ease;
+}
+
+.car-search input::placeholder {
+    color: #999;
+}
+
+.car-search input:focus {
+    border-color: #111;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+}
+
+
+/* =========================
+   NO SEARCH RESULTS
+========================= */
+
+.no-results {
+    display: none;
+    text-align: center;
+    padding: 50px 20px;
+    margin-top: 20px;
+}
+
+.no-results h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #111;
+}
+
+.no-results p {
+    font-size: 14px;
+    color: #888;
+    margin: 0;
+}
+
+
+/* QIDIRUV TOZALASH TUGMASI */
+
+.car-search {
+    position: relative;
+}
+
+.car-search input {
+    width: 100%;
+    padding-right: 55px;
+}
+
+.clear-search {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 34px;
+    height: 34px;
+
+    border: none;
+    background: transparent;
+    font-size: 26px;
+    color: #777;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.car-image {
+    position: relative;
+}
+
+.car-badge {
+    position: absolute;
+    top: 12px;
+   
+    z-index: 5;
+
+    padding: 6px 12px;
+    border-radius: 8px;
+
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.badge-top {
+    background: #111;
+    color: #fff;
+    right: 12px;
+}
+
+.badge-new {
+    background: #007aff;
+    color: #fff;
+    right: 12px;
+}
+
+.badge-sale {
+    background: #e53935;
+    color: #fff;
+    right: 12px;
+}
+
+.favorite-btn {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    z-index: 6;
+
+    width: 42px;
+    height: 42px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.9);
+    color: #111;
+
+    font-size: 25px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.2s ease;
+}
+
+.favorite-btn:hover {
+    transform: scale(1.08);
+}
+
+.favorite-btn.active {
+    background: #ff3b30;
+    color: white;
+}
+
+.sort-box {
+    margin: 20px 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.sort-box select {
+    width: 260px;
+    padding: 14px 18px;
+
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+
+    background: #fff;
+    color: #111;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+    outline: none;
+
+    transition: 0.2s ease;
+}
+
+.sort-box select:hover {
+    border-color: #111;
+}
+
+.sort-box select:focus {
+    border-color: #111;
+}
+
+.favorites-filter {
+    padding: 12px 22px;
+    border: 1px solid #ddd;
+    background: #fff;
+    color: #111;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.favorites-filter:hover {
+    background: #f5f5f5;
+}
+
+.favorites-filter.active {
+    background: #111;
+    color: #fff;
+    border-color: #111;
+}
+
+.compare-btn {
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px 16px;
+
+    background: #fff;
+    color: #111;
+
+    border: 1px solid #ddd;
+    border-radius: 10px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.compare-btn:hover {
+    background: #111;
+    color: #fff;
+    border-color: #111;
+}
+
+.compare-bar {
+    position: fixed;
+    left: 50%;
+    bottom: 25px;
+    transform: translateX(-50%);
+
+    width: calc(100% - 40px);
+    max-width: 700px;
+
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    padding: 14px 16px 14px 22px;
+
+    background: #111;
+    color: #fff;
+
+    border-radius: 18px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
+
+    z-index: 9999;
+}
+
+.compare-bar span {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+#compareNowBtn {
+    border: none;
+    background: #fff;
+    color: #111;
+
+    padding: 12px 20px;
+    border-radius: 12px;
+
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* ===== TAQQOSLASH OYNASI ===== */
+
+.compare-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(8px);
+    padding: 30px;
+    overflow-y: auto;
+}
+
+.compare-modal-content {
+    position: relative;
+    max-width: 1000px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 24px;
+    padding: 35px;
+}
+
+.compare-modal-content h2 {
+    margin: 0 50px 30px 0;
+    font-size: 30px;
+}
+
+.compare-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 50%;
+    background: #f1f1f1;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+.compare-cars {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+@media (max-width: 700px) {
+    .compare-modal {
+        padding: 12px;
+    }
+
+    .compare-modal-content {
+        margin: 20px auto;
+        padding: 22px 15px;
+        border-radius: 20px;
+    }
+
+    .compare-modal-content h2 {
+        font-size: 22px;
+    }
+
+    .compare-cars {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+}
+
+.compare-car {
+    background: #f7f7f7;
+    border-radius: 18px;
+    padding: 15px;
+    overflow: hidden;
+}
+
+.compare-car img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 14px;
+    display: block;
+}
+
+.compare-car h3 {
+    margin: 18px 0 8px;
+    font-size: 22px;
+    color: #111;
+}
+
+.compare-car p {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #111;
+}
+
+.compare-car h3 {
+    display: block !important;
+    color: #111 !important;
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    margin: 16px 0 12px !important;
+}
+
+.compare-details {
+    display: flex !important;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.compare-details span {
+    display: inline-block !important;
+    color: #555 !important;
+    background: #eeeeee;
+    padding: 7px 10px;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+.compare-cars {
+    position: relative;
+}
+
+.compare-cars::after {
+    content: "VS";
+
+    position: absolute;
+    top: 125px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 46px;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #111;
+    color: #fff;
+
+    border: 4px solid #fff;
+    border-radius: 50%;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    z-index: 10;
+}
+
+.compare-specs {
+    margin-top: 25px;
+    border-top: 1px solid #eee;
+}
+
+.compare-spec-row {
+    display: grid;
+    grid-template-columns: 1fr 140px 1fr;
+    align-items: center;
+    text-align: center;
+
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.compare-spec-row .label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #777;
+}
+
+.compare-spec-row .value {
+    font-size: 15px;
+    font-weight: 700;
+    color: #111;
+}
+
+/* ===== TAQQOSLASH SPECS ===== */
+
+.compare-specs {
+    margin-top: 25px;
+    border-top: 1px solid #e5e5e5;
+}
+
+.compare-spec-row {
+    display: grid;
+    grid-template-columns: 1fr 120px 1fr;
+    align-items: center;
+    padding: 18px 0;
+    border-bottom: 1px solid #e5e5e5;
+    text-align: center;
+}
+
+.compare-spec-row .label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #999;
+    letter-spacing: 1px;
+}
+
+.compare-spec-row .value {
+    font-size: 16px;
+    font-weight: 600;
+    color: #111;
+}
+
+/* ===== TAQQOSLASH MOBILE ===== */
+
+@media (max-width: 768px) {
+
+    .compare-modal-content {
+        width: 94%;
+        max-height: 90vh;
+        overflow-y: auto;
+        padding: 20px 14px;
+    }
+
+    .compare-cars {
+        gap: 10px;
+    }
+
+    .compare-car img {
+        width: 100%;
+        height: 130px;
+        object-fit: cover;
+        border-radius: 12px;
+    }
+
+    .compare-car h3 {
+        font-size: 14px;
+        margin-top: 10px;
+        line-height: 1.25;
+        min-height: 53px;
+    }
+.compare-cars::after {
+    width: 42px;
+    height: 42px;
+    font-size: 12px;
+}
+    .compare-spec-row {
+        grid-template-columns: 1fr 70px 1fr;
+        padding: 14px 0;
+    }
+
+    .compare-spec-row .value {
+        font-size: 14px;
+    }
+
+    .compare-spec-row .label {
+        font-size: 10px;
+    }
+}
+
+
+#clearCompareBtn {
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 12px;
+    padding: 12px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+#clearCompareBtn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: #ffffff;
+}
+
+.compare-alert {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(8px);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.compare-alert-box {
+    width: 100%;
+    max-width: 400px;
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 32px 25px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+}
+
+.compare-alert-icon {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.compare-alert-box h3 {
+    margin: 0 0 10px;
+    font-size: 22px;
+    color: #111;
+}
+
+.compare-alert-box p {
+    margin: 0 0 22px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #777;
+}
+
+#compareAlertClose {
+    width: 100%;
+    border: none;
+    border-radius: 14px;
+    padding: 14px;
+    background: #111;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#scrollTopBtn {
+    display: none;
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    width: 52px;
+    height: 52px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #111;
+    color: #fff;
+
+    font-size: 24px;
+    font-weight: 600;
+
+    cursor: pointer;
+    z-index: 999;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.22);
+
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+#scrollTopBtn:hover {
+    transform: translateY(-3px);
+}
+
+@media (max-width: 600px) {
+    #scrollTopBtn {
+        left: 8px;
+        right: auto;
+        bottom: 100px;
+
+        width: 44px;
+        height: 44px;
+        font-size: 20px;
+
+        z-index: 998;
+    }
+}
+
+@media (max-width: 600px) {
+    .car-filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .filter-btn,
+    .favorites-filter {
+        height: 44px;
+        padding: 0 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        white-space: nowrap;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 600px) {
+    .sort-box {
+        margin-top: 16px;
+        margin-bottom: 20px;
+    }
+
+    .sort-box select {
+        width: 100%;
+        height: 52px;
+        padding: 0 18px;
+        border-radius: 14px;
+        font-size: 15px;
+        font-weight: 600;
+    }
+}
+
+@media (max-width: 600px) {
+    .car-card {
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    .car-info {
+        padding: 20px;
+    }
+
+    .car-info h3 {
+        font-size: 23px;
+        line-height: 1.2;
+        margin-bottom: 14px;
+    }
+
+    .car-details {
+        gap: 18px;
+        margin-bottom: 20px;
+    }
+
+    .price {
+        margin-bottom: 18px;
+    }
+
+    .price h4 {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 600px) {
+    .details-btn,
+    .compare-btn {
+        width: 100%;
+        min-height: 52px;
+        border-radius: 14px;
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    .details-btn {
+        margin-bottom: 10px;
+    }
+
+    .compare-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .compare-btn.selected {
+        min-height: 52px;
+    }
+}
+
+@media (max-width: 600px) {
+    #scrollTopBtn {
+        left: 10px;
+        right: auto;
+        bottom: 155px;
+        width: 44px;
+        height: 44px;
+    }
+}
+
+/* =========================
+   YAQINDA KO'RILGAN
+========================= */
+
+.recent-section {
+    padding: 80px 20px;
+    background: #f7f7f5;
+    display: none;
+}
+
+.recent-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.recent-header {
+    margin-bottom: 35px;
+}
+
+.recent-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    opacity: 0.6;
+}
+
+.recent-header h2 {
+    font-size: 38px;
+    margin: 0 0 8px;
+    font-weight: 700;
+}
+
+.recent-header p {
+    margin: 0;
+    opacity: 0.6;
+}
+
+.recent-cars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* Telefon */
+@media (max-width: 768px) {
+    .recent-section {
+        padding: 50px 20px;
+    }
+
+    .recent-header h2 {
+        font-size: 30px;
+    }
+
+    .recent-cars {
+        display: flex;
+        overflow-x: auto;
+        gap: 14px;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 10px;
+    }
+
+    .recent-cars::-webkit-scrollbar {
+        display: none;
+    }
+
+    .recent-cars .car-card {
+        min-width: 82%;
+        scroll-snap-align: start;
+    }
+}
+
+
+/* Yaqinda ko'rilgan yozuv ranglari */
+.recent-section .recent-label {
+    color: #777;
+}
+
+.recent-section .recent-header h2 {
+    color: #111;
+}
+
+.recent-section .recent-header p {
+    color: #666;
+}
+
+
+/* Yaqinda ko'rilgan - Desktop */
+@media (min-width: 769px) {
+    .recent-cars {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+        overflow: visible;
+    }
+
+    .recent-cars .car-card {
+        width: 100%;
+        min-width: 0;
+        max-width: none;
+        box-sizing: border-box;
+    }
+
+    .recent-cars .car-image img {
+        width: 100%;
+        height: 240px;
+        object-fit: cover;
+    }
+}
+
+/* ===== YAQINDA KO'RILGAN ===== */
+
+.recent-section {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 0 20px;
+}
+
+.recent-header {
+    margin-bottom: 30px;
+}
+
+.recent-header span {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.recent-header h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin: 0 0 8px;
+    color: #171717;
+}
+
+.recent-header p {
+    font-size: 15px;
+    color: #888;
+    margin: 0;
+}
+
+.recent-cars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .recent-section {
+        margin: 55px auto;
+        padding: 0 16px;
+    }
+
+    .recent-header h2 {
+        font-size: 28px;
+    }
+
+    .recent-cars {
+        display: flex;
+        overflow-x: auto;
+        gap: 14px;
+        padding-bottom: 15px;
+        scroll-snap-type: x mandatory;
+    }
+
+    .recent-cars > * {
+        min-width: 82%;
+        scroll-snap-align: start;
+    }
+
+    .recent-cars::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+#carCount {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 7px 14px;
+
+    background: #f1f3f4;
+    color: #60676b;
+
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1;
+}
+
+/* SOTIB OLISH TUGMASI */
+
+.buy-btn {
+    width: 100%;
+    margin-top: 14px;
+    padding: 17px 24px;
+
+    border: none;
+    border-radius: 14px;
+
+    background: #111;
+    color: #fff;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.buy-btn:hover {
+    transform: translateY(-2px);
+    background: #222;
+}
+
+.buy-btn:active {
+    transform: scale(0.98);
+}
+
+/* ===== BBA CARS ARIZA MODAL ===== */
+
+.order-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(0, 0, 0, 0.70);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: all 0.3s ease;
+}
+
+/* MODAL OCHILGANDA */
+
+.order-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* OQ KARTA */
+
+.order-modal-content {
+    position: relative;
+
+    width: 100%;
+    max-width: 440px;
+
+    padding: 35px;
+
+    background: #ffffff;
+    color: #111;
+
+    border-radius: 24px;
+
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+
+    transform: translateY(30px) scale(0.96);
+
+    transition: all 0.3s ease;
+}
+
+.order-modal.active .order-modal-content {
+    transform: translateY(0) scale(1);
+}
+
+
+/* X TUGMASI */
+
+.order-close {
+    position: absolute;
+
+    top: 18px;
+    right: 18px;
+
+    width: 40px;
+    height: 40px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #f1f1f1;
+    color: #111;
+
+    font-size: 25px;
+    cursor: pointer;
+}
+
+
+/* BBA CARS */
+
+.order-label {
+    display: block;
+
+    margin-bottom: 10px;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    color: #777;
+}
+
+
+/* SARLAVHA */
+
+.order-modal-content h2 {
+    margin: 0 0 10px;
+
+    font-size: 30px;
+    font-weight: 800;
+
+    color: #111;
+}
+
+
+/* MATN */
+
+.order-modal-content p {
+    margin: 0 0 25px;
+
+    color: #777;
+
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+/* INPUT BLOKLARI */
+
+.order-field {
+    margin-bottom: 17px;
+}
+
+.order-field label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    color: #333;
+}
+
+.order-field input {
+    width: 100%;
+
+    padding: 15px 16px;
+
+    border: 1px solid #ddd;
+    border-radius: 12px;
+
+    background: #f8f8f8;
+    color: #111;
+
+    font-size: 15px;
+
+    outline: none;
+
+    box-sizing: border-box;
+
+    transition: 0.2s;
+}
+
+.order-field input:focus {
+    background: #fff;
+    border-color: #111;
+}
+
+
+/* ARIZA YUBORISH */
+
+.order-submit {
+    width: 100%;
+
+    padding: 16px;
+
+    margin-top: 5px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: #111;
+    color: #fff;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+.order-submit:hover {
+    background: #292929;
+    transform: translateY(-1px);
+}
+
+
+/* TELEFON UCHUN */
+
+@media (max-width: 600px) {
+
+    .order-modal {
+        padding: 15px;
+    }
+
+    .order-modal-content {
+        padding: 30px 20px 22px;
+        border-radius: 20px;
+    }
+
+    .order-modal-content h2 {
+        font-size: 25px;
+    }
+}
+
+
+/* ===== ARIZA MUVAFFAQIYATLI ===== */
+
+.success-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(8px);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.success-modal.active {
+    display: flex;
+}
+
+.success-modal-content {
+    width: 100%;
+    max-width: 420px;
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 38px 28px;
+    text-align: center;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+}
+
+.success-icon {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: #111111;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.success-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.success-modal-content h2 {
+    margin: 0 0 12px;
+    font-size: 26px;
+    color: #111111;
+}
+
+.success-modal-content p {
+    margin: 0 0 26px;
+    color: #666666;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+#closeSuccessModal {
+    width: 100%;
+    border: none;
+    border-radius: 14px;
+    padding: 15px 20px;
+    background: #111111;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+@media (min-width: 769px) {
+    .hero-content {
+        transform: translateY(-400px);
+    }
+}
+
+
+html {
+    scroll-behavior: smooth;
+}

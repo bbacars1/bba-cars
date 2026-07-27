@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BBA CARS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+
+    <nav class="navbar">
+        <div class="logo">BBA CARS</div>
+<button class="menu-toggle" aria-label="Menyuni ochish">☰</button>
+        <ul class="nav-links">
+            <li><a href="#home">Bosh sahifa</a></li>
+            <li><a href="#cars">Avtomobillar</a></li>
+            <li><a href="#about">Biz haqimizda</a></li>
+            <li><a href="#contact">Aloqa</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero" id="home">
+
+        <div class="hero-content">
+            <p class="small-text">BBA CARS</p>
+
+            <h1>
+                Orzuingizdagi avtomobilni<br>
+                biz bilan toping.
+            </h1>
+
+            <p class="description">
+                Premium avtomobillar. Qulay to'lov. Ishonchli xizmat.
+            </p>
+
+            <a href="#cars" class="cars-button">
+                Avtomobillarni ko'rish
+            </a>
+        </div>
+
+    </header>
+
+   <section class="cars-section" id="cars">
+
+    <div class="section-title">
+        <p>BBA CARS COLLECTION</p>
+        <h2>Avtomobillar</h2>
+        <span id="carCount"></span>
+        <span>Salondagi mavjud avtomobillar bilan tanishing.</span>
+    </div>
+<div class="car-filters">
+    <button class="filter-btn active" data-filter="all">Barchasi</button>
+    <button class="filter-btn" data-filter="hybrid">Gibrid</button>
+    <button class="filter-btn" data-filter="electric">Elektr</button>
+    <button class="filter-btn" data-filter="petrol">Benzin</button>
+    <button class="favorites-filter" id="favoritesFilter">
+    ❤️ Sevimlilar
+</button>
+</div>
+<div class="car-search">
+    <input type="text" id="carSearch" placeholder="Avtomobil qidirish..." autocomplete="off">
+    <button type="button" id="clearSearch" class="clear-search">×</button>
+</div>
+
+<div class="sort-box">
+    <select id="sortCars">
+        <option value="default">Saralash</option>
+        <option value="price-low">Narxi: arzondan → qimmatga</option>
+        <option value="price-high">Narxi: qimmatdan → arzonga</option>
+        <option value="new">Eng yangi</option>
+        <option value="top">TOP avtomobillar</option>
+    </select>
+</div>
+    <div class="cars-container">
+
+        <!-- DONGFENG 008 -->
+        <div class="car-card"
+     data-status="available"
+     data-type="hybrid"
+     data-year="2025"
+     data-engine="Gibrid [1.5L Turbo]"
+     data-drive="2WD"
+     data-electric-range="210 km"
+     data-battery="34.3 kWh"
+     data-total-range="1300 km"
+     data-seats="6"
+     data-power="200 kW [272 ot kuchi]"
+     data-acceleration="8.2 soniya"
+     data-max-speed="180 km/soat"
+     data-length="5002 mm"
+     data-wheelbase="3025 mm">
+
+            <div class="car-image">
+                <img src="images/dongfeng008.jpg" alt="Dongfeng 008 Restyling">
+                <span class="status available">Sotuvda</span>
+                <span class="car-badge badge-top">TOP</span>
+                <button class="favorite-btn" aria-label="Sevimlilarga qo'shish">
+    ♡
+</button>
+            </div>
+
+            <div class="car-info">
+
+                <h3>Dongfeng 008 Restyling</h3>
+
+                <div class="car-details">
+                    <span>2025</span>
+                    <span>Gibrid</span>
+                    <span>2WD</span>
+                </div>
+
+                <div class="price">
+                    <p>Narxi</p>
+                    <h4>$31,800</h4>
+                </div>
+
+                <a href="dongfeng008.html" class="details-button">
+    Batafsil
+</a>
+
+<button class="compare-btn">
+    ⚖️ Taqqoslash
+</button>
+            </div>
+
+        </div>
+
+
+        <!-- DONGFENG L8 -->
+        <div class="car-card" data-status="available" data-type="hybrid" data-year="2025">
+
+            <div class="car-image">
+                <img src="./images/dongfeng-18.jpg" alt="Dongfeng L8">
+                <span class="status available" >Sotuvda</span>
+                <span class="car-badge badge-new">YANGI</span>
+                <button class="favorite-btn" aria-label="Sevimlilarga qo'shish">
+    ♡
+</button>
+            </div>
+
+            <div class="car-info">
+
+                <h3>Dongfeng L8 Full</h3>
+
+                <div class="car-details">
+                    <span>2025</span>
+                    <span>Gibrid</span>
+                    <span>FWD</span>
+                </div>
+
+                <div class="price">
+                    <p>Narxi</p>
+                    <h4>$29,500</h4>
+                </div>
+
+                <a href="dongfengl8.html" class="details-button">
+    Batafsil
+</a>
+<button class="compare-btn">
+    ⚖️ Taqqoslash
+</button>
+
+            </div>
+
+        </div>
+
+        <!-- DONGFENG L7 -->
+<div class="car-card" data-status="available"  data-type="electric" data-year="2025">
+
+    <div class="car-image">
+        <img src="./images/dongfeng-17.jpg" alt="Dongfeng L7">
+<span class="car-badge badge-sale">CHEGIRMA</span>
+        <span class="status available">Sotuvda</span>
+        <button class="favorite-btn" aria-label="Sevimlilarga qo'shish">
+    ♡
+</button>
+    </div>
+
+    <div class="car-info">
+
+        <h3>Dongfeng L7 518km</h3>
+
+        <div class="car-details">
+            <span>2025</span>
+            <span>Elektr</span>
+            <span>2WD</span>
+        </div>
+
+        <div class="price">
+            <p>Narxi</p>
+            <h4>$21,000</h4>
+        </div>
+
+                 <a href="dongfengl7.html" class="details-button">
+    Batafsil
+</a>
+
+    </div>
+
+</div>
+<!-- CHANGAN A06 R FULL -->
+<div class="car-card" data-status="available"  data-type="hybrid" data-year="2026">
+
+    <div class="car-image">
+        <img src="images/changan-a06r.jpg" alt="Changan A06 R Full">
+        <span class="status available">Sotuvda</span>
+        <button class="favorite-btn" aria-label="Sevimlilarga qo'shish">
+    ♡
+</button>
+<span class="car-badge badge-top">TOP</span>
+    </div>
+
+    <div class="car-info">
+
+        <h3>Changan A06 R EV/EREV</h3>
+
+        <div class="car-details">
+            <span>2026</span>
+            <span>Gibrid</span>
+            <span>Elektr</span>
+        </div>
+
+        <div class="price">
+            <p>Narxi</p>
+            <h4>$30,000</h4>
+        </div>
+
+        <a href="changana06r.html" class="details-button">
+    Batafsil
+</a>
+
+    </div>
+
+</div>
+
+<!-- CHANGAN Q05 -->
+<div class="car-card" data-status="available"  data-type="electric" data-year="2025"> 
+
+    <div class="car-image">
+        <img src="./images/changan-q05.jpg" alt="Changan Q05">
+        <span class="status available">Sotuvda</span>
+        <button class="favorite-btn" aria-label="Sevimlilarga qo'shish">
+    ♡
+</button>
+    </div>
+
+    <div class="car-info">
+
+        <h3>Changan Q05</h3>
+
+        <div class="car-details">
+            <span>2025</span>
+            <span>Elektr</span>
+        </div>
+
+        <div class="price">
+            <p>Narxi</p>
+            <h4>$23,000</h4>
+        </div>
+
+        <a href="changanq05.html" class="details-button">
+    Batafsil
+</a>
+
+    </div>
+
+</div>
+<!-- CHERY FULWIN T11 CEM-S -->
+<div class="car-card" data-status="available"  data-type="hybrid" data-year="2025">
+
+    <div class="car-image">
+        <img src="images/chery-t11.jpg" alt="Chery Fulwin T11 CEM-S">
+        <span class="status available">Sotuvda</span>
+        <button class="favorite-btn" aria-label="Sevimlilarga qo'shish">
+    ♡
+</button>
+    </div>
+
+    <div class="car-info">
+
+        <h3>Chery Fulwin T11 CEM-S</h3>
+
+        <div class="car-details">
+            <span>2025</span>
+            <span>Gibrid</span>
+            
+        </div>
+
+        <div class="price">
+            <p>Narxi</p>
+            <h4>$54,000</h4>
+        </div>
+
+        <a href="cheryfulwint11.html" class="details-button">
+    Batafsil
+</a>
+
+    </div>
+
+</div>
+<!-- BYD QIN L FULL -->
+<div class="car-card" data-status="available"  data-type="electric" data-year="2025">
+
+    <div class="car-image">
+        <img src="./images/byd-qin-l.jpg" alt="BYD Qin L Full">
+        <span class="status available">Sotuvda</span>
+        <button class="favorite-btn" aria-label="Sevimlilarga qo'shish">
+    ♡
+</button>
+    </div>
+
+    <div class="car-info">
+
+        <h3>BYD Qin L Full</h3>
+
+        <div class="car-details">
+            <span>2025</span>
+            <span>Elektr</span>
+            <span>2WD</span>
+        </div>
+
+        <div class="price">
+            <p>Narxi</p>
+            <h4>$26,000</h4>
+        </div>
+
+        <a href="bydqinl.html" class="details-button">
+    Batafsil
+</a>
+
+    </div>
+
+</div>
+<!-- BYD SEALION 06 -->
+<div class="car-card" data-status="coming"  data-type="electric" data-year="2025">
+
+    <div class="car-image">
+        <img src="./images/byd-sealion06.jpg" alt="BYD Sealion 06">
+        <span class="status coming">Tez orada</span>
+        <button class="favorite-btn" aria-label="Sevimlilarga qo'shish">
+    ♡
+</button>
+    </div>
+
+    <div class="car-info">
+
+        <h3>BYD Sealion 06 605km</h3>
+
+        <div class="car-details">
+            <span>2025</span>
+            <span>Elektr</span>
+        </div>
+
+        <div class="price">
+            <p>Narxi</p>
+            <h4>Tez orada</h4>
+        </div>
+
+        <a href="bydsealion605.html" class="details-button">
+    Batafsil
+</a>
+
+    </div>
+
+</div>
+<!-- BYD SEALION 06 -->
+<div class="car-card" data-status="coming"  data-type="electric" data-year="2025">
+
+    <div class="car-image">
+        <img src="./images/byd-sealion06520.jpg" alt="BYD Sealion 06">
+        <span class="status coming">Tez orada</span>
+        <button class="favorite-btn" aria-label="Sevimlilarga qo'shish">
+    ♡
+</button>
+    </div>
+
+    <div class="car-info">
+
+        <h3>BYD Sealion 06 520km</h3>
+
+        <div class="car-details">
+            <span>2025</span>
+            <span>Elektr</span>
+        </div>
+
+        <div class="price">
+            <p>Narxi</p>
+            <h4>Tez orada</h4>
+        </div>
+
+        <a href="bydsealion520.html" class="details-button">
+    Batafsil
+</a>
+
+    </div>
+
+</div>
+<!-- BYD LEOPARD 7 FULL -->
+<div class="car-card" data-status="available"  data-type="hybrid" data-year="2025">
+
+    <div class="car-image">
+        <img src="./images/byd-leopard7.jpg" alt="BYD Leopard 7 Full">
+        <span class="status available">Sotuvda</span>
+        <button class="favorite-btn" aria-label="Sevimlilarga qo'shish">
+    ♡
+</button>
+    </div>
+
+    <div class="car-info">
+
+        <h3>BYD Leopard 7 Full</h3>
+
+        <div class="car-details">
+            <span>2025</span>
+            <span>Gibrid</span>
+            <span>4WD</span>
+        </div>
+
+        <div class="price">
+            <p>Narxi</p>
+            <h4>$47,500</h4>
+        </div>
+
+        <a href="bydleopard7.html" class="details-button">
+    Batafsil
+</a>
+
+    </div>
+
+</div>
+<!-- MG CYBERSTER -->
+<div class="car-card" data-status="available"  data-type="electric" data-year="2024">
+
+    <div class="car-image">
+        <img src="./images/mg-cyberster.jpg" alt="MG Cyberster">
+        <span class="status available">Sotuvda</span>
+        <button class="favorite-btn" aria-label="Sevimlilarga qo'shish">
+    ♡
+</button>
+    </div>
+
+    <div class="car-info">
+
+        <h3>MG Cyberster</h3>
+
+        <div class="car-details">
+            <span>2024</span>
+            <span>Elektr</span>
+            <span>Sport</span>
+        </div>
+
+        <div class="price">
+            <p>Narxi</p>
+            <h4>$53,000</h4>
+        </div>
+
+        <a href="mg.html" class="details-button">
+    Batafsil
+</a>
+
+    </div>
+
+
+</div>
+
+
+    <!-- GAC AION i60 -->
+<div class="car-card" data-status="available" data-type="electric" data-year="2025">
+
+    <div class="car-image">
+        <img src="./images/gaci60.jpg" alt="GAC AION i60">
+        <span class="status coming">Tez orada</span>
+        <button class="favorite-btn" aria-label="Sevimlilarga qo'shish">
+    ♡
+</button>
+    </div>
+
+    <div class="car-info">
+
+        <h3>GAC AION i60</h3>
+
+        <div class="car-details">
+            <span>2026</span>
+            <span>Elektr</span>
+            <span>2WD</span>
+        </div>
+
+        <div class="price">
+            <p>Narxi</p>
+            <h4>$27,500</h4>
+        </div>
+
+        <a href="gaci60.html" class="details-button">
+            Batafsil
+        </a>
+
+    </div>
+
+</div>
+    </div>
+<div id="noResults" class="no-results">
+    <h3>Avtomobil topilmadi</h3>
+    <p>Boshqa nom yoki kategoriya bo‘yicha qidirib ko‘ring.</p>
+</div>
+</section>
+
+<!-- YAQINDA KO'RILGAN AVTOMOBILLAR -->
+<section class="recent-section" id="recentSection">
+    <div class="recent-container">
+
+        <div class="recent-header">
+            <span class="recent-label">BBA CARS</span>
+            <h2>Yaqinda ko‘rilgan</h2>
+            <p>Siz ko‘rgan avtomobillar</p>
+        </div>
+
+        <div class="recent-cars" id="recentCars">
+            <!-- Ko‘rilgan avtomobillar JavaScript orqali chiqadi -->
+        </div>
+
+    </div>
+</section>
+ 
+<!-- TEZ ORADA -->
+<section class="coming-section">
+
+    <div class="coming-container">
+
+        <span class="coming-label">BBA CARS</span>
+
+        <div class="coming-header">
+            <div>
+                <h2>Tez orada</h2>
+                <p>
+                    Yaqin kunlarda BBA CARS avtosalonida
+                    sotuvga chiqadigan avtomobillar.
+                </p>
+            </div>
+        </div>
+
+        <div class="coming-grid">
+
+            <div class="coming-card">
+                <div class="coming-image">
+                    <img src="./images/gaci60.jpg" alt="Tez orada">
+                    <span>TEZ ORADA</span>
+                </div>
+
+                <div class="coming-info">
+                    <h3>Yangi avtomobil</h3>
+                    <p>Model tez orada e'lon qilinadi</p>
+                </div>
+            </div>
+
+
+            <div class="coming-card">
+                <div class="coming-image">
+                    <img src="./images/byd-sealion06.jpg" alt="Tez orada">
+                    <span>TEZ ORADA</span>
+                </div>
+
+                <div class="coming-info">
+                    <h3>Yangi avtomobil</h3>
+                    <p>Model tez orada e'lon qilinadi</p>
+                </div>
+            </div>
+
+
+            <div class="coming-card">
+                <div class="coming-image">
+                    <img src="./images/coming3.jpg" alt="Tez orada">
+                    <span>TEZ ORADA</span>
+                </div>
+
+                <div class="coming-info">
+                    <h3>Yangi avtomobil</h3>
+                    <p>Model tez orada e'lon qilinadi</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- BIZ HAQIMIZDA -->
+<section class="about-section" id="about">
+
+    <div class="about-container">
+
+        <span class="about-label">BBA CARS</span>
+
+        <h2>Biz haqimizda</h2>
+
+        <p class="about-description">
+            BBA CARS — zamonaviy va premium avtomobillar savdosiga
+            ixtisoslashgan avtosalon. Biz mijozlarimizga avtomobil
+            tanlashdan boshlab xarid jarayonigacha qulay va ishonchli
+            xizmat ko'rsatamiz.
+        </p>
+
+        <div class="about-features">
+
+            <div class="about-feature">
+                <h3>Naqd to'lov</h3>
+                <p>Avtomobilni qulay va tez xarid qiling.</p>
+            </div>
+
+            <div class="about-feature">
+                <h3>Nasiya savdo</h3>
+                <p>Tanlangan avtomobillar uchun qulay nasiya imkoniyati.</p>
+            </div>
+
+            <div class="about-feature">
+                <h3>Trade-in</h3>
+                <p>Eski avtomobilingizni yangisiga almashtiring.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ALOQA -->
+<section class="contact-section" id="contact">
+
+    <div class="contact-container">
+
+        <span class="contact-label">BBA CARS</span>
+        <h2>Biz bilan bog'laning</h2>
+
+        <p class="contact-description">
+            Avtomobillar, narxlar va xarid shartlari bo'yicha
+            batafsil ma'lumot olish uchun biz bilan bog'laning.
+        </p>
+<div class="contact-grid">
+        <div class="contact-card">
+    <span>Telefon</span>
+
+    <h3>
+        <a href="tel:+998770569999">
+            +998 77 056 99 99
+        </a>
+    </h3>
+
+    <p>
+        <a href="tel:+998997821709">
+            +998 99 782 17 09
+        </a>
+    </p>
+</div>
+
+<div class="contact-card">
+    <span>Telegram</span>
+
+    <h3>
+        <a href="https://t.me/bbacars_uzb" target="_blank">
+            @bbacars_uzb
+        </a>
+    </h3>
+
+    <p>Bizga Telegram orqali yozing</p>
+</div>
+
+<div class="contact-card">
+    <span>Instagram</span>
+
+    <h3>
+        <a href="https://www.instagram.com/bba_cars_uz/" target="_blank">
+            @bba_cars_uz
+        </a>
+    </h3>
+
+    <p>
+        <a href="https://www.instagram.com/bbacars_uz/" target="_blank">
+            @bbacars_uz
+        </a>
+    </p>
+</div>
+
+    </div>
+    </div>
+
+</section>
+<!-- NEGA BBA CARS -->
+<section class="why-section">
+
+    <div class="why-container">
+
+        <span class="why-label">BBA CARS</span>
+
+        <h2>Nega aynan biz?</h2>
+
+        <p class="why-description">
+            Avtomobil xaridida qulaylik, ishonch va professional xizmat.
+        </p>
+
+        <div class="why-grid">
+
+            <div class="why-card">
+                <h3>Ishonchli avtomobillar</h3>
+                <p>Sifatli va tekshirilgan avtomobillarni taklif qilamiz.</p>
+            </div>
+
+            <div class="why-card">
+                <h3>Qulay nasiya</h3>
+                <p>Tanlangan avtomobillar uchun qulay nasiya imkoniyati.</p>
+            </div>
+
+            <div class="why-card">
+                <h3>Trade-in</h3>
+                <p>Eski avtomobilingizni yangisiga almashtirish imkoniyati.</p>
+            </div>
+
+            <div class="why-card">
+                <h3>Professional xizmat</h3>
+                <p>Avtomobil tanlashdan xaridgacha siz bilan birgamiz.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+
+    <div class="faq-container">
+
+        <span class="faq-label">BBA CARS</span>
+        <h2>Ko'p so'raladigan savollar</h2>
+
+        <p class="faq-description">
+            Avtomobil xaridi, nasiya va Trade-in bo'yicha
+            eng ko'p beriladigan savollarga javoblar.
+        </p>
+
+        <div class="faq-list">
+
+            <details class="faq-item">
+                <summary>
+                    Nasiya savdo qanday ishlaydi?
+                    <span>+</span>
+                </summary>
+                <p>
+                    Nasiya mavjud avtomobillarda boshlang'ich to'lov
+                    va muddat asosida oylik to'lov hisoblanadi.
+                    Batafsil ma'lumot uchun biz bilan bog'laning.
+                </p>
+            </details>
+
+            <details class="faq-item">
+                <summary>
+                    Barcha avtomobillarga nasiya bormi?
+                    <span>+</span>
+                </summary>
+                <p>
+                    Yo'q. Nasiya imkoniyati avtomobil modeliga qarab
+                    farq qiladi. Nasiya mavjud avtomobillarning
+                    batafsil sahifasida kalkulyator ko'rsatiladi.
+                </p>
+            </details>
+
+            <details class="faq-item">
+                <summary>
+                    Trade-in xizmati mavjudmi?
+                    <span>+</span>
+                </summary>
+                <p>
+                    Ha. Avtomobilingizni baholatib, yangi avtomobil
+                    xaridida Trade-in imkoniyatidan foydalanishingiz mumkin.
+                </p>
+            </details>
+
+            <details class="faq-item">
+                <summary>
+                    Avtomobilni qanday band qilish mumkin?
+                    <span>+</span>
+                </summary>
+                <p>
+                    Avtomobilni band qilish uchun BBA CARS bilan
+                    telefon yoki Telegram orqali bog'lanishingiz mumkin.
+                </p>
+            </details>
+
+            <details class="faq-item">
+                <summary>
+                    Avtomobillar narxi o'zgarishi mumkinmi?
+                    <span>+</span>
+                </summary>
+                <p>
+                    Ha. Narxlar valyuta kursi, komplektatsiya va
+                    avtomobil mavjudligiga qarab o'zgarishi mumkin.
+                    Amaldagi narxni menejerimizdan aniqlashtiring.
+                </p>
+            </details>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-top">
+
+            <div class="footer-brand">
+                <h2>BBA CARS</h2>
+                <p>
+                    Zamonaviy va premium avtomobillar.
+                    Ishonchli tanlov, qulay xarid.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Sahifalar</h3>
+
+                <a href="index.html">Bosh sahifa</a>
+                <a href="#cars">Avtomobillar</a>
+                <a href="#about">Biz haqimizda</a>
+                <a href="#contact">Aloqa</a>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Bog‘lanish</h3>
+
+                <a href="tel:+998770569999">
+                    +998 77 056 99 99
+                </a>
+
+                <a href="tel:+998997821709">
+                    +998 99 782 17 09
+                </a>
+
+                <a href="https://t.me/bbacars_uzb" target="_blank">
+                    Telegram
+                </a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 BBA CARS. Barcha huquqlar himoyalangan.</p>
+        </div>
+
+    </div>
+
+</footer>
+
+
+    
+
+
+    <div class="compare-bar" id="compareBar">
+    <span id="compareCount">0 ta avtomobil tanlandi</span>
+
+    <button id="compareNowBtn">
+        Taqqoslash →
+    </button>
+    <button id="clearCompareBtn">
+    Tozalash
+</button>
+</div>
+
+<div class="compare-modal" id="compareModal">
+    <div class="compare-modal-content">
+
+        <button class="compare-close" id="compareClose">×</button>
+
+        <h2>Avtomobillarni taqqoslash</h2>
+
+        <div class="compare-cars" id="compareCars">
+            <!-- Tanlangan 2 ta avtomobil shu yerga chiqadi -->
+        </div>
+<div class="compare-specs" id="compareSpecs"></div>
+    </div>
+</div>
+
+<div class="compare-alert" id="compareAlert">
+    <div class="compare-alert-box">
+        <div class="compare-alert-icon">⚖️</div>
+
+        <h3>Yana bitta avtomobil tanlang</h3>
+
+        <p>Taqqoslash uchun 2 ta avtomobil tanlashingiz kerak.</p>
+
+        <button id="compareAlertClose">Tushunarli</button>
+    </div>
+</div>
+
+<button id="scrollTopBtn" aria-label="Yuqoriga qaytish">
+    ↑
+</button>
+
+<script src="script.js"></script>
+</body>
+
+</html>
