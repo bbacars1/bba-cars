@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BBA CARS Dashboard</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#111827;
+color:white;
+}
+
+header{
+background:#1f2937;
+padding:20px;
+font-size:24px;
+font-weight:bold;
+}
+
+.container{
+padding:30px;
+}
+
+.card{
+background:#1f2937;
+padding:25px;
+border-radius:15px;
+margin-bottom:20px;
+font-size:22px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+BBA CARS ADMIN PANEL
+</header>
+
+<div class="container">
+
+<div class="card">
+📋 Arizalar soni: 0
+</div>
+
+<div class="card">
+    🚗 Avtomobillar: <span id="carCount">0</span>
+</div>
+
+<div class="card">
+👤 Administrator
+</div>
+<h2>🚗 Yangi avtomobil qo'shish</h2>
+
+<input type="text" id="name" placeholder="Avtomobil nomi"><br><br>
+
+<input type="text" id="brand" placeholder="Brend"><br><br>
+
+<input type="number" id="price" placeholder="Narxi"><br><br>
+
+<input type="file" id="image" accept="image/*"><br><br>
+
+<button onclick="addCar()">Saqlash</button>
+</div>
+
+<h2>Avtomobillar ro'yxati</h2>
+
+<table border="1" width="100%" id="carsTable">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Avtomobil</th>
+            <th>Brend</th>
+            <th>Narx</th>
+            <th>Rasm</th>
+            <th>Amal</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+    </tbody>
+</table>
+
+
+<script>
+fetch("/admin/check")
+    .then(response => {
+        if (!response.ok) {
+            window.location.href = "login.html";
+        }
+    })
+    .catch(() => {
+        window.location.href = "login.html";
+    });
+    async function loadCars() {
+    const response = await fetch("/cars");
+    const cars = await response.json();
+    document.getElementById("carCount").textContent = cars.length;
+
+    const tbody = document.querySelector("#carsTable tbody");
+    tbody.innerHTML = "";
+
+   cars.forEach(car => {
+    tbody.innerHTML += `
+        <tr>
+            <td>${car.id}</td>
+            <td>${car.name}</td>
+            <td>${car.brand}</td>
+            <td>${car.price}</td>
+            <td><img src="${car.image}" width="80"></td>
+            <td>
+    <button onclick="editCar(${car.id})">
+        ✏️ Tahrirlash
+    </button>
+
+    <button onclick="deleteCar(${car.id})">
+        🗑️ O‘chirish
+    </button>
+</td>
+        </tr>
+    `;
+});
+}
+
+loadCars();
+async function addCar() {
+    const name = document.getElementById("name").value;
+    const brand = document.getElementById("brand").value;
+    const price = document.getElementById("price").value;
+    const imageFile = document.getElementById("image").files[0];
+
+   if (name === "") {
+    alert("Avtomobil nomini kiriting!");
+    return;
+}
+
+if (brand === "") {
+    alert("Brendni kiriting!");
+    return;
+}
+
+if (price === "") {
+    alert("Narxni kiriting!");
+    return;
+}
+
+if (!imageFile) {
+    alert("Rasm tanlang!");
+    return;
+}
+
+    const formData = new FormData();
+
+    formData.append("name", name);
+    formData.append("brand", brand);
+    formData.append("price", price);
+    formData.append("image", imageFile);
+
+    const response = await fetch("/cars", {
+        method: "POST",
+        body: formData
+    });
+
+    const data = await response.json();
+
+    alert(data.message);
+
+    if (data.success) {
+        document.getElementById("name").value = "";
+        document.getElementById("brand").value = "";
+        document.getElementById("price").value = "";
+        document.getElementById("image").value = "";
+
+        loadCars();
+    }
+}
+async function editCar(id) {
+    const response = await fetch("/cars");
+    const cars = await response.json();
+
+    const car = cars.find(item => item.id === id);
+
+    if (!car) {
+        alert("Avtomobil topilmadi");
+        return;
+    }
+
+    const name = prompt("Avtomobil nomi:", car.name);
+    if (name === null) return;
+
+    const brand = prompt("Brend:", car.brand);
+    if (brand === null) return;
+
+    const price = prompt("Narx:", car.price);
+    if (price === null) return;
+
+    const image = prompt("Rasm URL:", car.image);
+    if (image === null) return;
+
+    const updateResponse = await fetch(`/cars/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            name,
+            brand,
+            price,
+            image
+        })
+    });
+
+    const data = await updateResponse.json();
+
+    alert(data.message);
+
+    loadCars();
+}
+
+async function deleteCar(id) {
+    const confirmDelete = confirm("Bu avtomobilni o‘chirishni xohlaysizmi?");
+
+    if (!confirmDelete) {
+        return;
+    }
+
+    const response = await fetch(`/cars/${id}`, {
+        method: "DELETE"
+    });
+
+    const data = await response.json();
+    
+
+    alert(data.message);
+
+    loadCars();
+}
+</script>
+
+
+</body>
+</html>
