@@ -1,3 +1,4 @@
+require("dotenv").config();
 const mysql = require("mysql2/promise");
 const multer = require("multer");
 const path = require("path");
@@ -15,14 +16,18 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 const db = mysql.createPool({
-  host: "localhost",
-  user: "root",
-  password: "Davlatbek@2015",
-  database: "bbacars",
+  host: process.env.DB_HOST,
+  port: Number(process.env.DB_PORT),
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  ssl: {
+    ca: require("fs").readFileSync("/etc/secrets/ca.pem"),
+  },
   waitForConnections: true,
   connectionLimit: 10,
 });
-require("dotenv").config();
+
 console.log("ADMIN_LOGIN:", process.env.ADMIN_LOGIN);
 console.log("ADMIN_PASSWORD:", process.env.ADMIN_PASSWORD ? "YUKLANDI" : "YUKLANMADI");
 const express = require("express");
