@@ -797,3 +797,52 @@ if (closeSuccessModal && successModal) {
     });
 
 }
+
+async function loadAdminCarsToSite() {
+    try {
+        const response = await fetch("https://bba-cars-backend.onrender.com/cars");
+        const cars = await response.json();
+
+        const container = document.getElementById("carsContainer");
+
+        if (!container) return;
+
+        container.innerHTML = "";
+
+        cars.forEach(car => {
+            const card = document.createElement("div");
+            card.className = "car-card";
+
+            card.innerHTML = `
+                <div class="car-image">
+                    <img src="https://bba-cars-backend.onrender.com${car.image}"
+                         alt="${car.name}">
+
+                    <span class="car-badge badge-top">YANGI</span>
+                </div>
+
+                <div class="car-info">
+                    <h3>${car.name}</h3>
+
+                    <div class="car-details">
+                        <span>${car.brand}</span>
+                    </div>
+
+                    <div class="price">
+                        <p>Narxi</p>
+                        <h4>${car.price}</h4>
+                    </div>
+                </div>
+            `;
+
+            container.appendChild(card);
+        });
+
+    } catch (error) {
+        console.error("Avtomobillarni yuklashda xatolik:", error);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    loadAdminCarsToSite();
+});
