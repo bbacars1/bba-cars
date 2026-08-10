@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BBA CARS Admin Login</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#111827;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.login-box{
+background:#1f2937;
+padding:40px;
+width:380px;
+border-radius:15px;
+box-shadow:0 0 30px rgba(0,0,0,.4);
+}
+
+h1{
+color:#fff;
+text-align:center;
+margin-bottom:30px;
+}
+
+input{
+width:100%;
+padding:15px;
+margin-bottom:15px;
+border:none;
+border-radius:10px;
+font-size:16px;
+}
+
+button{
+width:100%;
+padding:15px;
+background:#2563eb;
+color:#fff;
+border:none;
+border-radius:10px;
+font-size:17px;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+background:#1d4ed8;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="login-box">
+
+<h1>BBA CARS</h1>
+
+<input
+type="text"
+placeholder="Login">
+
+<input
+type="password"
+placeholder="Parol">
+
+<button>
+Kirish
+</button>
+
+</div>
+
+<script>
+const button = document.querySelector("button");
+
+button.addEventListener("click", async function () {
+    console.log("🔥 BUTTON BOSILDI");
+    
+
+    const login = document.querySelectorAll("input")[0].value;
+    const password = document.querySelectorAll("input")[1].value;
+
+    console.log("🔥 LOGIN:", login);
+    console.log("🔥 FETCH BOSHLANDI");
+
+    try {
+        const response = await fetch("/admin/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                login: login,
+                password: password
+            })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            window.location.href = "dashboard.html";
+        } else {
+            alert(data.message);
+        }
+
+   } catch (error) {
+    console.error("LOGIN XATOSI:", error);
+    alert("XATO: " + error.message);
+}
+
+});
+</script>
+</body>
+</html>
