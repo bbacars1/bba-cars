@@ -21,13 +21,29 @@ const db = mysql.createPool({
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
-  ssl: {
-    ca: require("fs").readFileSync("/etc/secrets/ca.pem"),
-  },
+ ssl: {
+  rejectUnauthorized: false,
+},
   waitForConnections: true,
   connectionLimit: 10,
 });
 
+console.log("DATABASE:", process.env.DB_NAME);
+db.query(`
+  CREATE TABLE IF NOT EXISTS cars (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    brand VARCHAR(255) NOT NULL,
+    price VARCHAR(255) NOT NULL,
+    image VARCHAR(500) NOT NULL
+  )
+`)
+.then(() => {
+  console.log("Cars table tayyor!");
+})
+.catch((err) => {
+  console.error("Cars table yaratishda xato:", err);
+});
 console.log("ADMIN_LOGIN:", process.env.ADMIN_LOGIN);
 console.log("ADMIN_PASSWORD:", process.env.ADMIN_PASSWORD ? "YUKLANDI" : "YUKLANMADI");
 const express = require("express");
