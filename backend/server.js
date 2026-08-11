@@ -97,6 +97,7 @@ app.get("/admin/check", (req, res) => {
         success: false
     });
 });
+app.use("/images", express.static("images"));
 app.use(express.static("../"));
 (async () => {
   try {
