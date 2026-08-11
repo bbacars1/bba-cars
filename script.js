@@ -59,7 +59,7 @@ if (menuToggle && navLinks) {
 // =========================
 
 const filterButtons = document.querySelectorAll(".filter-btn");
-const carCards = document.querySelectorAll(".car-card");
+let carCards = document.querySelectorAll(".car-card");
 const carSearch = document.getElementById("carSearch");
 
 let activeFilter = "all";
@@ -837,6 +837,9 @@ async function loadAdminCarsToSite() {
 
             container.appendChild(card);
         });
+
+        carCards = document.querySelectorAll(".car-card");
+filterCars();
 
     } catch (error) {
         console.error("Avtomobillarni yuklashda xatolik:", error);
