@@ -117,8 +117,6 @@ if (carCount) {
 }
 }
 
-filterCars()
-
 
 // FILTER TUGMALARI
 filterButtons.forEach(button => {
@@ -812,10 +810,11 @@ async function loadAdminCarsToSite() {
         cars.forEach(car => {
             const card = document.createElement("div");
             card.className = "car-card";
+            card.dataset.type = car.type || "petrol";
 
             card.innerHTML = `
                 <div class="car-image">
-                    <img src="https://bba-cars-backend.onrender.com${car.image}"
+                    <img src="${String(car.image || "").trim()}" alt="${car.name}">
                          alt="${car.name}">
 
                     <span class="car-badge badge-top">YANGI</span>

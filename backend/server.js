@@ -3,17 +3,15 @@ const mysql = require("mysql2/promise");
 const multer = require("multer");
 const path = require("path");
 const session = require("express-session");
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, "../images"));
-  },
-  filename: (req, file, cb) => {
-    const uniqueName = Date.now() + "-" + file.originalname;
-    cb(null, uniqueName);
-  }
-});
+const { createClient } = require("@supabase/supabase-js");
 
-const upload = multer({ storage });
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_SECRET_KEY
+);
+const upload = multer({
+  storage: multer.memoryStorage()
+});
 
 const db = mysql.createPool({
   host: process.env.DB_HOST,
@@ -29,21 +27,40 @@ const db = mysql.createPool({
 });
 
 console.log("DATABASE:", process.env.DB_NAME);
-db.query(`
-  CREATE TABLE IF NOT EXISTS cars (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    brand VARCHAR(255) NOT NULL,
-    price VARCHAR(255) NOT NULL,
-    image VARCHAR(500) NOT NULL
-  )
-`)
-.then(() => {
-  console.log("Cars table tayyor!");
-})
-.catch((err) => {
-  console.error("Cars table yaratishda xato:", err);
-});
+
+(async () => {
+  try {
+    await db.query(`
+      CREATE TABLE IF NOT EXISTS cars (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        brand VARCHAR(255) NOT NULL,
+        price VARCHAR(255) NOT NULL,
+        image VARCHAR(500) NOT NULL
+      )
+    `);
+
+    console.log("Cars table tayyor!");
+
+    try {
+      await db.query(`
+        ALTER TABLE cars
+        ADD COLUMN type VARCHAR(20) NOT NULL DEFAULT 'petrol'
+      `);
+
+      console.log("Cars type ustuni tayyor!");
+    } catch (err) {
+      if (err.message.includes("Duplicate column name")) {
+        console.log("Cars type ustuni allaqachon mavjud!");
+      } else {
+        throw err;
+      }
+    }
+  } catch (err) {
+    console.error("Cars table/type yaratishda xato:", err);
+  }
+})();
+
 console.log("ADMIN_LOGIN:", process.env.ADMIN_LOGIN);
 console.log("ADMIN_PASSWORD:", process.env.ADMIN_PASSWORD ? "YUKLANDI" : "YUKLANMADI");
 const express = require("express");
@@ -97,7 +114,7 @@ app.get("/admin/check", (req, res) => {
         success: false
     });
 });
-app.use("/images", express.static("images"));
+app.use("/images", express.static(path.join(__dirname, "../images")));
 app.use(express.static("../"));
 (async () => {
   try {
@@ -114,8 +131,9 @@ app.get("/", (req, res) => {
 });
 app.get("/cars", async (req, res) => {
   try {
+    console.log("GET /cars ishladi");
     const [rows] = await db.query("SELECT * FROM cars ORDER BY id DESC");
-    res.json(rows);
+res.json(rows);
   } catch (err) {
     console.error(err);
     res.status(500).json({
@@ -125,30 +143,67 @@ app.get("/cars", async (req, res) => {
   }
 });
 app.post("/cars", upload.single("image"), async (req, res) => {
-    try {
+  try {
+    const { name, brand, price } = req.body;
 
-       const { name, brand, price } = req.body;
-       const image = req.file ? "/images/" + req.file.filename : "";
-
-        await db.query(
-            "INSERT INTO cars (name, brand, price, image) VALUES (?, ?, ?, ?)",
-            [name, brand, price, image]
-        );
-
-        res.json({
-            success: true,
-            message: "Avtomobil muvaffaqiyatli qo'shildi!"
-        });
-
-    } catch (err) {
-        console.error(err);
-
-        res.status(500).json({
-            success: false,
-            message: err.message
-        });
+    if (!req.file) {
+      return res.status(400).json({
+        success: false,
+        message: "Rasm tanlanmagan"
+      });
     }
+
+    const bucket = process.env.SUPABASE_BUCKET || "car-images";
+
+    const extension = path.extname(req.file.originalname) || ".jpg";
+
+    const fileName =
+      Date.now() +
+      "-" +
+      Math.random().toString(36).substring(2, 10) +
+      extension;
+
+    // Rasmni Supabase Storage'ga yuklash
+    const { error: uploadError } = await supabase.storage
+      .from(bucket)
+      .upload(fileName, req.file.buffer, {
+        contentType: req.file.mimetype,
+        upsert: false
+      });
+
+    if (uploadError) {
+      throw uploadError;
+    }
+
+    // Public URL olish
+    const { data: publicUrlData } = supabase.storage
+      .from(bucket)
+      .getPublicUrl(fileName);
+
+    const image = publicUrlData.publicUrl;
+
+    // URL'ni MySQL'ga saqlash
+    await db.query(
+      "INSERT INTO cars (name, brand, price, image) VALUES (?, ?, ?, ?)",
+      [name, brand, price, image]
+    );
+
+    res.json({
+      success: true,
+      message: "Avtomobil muvaffaqiyatli qo'shildi!",
+      image: image
+    });
+
+  } catch (err) {
+    console.error("Rasm yuklashda xatolik:", err);
+
+    res.status(500).json({
+      success: false,
+      message: err.message
+    });
+  }
 });
+
 app.delete("/cars/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -172,27 +227,28 @@ app.delete("/cars/:id", async (req, res) => {
 app.put("/cars/:id", async (req, res) => {
     try {
         const { id } = req.params;
-        const { name, brand, price, image } = req.body;
+        const { name, brand, price } = req.body;
 
         const [result] = await db.query(
-    "UPDATE cars SET name = ?, brand = ?, price = ?, image = ? WHERE id = ?",
-    [name, brand, price, image, id]
-);
+            "UPDATE cars SET name = ?, brand = ?, price = ? WHERE id = ?",
+            [name, brand, price, id]
+        );
 
-console.log("EDIT ID:", id);
-console.log("EDIT RESULT:", result);
+        console.log("EDIT ID:", id);
+        console.log("EDIT RESULT:", result);
 
-if (result.affectedRows === 0) {
-    return res.status(404).json({
-        success: false,
-        message: "Bu ID bo‘yicha avtomobil topilmadi"
-    });
-}
+        if (result.affectedRows === 0) {
+            return res.status(404).json({
+                success: false,
+                message: "Bu ID bo‘yicha avtomobil topilmadi"
+            });
+        }
 
-res.json({
-    success: true,
-    message: "Avtomobil muvaffaqiyatli tahrirlandi"
-});
+        res.json({
+            success: true,
+            message: "Avtomobil muvaffaqiyatli tahrirlandi"
+        });
+
     } catch (err) {
         console.error(err);
 
@@ -202,6 +258,7 @@ res.json({
         });
     }
 });
+
 app.post("/order", async (req, res) => {
     console.log("🔥 /order ISHLADI!");
     const { car, name, phone } = req.body;

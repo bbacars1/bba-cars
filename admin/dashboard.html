@@ -114,7 +114,7 @@ fetch("/admin/check")
             <td>${car.name}</td>
             <td>${car.brand}</td>
             <td>${car.price}</td>
-            <td><img src="${car.image}" width="80"></td>
+            <td><img src="${car.image ? (car.image.startsWith("http") ? car.image : "https://bba-cars-backend.onrender.com" + car.image) : ""}" width="80"></td>
             <td>
     <button onclick="editCar(${car.id})">
         ✏️ Tahrirlash
@@ -163,7 +163,7 @@ if (!imageFile) {
     formData.append("price", price);
     formData.append("image", imageFile);
 
-    const response = await fetch("/cars", {
+    const response = await fetch("https://bba-cars-backend.onrender.com/cars", {
         method: "POST",
         body: formData
     });
@@ -185,10 +185,10 @@ async function editCar(id) {
     const response = await fetch("/cars");
     const cars = await response.json();
 
-    const car = cars.find(item => item.id === id);
+    const car = cars.find(item => item.id == id);
 
     if (!car) {
-        alert("Avtomobil topilmadi");
+        alert("Avtomobil topilmadi!");
         return;
     }
 
@@ -201,9 +201,6 @@ async function editCar(id) {
     const price = prompt("Narx:", car.price);
     if (price === null) return;
 
-    const image = prompt("Rasm URL:", car.image);
-    if (image === null) return;
-
     const updateResponse = await fetch(`/cars/${id}`, {
         method: "PUT",
         headers: {
@@ -212,8 +209,7 @@ async function editCar(id) {
         body: JSON.stringify({
             name,
             brand,
-            price,
-            image
+            price
         })
     });
 
