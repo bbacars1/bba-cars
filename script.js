@@ -806,7 +806,7 @@ async function loadAdminCarsToSite() {
         if (!container) return;
 
         
-
+       
         cars.forEach(car => {
             const card = document.createElement("div");
             card.className = "car-card";
