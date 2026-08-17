@@ -1,3 +1,14 @@
+function getCarImageUrl(image) {
+    if (!image) return "";
+
+    const url = String(image).trim();
+
+    if (url.startsWith("http://") || url.startsWith("https://")) {
+        return url;
+    }
+
+    return "https://bba-cars-backend.onrender.com/" + url.replace(/^\/+/, "");
+}
 const carPrice = Number(document.body.dataset.carPrice);
 const firstPaymentPercent = 0.50;
 const monthlyRate = 0.02;
@@ -814,7 +825,7 @@ async function loadAdminCarsToSite() {
 
             card.innerHTML = `
                 <div class="car-image">
-                    <img src="${String(car.image || "").trim()}" alt="${car.name}">
+                    <img src="${getCarImageUrl(car.image)}" alt="${car.name}">
                          alt="${car.name}">
 
                     <span class="car-badge badge-top">YANGI</span>
