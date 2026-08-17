@@ -1,3 +1,22 @@
+document.addEventListener("error", function (event) {
+    const img = event.target;
+
+    if (img && img.tagName === "IMG") {
+        const src = img.getAttribute("src") || "";
+
+        const secondHttp = src.indexOf("https://", 8);
+        const secondHttpAlt = src.indexOf("http://", 8);
+
+        const position =
+            secondHttp !== -1
+                ? secondHttp
+                : secondHttpAlt;
+
+        if (position !== -1) {
+            img.src = src.substring(position);
+        }
+    }
+}, true);
 function getCarImageUrl(image) {
     if (!image) return "";
 
