@@ -4,6 +4,11 @@ const multer = require("multer");
 const path = require("path");
 const session = require("express-session");
 const { createClient } = require("@supabase/supabase-js");
+const ImageKit = require("@imagekit/nodejs");
+
+const imageKit = new ImageKit({
+  privateKey: process.env.IMAGEKIT_PRIVATE_KEY
+});
 
 const supabase = createClient(
   process.env.SUPABASE_URL,
@@ -153,34 +158,13 @@ app.post("/cars", upload.single("image"), async (req, res) => {
       });
     }
 
-    const bucket = process.env.SUPABASE_BUCKET || "car-images";
+    const uploadResponse = await imageKit.files.upload({
+  file: req.file.buffer,
+  fileName: Date.now() + "-" + req.file.originalname,
+  folder: "/bba-cars"
+});
 
-    const extension = path.extname(req.file.originalname) || ".jpg";
-
-    const fileName =
-      Date.now() +
-      "-" +
-      Math.random().toString(36).substring(2, 10) +
-      extension;
-
-    // Rasmni Supabase Storage'ga yuklash
-    const { error: uploadError } = await supabase.storage
-      .from(bucket)
-      .upload(fileName, req.file.buffer, {
-        contentType: req.file.mimetype,
-        upsert: false
-      });
-
-    if (uploadError) {
-      throw uploadError;
-    }
-
-    // Public URL olish
-    const { data: publicUrlData } = supabase.storage
-      .from(bucket)
-      .getPublicUrl(fileName);
-
-    const image = publicUrlData.publicUrl;
+const image = uploadResponse.url;
 
     // URL'ni MySQL'ga saqlash
     await db.query(
