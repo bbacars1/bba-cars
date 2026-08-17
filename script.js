@@ -826,6 +826,7 @@ async function loadAdminCarsToSite() {
             card.innerHTML = `
                 <div class="car-image">
                     <img src="${getCarImageUrl(car.image)}" alt="${car.name}">
+                    <button class="favorite-btn" type="button">♡</button>
 
                     <span class="car-badge badge-top">YANGI</span>
                 </div>
@@ -848,6 +849,30 @@ async function loadAdminCarsToSite() {
         });
 
         carCards = document.querySelectorAll(".car-card");
+        const favoriteButtons = document.querySelectorAll(".favorite-btn");
+
+favoriteButtons.forEach((button, index) => {
+    const favoriteKey = "favorite-" + index;
+
+    if (localStorage.getItem(favoriteKey) === "true") {
+        button.classList.add("active");
+        button.textContent = "♥";
+    }
+
+    button.addEventListener("click", () => {
+        button.classList.toggle("active");
+
+        if (button.classList.contains("active")) {
+            button.textContent = "♥";
+            localStorage.setItem(favoriteKey, "true");
+        } else {
+            button.textContent = "♡";
+            localStorage.setItem(favoriteKey, "false");
+        }
+
+        filterCars();
+    });
+});
 filterCars();
 
     } catch (error) {
