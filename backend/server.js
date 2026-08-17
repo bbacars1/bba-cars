@@ -79,10 +79,11 @@ const app = express();
 
 app.use(cors({
     origin: [
-        "http://localhost:3000",
-        "https://bbacars.uz",
-        "https://www.bbacars.uz"
-    ],
+  "http://localhost:3000",
+  "https://bbacars.uz",
+  "https://www.bbacars.uz",
+  "https://bba-cars-1.onrender.com"
+],
     credentials: true
 }));
 app.use(express.json());
