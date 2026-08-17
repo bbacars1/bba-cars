@@ -77,7 +77,14 @@ const CHAT_ID = process.env.CHAT_ID;
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    origin: [
+        "http://localhost:3000",
+        "https://bbacars.uz",
+        "https://www.bbacars.uz"
+    ],
+    credentials: true
+}));
 app.use(express.json());
 app.use(session({
     secret: "BBA_CARS_SECRET_2026",
@@ -159,7 +166,7 @@ app.post("/cars", upload.single("image"), async (req, res) => {
     }
 
     const uploadResponse = await imageKit.files.upload({
-  file: req.file.buffer,
+  file: req.file.buffer.toString("base64"),
   fileName: Date.now() + "-" + req.file.originalname,
   folder: "/bba-cars"
 });
