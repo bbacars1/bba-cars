@@ -2420,9 +2420,9 @@ body {
 
 .favorite-btn {
     position: absolute !important;
-    top: 12px !important;
+    top: auto !important;
+    bottom: 12px !important;
     right: 12px !important;
-    z-index: 999 !important;
 
     width: 42px !important;
     height: 42px !important;
@@ -3589,5 +3589,37 @@ html {
 
     .price h4 {
         font-size: 21px !important;
+    }
+}
+
+/* DESKTOP — YURAKCHA PASTKI O‘NGDA */
+@media (min-width: 601px) {
+    .car-image .favorite-btn {
+        top: auto !important;
+        bottom: 12px !important;
+        right: 12px !important;
+    }
+}
+
+
+@media (min-width: 601px) {
+    .car-image .favorite-btn {
+        top: auto !important;
+        bottom: 12px !important;
+        right: 12px !important;
+    }
+}
+
+@media (min-width: 601px) {
+    .car-image {
+        position: relative !important;
+    }
+
+    .car-image .favorite-btn {
+        position: absolute !important;
+        top: auto !important;
+        bottom: 12px !important;
+        right: 12px !important;
+        z-index: 9999 !important;
     }
 }
