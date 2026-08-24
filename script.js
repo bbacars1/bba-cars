@@ -842,6 +842,7 @@ if (!response.ok) {
 
                     <div class="car-details">
                         <span>${car.brand}</span>
+                        <span>${car.year || ""}</span>
                     </div>
 
                     <div class="price">
