@@ -157,7 +157,7 @@ res.json(rows);
 });
 app.post("/cars", upload.single("image"), async (req, res) => {
   try {
-    const { name, brand, price } = req.body;
+    const { name, brand, price, type } = req.body;
 
     if (!req.file) {
       return res.status(400).json({
@@ -176,8 +176,8 @@ const image = uploadResponse.url;
 
     // URL'ni MySQL'ga saqlash
     await db.query(
-      "INSERT INTO cars (name, brand, price, image) VALUES (?, ?, ?, ?)",
-      [name, brand, price, image]
+      "INSERT INTO cars (name, brand, price, image, type) VALUES (?, ?, ?, ?, ?)",
+[name, brand, price, image, type]
     );
 
     res.json({
@@ -219,11 +219,11 @@ app.delete("/cars/:id", async (req, res) => {
 app.put("/cars/:id", async (req, res) => {
     try {
         const { id } = req.params;
-        const { name, brand, price } = req.body;
+        const { name, brand, price, type } = req.body;
 
         const [result] = await db.query(
-            "UPDATE cars SET name = ?, brand = ?, price = ? WHERE id = ?",
-            [name, brand, price, id]
+            "UPDATE cars SET name = ?, brand = ?, price = ?, type = ? WHERE id = ?",
+[name, brand, price, type, id]
         );
 
         console.log("EDIT ID:", id);
