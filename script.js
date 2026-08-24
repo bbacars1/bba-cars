@@ -807,9 +807,15 @@ if (closeSuccessModal && successModal) {
 
 }
 
-async function loadAdminCarsToSite() {
+async function loadAdminCarsToSite(retryCount = 0) {
     try {
-        const response = await fetch("https://bba-cars-backend.onrender.com/cars");
+        const response = await fetch("https://bba-cars-backend.onrender.com/cars", {
+    cache: "no-store"
+});
+
+if (!response.ok) {
+    throw new Error("Backend javob bermadi: " + response.status);
+}
         const cars = await response.json();
 
         const container = document.getElementById("carsContainer");
@@ -875,9 +881,15 @@ favoriteButtons.forEach((button, index) => {
 });
 filterCars();
 
-    } catch (error) {
-        console.error("Avtomobillarni yuklashda xatolik:", error);
-    }
+    } catch (error) { console.error("Avtomobillarni yuklashda xatolik:", error);
+if (retryCount < 5) {
+    console.log("Qayta yuklashga urinish:", retryCount + 1);
+
+    setTimeout(() => {
+        loadAdminCarsToSite(retryCount + 1);
+    }, 2000);
+}
+}
 }
 
 document.addEventListener("DOMContentLoaded", () => {
