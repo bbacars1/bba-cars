@@ -61,9 +61,22 @@ console.log("DATABASE:", process.env.DB_NAME);
         throw err;
       }
     }
+    
   } catch (err) {
     console.error("Cars table/type yaratishda xato:", err);
   }
+
+  try {
+    await db.query("ALTER TABLE cars ADD COLUMN year INT NULL");
+    console.log("Cars year ustuni tayyor!");
+} catch (err) {
+    if (err.message.includes("Duplicate column name")) {
+        console.log("Cars year ustuni allaqachon mavjud!");
+    } else {
+        throw err;
+    }
+}
+
 })();
 
 console.log("ADMIN_LOGIN:", process.env.ADMIN_LOGIN);
@@ -157,7 +170,7 @@ res.json(rows);
 });
 app.post("/cars", upload.single("image"), async (req, res) => {
   try {
-    const { name, brand, price, type } = req.body;
+    const { name, brand, price, type, year } = req.body;
 
     if (!req.file) {
       return res.status(400).json({
@@ -176,9 +189,9 @@ const image = uploadResponse.url;
 
     // URL'ni MySQL'ga saqlash
     await db.query(
-      "INSERT INTO cars (name, brand, price, image, type) VALUES (?, ?, ?, ?, ?)",
-[name, brand, price, image, type]
-    );
+    "INSERT INTO cars (name, brand, price, image, type, year) VALUES (?, ?, ?, ?, ?, ?)",
+    [name, brand, price, image, type, year]
+);
 
     res.json({
       success: true,
@@ -219,11 +232,11 @@ app.delete("/cars/:id", async (req, res) => {
 app.put("/cars/:id", async (req, res) => {
     try {
         const { id } = req.params;
-        const { name, brand, price, type } = req.body;
+        const { name, brand, price, type, year } = req.body;
 
         const [result] = await db.query(
-            "UPDATE cars SET name = ?, brand = ?, price = ?, type = ? WHERE id = ?",
-[name, brand, price, type, id]
+            "UPDATE cars SET name = ?, brand = ?, price = ?, type = ?, year = ? WHERE id = ?",
+[name, brand, price, type, year, id]
         );
 
         console.log("EDIT ID:", id);

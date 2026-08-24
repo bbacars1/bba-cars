@@ -84,6 +84,7 @@ BBA CARS ADMIN PANEL
             <th>Avtomobil</th>
             <th>Brend</th>
             <th>Narx</th>
+            <th>Yili</th>
             <th>Yoqilg'i turi</th>
             <th>Rasm</th>
             <th>Amal</th>
@@ -121,6 +122,7 @@ fetch("/admin/check")
             <td>${car.name}</td>
             <td>${car.brand}</td>
             <td>${car.price}</td>
+            <td>${car.year || ""}</td>
             <td>${car.type || "petrol"}</td>
             <td><img src="${car.image ? (car.image.startsWith("http") ? car.image : "https://bba-cars-backend.onrender.com" + car.image) : ""}" width="80"></td>
             <td>
@@ -142,6 +144,7 @@ async function addCar() {
     const name = document.getElementById("name").value;
     const brand = document.getElementById("brand").value;
     const price = document.getElementById("price").value;
+    const year = document.getElementById("year").value;
     const imageFile = document.getElementById("image").files[0];
     const type = document.getElementById("type").value;
 
@@ -160,6 +163,11 @@ if (price === "") {
     return;
 }
 
+if (year === "") {
+    alert("Yilini kiriting!");
+    return;
+}
+
 if (type === "") {
     alert("Yoqilg‘i turini tanlang!");
     return;
@@ -175,6 +183,7 @@ if (!imageFile) {
     formData.append("name", name);
     formData.append("brand", brand);
     formData.append("price", price);
+    formData.append("year", year);
     formData.append("type", type);
     formData.append("image", imageFile);
 
@@ -191,6 +200,7 @@ if (!imageFile) {
         document.getElementById("name").value = "";
         document.getElementById("brand").value = "";
         document.getElementById("price").value = "";
+        document.getElementById("year").value = "";
         document.getElementById("type").value = "";
         document.getElementById("image").value = "";
 
@@ -217,6 +227,9 @@ async function editCar(id) {
     const price = prompt("Narx:", car.price);
     if (price === null) return;
 
+    const year = prompt("Yili:", car.year || "");
+if (year === null) return;
+
     const type = prompt("Yoqilg'i turi (electric / hybrid / petrol):", car.type || "petrol");
 if (type === null) return;
 
@@ -226,11 +239,12 @@ if (type === null) return;
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            name,
-            brand,
-            price,
-type
-        })
+    name,
+    brand,
+    price,
+    type,
+    year
+})
     });
 
     const data = await updateResponse.json();
