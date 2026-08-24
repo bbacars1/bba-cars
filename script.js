@@ -847,7 +847,7 @@ if (!response.ok) {
 
                     <div class="price">
                         <p>Narxi</p>
-                        <h4>${car.price}</h4>
+                        <h4>${Number(car.price).toLocaleString("en-US")} $</h4>
                     </div>
                 </div>
             `;
