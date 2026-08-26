@@ -100,7 +100,9 @@ BBA CARS ADMIN PANEL
 
 
 <script>
-fetch("/admin/check")
+fetch("https://bba-cars-backend.onrender.com/admin/check", {
+  credentials: "include"
+})
     .then(response => {
         if (!response.ok) {
             window.location.href = "login.html";
@@ -110,7 +112,7 @@ fetch("/admin/check")
         window.location.href = "login.html";
     });
     async function loadCars() {
-    const response = await fetch("/cars");
+    const response = await fetch("https://bba-cars-backend.onrender.com/cars");
     const cars = await response.json();
     document.getElementById("carCount").textContent = cars.length;
 

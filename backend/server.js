@@ -105,9 +105,11 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     cookie: {
-        httpOnly: true,
-        secure: false
-    }
+  httpOnly: true,
+  secure: true,
+  sameSite: "none",
+  maxAge: 1000 * 60 * 60 * 24 * 7
+}
 }));
 app.post("/admin/login", (req, res) => {
     console.log("ADMIN LOGIN SO'ROVI KELDI");
