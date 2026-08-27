@@ -100,7 +100,7 @@ BBA CARS ADMIN PANEL
 
 
 <script>
-fetch("https://bba-cars-backend.onrender.com/admin/check", {
+fetch("https://api.bbacars.uz/admin/check", {
   credentials: "include"
 })
     .then(response => {
@@ -112,7 +112,7 @@ fetch("https://bba-cars-backend.onrender.com/admin/check", {
         window.location.href = "login.html";
     });
     async function loadCars() {
-    const response = await fetch("https://bba-cars-backend.onrender.com/cars");
+    const response = await fetch("https://api.bbacars.uz/cars");
     const cars = await response.json();
     document.getElementById("carCount").textContent = cars.length;
 
@@ -128,7 +128,7 @@ fetch("https://bba-cars-backend.onrender.com/admin/check", {
             <td>${car.price}</td>
             <td>${car.year || ""}</td>
             <td>${car.type || "petrol"}</td>
-            <td><img src="${car.image ? (car.image.startsWith("http") ? car.image : "https://bba-cars-backend.onrender.com" + car.image) : ""}" width="80"></td>
+            <td><img src="${car.image ? (car.image.startsWith("http") ? car.image : "https://api.bbacars.uz" + car.image) : ""}" width="80"></td>
             <td>
     <button onclick="editCar(${car.id})">
         ✏️ Tahrirlash
@@ -191,7 +191,7 @@ if (!imageFile) {
     formData.append("type", type);
     formData.append("image", imageFile);
 
-    const response = await fetch("https://bba-cars-backend.onrender.com/cars", {
+    const response = await fetch("https://api.bbacars.uz/cars", {
         method: "POST",
         body: formData
     });
@@ -212,7 +212,7 @@ if (!imageFile) {
     }
 }
 async function editCar(id) {
-    const response = await fetch("https://bba-cars-backend.onrender.com/cars");
+    const response = await fetch("https://api.bbacars.uz/cars");
     const cars = await response.json();
 
     const car = cars.find(item => item.id == id);
@@ -237,7 +237,7 @@ if (year === null) return;
     const type = prompt("Yoqilg'i turi (electric / hybrid / petrol):", car.type || "petrol");
 if (type === null) return;
 
-    const updateResponse = await fetch("https://bba-cars-backend.onrender.com/cars/" + id, {
+    const updateResponse = await fetch("https://api.bbacars.uz/cars/" + id, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
@@ -265,7 +265,7 @@ async function deleteCar(id) {
         return;
     }
 
-    const response = await fetch("https://bba-cars-backend.onrender.com/cars/" + id, {
+    const response = await fetch("https://api.bbacars.uz/cars/" + id, {
         method: "DELETE"
     });
 
