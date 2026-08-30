@@ -300,10 +300,11 @@ app.put("/cars/:id", requireAdmin, async (req, res) => {
 app.post("/order", async (req, res) => {
     console.log("🔥 /order ISHLADI!");
     const { car, name, phone } = req.body;
-    await db.query(
+    const [orderResult] = await db.query(
     "INSERT INTO orders (car, name, phone) VALUES (?, ?, ?)",
     [car, name, phone]
 );
+console.log("ORDER DB GA YOZILDI:", orderResult.insertId);
     console.log("Yangi ariza:");
     console.log("Avtomobil:", car);
     console.log("Ism:", name);
