@@ -193,6 +193,7 @@ if (!imageFile) {
 
     const response = await fetch("https://api.bbacars.uz/cars", {
         method: "POST",
+        credentials: "include",
         body: formData
     });
 
@@ -239,6 +240,7 @@ if (type === null) return;
 
     const updateResponse = await fetch("https://api.bbacars.uz/cars/" + id, {
         method: "PUT",
+        credentials: "include",
         headers: {
             "Content-Type": "application/json"
         },
@@ -266,8 +268,9 @@ async function deleteCar(id) {
     }
 
     const response = await fetch("https://api.bbacars.uz/cars/" + id, {
-        method: "DELETE"
-    });
+    method: "DELETE",
+    credentials: "include"
+});
 
     const data = await response.json();
     

@@ -143,6 +143,14 @@ app.get("/admin/check", (req, res) => {
         success: false
     });
 });
+function requireAdmin(req, res, next) { 
+  if (req.session && req.session.isAdmin) {
+     return next(); }
+     return res.status(401).json({
+    success: false,
+    message: "Admin sifatida tizimga kiring"
+});
+}
 app.use("/images", express.static(path.join(__dirname, "../images")));
 app.use(express.static("../"));
 (async () => {
@@ -171,7 +179,7 @@ res.json(rows);
     });
   }
 });
-app.post("/cars", upload.single("image"), async (req, res) => {
+app.post("/cars", requireAdmin, upload.single("image"), async (req, res) => {
   try {
     const { name, brand, price, type, year } = req.body;
 
@@ -212,7 +220,7 @@ const image = uploadResponse.url;
   }
 });
 
-app.delete("/cars/:id", async (req, res) => {
+app.delete("/cars/:id", requireAdmin, async (req, res) => {
   try {
     const { id } = req.params;
 
@@ -232,7 +240,7 @@ app.delete("/cars/:id", async (req, res) => {
     });
   }
 });
-app.put("/cars/:id", async (req, res) => {
+app.put("/cars/:id", requireAdmin, async (req, res) => {
     try {
         const { id } = req.params;
         const { name, brand, price, type, year } = req.body;
