@@ -143,6 +143,25 @@ app.get("/admin/check", (req, res) => {
         success: false
     });
 });
+app.post("/admin/logout", (req, res) => { 
+  req.session.destroy((err) => {
+     if (err) {
+       return res.status(500).json({
+         success: false,
+          message: "Chiqishda xatolik" 
+        }); 
+      }
+    res.clearCookie("connect.sid", {
+        httpOnly: true,
+        secure: true,
+        sameSite: "none"
+    });
+
+    return res.json({
+        success: true
+    });
+});
+});
 function requireAdmin(req, res, next) { 
   if (req.session && req.session.isAdmin) {
      return next(); }
