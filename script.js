@@ -7,7 +7,7 @@ function getCarImageUrl(image) {
         return url;
     }
 
-    return "https://bba-cars-backend.onrender.com/" + url.replace(/^\/+/, "");
+    return "https://api.bbacars.uz/" + url.replace(/^\/+/, "");
 }
 const carPrice = Number(document.body.dataset.carPrice);
 const firstPaymentPercent = 0.50;
@@ -770,7 +770,7 @@ if (orderForm && customerName && customerPhone) {
 submitButton.textContent = "Yuborilmoqda...";
 const carName = document.querySelector(".car-page-info h1").textContent.trim();
 console.log("🚀 FETCH BOSHLANDI", carName, name, phone);
-       fetch("https://bba-cars.onrender.com/order", {
+       fetch("https://api.bbacars.uz/order", {
     method: "POST",
     headers: {
         "Content-Type": "application/json"
@@ -809,7 +809,7 @@ if (closeSuccessModal && successModal) {
 
 async function loadAdminCarsToSite(retryCount = 0) {
     try {
-        const response = await fetch("https://bba-cars-backend.onrender.com/cars", {
+        const response = await fetch("https://api.bbacars.uz/cars", {
     cache: "no-store"
 });
 
