@@ -77,6 +77,9 @@ console.log("DATABASE:", process.env.DB_NAME);
     }
 }
 
+try { await db.query( "CREATE TABLE IF NOT EXISTS orders (id INT AUTO_INCREMENT PRIMARY KEY, car VARCHAR(255) NOT NULL, name VARCHAR(255) NOT NULL, phone VARCHAR(100) NOT NULL, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)" );
+console.log("Orders table tayyor!");
+} catch (err) { console.error("Orders table yaratishda xato:", err); }
 })();
 
 console.log("ADMIN_LOGIN:", process.env.ADMIN_LOGIN);
@@ -297,7 +300,10 @@ app.put("/cars/:id", requireAdmin, async (req, res) => {
 app.post("/order", async (req, res) => {
     console.log("🔥 /order ISHLADI!");
     const { car, name, phone } = req.body;
-
+    await db.query(
+    "INSERT INTO orders (car, name, phone) VALUES (?, ?, ?)",
+    [car, name, phone]
+);
     console.log("Yangi ariza:");
     console.log("Avtomobil:", car);
     console.log("Ism:", name);
@@ -342,6 +348,17 @@ console.log("Telegram javobi:", telegramData);
         success: true,
         message: "Ariza qabul qilindi"
     });
+});
+app.get("/admin/orders", requireAdmin, async (req, res) => { try { const [orders] = await db.query( "SELECT * FROM orders ORDER BY id DESC" );
+    res.json(orders);
+} catch (err) {
+    console.error(err);
+
+    res.status(500).json({
+        success: false,
+        error: err.message
+    });
+}
 });
 const PORT = 3000;
 
