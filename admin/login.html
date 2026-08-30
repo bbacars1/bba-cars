@@ -73,11 +73,13 @@ background:#1d4ed8;
 
 <input
 type="text"
-placeholder="Login">
+placeholder="Login"
+autocomplete="off">
 
 <input
-type="password"
-placeholder="Parol">
+    type="password"
+    placeholder="Parol"
+    autocomplete="off">
 
 <button>
 Kirish
@@ -86,6 +88,10 @@ Kirish
 </div>
 
 <script>
+    window.addEventListener("pageshow", function () {
+    const inputs = document.querySelectorAll("input");
+    inputs.forEach(input => input.value = "");
+});
 const button = document.querySelector("button");
 
 button.addEventListener("click", async function () {
