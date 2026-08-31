@@ -849,6 +849,9 @@ if (!response.ok) {
                         <p>Narxi</p>
                         <h4>${Number(car.price).toLocaleString("en-US")} $</h4>
                     </div>
+                    <a href="car.html?id=${car.id}" class="details-button">
+                        Batafsil
+                    </a>
                 </div>
             `;
 
