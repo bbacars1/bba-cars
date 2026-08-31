@@ -3623,3 +3623,207 @@ html {
         z-index: 9999 !important;
     }
 }
+
+
+
+
+
+
+/* =====================================
+   BBA CARS — DYNAMIC CAR DETAIL PAGE
+===================================== */
+
+.dynamic-car-page {
+    background: #f5f5f3;
+    color: #111;
+}
+
+.dynamic-car-page .car-page {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 45px 6% 90px;
+}
+
+.dynamic-car-page .car-page-container {
+    width: 100%;
+}
+
+.dynamic-car-page .car-back {
+    display: inline-block;
+    margin-bottom: 35px;
+    color: #777;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.dynamic-car-page .car-back:hover {
+    color: #111;
+}
+
+/* ASOSIY DETAIL LAYOUT */
+
+.dynamic-car-page .car-page-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(340px, 0.65fr);
+    gap: 60px;
+    align-items: center;
+}
+
+/* AVTOMOBIL RASMI */
+
+.dynamic-car-page .car-page-image {
+    width: 100%;
+    height: 560px;
+    border-radius: 28px;
+    overflow: hidden;
+    background: #eeeeeb;
+}
+
+.dynamic-car-page .car-page-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    object-position: center;
+}
+
+/* O‘NG TOMONDAGI MA’LUMOT */
+
+.dynamic-car-page .car-page-info {
+    padding: 20px 0;
+}
+
+.dynamic-car-page .car-page-brand {
+    margin: 0 0 12px;
+    color: #888;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.dynamic-car-page .car-page-info h1 {
+    margin: 0 0 30px;
+    font-size: clamp(38px, 4vw, 62px);
+    line-height: 1;
+    font-weight: 700;
+    color: #111;
+}
+
+
+/* NARX */
+
+.dynamic-car-page .car-page-price {
+    margin: 0 0 32px;
+    padding: 24px 0;
+    border-top: 1px solid #dcdcdc;
+    border-bottom: 1px solid #dcdcdc;
+}
+
+.dynamic-car-page .car-page-price span {
+    display: block;
+    margin-bottom: 6px;
+    color: #888;
+    font-size: 13px;
+}
+
+.dynamic-car-page .car-page-price strong {
+    display: block;
+    color: #111;
+    font-size: 34px;
+    font-weight: 700;
+}
+
+/* TEXNIK MA'LUMOTLAR */
+
+.dynamic-car-page .car-page-specs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.dynamic-car-page .car-page-specs > div {
+    padding: 18px 16px;
+    background: #fff;
+    border: 1px solid #e7e7e4;
+    border-radius: 16px;
+}
+
+.dynamic-car-page .car-page-specs span {
+    display: block;
+    margin-bottom: 7px;
+    color: #999;
+    font-size: 12px;
+}
+
+.dynamic-car-page .car-page-specs strong {
+    display: block;
+    color: #111;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+/* ===================================== DYNAMIC CAR PAGE — RESPONSIVE ===================================== */
+/* IPAD */
+@media (max-width: 1000px) {
+.dynamic-car-page .car-page {
+    padding: 35px 28px 70px;
+}
+
+.dynamic-car-page .car-page-content {
+    grid-template-columns: 1fr;
+    gap: 35px;
+}
+
+.dynamic-car-page .car-page-image {
+    height: 480px;
+}
+
+.dynamic-car-page .car-page-info {
+    padding: 0;
+}
+}
+/* TELEFON */
+@media (max-width: 600px) {
+.dynamic-car-page .car-page {
+    padding: 24px 16px 55px;
+}
+
+.dynamic-car-page .car-back {
+    margin-bottom: 22px;
+    font-size: 13px;
+}
+
+.dynamic-car-page .car-page-content {
+    gap: 25px;
+}
+
+.dynamic-car-page .car-page-image {
+    height: 270px;
+    border-radius: 20px;
+}
+
+.dynamic-car-page .car-page-info h1 {
+    margin-bottom: 22px;
+    font-size: 34px;
+}
+
+.dynamic-car-page .car-page-price {
+    margin-bottom: 22px;
+    padding: 20px 0;
+}
+
+.dynamic-car-page .car-page-price strong {
+    font-size: 29px;
+}
+
+.dynamic-car-page .car-page-specs {
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.dynamic-car-page .car-page-specs > div {
+    padding: 15px 16px;
+}
+}
