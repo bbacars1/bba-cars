@@ -4160,3 +4160,26 @@ body.dynamic-car-page a {
     font-size: 14px !important;
 }
 }
+
+
+.detail-gallery {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+}
+
+.gallery-thumb {
+    width: 90px;
+    height: 65px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    opacity: 0.8;
+    border: 2px solid transparent;
+}
+
+.gallery-thumb:hover {
+    opacity: 1;
+    border-color: #ffffff;
+}

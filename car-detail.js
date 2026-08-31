@@ -41,11 +41,14 @@ try {
         <section class="detail-hero">
 
             <div class="detail-image">
-                <img
-                    src="${getCarImageUrl(car.image)}"
-                    alt="${car.name}"
-                >
-            </div>
+               <img
+                  id="mainCarImage"
+                  src="${getCarImageUrl(car.image)}"
+                  alt="${car.name}"
+                 >
+
+                 <div class="detail-gallery" id="detailGallery"></div>
+               </div>
 
             <div class="detail-main-info">
 
@@ -216,6 +219,40 @@ try {
 
         </section>
     `;
+
+    let galleryImages = [];
+
+try {
+    galleryImages = car.images ? JSON.parse(car.images) : [];
+} catch (e) {
+    galleryImages = [];
+}
+
+if (galleryImages.length === 0 && car.image) {
+    galleryImages = [car.image];
+}
+
+const mainCarImage = document.getElementById("mainCarImage");
+const detailGallery = document.getElementById("detailGallery");
+
+if (mainCarImage && detailGallery) {
+    detailGallery.innerHTML = galleryImages.map((img, index) => {
+        return `
+            <img
+                src="${getCarImageUrl(img)}"
+                alt="${car.name} ${index + 1}"
+                class="gallery-thumb"
+                data-image="${getCarImageUrl(img)}"
+            >
+        `;
+    }).join("");
+
+    detailGallery.querySelectorAll(".gallery-thumb").forEach((thumb) => {
+        thumb.addEventListener("click", () => {
+            mainCarImage.src = thumb.dataset.image;
+        });
+    });
+}
 
     setupDetailOrder(car);
 
