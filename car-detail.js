@@ -220,7 +220,9 @@ orderForm.reset();
 submitButton.disabled = false;
 submitButton.textContent = "Ariza yuborish →";
 
-alert("Arizangiz muvaffaqiyatli yuborildi!");
+const successModal = document.getElementById("successModal");
+successModal.classList.add("active");
+document.getElementById("closeSuccessModal").onclick = () => successModal.classList.remove("active");
 }) .catch(error => { console.error(error);
 submitButton.disabled = false;
 submitButton.textContent = "Ariza yuborish →";
