@@ -127,6 +127,8 @@ try {
         </section>
     `;
 
+    setupDetailOrder(car);
+
 } catch (error) {
     console.error(error);
 
@@ -141,5 +143,12 @@ try {
         `;
     }
 }
+} 
+function setupDetailOrder(car) { const orderBtn = document.getElementById("detailOrderBtn");
+if (!orderBtn) return;
+
+orderBtn.addEventListener("click", () => {
+    console.log("Ariza avtomobili:", car.name);
+});
 }
 document.addEventListener("DOMContentLoaded", loadCarDetail);
