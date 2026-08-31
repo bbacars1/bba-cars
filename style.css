@@ -3827,3 +3827,254 @@ html {
     padding: 15px 16px;
 }
 }
+
+
+
+/* =====================================
+   REAL DYNAMIC CAR DETAIL LAYOUT
+===================================== */
+
+.dynamic-car-page .detail-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(340px, 0.65fr);
+    gap: 60px;
+    align-items: center;
+    width: 100%;
+}
+
+.dynamic-car-page .detail-image {
+    width: 100%;
+    height: 560px;
+    border-radius: 28px;
+    overflow: hidden;
+    background: #eeeeeb;
+}
+
+.dynamic-car-page .detail-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    object-position: center;
+}
+
+
+/* O‘NG TOMONDAGI ASOSIY MA'LUMOT */
+
+.dynamic-car-page .detail-main-info {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.dynamic-car-page .detail-brand {
+    display: block;
+    margin-bottom: 12px;
+    color: #888;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.dynamic-car-page .detail-main-info h1 {
+    margin: 0 0 30px;
+    color: #111;
+    font-size: clamp(38px, 4vw, 60px);
+    line-height: 1.05;
+    font-weight: 700;
+}
+
+.dynamic-car-page .detail-price {
+    margin-bottom: 28px;
+    padding: 22px 0;
+    border-top: 1px solid #d8d8d5;
+    border-bottom: 1px solid #d8d8d5;
+}
+
+.dynamic-car-page .detail-price span {
+    display: block;
+    margin-bottom: 6px;
+    color: #888;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.dynamic-car-page .detail-price strong {
+    display: block;
+    color: #111;
+    font-size: 34px;
+    font-weight: 700;
+}
+
+.dynamic-car-page .detail-quick-specs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.dynamic-car-page .detail-spec {
+    padding: 16px;
+    background: #fff;
+    border: 1px solid #e4e4e1;
+    border-radius: 14px;
+}
+
+.dynamic-car-page .detail-spec span {
+    display: block;
+    margin-bottom: 6px;
+    color: #999;
+    font-size: 11px;
+}
+
+.dynamic-car-page .detail-spec strong {
+    display: block;
+    color: #111;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* ARIZA QOLDIRISH TUGMASI */
+
+.dynamic-car-page .detail-order-btn {
+    width: 100%;
+    margin-top: 24px;
+    padding: 18px 24px;
+    border: none;
+    border-radius: 14px;
+    background: #111;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.dynamic-car-page .detail-order-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.88;
+}
+
+.dynamic-car-page .detail-order-btn:active {
+    transform: translateY(0);
+}
+
+/* AVTOMOBIL HAQIDA */
+
+.dynamic-car-page .detail-specifications {
+    margin-top: 80px;
+    padding-top: 50px;
+    border-top: 1px solid #dcdcd8;
+}
+
+.dynamic-car-page .detail-section-heading {
+    margin-bottom: 30px;
+}
+
+.dynamic-car-page .detail-section-heading span {
+    display: block;
+    margin-bottom: 8px;
+    color: #999;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+}
+
+.dynamic-car-page .detail-section-heading h2 {
+    margin: 0;
+    color: #111;
+    font-size: 34px;
+    line-height: 1.1;
+}
+
+.dynamic-car-page .detail-spec-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.dynamic-car-page .detail-spec-grid > div {
+    padding: 22px 20px;
+    background: #fff;
+    border: 1px solid #e4e4e1;
+    border-radius: 16px;
+}
+
+.dynamic-car-page .detail-spec-grid span {
+    display: block;
+    margin-bottom: 8px;
+    color: #999;
+    font-size: 12px;
+}
+
+.dynamic-car-page .detail-spec-grid strong {
+    display: block;
+    color: #111;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* ===================================== REAL DETAIL PAGE — RESPONSIVE ===================================== */
+/* IPAD */ @media (max-width: 1000px) {
+.dynamic-car-page .detail-hero {
+    grid-template-columns: 1fr;
+    gap: 35px;
+}
+
+.dynamic-car-page .detail-image {
+    height: 480px;
+}
+
+.dynamic-car-page .detail-main-info {
+    padding: 0;
+}
+
+.dynamic-car-page .detail-spec-grid {
+    grid-template-columns: repeat(2, 1fr);
+}
+}
+/* TELEFON */ @media (max-width: 600px) {
+.dynamic-car-page .detail-hero {
+    gap: 25px;
+}
+
+.dynamic-car-page .detail-image {
+    height: 270px;
+    border-radius: 20px;
+}
+
+.dynamic-car-page .detail-main-info h1 {
+    margin-bottom: 22px;
+    font-size: 34px;
+}
+
+.dynamic-car-page .detail-price {
+    margin-bottom: 20px;
+    padding: 18px 0;
+}
+
+.dynamic-car-page .detail-price strong {
+    font-size: 29px;
+}
+
+.dynamic-car-page .detail-quick-specs {
+    grid-template-columns: 1fr;
+}
+
+.dynamic-car-page .detail-order-btn {
+    margin-top: 18px;
+    padding: 17px 20px;
+}
+
+.dynamic-car-page .detail-specifications {
+    margin-top: 55px;
+    padding-top: 35px;
+}
+
+.dynamic-car-page .detail-section-heading h2 {
+    font-size: 28px;
+}
+
+.dynamic-car-page .detail-spec-grid {
+    grid-template-columns: 1fr;
+}
+}
