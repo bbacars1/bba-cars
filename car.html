@@ -23,7 +23,36 @@
     </div>
 
 </main>
+<div class="order-modal" id="orderModal">
+    <div class="order-modal-content">
+        <button class="order-close" id="closeOrderModal" type="button">×</button>
 
+        <h2>Ariza qoldirish</h2>
+        <p>Ma’lumotlaringizni kiriting. Menejerimiz siz bilan bog‘lanadi.</p>
+
+        <form id="orderForm">
+            <input
+                type="text"
+                id="customerName"
+                placeholder="Ismingiz"
+                autocomplete="name"
+                required
+            >
+
+            <input
+                type="tel"
+                id="customerPhone"
+                placeholder="+998 90 123 45 67"
+                autocomplete="tel"
+                required
+            >
+
+            <button type="submit" class="order-submit">
+                Ariza yuborish →
+            </button>
+        </form>
+    </div>
+</div>
 <script src="car-detail.js"></script>
 </body>
 </html>

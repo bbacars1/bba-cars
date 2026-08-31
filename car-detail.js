@@ -147,8 +147,70 @@ try {
 function setupDetailOrder(car) { const orderBtn = document.getElementById("detailOrderBtn");
 if (!orderBtn) return;
 
-orderBtn.addEventListener("click", () => {
-    console.log("Ariza avtomobili:", car.name);
+const orderModal = document.getElementById("orderModal");
+orderBtn.addEventListener("click", () => { if (!orderModal) return;
+orderModal.classList.add("active");
+document.body.style.overflow = "hidden";
 });
+const closeOrderModal = document.getElementById("closeOrderModal");
+
+if (closeOrderModal) {
+    closeOrderModal.addEventListener("click", () => {
+        orderModal.classList.remove("active");
+        document.body.style.overflow = "";
+    });
+}
+const orderForm = document.getElementById("orderForm");
+const customerName = document.getElementById("customerName");
+const customerPhone = document.getElementById("customerPhone");
+const submitButton = document.querySelector(".order-submit");
+
+if (orderForm && customerName && customerPhone && submitButton) {
+orderForm.addEventListener("submit", async (e) => { e.preventDefault();
+const name = customerName.value.trim();
+const phone = customerPhone.value.trim();
+
+if (name.length < 2) {
+    alert("Iltimos, ismingizni kiriting.");
+    customerName.focus();
+    return;
+}
+
+const phoneNumbers = phone.replace(/\D/g, "");
+
+if (phoneNumbers.length !== 12) {
+    alert("Telefon raqamingizni to'liq kiriting.");
+    customerPhone.focus();
+    return;
+}
+submitButton.disabled = true;
+submitButton.textContent = "Yuborilmoqda...";
+
+fetch("https://api.bbacars.uz/order", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        car: car.name,
+        name: name,
+        phone: phone
+    })
+})
+.then(response => response.json()) .then(data => { orderModal.classList.remove("active"); document.body.style.overflow = "";
+orderForm.reset();
+
+submitButton.disabled = false;
+submitButton.textContent = "Ariza yuborish →";
+
+alert("Arizangiz muvaffaqiyatli yuborildi!");
+}) .catch(error => { console.error(error);
+submitButton.disabled = false;
+submitButton.textContent = "Ariza yuborish →";
+
+alert("Arizani yuborishda xatolik yuz berdi.");
+});
+});
+}
 }
 document.addEventListener("DOMContentLoaded", loadCarDetail);
