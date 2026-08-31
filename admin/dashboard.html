@@ -60,6 +60,8 @@ font-size:22px;
             <th>Telefon</th>
             <th>Avtomobil</th>
             <th>Sana / vaqt</th>
+            <th>Holati</th>
+            <th>Amal</th>
         </tr>
     </thead>
 
@@ -190,6 +192,21 @@ orders.forEach(order => {
             <td>${order.phone || ""}</td>
             <td>${order.car || order.car_name || ""}</td>
             <td>${order.created_at ? new Date(order.created_at).toLocaleString("uz-UZ") : ""}</td>
+            <td>
+                 ${order.status === "seen" ? "✅ Ko‘rilgan" : "🆕 Yangi"}
+            </td>
+
+            <td>
+                ${order.status !== "seen" ? `
+        <button onclick="markOrderSeen(${order.id})">
+            ✅ Ko‘rildi
+        </button>
+    ` : ""}
+
+    <button onclick="deleteOrder(${order.id})">
+        🗑️ O‘chirish
+    </button>
+</td>
         </tr>
     `;
 });
@@ -201,7 +218,44 @@ if (section.style.display === "none") {
     section.style.display = "none";
 }
 }
+async function markOrderSeen(id) {
+     const response = await fetch( "https://api.bbacars.uz/admin/orders/" + id + "/status", 
+     {
+         method: "PUT",
+          credentials: "include", 
+          headers: { 
+            "Content-Type": "application/json"
+         }, 
+         body: JSON.stringify({
+             status: "seen"
+             }) 
+            } 
+        );
+const data = await response.json();
 
+if (data.success) {
+    loadOrders();
+} else {
+    alert("Ariza holatini o‘zgartirishda xatolik!");
+}
+}
+async function deleteOrder(id) { const confirmDelete = confirm("Bu arizani o‘chirishni xohlaysizmi?"); if (!confirmDelete) return;
+const response = await fetch(
+    "https://api.bbacars.uz/admin/orders/" + id,
+    {
+        method: "DELETE",
+        credentials: "include"
+    }
+);
+
+const data = await response.json();
+
+if (data.success) {
+    loadOrders();
+} else {
+    alert("Arizani o‘chirishda xatolik!");
+}
+}
 loadOrders();
 
 async function addCar() {
