@@ -87,6 +87,71 @@ font-size:22px;
 <input type="number" id="price" placeholder="Narxi"><br><br>
 
 <input type="number" id="year" placeholder="Yili"><br><br>
+<input type="number" id="range" placeholder="Yurish masofasi (km)"><br><br>
+<input type="number" id="battery" placeholder="Batareya hajmi (kWh)" step="0.1"><br><br>
+<input type="text" id="engine" placeholder="Dvigatel (masalan: 1.5 Turbo / Elektr)"><br><br>
+<select id="drive">
+    <option value="">Privodni tanlang</option>
+    <option value="FWD">Oldi (FWD)</option>
+    <option value="RWD">Orqa (RWD)</option>
+    <option value="AWD">To‘liq (AWD)</option>
+</select>
+<br><br>
+<input type="number" id="power" placeholder="Quvvat (ot kuchi)"><br><br>
+<input type="number" id="acceleration" placeholder="0–100 km/soat (sekund)" step="0.1"><br><br>
+<input type="number" id="maxSpeed" placeholder="Maksimal tezlik (km/soat)"><br><br>
+<input type="number" id="seats" placeholder="O‘rindiqlar soni"><br><br>
+<input type="number" id="length" placeholder="Uzunligi (mm)"><br><br>
+<input type="number" id="wheelbase" placeholder="G‘ildirak bazasi (mm)"><br><br>
+<select id="fridge">
+    <option value="">Sovutgich</option>
+    <option value="yes">Bor</option>
+    <option value="no">Yo‘q</option>
+</select>
+<br><br>
+<select id="hud">
+    <option value="">HUD displey</option>
+    <option value="yes">Bor</option>
+    <option value="no">Yo‘q</option>
+</select>
+<br><br>
+<select id="faceId">
+    <option value="">Face ID</option>
+    <option value="yes">Bor</option>
+    <option value="no">Yo‘q</option>
+</select>
+<br><br>
+<select id="massage">
+    <option value="">O‘rindiq massaji</option>
+    <option value="yes">Bor</option>
+    <option value="no">Yo‘q</option>
+</select>
+<br><br>
+<select id="camera360">
+    <option value="">360° kamera</option>
+    <option value="yes">Bor</option>
+    <option value="no">Yo‘q</option>
+</select>
+<br><br>
+<select id="seatHeating">
+    <option value="">O‘rindiq isitish</option>
+    <option value="yes">Bor</option>
+    <option value="no">Yo‘q</option>
+</select>
+<br><br>
+<select id="seatVentilation">
+    <option value="">O‘rindiq ventilyatsiyasi</option>
+    <option value="yes">Bor</option>
+    <option value="no">Yo‘q</option>
+</select>
+<br><br>
+<select id="airSuspension">
+    <option value="">Pnevmatik osma</option>
+    <option value="yes">Bor</option>
+    <option value="no">Yo‘q</option>
+</select>
+<br><br>
+
 <select id="type">
     <option value="">Yoqilg‘i turini tanlang</option>
     <option value="electric">Elektr</option>
@@ -265,6 +330,24 @@ async function addCar() {
     const year = document.getElementById("year").value;
     const imageFile = document.getElementById("image").files[0];
     const type = document.getElementById("type").value;
+    const range = document.getElementById("range").value;
+const battery = document.getElementById("battery").value;
+const engine = document.getElementById("engine").value;
+const drive = document.getElementById("drive").value;
+const power = document.getElementById("power").value;
+const acceleration = document.getElementById("acceleration").value;
+const maxSpeed = document.getElementById("maxSpeed").value;
+const seats = document.getElementById("seats").value;
+const length = document.getElementById("length").value;
+const wheelbase = document.getElementById("wheelbase").value;
+const fridge = document.getElementById("fridge").value;
+const hud = document.getElementById("hud").value;
+const faceId = document.getElementById("faceId").value;
+const massage = document.getElementById("massage").value;
+const camera360 = document.getElementById("camera360").value;
+const seatHeating = document.getElementById("seatHeating").value;
+const seatVentilation = document.getElementById("seatVentilation").value;
+const airSuspension = document.getElementById("airSuspension").value;
 
    if (name === "") {
     alert("Avtomobil nomini kiriting!");
@@ -304,6 +387,24 @@ if (!imageFile) {
     formData.append("year", year);
     formData.append("type", type);
     formData.append("image", imageFile);
+    formData.append("range", range);
+formData.append("battery", battery);
+formData.append("engine", engine);
+formData.append("drive", drive);
+formData.append("power", power);
+formData.append("acceleration", acceleration);
+formData.append("maxSpeed", maxSpeed);
+formData.append("seats", seats);
+formData.append("length", length);
+formData.append("wheelbase", wheelbase);
+formData.append("fridge", fridge);
+formData.append("hud", hud);
+formData.append("faceId", faceId);
+formData.append("massage", massage);
+formData.append("camera360", camera360);
+formData.append("seatHeating", seatHeating);
+formData.append("seatVentilation", seatVentilation);
+formData.append("airSuspension", airSuspension);
 
     const response = await fetch("https://api.bbacars.uz/cars", {
         method: "POST",
@@ -352,6 +453,26 @@ if (year === null) return;
     const type = prompt("Yoqilg'i turi (electric / hybrid / petrol):", car.type || "petrol");
 if (type === null) return;
 
+const range = prompt("Yurish masofasi:", car.range || "");
+const battery = prompt("Batareya:", car.battery || "");
+const engine = prompt("Dvigatel:", car.engine || "");
+const drive = prompt("Privod:", car.drive || "");
+const power = prompt("Quvvat:", car.power || "");
+const acceleration = prompt("0-100 km/h:", car.acceleration || "");
+const maxSpeed = prompt("Maksimal tezlik:", car.maxSpeed || "");
+const seats = prompt("O‘rindiqlar soni:", car.seats || "");
+const length = prompt("Uzunligi:", car.length || "");
+const wheelbase = prompt("G‘ildirak bazasi:", car.wheelbase || "");
+
+const fridge = prompt("Sovutgich:", car.fridge || "");
+const hud = prompt("Head-Up Display:", car.hud || "");
+const faceId = prompt("Face ID:", car.faceId || "");
+const massage = prompt("Massaj:", car.massage || "");
+const camera360 = prompt("360° kamera:", car.camera360 || "");
+const seatHeating = prompt("O‘rindiq isitish:", car.seatHeating || "");
+const seatVentilation = prompt("O‘rindiq ventilyatsiyasi:", car.seatVentilation || "");
+const airSuspension = prompt("Pnevmatik osma:", car.airSuspension || "");
+
     const updateResponse = await fetch("https://api.bbacars.uz/cars/" + id, {
         method: "PUT",
         credentials: "include",
@@ -363,7 +484,25 @@ if (type === null) return;
     brand,
     price,
     type,
-    year
+    year,
+    range,
+    battery,
+    engine,
+    drive,
+    power,
+    acceleration,
+    maxSpeed,
+    seats,
+    length,
+    wheelbase,
+    fridge,
+    hud,
+    faceId,
+    massage,
+    camera360,
+    seatHeating,
+    seatVentilation,
+    airSuspension
 })
     });
 
