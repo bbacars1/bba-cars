@@ -265,7 +265,7 @@ app.post("/cars", requireAdmin, upload.array("images", 10), async (req, res) => 
     seatVentilation,
     airSuspension
 } = req.body;
-
+    console.log("Kelgan rasmlar soni:", req.files ? req.files.length : 0);
     if (!req.files || req.files.length === 0) {
     return res.status(400).json({
         success: false,
