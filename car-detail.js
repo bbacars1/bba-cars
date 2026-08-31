@@ -163,6 +163,23 @@ if (closeOrderModal) {
 const orderForm = document.getElementById("orderForm");
 const customerName = document.getElementById("customerName");
 const customerPhone = document.getElementById("customerPhone");
+customerPhone.value = "+998 ";
+customerPhone.addEventListener("input", function () { let numbers = this.value.replace(/\D/g, "");
+if (numbers.startsWith("998")) {
+    numbers = numbers.slice(3);
+}
+
+numbers = numbers.slice(0, 9);
+
+let formatted = "+998";
+
+if (numbers.length > 0) formatted += " " + numbers.slice(0, 2);
+if (numbers.length > 2) formatted += " " + numbers.slice(2, 5);
+if (numbers.length > 5) formatted += " " + numbers.slice(5, 7);
+if (numbers.length > 7) formatted += " " + numbers.slice(7, 9);
+
+this.value = formatted;
+});
 const submitButton = document.querySelector(".order-submit");
 
 if (orderForm && customerName && customerPhone && submitButton) {
