@@ -122,6 +122,96 @@ try {
                     <strong>${car.type || "—"}</strong>
                 </div>
 
+                <div>
+    <span>Yurish masofasi</span>
+    <strong>${car.range || "—"} km</strong>
+</div>
+
+<div>
+    <span>Batareya hajmi</span>
+    <strong>${car.battery || "—"} kWh</strong>
+</div>
+
+<div>
+    <span>Dvigatel</span>
+    <strong>${car.engine || "—"}</strong>
+</div>
+
+<div>
+    <span>Privod</span>
+    <strong>${car.drive || "—"}</strong>
+</div>
+
+<div>
+    <span>Quvvat</span>
+    <strong>${car.power || "—"} ot kuchi</strong>
+</div>
+
+<div>
+    <span>0–100 km/soat</span>
+    <strong>${car.acceleration || "—"} sek</strong>
+</div>
+
+<div>
+    <span>Maksimal tezlik</span>
+    <strong>${car.maxSpeed || "—"} km/soat</strong>
+</div>
+
+<div>
+    <span>O‘rindiqlar soni</span>
+    <strong>${car.seats || "—"}</strong>
+</div>
+
+<div>
+    <span>Uzunligi</span>
+    <strong>${car.length || "—"} mm</strong>
+</div>
+
+<div>
+    <span>G‘ildirak bazasi</span>
+    <strong>${car.wheelbase || "—"} mm</strong>
+</div>
+
+<div>
+    <span>Sovutgich</span>
+    <strong>${car.fridge === "yes" ? "Bor" : car.fridge === "no" ? "Yo‘q" : "—"}</strong>
+</div>
+
+<div>
+    <span>HUD displey</span>
+    <strong>${car.hud === "yes" ? "Bor" : car.hud === "no" ? "Yo‘q" : "—"}</strong>
+</div>
+
+<div>
+    <span>Face ID</span>
+    <strong>${car.faceId === "yes" ? "Bor" : car.faceId === "no" ? "Yo‘q" : "—"}</strong>
+</div>
+
+<div>
+    <span>O‘rindiq massaji</span>
+    <strong>${car.massage === "yes" ? "Bor" : car.massage === "no" ? "Yo‘q" : "—"}</strong>
+</div>
+
+<div>
+    <span>360° kamera</span>
+    <strong>${car.camera360 === "yes" ? "Bor" : car.camera360 === "no" ? "Yo‘q" : "—"}</strong>
+</div>
+
+<div>
+    <span>O‘rindiq isitish</span>
+    <strong>${car.seatHeating === "yes" ? "Bor" : car.seatHeating === "no" ? "Yo‘q" : "—"}</strong>
+</div>
+
+<div>
+    <span>O‘rindiq ventilyatsiyasi</span>
+    <strong>${car.seatVentilation === "yes" ? "Bor" : car.seatVentilation === "no" ? "Yo‘q" : "—"}</strong>
+</div>
+
+<div>
+    <span>Pnevmatik osma</span>
+    <strong>${car.airSuspension === "yes" ? "Bor" : car.airSuspension === "no" ? "Yo‘q" : "—"}</strong>
+</div>
+
             </div>
 
         </section>
