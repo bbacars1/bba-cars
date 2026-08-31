@@ -46,8 +46,27 @@ font-size:22px;
 
 <div class="container">
 
-<div class="card">
+<div class="card" onclick="toggleOrders()" style="cursor: pointer;">
 📋 Arizalar soni: <span id="orderCount">0</span>
+</div>
+<div id="ordersSection" style="display: none;">
+    <h2>📋 Arizalar ro'yxati</h2>
+
+    <table border="1" width="100%" id="ordersTable">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Ism</th>
+            <th>Telefon</th>
+            <th>Avtomobil</th>
+            <th>Sana / vaqt</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    </tbody>
+</table>
+
 </div>
 
 <div class="card">
@@ -152,14 +171,35 @@ fetch("https://api.bbacars.uz/admin/check", {
 loadCars();
 
 async function loadOrders() {
-  const response = await fetch("https://api.bbacars.uz/admin/orders", {
-    credentials: "include",
-    cache: "no-store"
-  });
+     const response = await fetch("https://api.bbacars.uz/admin/orders", {
+         credentials: "include", 
+         cache: "no-store" 
+        });
+const orders = await response.json();
 
-  const orders = await response.json();
+document.getElementById("orderCount").textContent = orders.length;
 
-  document.getElementById("orderCount").textContent = orders.length;
+const tbody = document.querySelector("#ordersTable tbody");
+tbody.innerHTML = "";
+
+orders.forEach(order => {
+    tbody.innerHTML += `
+        <tr>
+            <td>${order.id || ""}</td>
+            <td>${order.name || ""}</td>
+            <td>${order.phone || ""}</td>
+            <td>${order.car || order.car_name || ""}</td>
+            <td>${order.created_at || ""}</td>
+        </tr>
+    `;
+});
+}
+function toggleOrders() { const section = document.getElementById("ordersSection");
+if (section.style.display === "none") {
+    section.style.display = "block";
+} else {
+    section.style.display = "none";
+}
 }
 
 loadOrders();
