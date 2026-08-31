@@ -76,7 +76,16 @@ console.log("DATABASE:", process.env.DB_NAME);
         throw err;
     }
 }
-
+try {
+    await db.query("ALTER TABLE cars ADD COLUMN images TEXT NULL");
+    console.log("Cars images ustuni tayyor!");
+} catch (err) {
+    if (err.message.includes("Duplicate column name")) {
+        console.log("Cars images ustuni allaqachon mavjud!");
+    } else {
+        throw err;
+    }
+}
 try { await db.query( "CREATE TABLE IF NOT EXISTS orders (id INT AUTO_INCREMENT PRIMARY KEY, car VARCHAR(255) NOT NULL, name VARCHAR(255) NOT NULL, phone VARCHAR(100) NOT NULL, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)" );
 console.log("Orders table tayyor!");
 } catch (err) { console.error("Orders table yaratishda xato:", err); }
@@ -97,7 +106,7 @@ try {
 try { const columns = [ ["range", "VARCHAR(100) NULL"], ["battery", "VARCHAR(100) NULL"], ["engine", "VARCHAR(100) NULL"], ["drive", "VARCHAR(100) NULL"], ["power", "VARCHAR(100) NULL"], ["acceleration", "VARCHAR(100) NULL"], ["maxSpeed", "VARCHAR(100) NULL"], ["seats", "INT NULL"], ["length", "INT NULL"], ["wheelbase", "INT NULL"], ["fridge", "VARCHAR(10) NULL"], ["hud", "VARCHAR(10) NULL"], ["faceId", "VARCHAR(10) NULL"], ["massage", "VARCHAR(10) NULL"], ["camera360", "VARCHAR(10) NULL"], ["seatHeating", "VARCHAR(10) NULL"], ["seatVentilation", "VARCHAR(10) NULL"], ["airSuspension", "VARCHAR(10) NULL"] ];
 for (const [column, definition] of columns) {
     try {
-        await db.query(`ALTER TABLE cars ADD COLUMN ${column} ${definition}`);
+        await db.query("ALTER TABLE cars ADD COLUMN ?? " + definition, [column]);
         console.log(`Cars ${column} ustuni qo‘shildi!`);
     } catch (err) {
         if (err.message.includes("Duplicate column name")) {
@@ -229,7 +238,7 @@ res.json(rows);
     });
   }
 });
-app.post("/cars", requireAdmin, upload.single("image"), async (req, res) => {
+app.post("/cars", requireAdmin, upload.array("images", 10), async (req, res) => {
   try {
     const {
     name,
@@ -257,31 +266,36 @@ app.post("/cars", requireAdmin, upload.single("image"), async (req, res) => {
     airSuspension
 } = req.body;
 
-    if (!req.file) {
-      return res.status(400).json({
+    if (!req.files || req.files.length === 0) {
+    return res.status(400).json({
         success: false,
         message: "Rasm tanlanmagan"
-      });
-    }
+    });
+}
 
-    const uploadResponse = await imageKit.files.upload({
-  file: req.file.buffer.toString("base64"),
-  fileName: Date.now() + "-" + req.file.originalname,
-  folder: "/bba-cars"
-});
-
-const image = uploadResponse.url;
+    const imageUrls = [];
+for (const file of req.files) { 
+  const uploadResponse = await imageKit.files.upload({
+     file: file.buffer.toString("base64"), 
+     fileName: Date.now() + "-" + file.originalname,
+      folder: "/bba-cars"
+     });
+imageUrls.push(uploadResponse.url);
+}
+const image = imageUrls[0]; 
+const images = JSON.stringify(imageUrls);
 
     // URL'ni MySQL'ga saqlash
     await db.query(
-  "INSERT INTO cars (name, brand, price, image, type, year, `range`, battery, engine, drive, power, acceleration, maxSpeed, seats, length, wheelbase, fridge, hud, faceId, massage, camera360, seatHeating, seatVentilation, airSuspension) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-   [name, brand, price, image, type, year, range, battery, engine, drive, power, acceleration, maxSpeed, seats, length, wheelbase, fridge, hud, faceId, massage, camera360, seatHeating, seatVentilation, airSuspension]
+  "INSERT INTO cars (name, brand, price, image, images, type, year, `range`, battery, engine, drive, power, acceleration, maxSpeed, seats, length, wheelbase, fridge, hud, faceId, massage, camera360, seatHeating, seatVentilation, airSuspension) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+   [name, brand, price, image, images, type, year, range, battery, engine, drive, power, acceleration, maxSpeed, seats, length, wheelbase, fridge, hud, faceId, massage, camera360, seatHeating, seatVentilation, airSuspension]
 );
 
     res.json({
       success: true,
       message: "Avtomobil muvaffaqiyatli qo'shildi!",
-      image: image
+      image: image,
+      images: imageUrls
     });
 
   } catch (err) {

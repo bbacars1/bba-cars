@@ -159,7 +159,7 @@ font-size:22px;
     <option value="petrol">Benzin</option>
 </select>
 <br><br>
-<input type="file" id="image" accept="image/*"><br><br>
+<input type="file" id="image" accept="image/*" multiple><br><br>
 
 <button onclick="addCar()">Saqlash</button>
 </div>
@@ -328,7 +328,7 @@ async function addCar() {
     const brand = document.getElementById("brand").value;
     const price = document.getElementById("price").value;
     const year = document.getElementById("year").value;
-    const imageFile = document.getElementById("image").files[0];
+    const imageFiles = document.getElementById("image").files;
     const type = document.getElementById("type").value;
     const range = document.getElementById("range").value;
 const battery = document.getElementById("battery").value;
@@ -374,7 +374,7 @@ if (type === "") {
     return;
 }
 
-if (!imageFile) {
+if (!imageFiles || imageFiles.length === 0) {
     alert("Rasm tanlang!");
     return;
 }
@@ -386,7 +386,9 @@ if (!imageFile) {
     formData.append("price", price);
     formData.append("year", year);
     formData.append("type", type);
-    formData.append("image", imageFile);
+    for (let i = 0; i < imageFiles.length; i++) {
+    formData.append("images", imageFiles[i]);
+}
     formData.append("range", range);
 formData.append("battery", battery);
 formData.append("engine", engine);
