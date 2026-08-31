@@ -40,15 +40,17 @@ try {
 
         <section class="detail-hero">
 
-            <div class="detail-image">
-               <img
-                  id="mainCarImage"
-                  src="${getCarImageUrl(car.image)}"
-                  alt="${car.name}"
-                 >
+            <div>
+    <div class="detail-image">
+        <img
+            id="mainCarImage"
+            src="${getCarImageUrl(car.image)}"
+            alt="${car.name}"
+        >
+    </div>
 
-                 <div class="detail-gallery" id="detailGallery"></div>
-               </div>
+    <div class="detail-gallery" id="detailGallery"></div>
+</div>
 
             <div class="detail-main-info">
 
