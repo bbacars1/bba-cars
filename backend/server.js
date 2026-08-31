@@ -93,6 +93,21 @@ try {
         throw err;
     }
 }
+
+try { const columns = [ ["range", "VARCHAR(100) NULL"], ["battery", "VARCHAR(100) NULL"], ["engine", "VARCHAR(100) NULL"], ["drive", "VARCHAR(100) NULL"], ["power", "VARCHAR(100) NULL"], ["acceleration", "VARCHAR(100) NULL"], ["maxSpeed", "VARCHAR(100) NULL"], ["seats", "INT NULL"], ["length", "INT NULL"], ["wheelbase", "INT NULL"], ["fridge", "VARCHAR(10) NULL"], ["hud", "VARCHAR(10) NULL"], ["faceId", "VARCHAR(10) NULL"], ["massage", "VARCHAR(10) NULL"], ["camera360", "VARCHAR(10) NULL"], ["seatHeating", "VARCHAR(10) NULL"], ["seatVentilation", "VARCHAR(10) NULL"], ["airSuspension", "VARCHAR(10) NULL"] ];
+for (const [column, definition] of columns) {
+    try {
+        await db.query(`ALTER TABLE cars ADD COLUMN ${column} ${definition}`);
+        console.log(`Cars ${column} ustuni qo‘shildi!`);
+    } catch (err) {
+        if (err.message.includes("Duplicate column name")) {
+            console.log(`Cars ${column} ustuni allaqachon mavjud!`);
+        } else {
+            throw err;
+        }
+    }
+}
+} catch (err) { console.error("Cars yangi ustunlarini yaratishda xato:", err); }
 })();
 
 console.log("ADMIN_LOGIN:", process.env.ADMIN_LOGIN);
@@ -216,7 +231,31 @@ res.json(rows);
 });
 app.post("/cars", requireAdmin, upload.single("image"), async (req, res) => {
   try {
-    const { name, brand, price, type, year } = req.body;
+    const {
+    name,
+    brand,
+    price,
+    type,
+    year,
+    range,
+    battery,
+    engine,
+    drive,
+    power,
+    acceleration,
+    maxSpeed,
+    seats,
+    length,
+    wheelbase,
+    fridge,
+    hud,
+    faceId,
+    massage,
+    camera360,
+    seatHeating,
+    seatVentilation,
+    airSuspension
+} = req.body;
 
     if (!req.file) {
       return res.status(400).json({
@@ -235,8 +274,8 @@ const image = uploadResponse.url;
 
     // URL'ni MySQL'ga saqlash
     await db.query(
-    "INSERT INTO cars (name, brand, price, image, type, year) VALUES (?, ?, ?, ?, ?, ?)",
-    [name, brand, price, image, type, year]
+    "INSERT INTO cars (name, brand, price, image, type, year, range, battery, engine, drive, power, acceleration, maxSpeed, seats, length, wheelbase, fridge, hud, faceId, massage, camera360, seatHeating, seatVentilation, airSuspension) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+     [ name, brand, price, image, type, year, range, battery, engine, drive, power, acceleration, maxSpeed, seats, length, wheelbase, fridge, hud, faceId, massage, camera360, seatHeating, seatVentilation, airSuspension ]
 );
 
     res.json({
@@ -278,12 +317,34 @@ app.delete("/cars/:id", requireAdmin, async (req, res) => {
 app.put("/cars/:id", requireAdmin, async (req, res) => {
     try {
         const { id } = req.params;
-        const { name, brand, price, type, year } = req.body;
+        const {
+    name,
+    brand,
+    price,
+    type,
+    year,
+    range,
+    battery,
+    engine,
+    drive,
+    power,
+    acceleration,
+    maxSpeed,
+    seats,
+    length,
+    wheelbase,
+    fridge,
+    hud,
+    faceId,
+    massage,
+    camera360,
+    seatHeating,
+    seatVentilation,
+    airSuspension
+} = req.body;
 
-        const [result] = await db.query(
-            "UPDATE cars SET name = ?, brand = ?, price = ?, type = ?, year = ? WHERE id = ?",
-[name, brand, price, type, year, id]
-        );
+        const [result] = await db.query( "UPDATE cars SET name = ?, brand = ?, price = ?, type = ?, year = ?, range = ?, battery = ?, engine = ?, drive = ?, power = ?, acceleration = ?, maxSpeed = ?, seats = ?, length = ?, wheelbase = ?, fridge = ?, hud = ?, faceId = ?, massage = ?, camera360 = ?, seatHeating = ?, seatVentilation = ?, airSuspension = ? WHERE id = ?", 
+          [ name, brand, price, type, year, range, battery, engine, drive, power, acceleration, maxSpeed, seats, length, wheelbase, fridge, hud, faceId, massage, camera360, seatHeating, seatVentilation, airSuspension, id ] );
 
         console.log("EDIT ID:", id);
         console.log("EDIT RESULT:", result);
