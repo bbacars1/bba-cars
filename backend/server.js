@@ -287,8 +287,8 @@ const images = JSON.stringify(imageUrls);
 
     // URL'ni MySQL'ga saqlash
     await db.query(
-  "INSERT INTO cars (name, brand, price, image, images, type, year, `range`, battery, engine, drive, power, acceleration, maxSpeed, seats || null, length, wheelbase, fridge, hud, faceId, massage, camera360, seatHeating, seatVentilation, airSuspension) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-   [name, brand, price, image, images, type, year, range, battery, engine, drive, power, acceleration, maxSpeed, seats, length, wheelbase, fridge, hud, faceId, massage, camera360, seatHeating, seatVentilation, airSuspension]
+  "INSERT INTO cars (name, brand, price, image, images, type, year, `range`, battery, engine, drive, power, acceleration, maxSpeed, seats, length, wheelbase, fridge, hud, faceId, massage, camera360, seatHeating, seatVentilation, airSuspension) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+   [name, brand, price, image, images, type, year, range, battery, engine, drive, power, acceleration, maxSpeed, seats || null, length, wheelbase, fridge, hud, faceId, massage, camera360, seatHeating, seatVentilation, airSuspension]
 );
 
     res.json({
