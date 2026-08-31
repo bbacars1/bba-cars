@@ -274,7 +274,7 @@ const image = uploadResponse.url;
 
     // URL'ni MySQL'ga saqlash
     await db.query(
-  "INSERT INTO cars (name, brand, price, image, type, year, range, battery, engine, drive, power, acceleration, maxSpeed, seats, length, wheelbase, fridge, hud, faceId, massage, camera360, seatHeating, seatVentilation, airSuspension) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+  "INSERT INTO cars (name, brand, price, image, type, year, `range`, battery, engine, drive, power, acceleration, maxSpeed, seats, length, wheelbase, fridge, hud, faceId, massage, camera360, seatHeating, seatVentilation, airSuspension) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
    [name, brand, price, image, type, year, range, battery, engine, drive, power, acceleration, maxSpeed, seats, length, wheelbase, fridge, hud, faceId, massage, camera360, seatHeating, seatVentilation, airSuspension]
 );
 
