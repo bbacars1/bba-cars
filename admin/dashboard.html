@@ -189,7 +189,7 @@ orders.forEach(order => {
             <td>${order.name || ""}</td>
             <td>${order.phone || ""}</td>
             <td>${order.car || order.car_name || ""}</td>
-            <td>${order.created_at || ""}</td>
+            <td>${order.created_at ? new Date(order.created_at).toLocaleString("uz-UZ") : ""}</td>
         </tr>
     `;
 });

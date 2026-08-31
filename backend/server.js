@@ -80,6 +80,19 @@ console.log("DATABASE:", process.env.DB_NAME);
 try { await db.query( "CREATE TABLE IF NOT EXISTS orders (id INT AUTO_INCREMENT PRIMARY KEY, car VARCHAR(255) NOT NULL, name VARCHAR(255) NOT NULL, phone VARCHAR(100) NOT NULL, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)" );
 console.log("Orders table tayyor!");
 } catch (err) { console.error("Orders table yaratishda xato:", err); }
+
+try {
+    await db.query(
+        "ALTER TABLE orders ADD COLUMN status VARCHAR(20) NOT NULL DEFAULT 'new'"
+    );
+    console.log("Orders status ustuni tayyor!");
+} catch (err) {
+    if (err.message.includes("Duplicate column name")) {
+        console.log("Orders status ustuni allaqachon mavjud!");
+    } else {
+        throw err;
+    }
+}
 })();
 
 console.log("ADMIN_LOGIN:", process.env.ADMIN_LOGIN);
@@ -352,6 +365,58 @@ console.log("Telegram javobi:", telegramData);
 });
 app.get("/admin/orders", requireAdmin, async (req, res) => { try { const [orders] = await db.query( "SELECT * FROM orders ORDER BY id DESC" );
     res.json(orders);
+} catch (err) {
+    console.error(err);
+
+    res.status(500).json({
+        success: false,
+        error: err.message
+    });
+}
+});
+app.put("/admin/orders/:id/status", requireAdmin, async (req, res) => {
+   try { 
+    const { id } = req.params; 
+    const { status } = req.body;
+    await db.query(
+        "UPDATE orders SET status = ? WHERE id = ?",
+        [status, id]
+    );
+
+    res.json({
+        success: true,
+        message: "Ariza holati yangilandi"
+    });
+
+} catch (err) {
+    console.error(err);
+
+    res.status(500).json({
+        success: false,
+        error: err.message
+    });
+}
+});
+app.delete("/admin/orders/:id", requireAdmin, async (req, res) => { 
+  try { 
+    const { id } = req.params;
+    const [result] = await db.query(
+        "DELETE FROM orders WHERE id = ?",
+        [id]
+    );
+
+    if (result.affectedRows === 0) {
+        return res.status(404).json({
+            success: false,
+            message: "Ariza topilmadi"
+        });
+    }
+
+    res.json({
+        success: true,
+        message: "Ariza o‘chirildi"
+    });
+
 } catch (err) {
     console.error(err);
 
