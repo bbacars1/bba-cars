@@ -159,6 +159,13 @@ font-size:22px;
     <option value="petrol">Benzin</option>
 </select>
 <br><br>
+<select id="status">
+    <option value="">Status yo‘q</option>
+    <option value="top">TOP</option>
+    <option value="discount">CHEGIRMA</option>
+    <option value="new">YANGI</option>
+</select>
+<br><br>
 <input type="file" id="image" accept="image/*" multiple><br><br>
 
 <button onclick="addCar()">Saqlash</button>
@@ -175,6 +182,7 @@ font-size:22px;
             <th>Narx</th>
             <th>Yili</th>
             <th>Yoqilg'i turi</th>
+            <th>Status</th>
             <th>Rasm</th>
             <th>Amal</th>
         </tr>
@@ -266,6 +274,7 @@ fetch("https://api.bbacars.uz/admin/check", {
             <td>${car.price}</td>
             <td>${car.year || ""}</td>
             <td>${car.type || "petrol"}</td>
+            <td>${car.status || ""}</td>
             <td><img src="${car.image ? (car.image.startsWith("http") ? car.image : "https://api.bbacars.uz" + car.image) : ""}" width="80"></td>
             <td>
     <button onclick="editCar(${car.id})">
@@ -378,6 +387,7 @@ async function addCar() {
     const year = document.getElementById("year").value;
     const imageFiles = document.getElementById("image").files;
     const type = document.getElementById("type").value;
+    const status = document.getElementById("status").value;
     const range = document.getElementById("range").value;
 const battery = document.getElementById("battery").value;
 const engine = document.getElementById("engine").value;
@@ -434,6 +444,7 @@ if (!imageFiles || imageFiles.length === 0) {
     formData.append("price", price);
     formData.append("year", year);
     formData.append("type", type);
+    formData.append("status", status);
     for (let i = 0; i < imageFiles.length; i++) {
     formData.append("images", imageFiles[i]);
 }
@@ -472,6 +483,7 @@ formData.append("airSuspension", airSuspension);
         document.getElementById("price").value = "";
         document.getElementById("year").value = "";
         document.getElementById("type").value = "";
+        document.getElementById("status").value = "";
         document.getElementById("image").value = "";
 
         loadCars();
@@ -672,7 +684,11 @@ if (year === null) return;
 
     const type = prompt("Yoqilg'i turi (electric / hybrid / petrol):", car.type || "petrol");
 if (type === null) return;
-
+const status = prompt(
+    "Status (top / discount / new / bo‘sh):",
+    car.status || ""
+);
+if (status === null) return;
 const range = prompt("Yurish masofasi:", car.range || "");
 const battery = prompt("Batareya:", car.battery || "");
 const engine = prompt("Dvigatel:", car.engine || "");
@@ -705,6 +721,7 @@ const airSuspension = prompt("Pnevmatik osma:", car.airSuspension || "");
     price,
     type,
     year,
+    status,
     range,
     battery,
     engine,

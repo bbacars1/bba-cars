@@ -86,6 +86,18 @@ try {
         throw err;
     }
 }
+try {
+    await db.query(
+        "ALTER TABLE cars ADD COLUMN status VARCHAR(20) NULL"
+    );
+    console.log("Cars status ustuni tayyor!");
+} catch (err) {
+    if (err.message.includes("Duplicate column name")) {
+        console.log("Cars status ustuni allaqachon mavjud!");
+    } else {
+        throw err;
+    }
+}
 try { await db.query( "CREATE TABLE IF NOT EXISTS orders (id INT AUTO_INCREMENT PRIMARY KEY, car VARCHAR(255) NOT NULL, name VARCHAR(255) NOT NULL, phone VARCHAR(100) NOT NULL, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)" );
 console.log("Orders table tayyor!");
 } catch (err) { console.error("Orders table yaratishda xato:", err); }
@@ -246,6 +258,7 @@ app.post("/cars", requireAdmin, upload.array("images", 10), async (req, res) => 
     price,
     type,
     year,
+    status,
     range,
     battery,
     engine,
@@ -287,8 +300,8 @@ const images = JSON.stringify(imageUrls);
 
     // URL'ni MySQL'ga saqlash
     await db.query(
-  "INSERT INTO cars (name, brand, price, image, images, type, year, `range`, battery, engine, drive, power, acceleration, maxSpeed, seats, length, wheelbase, fridge, hud, faceId, massage, camera360, seatHeating, seatVentilation, airSuspension) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-   [name, brand, price, image, images, type, year, range, battery, engine, drive, power, acceleration, maxSpeed, seats || null, length, wheelbase, fridge, hud, faceId, massage, camera360, seatHeating, seatVentilation, airSuspension]
+  "INSERT INTO cars (name, brand, price, image, images, type, year, status, `range`, battery, engine, drive, power, acceleration, maxSpeed, seats, length, wheelbase, fridge, hud, faceId, massage, camera360, seatHeating, seatVentilation, airSuspension) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+   [name, brand, price, image, images, type, year, status, range, battery, engine, drive, power, acceleration, maxSpeed, seats || null, length, wheelbase, fridge, hud, faceId, massage, camera360, seatHeating, seatVentilation, airSuspension]
 );
 
     res.json({
@@ -507,6 +520,7 @@ app.put("/cars/:id", requireAdmin, async (req, res) => {
     price,
     type,
     year,
+    status,
     range,
     battery,
     engine,
@@ -527,8 +541,8 @@ app.put("/cars/:id", requireAdmin, async (req, res) => {
     airSuspension
 } = req.body;
 
-        const [result] = await db.query( "UPDATE cars SET name = ?, brand = ?, price = ?, type = ?, year = ?, `range` = ?, battery = ?, engine = ?, drive = ?, power = ?, acceleration = ?, maxSpeed = ?, seats = ?, length = ?, wheelbase = ?, fridge = ?, hud = ?, faceId = ?, massage = ?, camera360 = ?, seatHeating = ?, seatVentilation = ?, airSuspension = ? WHERE id = ?", 
-          [ name, brand, price, type, year, range, battery, engine, drive, power, acceleration, maxSpeed, seats, length, wheelbase, fridge, hud, faceId, massage, camera360, seatHeating, seatVentilation, airSuspension, id ] );
+        const [result] = await db.query( "UPDATE cars SET name = ?, brand = ?, price = ?, type = ?, year = ?, status = ?, `range` = ?, battery = ?, engine = ?, drive = ?, power = ?, acceleration = ?, maxSpeed = ?, seats = ?, length = ?, wheelbase = ?, fridge = ?, hud = ?, faceId = ?, massage = ?, camera360 = ?, seatHeating = ?, seatVentilation = ?, airSuspension = ? WHERE id = ?", 
+          [ name, brand, price, type, year, status, range, battery, engine, drive, power, acceleration, maxSpeed, seats, length, wheelbase, fridge, hud, faceId, massage, camera360, seatHeating, seatVentilation, airSuspension, id ] );
 
         console.log("EDIT ID:", id);
         console.log("EDIT RESULT:", result);

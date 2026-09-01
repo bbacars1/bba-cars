@@ -834,7 +834,9 @@ if (!response.ok) {
                     <img src="${getCarImageUrl(car.image)}" alt="${car.name}">
                     <button class="favorite-btn" type="button">♡</button>
 
-                    <span class="car-badge badge-top">YANGI</span>
+                    ${car.status === "top" ? '<span class="car-badge badge-top">TOP</span>' : ""}
+${car.status === "discount" ? '<span class="car-badge badge-sale">CHEGIRMA</span>' : ""}
+${car.status === "new" ? '<span class="car-badge badge-new">YANGI</span>' : ""}
                 </div>
 
                 <div class="car-info">
