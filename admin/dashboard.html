@@ -185,6 +185,48 @@ font-size:22px;
     </tbody>
 </table>
 
+<!-- TAHRIRLASH OYNASI -->
+<div id="editModal" style="
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.75);
+    z-index:9999;
+    overflow:auto;
+    padding:30px;
+">
+
+    <div style="
+        max-width:700px;
+        margin:30px auto;
+        background:#1f2937;
+        padding:25px;
+        border-radius:15px;
+    ">
+
+        <h2>✏️ Avtomobilni tahrirlash</h2>
+
+        <div id="editImages"></div>
+
+        <br>
+
+        <label>Yangi rasm qo‘shish:</label><br><br>
+
+        <input
+            type="file"
+            id="editNewImages"
+            accept="image/*"
+            multiple
+        >
+
+        <br><br>
+
+        <button type="button" onclick="closeEditModal()">
+            ❌ Yopish
+        </button>
+
+    </div>
+</div>
 
 <script>
     window.addEventListener("pageshow", function (event) {
@@ -225,7 +267,9 @@ fetch("https://api.bbacars.uz/admin/check", {
     <button onclick="editCar(${car.id})">
         ✏️ Tahrirlash
     </button>
-
+    <button onclick="manageCarImages(${car.id})">
+    📸 Rasmlar
+</button>
     <button onclick="deleteCar(${car.id})">
         🗑️ O‘chirish
     </button>
@@ -429,6 +473,91 @@ formData.append("airSuspension", airSuspension);
         loadCars();
     }
 }
+let currentEditingCarId = null;
+
+function getCarImages(car) {
+    let images = [];
+
+    if (car.images) {
+        try {
+            images = typeof car.images === "string"
+                ? JSON.parse(car.images)
+                : car.images;
+        } catch (error) {
+            images = [];
+        }
+    }
+
+    if (!Array.isArray(images)) {
+        images = [];
+    }
+
+    if (images.length === 0 && car.image) {
+        images = [car.image];
+    }
+
+    return images;
+}
+
+function showEditImages(car) {
+    const container = document.getElementById("editImages");
+    const images = getCarImages(car);
+
+    container.innerHTML = "<h3>📸 Mavjud rasmlar</h3>";
+
+    if (images.length === 0) {
+        container.innerHTML += "<p>Rasm mavjud emas.</p>";
+        return;
+    }
+
+    images.forEach((image, index) => {
+        container.innerHTML += `
+            <div style="
+                display:inline-block;
+                margin:8px;
+                text-align:center;
+            ">
+                <img
+                    src="${image}"
+                    style="
+                        width:130px;
+                        height:90px;
+                        object-fit:cover;
+                        border-radius:10px;
+                        display:block;
+                        margin-bottom:6px;
+                    "
+                >
+
+                <button type="button">
+                    🗑️ ${index + 1}-rasm
+                </button>
+            </div>
+        `;
+    });
+}
+
+function closeEditModal() {
+    document.getElementById("editModal").style.display = "none";
+    document.getElementById("editNewImages").value = "";
+    currentEditingCarId = null;
+}
+
+async function manageCarImages(id) { const response = await fetch("https://api.bbacars.uz/cars"); const cars = await response.json();
+const car = cars.find(item => item.id == id);
+
+if (!car) {
+    alert("Avtomobil topilmadi!");
+    return;
+}
+
+currentEditingCarId = id;
+
+showEditImages(car);
+
+document.getElementById("editModal").style.display = "block";
+}
+
 async function editCar(id) {
     const response = await fetch("https://api.bbacars.uz/cars");
     const cars = await response.json();
