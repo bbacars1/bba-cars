@@ -15,10 +15,31 @@ color:white;
 }
 
 header{
-background:#1f2937;
-padding:20px;
-font-size:24px;
-font-weight:bold;
+    background:#1f2937;
+    padding:18px 30px;
+    font-size:22px;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid #374151;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+header button{
+    background:#111827;
+    color:white;
+    border:1px solid #374151;
+    padding:10px 16px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:14px;
+}
+
+header button:hover{
+    background:#374151;
 }
 
 .container{
@@ -26,11 +47,35 @@ padding:30px;
 }
 
 .card{
-background:#1f2937;
-padding:25px;
-border-radius:15px;
-margin-bottom:20px;
-font-size:22px;
+    background:#1f2937;
+    padding:22px 24px;
+    border-radius:16px;
+    margin-bottom:18px;
+    font-size:18px;
+    border:1px solid #374151;
+    box-shadow:0 10px 30px rgba(0,0,0,0.18);
+    transition:0.2s ease;
+}
+
+.card:hover{
+    transform:translateY(-2px);
+    border-color:#4b5563;
+}
+
+.add-car-grid{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:14px 18px;
+}
+
+.add-car-grid br{
+    display:none;
+}
+
+.add-car-grid input,
+.add-car-grid select{
+    width:100%;
+    box-sizing:border-box;
 }
 
 #carEditModal input,
@@ -73,6 +118,10 @@ font-size:22px;
     #carEditModal > div > div {
         grid-template-columns: 1fr !important;
     }
+
+    .add-car-grid{
+    grid-template-columns:1fr;
+}
 }
 
 
@@ -123,7 +172,7 @@ font-size:22px;
 👤 Administrator
 </div>
 <h2>🚗 Yangi avtomobil qo'shish</h2>
-
+<div class="add-car-grid">
 <input type="text" id="name" placeholder="Avtomobil nomi"><br><br>
 
 <input type="text" id="brand" placeholder="Brend"><br><br>
@@ -210,6 +259,7 @@ font-size:22px;
     <option value="new">YANGI</option>
 </select>
 <br><br>
+</div>
 <input type="file" id="image" accept="image/*" multiple><br><br>
 
 <button onclick="addCar()">Saqlash</button>
