@@ -33,6 +33,50 @@ margin-bottom:20px;
 font-size:22px;
 }
 
+#carEditModal input,
+#carEditModal select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid #374151;
+    background: #111827;
+    color: white;
+    font-size: 14px;
+    outline: none;
+}
+
+#carEditModal input:focus,
+#carEditModal select:focus {
+    border-color: #6b7280;
+}
+
+#carEditModal button {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 18px;
+}
+
+#carEditModal .car-edit-grid br {
+    display: none;
+}
+
+@media (max-width: 700px) {
+    #carEditModal > div {
+        margin: 10px auto;
+        padding: 20px !important;
+    }
+
+    #carEditModal > div > div {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+
+
 </style>
 
 </head>
@@ -298,14 +342,21 @@ font-size:22px;
 ">
 
     <div style="
-        max-width:700px;
-        margin:30px auto;
-        background:#1f2937;
-        padding:25px;
-        border-radius:15px;
-    ">
+    max-width:900px;
+    margin:30px auto;
+    background:#1f2937;
+    padding:30px;
+    border-radius:18px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.35);
+">
 
         <h2>✏️ Avtomobil ma'lumotlarini tahrirlash</h2>
+        
+        <div class="car-edit-grid" style="
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:14px 18px;
+">
 
         <input type="text" id="editName" placeholder="Avtomobil nomi"><br><br>
 
@@ -405,7 +456,13 @@ font-size:22px;
     <option value="no">Yo‘q</option>
 </select>
 <br><br>
-
+        </div>
+<div style="
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+">
+        
         <button type="button" onclick="saveCarEdit()">
             ✅ Saqlash
         </button>
@@ -413,7 +470,7 @@ font-size:22px;
         <button type="button" onclick="closeCarEditModal()">
             ❌ Bekor qilish
         </button>
-
+        </div>
     </div>
 </div>
 
