@@ -173,6 +173,23 @@ font-size:22px;
 
 <h2>Avtomobillar ro'yxati</h2>
 
+<input
+    type="text"
+    id="adminCarSearch"
+    placeholder="Avtomobil yoki brend bo‘yicha qidirish..."
+    style="
+        width:100%;
+        max-width:500px;
+        padding:12px 14px;
+        margin:10px 0 20px;
+        border-radius:10px;
+        border:1px solid #374151;
+        background:#111827;
+        color:white;
+        font-size:15px;
+    "
+>
+
 <table border="1" width="100%" id="carsTable">
     <thead>
         <tr>
@@ -300,6 +317,21 @@ fetch("https://api.bbacars.uz/admin/check", {
 }
 
 loadCars();
+
+const adminCarSearch = document.getElementById("adminCarSearch");
+if (adminCarSearch) { adminCarSearch.addEventListener("input", function () { const searchValue = this.value.toLowerCase().trim(); const rows = document.querySelectorAll("#carsTable tbody tr");
+    rows.forEach(row => {
+        const name = row.children[1]?.textContent.toLowerCase() || "";
+        const brand = row.children[2]?.textContent.toLowerCase() || "";
+
+        const matches =
+            name.includes(searchValue) ||
+            brand.includes(searchValue);
+
+        row.style.display = matches ? "" : "none";
+    });
+});
+}
 
 async function changeCarStatus(id, status) {
     const response = await fetch(
