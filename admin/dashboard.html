@@ -229,6 +229,16 @@ font-size:22px;
     </tbody>
 </table>
 
+<div id="adminPagination" style="
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+    margin:25px 0;
+    flex-wrap:wrap;
+">
+</div>
+
 <!-- TAHRIRLASH OYNASI -->
 <div id="editModal" style="
     display:none;
@@ -333,6 +343,9 @@ fetch("https://api.bbacars.uz/admin/check", {
         </tr>
     `;
 });
+
+filterAdminCars();
+
 }
 
 loadCars();
@@ -371,11 +384,14 @@ function filterAdminCars() {
             (statusValue === "none" && status === "") ||
             status === statusValue;
 
-        row.style.display =
-            matchesSearch && matchesType && matchesStatus
-                ? ""
-                : "none";
+        if (matchesSearch && matchesType && matchesStatus) {
+    row.dataset.filtered = "visible";
+} else {
+    row.dataset.filtered = "hidden";
+}
     });
+    adminCurrentPage = 1;
+updateAdminPagination();
 }
 
 if (adminCarSearch) {
@@ -390,7 +406,86 @@ if (adminStatusFilter) {
     adminStatusFilter.addEventListener("change", filterAdminCars);
 }
 
+let adminCurrentPage = 1;
+const adminRowsPerPage = 10;
 
+function updateAdminPagination() {
+    const rows = Array.from(
+        document.querySelectorAll("#carsTable tbody tr")
+    );
+
+    const visibleRows = rows.filter(row => {
+        return row.dataset.filtered !== "hidden";
+    });
+
+    const totalPages = Math.max(
+        1,
+        Math.ceil(visibleRows.length / adminRowsPerPage)
+    );
+
+    if (adminCurrentPage > totalPages) {
+        adminCurrentPage = totalPages;
+    }
+
+    rows.forEach(row => {
+        row.style.display = "none";
+    });
+
+    const start = (adminCurrentPage - 1) * adminRowsPerPage;
+    const end = start + adminRowsPerPage;
+
+    visibleRows.slice(start, end).forEach(row => {
+        row.style.display = "";
+    });
+
+    const pagination = document.getElementById("adminPagination");
+
+    if (!pagination) return;
+
+    pagination.innerHTML = "";
+
+    const prevButton = document.createElement("button");
+    prevButton.textContent = "← Oldingi";
+    prevButton.disabled = adminCurrentPage === 1;
+
+    prevButton.onclick = () => {
+        if (adminCurrentPage > 1) {
+            adminCurrentPage--;
+            updateAdminPagination();
+        }
+    };
+
+    pagination.appendChild(prevButton);
+
+    for (let i = 1; i <= totalPages; i++) {
+        const button = document.createElement("button");
+        button.textContent = i;
+
+        if (i === adminCurrentPage) {
+            button.style.fontWeight = "700";
+        }
+
+        button.onclick = () => {
+            adminCurrentPage = i;
+            updateAdminPagination();
+        };
+
+        pagination.appendChild(button);
+    }
+
+    const nextButton = document.createElement("button");
+    nextButton.textContent = "Keyingi →";
+    nextButton.disabled = adminCurrentPage === totalPages;
+
+    nextButton.onclick = () => {
+        if (adminCurrentPage < totalPages) {
+            adminCurrentPage++;
+            updateAdminPagination();
+        }
+    };
+
+    pagination.appendChild(nextButton);
+}
 
 async function changeCarStatus(id, status) {
     const response = await fetch(
