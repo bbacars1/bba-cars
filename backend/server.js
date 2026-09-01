@@ -403,6 +403,101 @@ app.delete("/cars/:id/images/:index", requireAdmin, async (req, res) => {
     }
 });
 
+app.post(
+    "/cars/:id/images",
+    requireAdmin,
+    upload.array("images", 10),
+    async (req, res) => {
+        try {
+            const { id } = req.params;
+
+            const [rows] = await db.query(
+                "SELECT image, images FROM cars WHERE id = ?",
+                [id]
+            );
+
+            if (rows.length === 0) {
+                return res.status(404).json({
+                    success: false,
+                    message: "Avtomobil topilmadi"
+                });
+            }
+
+            let currentImages = [];
+
+            try {
+                currentImages = rows[0].images
+                    ? JSON.parse(rows[0].images)
+                    : [];
+            } catch (error) {
+                currentImages = [];
+            }
+
+            if (!Array.isArray(currentImages)) {
+                currentImages = [];
+            }
+
+            const newFiles = req.files || [];
+
+            if (newFiles.length === 0) {
+                return res.status(400).json({
+                    success: false,
+                    message: "Yangi rasm tanlanmagan"
+                });
+            }
+
+            if (currentImages.length + newFiles.length > 10) {
+                return res.status(400).json({
+                    success: false,
+                    message: "Jami rasmlar soni 10 tadan oshmasligi kerak"
+                });
+            }
+
+            const newImageUrls = [];
+
+            for (const file of newFiles) {
+                const uploadResponse = await imageKit.files.upload({
+                    file: file.buffer.toString("base64"),
+                    fileName: Date.now() + "-" + file.originalname,
+                    folder: "/bba-cars"
+                });
+
+                newImageUrls.push(uploadResponse.url);
+            }
+
+            const allImages = [
+                ...currentImages,
+                ...newImageUrls
+            ];
+
+            const mainImage = allImages[0] || "";
+
+            await db.query(
+                "UPDATE cars SET image = ?, images = ? WHERE id = ?",
+                [
+                    mainImage,
+                    JSON.stringify(allImages),
+                    id
+                ]
+            );
+
+            res.json({
+                success: true,
+                message: "Yangi rasmlar qo‘shildi",
+                images: allImages
+            });
+
+        } catch (err) {
+            console.error("Yangi rasm qo‘shishda xato:", err);
+
+            res.status(500).json({
+                success: false,
+                message: err.message
+            });
+        }
+    }
+);
+
 app.put("/cars/:id", requireAdmin, async (req, res) => {
     try {
         const { id } = req.params;
