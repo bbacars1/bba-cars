@@ -76,6 +76,13 @@ padding:30px;
 .add-car-grid select{
     width:100%;
     box-sizing:border-box;
+    background:#111827;
+    color:white;
+    border:1px solid #374151;
+    padding:12px 14px;
+    border-radius:10px;
+    font-size:14px;
+    outline:none;
 }
 
 #carEditModal input,
@@ -107,6 +114,110 @@ padding:30px;
 
 #carEditModal .car-edit-grid br {
     display: none;
+}
+
+#image{
+    margin-top:16px;
+    color:#d1d5db;
+}
+
+button[onclick="addCar()"]{
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:10px;
+    font-weight:600;
+    cursor:pointer;
+    margin-top:12px;
+}
+
+button[onclick="addCar()"]:hover{
+    background:#1d4ed8;
+}
+
+#adminCarSearch,
+#adminFuelFilter,
+#adminStatusFilter{
+    background:#111827;
+    color:white;
+    border:1px solid #374151;
+    padding:12px 14px;
+    border-radius:10px;
+    font-size:14px;
+    outline:none;
+}
+
+#adminCarSearch:focus,
+#adminFuelFilter:focus,
+#adminStatusFilter:focus{
+    border-color:#6b7280;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    overflow:hidden;
+    border-radius:14px;
+    background:#111827;
+}
+
+th,
+td{
+    padding:12px 14px;
+    border-bottom:1px solid #374151;
+    text-align:left;
+    font-size:14px;
+}
+
+th{
+    background:#1f2937;
+    color:#f9fafb;
+    font-weight:600;
+}
+
+td{
+    color:#d1d5db;
+}
+
+tbody tr:hover{
+    background:#1f2937;
+}
+
+table button{
+    border:none;
+    padding:8px 10px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:13px;
+    margin:2px;
+}
+
+table button:hover{
+    opacity:0.85;
+}
+
+#adminPagination{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+    margin-top:18px;
+    flex-wrap:wrap;
+}
+
+#adminPagination button{
+    background:#111827;
+    color:white;
+    border:1px solid #374151;
+    padding:9px 12px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:13px;
+}
+
+#adminPagination button:hover{
+    background:#1f2937;
 }
 
 @media (max-width: 700px) {
