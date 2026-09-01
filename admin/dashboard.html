@@ -274,7 +274,14 @@ fetch("https://api.bbacars.uz/admin/check", {
             <td>${car.price}</td>
             <td>${car.year || ""}</td>
             <td>${car.type || "petrol"}</td>
-            <td>${car.status || ""}</td>
+            <td>
+    <select onchange="changeCarStatus(${car.id}, this.value)">
+        <option value="" ${!car.status ? "selected" : ""}>Status yo‘q</option>
+        <option value="top" ${car.status === "top" ? "selected" : ""}>TOP</option>
+        <option value="discount" ${car.status === "discount" ? "selected" : ""}>CHEGIRMA</option>
+        <option value="new" ${car.status === "new" ? "selected" : ""}>YANGI</option>
+    </select>
+</td>
             <td><img src="${car.image ? (car.image.startsWith("http") ? car.image : "https://api.bbacars.uz" + car.image) : ""}" width="80"></td>
             <td>
     <button onclick="editCar(${car.id})">
@@ -293,6 +300,32 @@ fetch("https://api.bbacars.uz/admin/check", {
 }
 
 loadCars();
+
+async function changeCarStatus(id, status) {
+    const response = await fetch(
+        "https://api.bbacars.uz/cars/" + id + "/status",
+        {
+            method: "PUT",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                status: status
+            })
+        }
+    );
+
+    const data = await response.json();
+
+    if (!data.success) {
+        alert(data.message || "Statusni o‘zgartirishda xatolik!");
+        loadCars();
+        return;
+    }
+
+    loadCars();
+}
 
 async function loadOrders() {
      const response = await fetch("https://api.bbacars.uz/admin/orders", {

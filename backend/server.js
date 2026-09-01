@@ -511,6 +511,47 @@ app.post(
     }
 );
 
+app.put("/cars/:id/status", requireAdmin, async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { status } = req.body;
+
+        const allowedStatuses = ["", "top", "discount", "new"];
+
+        if (!allowedStatuses.includes(status)) {
+            return res.status(400).json({
+                success: false,
+                message: "Noto‘g‘ri status"
+            });
+        }
+
+        const [result] = await db.query(
+            "UPDATE cars SET status = ? WHERE id = ?",
+            [status || null, id]
+        );
+
+        if (result.affectedRows === 0) {
+            return res.status(404).json({
+                success: false,
+                message: "Avtomobil topilmadi"
+            });
+        }
+
+        res.json({
+            success: true,
+            message: "Status yangilandi"
+        });
+
+    } catch (err) {
+        console.error("Status yangilashda xato:", err);
+
+        res.status(500).json({
+            success: false,
+            message: err.message
+        });
+    }
+});
+
 app.put("/cars/:id", requireAdmin, async (req, res) => {
     try {
         const { id } = req.params;
