@@ -603,7 +603,36 @@ app.put("/cars/:id", requireAdmin, async (req, res) => {
 } = req.body;
 
         const [result] = await db.query( "UPDATE cars SET name = ?, brand = ?, price = ?, type = ?, year = ?, status = ?, `range` = ?, battery = ?, engine = ?, drive = ?, power = ?, acceleration = ?, maxSpeed = ?, seats = ?, length = ?, wheelbase = ?, fridge = ?, hud = ?, faceId = ?, massage = ?, camera360 = ?, seatHeating = ?, seatVentilation = ?, airSuspension = ? WHERE id = ?", 
-          [ name, brand, price, type, year, status, range, battery, engine, drive, power, acceleration, maxSpeed, seats, length, wheelbase, fridge, hud, faceId, massage, camera360, seatHeating, seatVentilation, airSuspension, id ] );
+          [
+  name,
+  brand,
+  price,
+  type,
+  year,
+
+  status || null,
+  range || null,
+  battery || null,
+  engine || null,
+  drive || null,
+  power || null,
+  acceleration || null,
+  maxSpeed || null,
+  seats || null,
+  length || null,
+  wheelbase || null,
+  fridge || null,
+  hud || null,
+  faceId || null,
+  massage || null,
+  camera360 || null,
+  seatHeating || null,
+  seatVentilation || null,
+  airSuspension || null,
+
+  id
+]
+);
 
         console.log("EDIT ID:", id);
         console.log("EDIT RESULT:", result);
