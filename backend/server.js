@@ -328,6 +328,81 @@ app.delete("/cars/:id", requireAdmin, async (req, res) => {
     });
   }
 });
+
+app.delete("/cars/:id/images/:index", requireAdmin, async (req, res) => {
+    try {
+        const { id, index } = req.params;
+
+        const [rows] = await db.query(
+            "SELECT image, images FROM cars WHERE id = ?",
+            [id]
+        );
+
+        if (rows.length === 0) {
+            return res.status(404).json({
+                success: false,
+                message: "Avtomobil topilmadi"
+            });
+        }
+
+        const car = rows[0];
+
+        let images = [];
+
+        try {
+            images = car.images ? JSON.parse(car.images) : [];
+        } catch (error) {
+            images = [];
+        }
+
+        if (!Array.isArray(images)) {
+            images = [];
+        }
+
+        const imageIndex = Number(index);
+
+        if (
+            imageIndex < 0 ||
+            imageIndex >= images.length
+        ) {
+            return res.status(400).json({
+                success: false,
+                message: "Rasm topilmadi"
+            });
+        }
+
+        images.splice(imageIndex, 1);
+
+        const mainImage =
+            images.length > 0
+                ? images[0]
+                : "";
+
+        await db.query(
+            "UPDATE cars SET image = ?, images = ? WHERE id = ?",
+            [
+                mainImage,
+                JSON.stringify(images),
+                id
+            ]
+        );
+
+        res.json({
+            success: true,
+            message: "Rasm o‘chirildi",
+            images: images
+        });
+
+    } catch (err) {
+        console.error("Rasm o‘chirishda xato:", err);
+
+        res.status(500).json({
+            success: false,
+            message: err.message
+        });
+    }
+});
+
 app.put("/cars/:id", requireAdmin, async (req, res) => {
     try {
         const { id } = req.params;

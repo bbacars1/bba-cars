@@ -529,12 +529,48 @@ function showEditImages(car) {
                     "
                 >
 
-                <button type="button">
-                    🗑️ ${index + 1}-rasm
-                </button>
+                <button
+    type="button"
+    onclick="deleteCarImage(${index})"
+>
+    🗑️ ${index + 1}-rasm
+</button>
             </div>
         `;
     });
+}
+
+async function deleteCarImage(index) {
+    if (currentEditingCarId === null) return;
+
+    const confirmDelete = confirm("Bu rasmni o‘chirishni xohlaysizmi?");
+    if (!confirmDelete) return;
+
+    const response = await fetch(
+        `https://api.bbacars.uz/cars/${currentEditingCarId}/images/${index}`,
+        {
+            method: "DELETE",
+            credentials: "include"
+        }
+    );
+
+    const data = await response.json();
+
+    if (!data.success) {
+        alert(data.message || "Rasmni o‘chirishda xatolik!");
+        return;
+    }
+
+    const carsResponse = await fetch("https://api.bbacars.uz/cars");
+    const cars = await carsResponse.json();
+
+    const car = cars.find(item => item.id == currentEditingCarId);
+
+    if (car) {
+        showEditImages(car);
+    }
+
+    loadCars();
 }
 
 function closeEditModal() {
