@@ -185,17 +185,23 @@ tbody tr:hover{
 }
 
 table button{
-    border:none;
-    padding:8px 10px;
+    background:#1f2937;
+    color:#f9fafb;
+    border:1px solid #4b5563;
+    padding:8px 11px;
     border-radius:8px;
     cursor:pointer;
     font-size:13px;
     margin:2px;
+    transition:0.2s ease;
 }
 
 table button:hover{
-    opacity:0.85;
+    background:#374151;
+    border-color:#6b7280;
 }
+
+
 
 #adminPagination{
     display:flex;
@@ -218,6 +224,16 @@ table button:hover{
 
 #adminPagination button:hover{
     background:#1f2937;
+}
+
+table select{
+    background:#111827;
+    color:white;
+    border:1px solid #4b5563;
+    padding:7px 9px;
+    border-radius:8px;
+    font-size:13px;
+    outline:none;
 }
 
 @media (max-width: 700px) {
