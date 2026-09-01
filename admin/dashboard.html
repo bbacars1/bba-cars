@@ -190,6 +190,25 @@ font-size:22px;
     "
 >
 
+<div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:20px;">
+
+    <select id="adminTypeFilter">
+        <option value="all">Barcha yoqilg‘i</option>
+        <option value="electric">Elektr</option>
+        <option value="hybrid">Gibrid</option>
+        <option value="petrol">Benzin</option>
+    </select>
+
+    <select id="adminStatusFilter">
+        <option value="all">Barcha status</option>
+        <option value="top">TOP</option>
+        <option value="discount">CHEGIRMA</option>
+        <option value="new">YANGI</option>
+        <option value="none">Status yo‘q</option>
+    </select>
+
+</div>
+
 <table border="1" width="100%" id="carsTable">
     <thead>
         <tr>
@@ -319,19 +338,59 @@ fetch("https://api.bbacars.uz/admin/check", {
 loadCars();
 
 const adminCarSearch = document.getElementById("adminCarSearch");
-if (adminCarSearch) { adminCarSearch.addEventListener("input", function () { const searchValue = this.value.toLowerCase().trim(); const rows = document.querySelectorAll("#carsTable tbody tr");
+const adminTypeFilter = document.getElementById("adminTypeFilter");
+const adminStatusFilter = document.getElementById("adminStatusFilter");
+
+function filterAdminCars() {
+    const searchValue =
+        adminCarSearch?.value.toLowerCase().trim() || "";
+
+    const typeValue = adminTypeFilter?.value || "all";
+    const statusValue = adminStatusFilter?.value || "all";
+
+    const rows = document.querySelectorAll("#carsTable tbody tr");
+
     rows.forEach(row => {
         const name = row.children[1]?.textContent.toLowerCase() || "";
         const brand = row.children[2]?.textContent.toLowerCase() || "";
+        const type = row.children[5]?.textContent.toLowerCase() || "";
 
-        const matches =
+        const statusSelect = row.children[6]?.querySelector("select");
+        const status = statusSelect ? statusSelect.value : "";
+
+        const matchesSearch =
             name.includes(searchValue) ||
             brand.includes(searchValue);
 
-        row.style.display = matches ? "" : "none";
+        const matchesType =
+            typeValue === "all" ||
+            type === typeValue;
+
+        const matchesStatus =
+            statusValue === "all" ||
+            (statusValue === "none" && status === "") ||
+            status === statusValue;
+
+        row.style.display =
+            matchesSearch && matchesType && matchesStatus
+                ? ""
+                : "none";
     });
-});
 }
+
+if (adminCarSearch) {
+    adminCarSearch.addEventListener("input", filterAdminCars);
+}
+
+if (adminTypeFilter) {
+    adminTypeFilter.addEventListener("change", filterAdminCars);
+}
+
+if (adminStatusFilter) {
+    adminStatusFilter.addEventListener("change", filterAdminCars);
+}
+
+
 
 async function changeCarStatus(id, status) {
     const response = await fetch(
