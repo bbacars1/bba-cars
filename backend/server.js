@@ -146,6 +146,7 @@ app.set("trust proxy", 1);
 app.use(cors({
     origin: [
   "http://localhost:3000",
+  "http://127.0.0.1:5500",
   "https://bbacars.uz",
   "https://www.bbacars.uz",
   "https://bba-cars-1.onrender.com"
