@@ -2,32 +2,21 @@
 <html lang="uz">
 
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-    <title>Avtomobil | BBA CARS</title>
+  <title>Xizmatlar | BBA CARS</title>
 
-   <link rel="stylesheet" href="style-v2.css">
-
-<link
-    rel="stylesheet"
-    href="car-detail.css?v=20260905-1"
->
+  <link rel="stylesheet" href="style-v2.css">
 </head>
 
+<body class="services-page">
 
-<body class="bba-detail-page">
-
-
-<!-- =========================
-     HEADER
-========================= -->
-
-<header class="site-header">
+  <header class="site-header">
 
     <div class="header-container">
 
@@ -192,64 +181,271 @@
 
 </header>
 
+  <main>
+
 
 <!-- =========================
-     MAIN
+     SERVICES HERO
 ========================= -->
 
-<main class="detail-page-main">
+<section class="services-hero">
+  <div class="services-hero-inner">
 
-    <div class="detail-page-container">
+    <div class="services-hero-copy">
 
+      <span class="services-kicker">
+        BBA CARS XIZMATLARI
+      </span>
 
-        <!-- BREADCRUMB -->
+      <h1>
+        Avtomobil tanlashdan
+        xaridgacha — bir joyda.
+      </h1>
 
-        <div
-            class="detail-breadcrumb"
-            id="detailBreadcrumb"
-        >
+      <p>
+        BBA CARS sizga avtomobil tanlash, xarid qilish
+        va kerakli xizmatlardan foydalanish jarayonini
+        sodda va qulay qiladi.
+      </p>
 
-            <a href="index.html">
-                Bosh sahifa
-            </a>
+      <div class="services-hero-actions">
 
-            <span>›</span>
+        <a href="#services-list"
+           class="services-btn services-btn-dark">
+          Xizmatlarni ko‘rish
+        </a>
 
-            <a href="index.html#cars">
-                Avtomobillar
-            </a>
+        <a href="#services-contact"
+           class="services-btn services-btn-light">
+          Bog‘lanish
+        </a>
 
-            <span>›</span>
-
-            <span id="breadcrumbBrand">
-                BBA CARS
-            </span>
-
-            <span>›</span>
-
-            <strong id="breadcrumbCar">
-                Avtomobil
-            </strong>
-
-        </div>
-
-
-
-        <!--
-            AVTOMOBIL MA'LUMOTLARI
-            car-detail.js orqali chiqadi
-        -->
-
-        <div id="carDetail">
-
-            <div class="detail-loading">
-                Avtomobil yuklanmoqda...
-            </div>
-
-        </div>
-
+      </div>
 
     </div>
+
+
+    <div class="services-hero-info">
+
+      <div class="services-hero-info-item">
+        <span>01</span>
+
+        <div>
+          <strong>Professional yondashuv</strong>
+          <p>Har bir mijoz uchun individual xizmat.</p>
+        </div>
+      </div>
+
+      <div class="services-hero-info-item">
+        <span>02</span>
+
+        <div>
+          <strong>Qulay jarayon</strong>
+          <p>Tanlovdan xaridgacha sodda va tushunarli.</p>
+        </div>
+      </div>
+
+      <div class="services-hero-info-item">
+        <span>03</span>
+
+        <div>
+          <strong>Ishonchli xizmat</strong>
+          <p>BBA CARS jamoasi doimo yoningizda.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+<!-- =========================
+     SERVICES LIST
+========================= -->
+
+<section class="services-list" id="services-list">
+  <div class="services-list-inner">
+
+    <div class="services-list-head">
+      <span class="services-section-label">BIZNING XIZMATLAR</span>
+
+      <h2>
+        Avtomobil bilan bog‘liq
+        muhim xizmatlar — bir joyda.
+      </h2>
+
+      <p>
+        BBA CARS sizga avtomobil tanlash, xarid qilish va keyingi jarayonlarda
+        qulay xizmatlardan foydalanish imkonini beradi.
+      </p>
+    </div>
+
+    <div class="services-grid">
+
+      <article class="service-card service-card-large">
+        <span class="service-number">01</span>
+
+        <div class="service-card-content">
+          <h3>Avtomobil tanlash</h3>
+
+          <p>
+            Talabingiz, byudjetingiz va ehtiyojlaringizga mos avtomobilni
+            tanlashda yordam beramiz.
+          </p>
+
+          <a href="cars.html" class="service-card-link">
+            Avtomobillarni ko‘rish
+            <span>→</span>
+          </a>
+        </div>
+      </article>
+
+
+      <article class="service-card">
+        <span class="service-number">02</span>
+
+        <div class="service-card-content">
+          <h3>Nasiya</h3>
+
+          <p>
+            Sizga mos avtomobil va nasiya imkoniyatlari bo‘yicha
+            individual taklif olishingiz mumkin.
+          </p>
+
+          <a href="nasiya.html" class="service-card-link">
+            Nasiya haqida
+            <span>→</span>
+          </a>
+        </div>
+      </article>
+
+
+      <article class="service-card">
+        <span class="service-number">03</span>
+
+        <div class="service-card-content">
+          <h3>Buyurtma asosida avtomobil</h3>
+
+          <p>
+            Kerakli model mavjud bo‘lmasa, siz xohlagan avtomobil bo‘yicha
+            buyurtma imkoniyatlarini ko‘rib chiqamiz.
+          </p>
+
+          <a href="#services-contact" class="service-card-link">
+            Bog‘lanish
+            <span>→</span>
+          </a>
+        </div>
+      </article>
+
+
+      <article class="service-card">
+        <span class="service-number">04</span>
+
+        <div class="service-card-content">
+          <h3>Trade-in</h3>
+
+          <p>
+            Mavjud avtomobilingizni baholash va yangi avtomobilga almashtirish
+            imkoniyatlari bo‘yicha maslahat beramiz.
+          </p>
+
+          <a href="#services-contact" class="service-card-link">
+            Batafsil
+            <span>→</span>
+          </a>
+        </div>
+      </article>
+
+
+      <article class="service-card">
+        <span class="service-number">05</span>
+
+        <div class="service-card-content">
+          <h3>Yetkazib berish</h3>
+
+          <p>
+            Avtomobilni yetkazib berish imkoniyatlari bo‘yicha kerakli
+            ma’lumotlarni taqdim etamiz.
+          </p>
+
+          <a href="#services-contact" class="service-card-link">
+            Ma’lumot olish
+            <span>→</span>
+          </a>
+        </div>
+      </article>
+
+
+      <article class="service-card service-card-dark">
+        <span class="service-number">06</span>
+
+        <div class="service-card-content">
+          <h3>Sotuvdan keyingi yordam</h3>
+
+          <p>
+            Xariddan keyin ham kerakli savollar va xizmatlar bo‘yicha
+            BBA CARS jamoasi bilan bog‘lanishingiz mumkin.
+          </p>
+
+          <a href="#services-contact" class="service-card-link">
+            Biz bilan bog‘lanish
+            <span>→</span>
+          </a>
+        </div>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+<!-- =========================
+     SERVICES CTA
+========================= -->
+
+<section class="services-contact" id="services-contact">
+  <div class="services-contact-inner">
+
+    <div class="services-contact-copy">
+      <span class="services-section-label">BOG‘LANISH</span>
+
+      <h2>
+        Avtomobil tanlashda
+        yordam kerakmi?
+      </h2>
+
+      <p>
+        BBA CARS jamoasi sizga mos avtomobilni tanlash va kerakli xizmatlar
+        bo‘yicha maslahat berishga tayyor.
+      </p>
+    </div>
+
+    <div class="services-contact-action">
+
+      <a href="tel:+998712001020" class="services-contact-btn">
+        Biz bilan bog‘lanish
+        <span>→</span>
+      </a>
+
+      <p>
+        +998 71 200 10 20
+      </p>
+
+    </div>
+
+  </div>
+</section>
 
 <footer class="site-footer">
 
@@ -327,119 +523,12 @@
     </div>
 
 </footer>
-
-
-</main>
-
-
-
-<!-- =========================
-     ORDER MODAL
-========================= -->
-
-<div
-    class="order-modal"
-    id="orderModal"
->
-
-    <div class="order-modal-content">
-
-        <button
-            class="order-close"
-            id="closeOrderModal"
-            type="button"
-        >
-            ×
-        </button>
-
-
-        <h2>
-            Ariza qoldirish
-        </h2>
-
-        <p>
-            Ma’lumotlaringizni kiriting.
-            Menejerimiz siz bilan bog‘lanadi.
-        </p>
-
-
-        <form id="orderForm">
-
-            <input
-                type="text"
-                id="customerName"
-                placeholder="Ismingiz"
-                autocomplete="name"
-                required
-            >
-
-
-            <input
-                type="tel"
-                id="customerPhone"
-                placeholder="+998 90 123 45 67"
-                autocomplete="tel"
-                required
-            >
-
-
-            <button
-                type="submit"
-                class="order-submit"
-            >
-                Ariza yuborish →
-            </button>
-
-        </form>
-
-    </div>
-
-</div>
-
-
-
-<!-- =========================
-     SUCCESS MODAL
-========================= -->
-
-<div
-    class="success-modal"
-    id="successModal"
->
-
-    <div class="success-modal-content">
-
-        <div class="success-icon">
-            ✓
-        </div>
-
-
-        <h2>
-            Arizangiz qabul qilindi
-        </h2>
-
-
-        <p>
-            Rahmat! Menejerimiz tez orada
-            siz bilan bog‘lanadi.
-        </p>
-
-
-        <button
-            type="button"
-            id="closeSuccessModal"
-        >
-            Tushunarli
-        </button>
-
-    </div>
-
-</div>
-
-
+  </main>
 <!-- =========================
      FOOTER
 ========================= -->
+
+
 
 
 
@@ -519,6 +608,7 @@
 
     <span>Kontakt</span>
 </a>
+
 </nav>
 
 
@@ -578,8 +668,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 </script>
-
-
 
 
 
@@ -795,14 +883,8 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
 
 </aside>
+  <script src="script.js"></script>
 
-
-<script src="car-detail.js?v=20260905-detail-1"></script>
-<script src="script.js?v=20260914-menu"></script>
-<script src="https://unpkg.com/lucide@latest"></script>
-<script>
-    lucide.createIcons();
-</script>
 </body>
 
 </html>

@@ -1,33 +1,24 @@
 <!DOCTYPE html>
-<html lang="uz">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BBA CARS</title>
+    <link rel="stylesheet" href="style-v2.css?v=20260907-3">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SDTSX9GMYZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>Avtomobil | BBA CARS</title>
-
-   <link rel="stylesheet" href="style-v2.css">
-
-<link
-    rel="stylesheet"
-    href="car-detail.css?v=20260905-1"
->
+  gtag('config', 'G-SDTSX9GMYZ');
+</script>
 </head>
+<body class="cars-page">
 
 
-<body class="bba-detail-page">
-
-
-<!-- =========================
-     HEADER
-========================= -->
-
-<header class="site-header">
+  <header class="site-header">
 
     <div class="header-container">
 
@@ -193,63 +184,435 @@
 </header>
 
 
-<!-- =========================
-     MAIN
-========================= -->
-
-<main class="detail-page-main">
-
-    <div class="detail-page-container">
 
 
-        <!-- BREADCRUMB -->
 
-        <div
-            class="detail-breadcrumb"
-            id="detailBreadcrumb"
+
+    
+
+    <main id="app">
+
+
+<section class="mobile-cars-head">
+
+    <div class="mobile-cars-title">
+        <h1>Avtomobillar</h1>
+        <p>200+ avtomobil mavjud</p>
+    </div>
+
+    <div class="mobile-cars-search-row">
+
+        <div class="mobile-cars-search">
+            <i data-lucide="search"></i>
+
+            <input
+    type="search"
+    id="mobileCarSearch"
+    placeholder="Avtomobil qidirish..."
+    aria-label="Avtomobil qidirish"
+>
+        </div>
+
+        <button
+            class="mobile-filter-open"
+            type="button"
+            aria-label="Filtrlar"
         >
+            <svg viewBox="0 0 24 24"
+     width="19"
+     height="19"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
 
-            <a href="index.html">
-                Bosh sahifa
-            </a>
+    <line x1="4" y1="7" x2="20" y2="7"></line>
+    <circle cx="9" cy="7" r="2"></circle>
 
-            <span>›</span>
+    <line x1="4" y1="17" x2="20" y2="17"></line>
+    <circle cx="15" cy="17" r="2"></circle>
 
-            <a href="index.html#cars">
-                Avtomobillar
-            </a>
+</svg>
+        </button>
 
-            <span>›</span>
+    </div>
 
-            <span id="breadcrumbBrand">
-                BBA CARS
-            </span>
+    <div class="mobile-car-categories">
+    <button class="active" type="button" data-mobile-filter="all">Barcha</button>
+    <button type="button" data-mobile-filter="electric">Elektr</button>
+    <button type="button" data-mobile-filter="hybrid">Gibrid</button>
+    <button type="button" data-mobile-filter="petrol">Benzin</button>
+</div>
 
-            <span>›</span>
+</section>
 
-            <strong id="breadcrumbCar">
-                Avtomobil
-            </strong>
 
+       <section class="catalog-hero">
+    <div class="catalog-hero-inner">
+        <h1>Avtomobillar</h1>
+        <p>Salonimizdagi mavjud avtomobillar bilan tanishing.</p>
+    </div>
+</section>
+
+
+      <section class="catalog-filter-section">
+
+    <div class="catalog-filter-bar">
+
+        <div class="catalog-search-box">
+            <span class="catalog-search-icon">⌕</span>
+
+            <input
+                type="text"
+                id="carSearch"
+                placeholder="Avtomobil qidirish..."
+            >
+
+            <button
+                type="button"
+                class="catalog-search-clear"
+                aria-label="Qidiruvni tozalash"
+            >
+                ×
+            </button>
         </div>
 
 
+        <div class="catalog-filter-select custom-select" data-filter="brand">
 
-        <!--
-            AVTOMOBIL MA'LUMOTLARI
-            car-detail.js orqali chiqadi
-        -->
+            <input type="hidden" id="brandFilter" value="">
 
-        <div id="carDetail">
+            <button class="custom-select-trigger" type="button">
+                <span>Barcha brend</span>
+                <span class="custom-select-arrow">⌄</span>
+            </button>
 
-            <div class="detail-loading">
-                Avtomobil yuklanmoqda...
+            <div class="custom-select-menu" id="brandFilterMenu">
+
+                <button
+                    type="button"
+                    class="custom-select-option"
+                    data-value=""
+                >
+                    Barchasi
+                </button>
+
             </div>
 
         </div>
 
 
+        <div class="catalog-filter-select custom-select" data-filter="type">
+
+            <input type="hidden" id="typeFilter" value="">
+
+            <button class="custom-select-trigger" type="button">
+                <span>Gibrid / Elektr</span>
+                <span class="custom-select-arrow">⌄</span>
+            </button>
+
+            <div class="custom-select-menu">
+
+                
+
+                <button
+                    type="button"
+                    class="custom-select-option"
+                    data-value="hybrid"
+                >
+                    Gibrid
+                </button>
+
+                <button
+                    type="button"
+                    class="custom-select-option"
+                    data-value="electric"
+                >
+                    Elektr
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="catalog-filter-select custom-select" data-filter="fuel">
+
+            <input type="hidden" id="fuelFilter" value="">
+
+            <button class="custom-select-trigger" type="button">
+                <span>Benzin</span>
+                <span class="custom-select-arrow">⌄</span>
+            </button>
+
+            <div class="custom-select-menu">
+
+                
+
+                <button
+                    type="button"
+                    class="custom-select-option"
+                    data-value="petrol"
+                >
+                    Benzin
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="catalog-filter-spacer"></div>
+
+
+        <button
+            type="button"
+            class="catalog-favorites-btn"
+        >
+            <span>♡</span>
+            Sevimlilar
+        </button>
+
+
+        <div class="catalog-sort-select custom-select">
+
+            <button class="custom-select-trigger" type="button">
+                <span>☷ Saralash</span>
+                <span class="custom-select-arrow">⌄</span>
+            </button>
+
+            <div class="custom-select-menu">
+
+                <button
+                    type="button"
+                    class="custom-select-option"
+                    data-sort="default"
+                >
+                    Standart
+                </button>
+
+                <button
+                    type="button"
+                    class="custom-select-option"
+                    data-sort="price-asc"
+                >
+                    Narx: arzonidan
+                </button>
+
+                <button
+                    type="button"
+                    class="custom-select-option"
+                    data-sort="price-desc"
+                >
+                    Narx: qimmatidan
+                </button>
+
+            </div>
+
+        </div>
+
     </div>
+
+</section>     
+
+
+    <section class="cars-section" id="cars">
+
+    <div class="cars-section-inner">
+
+        
+
+        <div class="cars-container" id="carsContainer"></div>
+<div class="catalog-load-more-wrap">
+    <button
+        type="button"
+        class="catalog-load-more-btn"
+        id="catalogLoadMoreBtn"
+    >
+        Yana ko‘rsatish
+    </button>
+</div>
+    </div>
+
+</section>
+
+
+<div class="compare-bar" id="compareBar">
+
+    <div class="compare-bar-inner">
+
+        <div class="compare-bar-info">
+            <strong id="compareCount">0 ta avtomobil tanlandi</strong>
+            <span>Taqqoslash uchun 2 yoki 3 ta avtomobil tanlang</span>
+        </div>
+
+        <div class="compare-bar-actions">
+
+            <button
+                type="button"
+                class="compare-clear-btn"
+                id="compareClearBtn"
+            >
+                Tozalash
+            </button>
+
+            <button
+                type="button"
+                class="compare-open-btn"
+                id="compareOpenBtn"
+            >
+                Taqqoslash →
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =========================
+     MOBILE FILTER SHEET
+========================= -->
+
+<div class="mobile-filter-overlay" id="mobileFilterOverlay"></div>
+
+<section class="mobile-filter-sheet" id="mobileFilterSheet">
+
+    <div class="mobile-filter-sheet-head">
+
+        <div>
+            <p>Avtomobillar</p>
+            <h2>Filtrlar</h2>
+        </div>
+
+        <button
+            type="button"
+            class="mobile-filter-close"
+            id="mobileFilterClose"
+            aria-label="Yopish"
+        >
+            <i data-lucide="x"></i>
+        </button>
+
+    </div>
+
+    <div class="mobile-filter-sheet-body">
+
+        <div class="mobile-filter-group">
+            <label for="mobileBrandFilter">Brend</label>
+
+            <div class="mobile-custom-select" id="mobileBrandSelect">
+
+    <button
+        type="button"
+        class="mobile-custom-select-trigger"
+        id="mobileBrandTrigger"
+    >
+        <span>Barcha brendlar</span>
+
+        <i data-lucide="chevron-down"></i>
+    </button>
+
+    <div
+        class="mobile-custom-select-menu"
+        id="mobileBrandMenu"
+    >
+    </div>
+
+    <input
+        type="hidden"
+        id="mobileBrandFilter"
+        value=""
+    >
+
+</div>
+        </div>
+
+        <div class="mobile-filter-group">
+            <label for="mobileTypeFilter">Avtomobil turi</label>
+
+            <div class="mobile-custom-select" id="mobileTypeSelect">
+
+    <button
+        type="button"
+        class="mobile-custom-select-trigger"
+        id="mobileTypeTrigger"
+    >
+        <span>Barchasi</span>
+
+        <i data-lucide="chevron-down"></i>
+    </button>
+
+    <div
+        class="mobile-custom-select-menu"
+        id="mobileTypeMenu"
+    >
+        <button
+            type="button"
+            class="mobile-custom-select-option mobile-type-option active"
+            data-value=""
+        >
+            Barchasi
+        </button>
+
+        <button
+            type="button"
+            class="mobile-custom-select-option mobile-type-option"
+            data-value="electric"
+        >
+            Elektr
+        </button>
+
+        <button
+            type="button"
+            class="mobile-custom-select-option mobile-type-option"
+            data-value="hybrid"
+        >
+            Gibrid
+        </button>
+
+        <button
+            type="button"
+            class="mobile-custom-select-option mobile-type-option"
+            data-value="petrol"
+        >
+            Benzin
+        </button>
+    </div>
+
+    <input
+        type="hidden"
+        id="mobileTypeFilter"
+        value=""
+    >
+
+</div>
+        </div>
+
+    </div>
+
+    <div class="mobile-filter-sheet-actions">
+
+        <button
+            type="button"
+            class="mobile-filter-reset"
+            id="mobileFilterReset"
+        >
+            Tozalash
+        </button>
+
+        <button
+            type="button"
+            class="mobile-filter-apply"
+            id="mobileFilterApply"
+        >
+            Natijalarni ko‘rsatish
+        </button>
+
+    </div>
+
+</section>
 
 <footer class="site-footer">
 
@@ -328,118 +691,13 @@
 
 </footer>
 
-
 </main>
-
-
-
-<!-- =========================
-     ORDER MODAL
-========================= -->
-
-<div
-    class="order-modal"
-    id="orderModal"
->
-
-    <div class="order-modal-content">
-
-        <button
-            class="order-close"
-            id="closeOrderModal"
-            type="button"
-        >
-            ×
-        </button>
-
-
-        <h2>
-            Ariza qoldirish
-        </h2>
-
-        <p>
-            Ma’lumotlaringizni kiriting.
-            Menejerimiz siz bilan bog‘lanadi.
-        </p>
-
-
-        <form id="orderForm">
-
-            <input
-                type="text"
-                id="customerName"
-                placeholder="Ismingiz"
-                autocomplete="name"
-                required
-            >
-
-
-            <input
-                type="tel"
-                id="customerPhone"
-                placeholder="+998 90 123 45 67"
-                autocomplete="tel"
-                required
-            >
-
-
-            <button
-                type="submit"
-                class="order-submit"
-            >
-                Ariza yuborish →
-            </button>
-
-        </form>
-
-    </div>
-
-</div>
-
-
-
-<!-- =========================
-     SUCCESS MODAL
-========================= -->
-
-<div
-    class="success-modal"
-    id="successModal"
->
-
-    <div class="success-modal-content">
-
-        <div class="success-icon">
-            ✓
-        </div>
-
-
-        <h2>
-            Arizangiz qabul qilindi
-        </h2>
-
-
-        <p>
-            Rahmat! Menejerimiz tez orada
-            siz bilan bog‘lanadi.
-        </p>
-
-
-        <button
-            type="button"
-            id="closeSuccessModal"
-        >
-            Tushunarli
-        </button>
-
-    </div>
-
-</div>
 
 
 <!-- =========================
      FOOTER
 ========================= -->
+
 
 
 
@@ -519,6 +777,7 @@
 
     <span>Kontakt</span>
 </a>
+
 </nav>
 
 
@@ -578,9 +837,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 </script>
-
-
-
 
 
 
@@ -797,12 +1053,12 @@ document.addEventListener("DOMContentLoaded", () => {
 </aside>
 
 
-<script src="car-detail.js?v=20260905-detail-1"></script>
-<script src="script.js?v=20260914-menu"></script>
+    <script src="script.js?v=20260913-2"></script>
 <script src="https://unpkg.com/lucide@latest"></script>
 <script>
     lucide.createIcons();
 </script>
+
 </body>
 
 </html>

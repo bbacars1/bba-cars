@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="uz">
-
 <head>
     <meta charset="UTF-8">
 
@@ -9,25 +8,17 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Avtomobil | BBA CARS</title>
+    <title>Taqqoslash | BBA CARS</title>
 
-   <link rel="stylesheet" href="style-v2.css">
-
-<link
-    rel="stylesheet"
-    href="car-detail.css?v=20260905-1"
->
+    <link
+        rel="stylesheet"
+        href="style-v2.css?v=20260910-1"
+    >
 </head>
 
+<body class="compare-page">
 
-<body class="bba-detail-page">
-
-
-<!-- =========================
-     HEADER
-========================= -->
-
-<header class="site-header">
+    <header class="site-header">
 
     <div class="header-container">
 
@@ -193,64 +184,44 @@
 </header>
 
 
-<!-- =========================
-     MAIN
-========================= -->
+    <main class="compare-main">
 
-<main class="detail-page-main">
+        <section class="compare-hero">
 
-    <div class="detail-page-container">
+            <div class="compare-container">
 
+                <a
+                    href="cars.html"
+                    class="compare-back-link"
+                >
+                    ← Avtomobillarga qaytish
+                </a>
 
-        <!-- BREADCRUMB -->
+                <h1>Avtomobillarni taqqoslash</h1>
 
-        <div
-            class="detail-breadcrumb"
-            id="detailBreadcrumb"
-        >
+                <p>
+                    Tanlangan avtomobillarning asosiy
+                    xususiyatlarini yonma-yon solishtiring.
+                </p>
 
-            <a href="index.html">
-                Bosh sahifa
-            </a>
-
-            <span>›</span>
-
-            <a href="index.html#cars">
-                Avtomobillar
-            </a>
-
-            <span>›</span>
-
-            <span id="breadcrumbBrand">
-                BBA CARS
-            </span>
-
-            <span>›</span>
-
-            <strong id="breadcrumbCar">
-                Avtomobil
-            </strong>
-
-        </div>
-
-
-
-        <!--
-            AVTOMOBIL MA'LUMOTLARI
-            car-detail.js orqali chiqadi
-        -->
-
-        <div id="carDetail">
-
-            <div class="detail-loading">
-                Avtomobil yuklanmoqda...
             </div>
 
-        </div>
+        </section>
 
 
-    </div>
+        <section class="compare-section">
 
+            <div class="compare-container">
+
+                <div
+                    class="compare-grid"
+                    id="compareGrid"
+                >
+                </div>
+
+            </div>
+
+        </section>
 <footer class="site-footer">
 
     <div class="site-footer-container">
@@ -327,119 +298,16 @@
     </div>
 
 </footer>
-
-
-</main>
-
-
-
-<!-- =========================
-     ORDER MODAL
-========================= -->
-
-<div
-    class="order-modal"
-    id="orderModal"
->
-
-    <div class="order-modal-content">
-
-        <button
-            class="order-close"
-            id="closeOrderModal"
-            type="button"
-        >
-            ×
-        </button>
-
-
-        <h2>
-            Ariza qoldirish
-        </h2>
-
-        <p>
-            Ma’lumotlaringizni kiriting.
-            Menejerimiz siz bilan bog‘lanadi.
-        </p>
-
-
-        <form id="orderForm">
-
-            <input
-                type="text"
-                id="customerName"
-                placeholder="Ismingiz"
-                autocomplete="name"
-                required
-            >
-
-
-            <input
-                type="tel"
-                id="customerPhone"
-                placeholder="+998 90 123 45 67"
-                autocomplete="tel"
-                required
-            >
-
-
-            <button
-                type="submit"
-                class="order-submit"
-            >
-                Ariza yuborish →
-            </button>
-
-        </form>
-
-    </div>
-
-</div>
+    </main>
 
 
 
-<!-- =========================
-     SUCCESS MODAL
-========================= -->
 
-<div
-    class="success-modal"
-    id="successModal"
->
-
-    <div class="success-modal-content">
-
-        <div class="success-icon">
-            ✓
-        </div>
-
-
-        <h2>
-            Arizangiz qabul qilindi
-        </h2>
-
-
-        <p>
-            Rahmat! Menejerimiz tez orada
-            siz bilan bog‘lanadi.
-        </p>
-
-
-        <button
-            type="button"
-            id="closeSuccessModal"
-        >
-            Tushunarli
-        </button>
-
-    </div>
-
-</div>
-
-
-<!-- =========================
+    <!-- =========================
      FOOTER
 ========================= -->
+
+
 
 
 
@@ -519,6 +387,7 @@
 
     <span>Kontakt</span>
 </a>
+
 </nav>
 
 
@@ -578,9 +447,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 </script>
-
-
-
 
 
 
@@ -796,13 +662,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </aside>
 
+    <script src="script.js?v=20260910-1"></script>
 
-<script src="car-detail.js?v=20260905-detail-1"></script>
-<script src="script.js?v=20260914-menu"></script>
-<script src="https://unpkg.com/lucide@latest"></script>
-<script>
-    lucide.createIcons();
-</script>
 </body>
-
 </html>

@@ -3,31 +3,20 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <title>Blog | BBA CARS</title>
 
-    <title>Avtomobil | BBA CARS</title>
-
-   <link rel="stylesheet" href="style-v2.css">
-
-<link
-    rel="stylesheet"
-    href="car-detail.css?v=20260905-1"
->
+    <link rel="stylesheet" href="style-v2.css">
 </head>
 
+<body>
 
-<body class="bba-detail-page">
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
 
-
-<!-- =========================
-     HEADER
-========================= -->
-
-<header class="site-header">
+   <header class="site-header">
 
     <div class="header-container">
 
@@ -193,63 +182,354 @@
 </header>
 
 
-<!-- =========================
-     MAIN
-========================= -->
 
-<main class="detail-page-main">
+    <!-- =====================================================
+         BLOG PAGE
+    ====================================================== -->
 
-    <div class="detail-page-container">
+    <main class="blog-page">
 
 
-        <!-- BREADCRUMB -->
+        <!-- =================================================
+             BLOG HERO
+        ================================================== -->
 
-        <div
-            class="detail-breadcrumb"
-            id="detailBreadcrumb"
-        >
+        <section class="blog-hero">
 
-            <a href="index.html">
-                Bosh sahifa
+            <div class="blog-hero-inner">
+
+                <div class="blog-hero-label">
+                    BBA CARS · BLOG
+                </div>
+
+
+                <h1>
+                    Avtomobil olami.<br>
+                    Foydali va muhim.
+                </h1>
+
+
+                <p>
+                    Avtomobillar, yangi modellar, nasiya va to‘g‘ri tanlov
+                    bo‘yicha BBA CARS jamoasidan foydali maqolalar.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+
+
+
+        <!-- =================================================
+     BLOG ARTICLES
+================================================== -->
+
+<section class="blog-articles">
+
+    <div class="blog-articles-inner">
+
+        <!-- SECTION TOP -->
+        <div class="blog-section-head">
+
+            <div>
+                <span class="blog-section-label">
+                    SO‘NGGI MAQOLALAR
+                </span>
+
+                <h2>
+                    Foydali maqolalar
+                </h2>
+            </div>
+
+            <a href="#" class="blog-all-link">
+                Barchasini ko‘rish →
             </a>
-
-            <span>›</span>
-
-            <a href="index.html#cars">
-                Avtomobillar
-            </a>
-
-            <span>›</span>
-
-            <span id="breadcrumbBrand">
-                BBA CARS
-            </span>
-
-            <span>›</span>
-
-            <strong id="breadcrumbCar">
-                Avtomobil
-            </strong>
 
         </div>
 
 
+        <!-- ARTICLES GRID -->
+        <div class="blog-articles-grid">
 
-        <!--
-            AVTOMOBIL MA'LUMOTLARI
-            car-detail.js orqali chiqadi
-        -->
+            <!-- FEATURED ARTICLE -->
+            <article class="blog-card blog-card-featured">
 
-        <div id="carDetail">
+                <a href="blog-detail.html" class="blog-card-image">
+                    <img
+                        src="./images/ofis.PNG"
+                        alt="Avtomobil tanlash bo‘yicha maslahatlar"
+                    >
+                </a>
 
-            <div class="detail-loading">
-                Avtomobil yuklanmoqda...
+                <div class="blog-card-content">
+
+                    <div class="blog-card-meta">
+                        <span>MASLAHATLAR</span>
+                        <span>08 SENTABR 2026</span>
+                    </div>
+
+                    <h3>
+                        Avtomobil tanlashda e’tibor berish kerak bo‘lgan 7 muhim jihat
+                    </h3>
+
+                    <p>
+                        Avtomobil xarid qilishdan oldin texnik holat, komplektatsiya,
+                        narx va foydalanish xarajatlarini qanday to‘g‘ri baholash kerak.
+                    </p>
+
+                    <a href="blog-detail.html" class="blog-card-link">
+                        Maqolani o‘qish →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- SIDE ARTICLES -->
+            <div class="blog-side-list">
+
+                <article class="blog-card-small">
+
+                    <a href="#" class="blog-small-image">
+                        <img
+                            src="./images/nasiya.PNG"
+                            alt="Avtomobilni nasiya asosida olish"
+                        >
+                    </a>
+
+                    <div class="blog-small-content">
+
+                        <div class="blog-card-meta">
+                            <span>NASIYA</span>
+                            <span>05 SENTABR 2026</span>
+                        </div>
+
+                        <h3>
+                            Avtomobilni nasiya asosida olishdan oldin nimalarni bilish kerak?
+                        </h3>
+
+                        <a href="#" class="blog-card-link">
+                            O‘qish →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <article class="blog-card-small">
+
+                    <a href="#" class="blog-small-image">
+                        <img
+                            src="./images/elektr.PNG"
+                            alt="Elektromobil tanlash"
+                        >
+                    </a>
+
+                    <div class="blog-small-content">
+
+                        <div class="blog-card-meta">
+                            <span>ELEKTROMOBIL</span>
+                            <span>01 SENTABR 2026</span>
+                        </div>
+
+                        <h3>
+                            Elektromobil tanlashda batareya va yurish masofasi qanchalik muhim?
+                        </h3>
+
+                        <a href="#" class="blog-card-link">
+                            O‘qish →
+                        </a>
+
+                    </div>
+
+                </article>
+
             </div>
 
         </div>
 
+    </div>
+
+</section>
+
+
+
+
+
+
+<!-- =================================================
+     MORE BLOG ARTICLES
+================================================== -->
+
+<section class="blog-more">
+
+    <div class="blog-more-inner">
+
+        <div class="blog-more-head">
+
+            <span class="blog-section-label">
+                KO‘PROQ MAQOLALAR
+            </span>
+
+            <h2>
+                Avtomobil haqida ko‘proq
+            </h2>
+
+        </div>
+
+
+        <div class="blog-more-grid">
+
+            <!-- CARD 1 -->
+            <article class="blog-more-card">
+
+                <a href="#" class="blog-more-image">
+                    <img
+                        src="./images/gibrid.PNG"
+                        alt="Gibrid avtomobil"
+                    >
+                </a>
+
+                <div class="blog-card-meta">
+                    <span>GIBRID</span>
+                    <span>28 AVGUST 2026</span>
+                </div>
+
+                <h3>
+                    Gibrid avtomobil kimlar uchun eng yaxshi tanlov?
+                </h3>
+
+                <p>
+                    Kundalik foydalanish, yoqilg‘i tejamkorligi va yurish masofasi
+                    bo‘yicha gibrid avtomobillarning asosiy afzalliklari.
+                </p>
+
+                <a href="#" class="blog-card-link">
+                    O‘qish →
+                </a>
+
+            </article>
+
+
+            <!-- CARD 2 -->
+            <article class="blog-more-card">
+
+                <a href="#" class="blog-more-image">
+                    <img
+                        src="./images/new.PNG"
+                        alt="Yangi avtomobil xaridi"
+                    >
+                </a>
+
+                <div class="blog-card-meta">
+                    <span>XARID</span>
+                    <span>24 AVGUST 2026</span>
+                </div>
+
+                <h3>
+                    Yangi avtomobil olayotganda komplektatsiyani qanday tanlash kerak?
+                </h3>
+
+                <p>
+                    Keraksiz opsiyalarga ortiqcha pul sarflamasdan, o‘zingizga
+                    mos komplektatsiyani tanlash bo‘yicha tavsiyalar.
+                </p>
+
+                <a href="#" class="blog-card-link">
+                    O‘qish →
+                </a>
+
+            </article>
+
+
+            <!-- CARD 3 -->
+            <article class="blog-more-card">
+
+                <a href="#" class="blog-more-image">
+                    <img
+                        src="./images/batareya.PNG"
+                        alt="Elektromobil batareyasi"
+                    >
+                </a>
+
+                <div class="blog-card-meta">
+                    <span>ELEKTROMOBIL</span>
+                    <span>20 AVGUST 2026</span>
+                </div>
+
+                <h3>
+                    Elektromobil batareyasi necha yil xizmat qiladi?
+                </h3>
+
+                <p>
+                    Batareya resursi, degradatsiya va elektromobilni uzoq muddat
+                    ishlatishda nimalarga e’tibor berish kerak.
+                </p>
+
+                <a href="#" class="blog-card-link">
+                    O‘qish →
+                </a>
+
+            </article>
+
+        </div>
 
     </div>
+
+</section>
+
+
+
+
+
+<!-- =================================================
+     BLOG CTA
+================================================== -->
+
+<section class="blog-cta">
+
+    <div class="blog-cta-inner">
+
+        <div class="blog-cta-content">
+
+            <span class="blog-cta-label">
+                BBA CARS
+            </span>
+
+            <h2>
+                Avtomobil tanlashda<br>
+                yordam kerakmi?
+            </h2>
+
+            <p>
+                Sizga mos avtomobilni tanlash, narxlar va nasiya
+                shartlari bo‘yicha menejerimizdan maslahat oling.
+            </p>
+
+        </div>
+
+
+        <div class="blog-cta-action">
+
+            <a href="kontakt.html" class="blog-cta-button">
+                Biz bilan bog‘lanish
+                <span>→</span>
+            </a>
+
+            <a href="tel:+998712001020" class="blog-cta-phone">
+                +998 71 200 10 20
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
 
 <footer class="site-footer">
 
@@ -327,119 +607,12 @@
     </div>
 
 </footer>
-
-
-</main>
-
-
-
-<!-- =========================
-     ORDER MODAL
-========================= -->
-
-<div
-    class="order-modal"
-    id="orderModal"
->
-
-    <div class="order-modal-content">
-
-        <button
-            class="order-close"
-            id="closeOrderModal"
-            type="button"
-        >
-            ×
-        </button>
-
-
-        <h2>
-            Ariza qoldirish
-        </h2>
-
-        <p>
-            Ma’lumotlaringizni kiriting.
-            Menejerimiz siz bilan bog‘lanadi.
-        </p>
-
-
-        <form id="orderForm">
-
-            <input
-                type="text"
-                id="customerName"
-                placeholder="Ismingiz"
-                autocomplete="name"
-                required
-            >
-
-
-            <input
-                type="tel"
-                id="customerPhone"
-                placeholder="+998 90 123 45 67"
-                autocomplete="tel"
-                required
-            >
-
-
-            <button
-                type="submit"
-                class="order-submit"
-            >
-                Ariza yuborish →
-            </button>
-
-        </form>
-
-    </div>
-
-</div>
-
-
-
-<!-- =========================
-     SUCCESS MODAL
-========================= -->
-
-<div
-    class="success-modal"
-    id="successModal"
->
-
-    <div class="success-modal-content">
-
-        <div class="success-icon">
-            ✓
-        </div>
-
-
-        <h2>
-            Arizangiz qabul qilindi
-        </h2>
-
-
-        <p>
-            Rahmat! Menejerimiz tez orada
-            siz bilan bog‘lanadi.
-        </p>
-
-
-        <button
-            type="button"
-            id="closeSuccessModal"
-        >
-            Tushunarli
-        </button>
-
-    </div>
-
-</div>
-
+    </main>
 
 <!-- =========================
      FOOTER
 ========================= -->
+
 
 
 
@@ -519,6 +692,7 @@
 
     <span>Kontakt</span>
 </a>
+
 </nav>
 
 
@@ -578,10 +752,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 </script>
-
-
-
-
 
 
 <!-- =========================================
@@ -796,13 +966,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </aside>
 
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
 
-<script src="car-detail.js?v=20260905-detail-1"></script>
-<script src="script.js?v=20260914-menu"></script>
-<script src="https://unpkg.com/lucide@latest"></script>
-<script>
-    lucide.createIcons();
-</script>
+    <script src="script.js"></script>
+
 </body>
 
 </html>
