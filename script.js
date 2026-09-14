@@ -217,10 +217,16 @@ for (let i = shuffledCars.length - 1; i > 0; i--) {
         [shuffledCars[j], shuffledCars[i]];
 }
 
+const isCarsPage =
+    window.location.pathname.includes("cars.html");
+
+const homeCarLimit =
+    window.innerWidth <= 720 ? 4 : 8;
+
 const carsToShow =
-    window.location.pathname.includes("cars.html")
+    isCarsPage
         ? shuffledCars
-        : shuffledCars.slice(0, 8);
+        : shuffledCars.slice(0, homeCarLimit);
 
        const isCatalogPage =
     window.location.pathname.includes("cars.html");
