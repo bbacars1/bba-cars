@@ -25,7 +25,7 @@ function getCardImageUrl(image) {
     if (!url) return "";
 
     if (url.includes("ik.imagekit.io")) {
-        return url + "?tr=w-900,q-100";
+        return url + "?tr=w-600,q-80,f-auto";
     }
 
     return url;
@@ -149,11 +149,8 @@ async function loadCars() {
     try {
 
         const response = await fetch(
-            "https://api.bbacars.uz/cars",
-            {
-                cache: "no-store"
-            }
-        );
+    "https://api.bbacars.uz/cars"
+);
 
         if (!response.ok) {
             throw new Error(
