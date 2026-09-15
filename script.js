@@ -25,7 +25,9 @@ function getCardImageUrl(image) {
     if (!url) return "";
 
     if (url.includes("ik.imagekit.io")) {
-        return url + "?tr=w-600,q-80,f-auto";
+        const width = window.innerWidth <= 720 ? 480 : 600;
+
+return url + `?tr=w-${width},q-75,f-auto`;
     }
 
     return url;
@@ -253,7 +255,7 @@ const visibleCars =
         ? catalogCars.slice(0, catalogVisibleCount)
         : carsToShow;
 
-visibleCars.forEach(car => {
+visibleCars.forEach((car, index) => {
 
             const card = document.createElement("article");
 
@@ -271,9 +273,9 @@ card.dataset.status = car.status || "";
        <img
     src="${getCardImageUrl(car.image)}"
     alt="${car.name || "BBA CARS"}"
-    loading="eager"
-    fetchpriority="high"
-    decoding="async"
+    loading="${index < 8 ? "eager" : "lazy"}"
+fetchpriority="${index < 8 ? "high" : "auto"}"
+decoding="async"
 >
 
         <div class="car-card-badges">
