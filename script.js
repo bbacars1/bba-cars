@@ -148,8 +148,11 @@ async function loadCars() {
 
     try {
 
-        const response = await fetch(
-    "https://api.bbacars.uz/cars"
+       const response = await fetch(
+    "https://api.bbacars.uz/cars",
+    {
+        cache: "force-cache"
+    }
 );
 
         if (!response.ok) {
