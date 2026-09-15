@@ -256,6 +256,8 @@ card.dataset.status = car.status || "";
     src="${getCardImageUrl(car.image)}"
     alt="${car.name || "BBA CARS"}"
     loading="eager"
+    fetchpriority="high"
+    decoding="async"
 >
 
         <div class="car-card-badges">
