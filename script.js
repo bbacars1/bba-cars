@@ -252,11 +252,11 @@ card.dataset.status = car.status || "";
 
     <div class="car-card-media">
 
-        <img
-            src="${getCardImageUrl(car.image)}"
-            alt="${car.name || "BBA CARS"}"
-            loading="lazy"
-        >
+       <img
+    src="${getCardImageUrl(car.image)}"
+    alt="${car.name || "BBA CARS"}"
+    loading="eager"
+>
 
         <div class="car-card-badges">
 
