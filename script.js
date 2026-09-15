@@ -136,34 +136,47 @@ let catalogCars = [];
 let catalogVisibleCount = 32;
 const CATALOG_PER_PAGE = 32;
 
+const CARS_CACHE_KEY = "bbaCarsCache";
+const CARS_CACHE_TIME_KEY = "bbaCarsCacheTime";
+const CARS_CACHE_MAX_AGE = 5 * 60 * 1000; // 5 daqiqa
+
+function getCachedCars() {
+    try {
+        const cachedCars = localStorage.getItem(CARS_CACHE_KEY);
+        const cachedTime = Number(
+            localStorage.getItem(CARS_CACHE_TIME_KEY) || 0
+        );
+
+        if (!cachedCars) return null;
+
+        const cars = JSON.parse(cachedCars);
+
+        if (!Array.isArray(cars) || !cars.length) {
+            return null;
+        }
+
+        return {
+            cars,
+            isFresh: Date.now() - cachedTime < CARS_CACHE_MAX_AGE
+        };
+
+    } catch (error) {
+        console.warn("Cars cache o‘qilmadi:", error);
+        return null;
+    }
+}
+
 // ======================================================
 // AVTOMOBILLARNI API DAN OLISH
 // ======================================================
 
-async function loadCars() {
+function renderCars(cars) {
 
     const container = document.getElementById("carsContainer");
 
-    if (!container) return;
+    if (!container || !Array.isArray(cars)) return;
 
-    try {
-
-       const response = await fetch(
-    "https://api.bbacars.uz/cars",
-    {
-        cache: "force-cache"
-    }
-);
-
-        if (!response.ok) {
-            throw new Error(
-                "Backend javob bermadi: " + response.status
-            );
-        }
-
-        const cars = await response.json();
-
-        // BRAND DROPDOWNNI AVTOMATIK TO'LDIRISH
+            // BRAND DROPDOWNNI AVTOMATIK TO'LDIRISH
 const brandMenu = document.getElementById("brandFilterMenu");
 
 if (brandMenu) {
@@ -564,6 +577,61 @@ if (loadMoreBtn && isCatalogPage) {
             cars.length,
             "ta avtomobil yuklandi"
         );
+}
+
+async function loadCars() {
+
+    const container = document.getElementById("carsContainer");
+
+    if (!container) return;
+
+    const cachedData = getCachedCars();
+
+if (cachedData && cachedData.cars) {
+    renderCars(cachedData.cars);
+
+    console.log(
+        "BBA CARS: cache'dan darhol yuklandi —",
+        cachedData.cars.length,
+        "ta avtomobil"
+    );
+}
+
+    try {
+
+       const response = await fetch(
+    "https://api.bbacars.uz/cars",
+    {
+        cache: "no-store"
+    }
+);
+
+        if (!response.ok) {
+            throw new Error(
+                "Backend javob bermadi: " + response.status
+            );
+        }
+
+        const cars = await response.json();
+
+        // Avtomobillarni localStorage cache'ga saqlash
+try {
+    localStorage.setItem(
+        CARS_CACHE_KEY,
+        JSON.stringify(cars)
+    );
+
+    localStorage.setItem(
+        CARS_CACHE_TIME_KEY,
+        String(Date.now())
+    );
+} catch (error) {
+    console.warn("Cars cache saqlanmadi:", error);
+}
+
+renderCars(cars);
+
+
 
 
     } catch (error) {
@@ -573,11 +641,13 @@ if (loadMoreBtn && isCatalogPage) {
             error
         );
 
-        container.innerHTML = `
-            <p>
-                Avtomobillarni yuklab bo'lmadi.
-            </p>
-        `;
+        if (!cachedData || !cachedData.cars) {
+    container.innerHTML = `
+        <p>
+            Avtomobillarni yuklab bo'lmadi.
+        </p>
+    `;
+}
     }
 }
 
