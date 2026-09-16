@@ -631,7 +631,9 @@ try {
     console.warn("Cars cache saqlanmadi:", error);
 }
 
-renderCars(cars);
+if (!cachedData || !cachedData.cars) {
+    renderCars(cars);
+}
 
 
 
