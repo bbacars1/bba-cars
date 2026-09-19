@@ -22004,3 +22004,42 @@ body:not(.cars-page) .cars-view-all {
     padding-top: 0 !important;
   }
 }
+
+
+
+/* MOBILE CAR CARD — FINAL FINE TUNE */
+@media (max-width: 720px) {
+
+  /* Kartalar orasini sal yaqinlashtiramiz */
+  .home-page .cars-section .cars-grid {
+    column-gap: 8px !important;
+    row-gap: 10px !important;
+  }
+
+  /* Pastki qismini sal ixchamlashtiramiz */
+  .home-page .cars-section .car-card-body {
+    padding-left: 9px !important;
+    padding-right: 9px !important;
+    padding-bottom: 7px !important;
+  }
+
+  /* Narx */
+  .home-page .cars-section .car-card-price {
+    font-size: 14px !important;
+    line-height: 17px !important;
+    font-weight: 700 !important;
+  }
+
+  /* Batafsil */
+  .home-page .cars-section .car-details-link {
+    font-size: 11.5px !important;
+    line-height: 17px !important;
+    font-weight: 600 !important;
+  }
+
+  /* Narx + Batafsilni sal yuqoriga */
+  .home-page .cars-section .car-card-actions {
+    margin-top: 2px !important;
+    padding-top: 0 !important;
+  }
+}
