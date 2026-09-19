@@ -337,7 +337,11 @@ decoding="async"
         }
     </span>
 
-   
+   ${
+    car.year
+        ? `<span class="car-spec-item car-spec-year">${car.year}</span>`
+        : ""
+}
 
     ${
         car.seats

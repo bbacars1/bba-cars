@@ -11662,47 +11662,6 @@ border-radius: 0;
 }
 
 
-@media (max-width: 720px) {
-
-    .cars-page .car-card {
-        display: grid;
-        grid-template-columns: 145px minmax(0, 1fr) !important;
-
-        min-height: 150px !important;
-
-        border-radius: 20px !important;
-        overflow: hidden !important;
-
-        background: rgba(255, 255, 255, 0.94) !important;
-
-        border: 1px solid rgba(44, 88, 125, 0.09) !important;
-
-        box-shadow:
-            0 10px 28px rgba(35, 70, 100, 0.08) !important;
-    }
-
-    .cars-page .car-card-media {
-        width: 132px !important;
-        height: 100% !important;
-        min-height: 150px !important;
-
-        border-radius: 0 !important;
-    }
-
-    .cars-page .car-card-media img {
-        width: 100% !important;
-        height: 100% !important;
-
-        object-fit: cover !important;
-        object-position: center !important;
-    }
-
-    .cars-page .car-card-body {
-        min-width: 0 !important;
-        padding: 14px 13px !important;
-    }
-
-}
 
 
 
@@ -11810,24 +11769,7 @@ border-radius: 0;
 }
 
 
-@media (max-width: 720px) {
 
-    .cars-page .car-card-media {
-        width: 145px !important;
-        min-height: 150px !important;
-        position: relative !important;
-        overflow: hidden !important;
-    }
-
-    .cars-page .car-card-media img {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important;
-        object-position: center center !important;
-        background: #f4f6f8 !important;
-    }
-
-}
 
 @media (max-width: 720px) {
 
@@ -11853,38 +11795,10 @@ border-radius: 0;
 
 }
 
-@media (max-width: 720px) {
-
-    .cars-page .cars-grid {
-        row-gap: 14px !important;
-    }
-
-    .cars-page .car-card {
-        min-height: 150px !important;
-        margin: 0 !important;
-    }
-
-}
 
 
-@media (max-width: 720px) {
 
-    .cars-page .car-card-body {
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: flex-start !important;
-    }
 
-    .cars-page .car-card-actions {
-        margin-top: auto !important;
-        padding-top: 10px !important;
-
-        display: flex !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-    }
-
-}
 
 @media (max-width: 720px) {
 
@@ -14385,114 +14299,7 @@ box-shadow:
 
 @media (max-width: 720px) {
 
-    /* ===============================================
-       NASIYA CARS — PREMIUM COMPACT CARDS
-    =============================================== */
-
-    .nasiya-cars-grid .car-card {
-        display: grid !important;
-        grid-template-columns: 145px 1fr !important;
-
-        min-height: 145px !important;
-
-        border-radius: 18px !important;
-
-        overflow: hidden !important;
-
-        background: #ffffff !important;
-
-        border:
-            1px solid rgba(25,70,110,0.07) !important;
-
-        box-shadow:
-            0 8px 24px rgba(25,60,90,0.05) !important;
-    }
-
-
-    .nasiya-cars-grid .car-card-media {
-        width: 145px !important;
-        height: 100% !important;
-
-        min-height: 145px !important;
-    }
-
-
-    .nasiya-cars-grid .car-card-media img {
-        width: 100% !important;
-        height: 100% !important;
-
-        object-fit: cover !important;
-        object-position: center !important;
-
-        display: block !important;
-    }
-
-
-    .nasiya-cars-grid .car-card-body {
-        padding: 13px 12px !important;
-
-        display: flex !important;
-        flex-direction: column !important;
-
-        justify-content: center !important;
-    }
-
-
-    .nasiya-cars-grid .car-card-title {
-        margin: 0 0 5px !important;
-
-        font-size: 14px !important;
-        line-height: 1.25 !important;
-
-        font-weight: 750 !important;
-
-        color: #183247 !important;
-    }
-
-
-    .nasiya-cars-grid .car-card-price {
-        margin-bottom: 7px !important;
-
-        font-size: 13px !important;
-        font-weight: 750 !important;
-
-        color: #102438 !important;
-    }
-
-
-    .nasiya-cars-grid .car-card-specs,
-    .nasiya-cars-grid .car-spec-item {
-        font-size: 10px !important;
-        line-height: 1.35 !important;
-
-        color: #7e8d98 !important;
-    }
-
-
-    .nasiya-cars-grid .car-card-features {
-        display: none !important;
-    }
-
-
-    .nasiya-cars-grid .car-card-actions {
-        margin-top: 8px !important;
-        padding-top: 0 !important;
-    }
-
-
-    .nasiya-cars-grid .car-compare-btn {
-        display: none !important;
-    }
-
-
-    .nasiya-cars-grid .car-details-link {
-        padding: 0 !important;
-
-        font-size: 11px !important;
-        font-weight: 700 !important;
-
-        color: #23618d !important;
-    }
+    
 
 
     /* ===============================================
@@ -18827,32 +18634,6 @@ body:not(.cars-page) .cars-view-all {
 
 
 
-/* =====================================================
-   HOME MOBILE — CAR CARD COMPACT
-===================================================== */
-
-@media (max-width: 720px) {
-
-    .car-card {
-        margin-bottom: 16px !important;
-        border-radius: 18px !important;
-        overflow: hidden;
-    }
-
-    .car-card img {
-        width: 100%;
-        height: 230px !important;
-        object-fit: cover;
-        display: block;
-    }
-
-    .car-card .car-info,
-    .car-card .car-content,
-    .car-card .car-details {
-        padding-top: 12px !important;
-        padding-bottom: 14px !important;
-    }
-}
 
 
 
@@ -18865,53 +18646,8 @@ body:not(.cars-page) .cars-view-all {
 
 
 
-@media (max-width: 720px) {
-
-    body:not(.cars-page) .car-card-actions {
-        margin-top: 12px !important;
-        padding-top: 12px !important;
-
-        display: flex !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-
-        border-top: 1px solid #edf0f2 !important;
-    }
-
-    body:not(.cars-page) .car-compare-btn {
-        font-size: 13px !important;
-        font-weight: 600 !important;
-
-        padding: 7px 9px !important;
-        gap: 6px !important;
-    }
-
-    body:not(.cars-page) .car-details-link {
-        margin-top: 0 !important;
-
-        font-size: 15px !important;
-        font-weight: 700 !important;
-    }
-
-    body:not(.cars-page) .car-details-link span {
-        font-size: 17px !important;
-    }
-}
 
 
-@media (max-width: 720px) {
-
-    body:not(.cars-page) .car-card-actions {
-        margin-top: 10px !important;
-        padding-top: 9px !important;
-        padding-bottom: 0 !important;
-        min-height: 0 !important;
-    }
-
-    body:not(.cars-page) .car-card-body {
-        padding-bottom: 14px !important;
-    }
-}
 
 @media (max-width: 720px) {
 
@@ -21713,4 +21449,558 @@ body:not(.cars-page) .cars-view-all {
         display: none !important;
     }
 
+}
+
+
+
+
+
+
+
+
+/* =====================================================
+   BBA CARS — HOME MOBILE CARDS V2
+===================================================== */
+
+@media (max-width: 720px) {
+
+    .home-page .cars-section .cars-container {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+
+        width: 100% !important;
+        padding: 0 !important;
+    }
+
+    .home-page .cars-section .car-card {
+        display: flex !important;
+        flex-direction: column !important;
+
+        width: 100% !important;
+        min-width: 0 !important;
+        min-height: 0 !important;
+
+        margin: 0 !important;
+
+        border-radius: 16px !important;
+        overflow: hidden !important;
+
+        background: #ffffff !important;
+
+        border: 1px solid rgba(25, 60, 90, 0.08) !important;
+
+        box-shadow:
+            0 6px 20px rgba(25, 55, 80, 0.06) !important;
+    }
+
+}
+
+
+
+
+
+
+
+/* =====================================================
+   BBA CARS — HOME MOBILE CARD CONTENT
+===================================================== */
+
+@media (max-width: 720px) {
+
+    /* RASM */
+    .home-page .cars-section .car-card-media {
+        position: relative !important;
+        width: 100% !important;
+        height: 128px !important;
+        min-height: 128px !important;
+        overflow: hidden !important;
+        background: #f3f5f7 !important;
+    }
+
+    .home-page .cars-section .car-card-media img {
+        display: block !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center !important;
+    }
+
+
+    /* YURAK */
+    .home-page .cars-section .car-favorite-btn {
+        position: absolute !important;
+        top: 8px !important;
+        right: 8px !important;
+
+        width: 30px !important;
+        height: 30px !important;
+        min-width: 30px !important;
+
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        padding: 0 !important;
+        border-radius: 9px !important;
+
+        background: rgba(255,255,255,.94) !important;
+    }
+
+
+    /* KARTA ICHI */
+    .home-page .cars-section .car-card-body {
+        display: flex !important;
+        flex-direction: column !important;
+        flex: 1 !important;
+
+        padding: 10px !important;
+    }
+
+
+    /* NOMI */
+    .home-page .cars-section .car-card-title {
+        margin: 0 0 4px !important;
+
+        font-size: 13px !important;
+        line-height: 1.2 !important;
+        font-weight: 700 !important;
+
+        color: #101820 !important;
+    }
+
+
+    /* NARX */
+    .home-page .cars-section .car-card-price {
+        margin: 4px 0 0 !important;
+
+        font-size: 14px !important;
+        line-height: 1.2 !important;
+        font-weight: 750 !important;
+
+        color: #101820 !important;
+    }
+
+
+    /* FAQAT YOQILG‘I TURINI QOLDIRAMIZ */
+    .home-page .cars-section .car-card-specs {
+        display: flex !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .home-page .cars-section .car-spec-item {
+        display: none !important;
+    }
+
+    .home-page .cars-section .car-spec-item:first-child {
+        display: inline-flex !important;
+
+        font-size: 11px !important;
+        line-height: 1.2 !important;
+        color: #66717c !important;
+    }
+
+    .home-page .cars-section .car-spec-icon {
+        display: none !important;
+    }
+
+
+    /* 360 KAMERA, HUD VA H.K. YASHIRILADI */
+    .home-page .cars-section .car-card-features {
+        display: none !important;
+    }
+
+
+    /* PASTKI QISM */
+    .home-page .cars-section .car-card-actions {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+
+        margin-top: auto !important;
+        padding-top: 8px !important;
+
+        border: 0 !important;
+    }
+
+
+    /* BOSH SAHIFADA TAQQOSLASH YO‘Q */
+    .home-page .cars-section .car-compare-btn {
+        display: none !important;
+    }
+
+
+    /* BATAFSIL */
+    .home-page .cars-section .car-details-link {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 4px !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        font-size: 11px !important;
+        line-height: 1 !important;
+        font-weight: 650 !important;
+
+        color: #1474c4 !important;
+    }
+
+}
+
+
+/* =====================================================
+   BBA CARS — HOME MOBILE CARD POLISH
+===================================================== */
+
+@media (max-width: 720px) {
+
+    /* KARTANI IXCHAMLASHTIRISH */
+    .home-page .cars-section .car-card {
+        height: auto !important;
+        min-height: 0 !important;
+        align-self: start !important;
+    }
+
+    /* RASM */
+    .home-page .cars-section .car-card-media {
+        height: 118px !important;
+        min-height: 118px !important;
+        border-radius: 14px 14px 0 0 !important;
+    }
+
+    /* KARTA MATNLARI */
+    .home-page .cars-section .car-card-body {
+        flex: 0 0 auto !important;
+        padding: 9px 10px 10px !important;
+    }
+
+    /* NOM */
+    .home-page .cars-section .car-card-title {
+        font-size: 12.5px !important;
+        line-height: 1.25 !important;
+        font-weight: 700 !important;
+
+        margin: 0 0 3px !important;
+
+        overflow: hidden !important;
+    }
+
+    /* GIBRID / ELEKTR / BENZIN */
+    .home-page .cars-section .car-card-specs {
+        order: 2 !important;
+        margin: 0 0 6px !important;
+    }
+
+    .home-page .cars-section .car-spec-item:first-child {
+        font-size: 10.5px !important;
+        color: #7a838c !important;
+    }
+
+    /* NARX */
+    .home-page .cars-section .car-card-price {
+        order: 3 !important;
+
+        margin: 0 !important;
+
+        font-size: 14px !important;
+        line-height: 1.15 !important;
+        font-weight: 750 !important;
+    }
+
+    /* NOM BIRINCHI */
+    .home-page .cars-section .car-card-title {
+        order: 1 !important;
+    }
+
+    /* BATAFSIL */
+    .home-page .cars-section .car-card-actions {
+        order: 4 !important;
+
+        margin: 0 !important;
+        padding: 7px 0 0 !important;
+
+        min-height: 0 !important;
+    }
+
+    .home-page .cars-section .car-details-link {
+        font-size: 10.5px !important;
+        font-weight: 650 !important;
+    }
+
+}
+
+
+
+/* =====================================================
+   BBA CARS — HOME MOBILE CARDS — EQUAL HEIGHT FIX
+===================================================== */
+
+@media (max-width: 720px) {
+
+    .home-page .cars-section .cars-container {
+        align-items: stretch !important;
+    }
+
+    .home-page .cars-section .car-card {
+        height: 238px !important;
+        min-height: 238px !important;
+        max-height: 238px !important;
+        align-self: stretch !important;
+    }
+
+    .home-page .cars-section .car-card-media {
+        height: 118px !important;
+        min-height: 118px !important;
+        max-height: 118px !important;
+        flex: 0 0 118px !important;
+    }
+
+    .home-page .cars-section .car-card-body {
+        height: 120px !important;
+        min-height: 120px !important;
+
+        display: flex !important;
+        flex-direction: column !important;
+
+        padding: 9px 10px 10px !important;
+    }
+
+    /* Har bir nom uchun bir xil 2 qatorlik joy */
+    .home-page .cars-section .car-card-title {
+        height: 31px !important;
+        min-height: 31px !important;
+        max-height: 31px !important;
+
+        margin: 0 0 2px !important;
+
+        overflow: hidden !important;
+    }
+
+    .home-page .cars-section .car-card-specs {
+        height: 14px !important;
+        min-height: 14px !important;
+        margin: 0 0 3px !important;
+    }
+
+    .home-page .cars-section .car-card-price {
+        height: 17px !important;
+        min-height: 17px !important;
+        margin: 0 !important;
+    }
+
+    .home-page .cars-section .car-card-actions {
+        margin-top: auto !important;
+        padding-top: 4px !important;
+    }
+}
+
+
+@media (max-width: 720px) {
+
+    .home-page .cars-section .car-card {
+        height: 220px !important;
+        min-height: 220px !important;
+        max-height: 220px !important;
+    }
+
+    .home-page .cars-section .car-card-body {
+        height: 102px !important;
+        min-height: 102px !important;
+        position: relative !important;
+    }
+
+    .home-page .cars-section .car-card-price {
+        position: absolute !important;
+        left: 10px !important;
+        bottom: 10px !important;
+
+        height: auto !important;
+        min-height: 0 !important;
+
+        font-size: 13.5px !important;
+        font-weight: 750 !important;
+    }
+
+    .home-page .cars-section .car-card-actions {
+        position: absolute !important;
+        right: 10px !important;
+        bottom: 10px !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .home-page .cars-section .car-details-link {
+        font-size: 10.5px !important;
+        white-space: nowrap !important;
+    }
+}
+
+
+
+/* HOME MOBILE — FINAL COMPACT SPACING */
+@media (max-width: 720px) {
+
+    .home-page .cars-section .car-card {
+        height: 205px !important;
+        min-height: 205px !important;
+        max-height: 205px !important;
+    }
+
+    .home-page .cars-section .car-card-media {
+        height: 112px !important;
+        min-height: 112px !important;
+        max-height: 112px !important;
+        flex-basis: 112px !important;
+    }
+
+    .home-page .cars-section .car-card-body {
+        height: 93px !important;
+        min-height: 93px !important;
+        padding: 7px 9px 8px !important;
+    }
+
+    .home-page .cars-section .car-card-title {
+        height: 30px !important;
+        min-height: 30px !important;
+        max-height: 30px !important;
+
+        margin: 0 !important;
+
+        font-size: 12px !important;
+        line-height: 15px !important;
+    }
+
+    .home-page .cars-section .car-card-specs {
+        height: 13px !important;
+        min-height: 13px !important;
+
+        margin: 1px 0 0 !important;
+    }
+
+    .home-page .cars-section .car-spec-item:first-child {
+        font-size: 10px !important;
+        line-height: 13px !important;
+    }
+
+    .home-page .cars-section .car-card-price {
+        left: 9px !important;
+        bottom: 8px !important;
+
+        font-size: 13px !important;
+    }
+
+    .home-page .cars-section .car-card-actions {
+        right: 9px !important;
+        bottom: 8px !important;
+    }
+
+    .home-page .cars-section .car-details-link {
+        font-size: 10px !important;
+    }
+}
+
+
+
+
+/* HOME MOBILE — FUEL + YEAR */
+@media (max-width: 720px) {
+
+    .home-page .cars-section .car-spec-year {
+        display: inline-flex !important;
+        align-items: center !important;
+
+        font-size: 10px !important;
+        line-height: 13px !important;
+        color: #7a838c !important;
+    }
+
+    .home-page .cars-section .car-spec-year::before {
+        content: "·";
+        margin: 0 4px !important;
+    }
+}
+
+
+@media (max-width: 720px) {
+    .home-page .cars-section .car-card-specs .car-spec-item.car-spec-year {
+        display: inline-flex !important;
+        align-items: center !important;
+
+        font-size: 10px !important;
+        line-height: 13px !important;
+        color: #7a838c !important;
+    }
+
+    .home-page .cars-section .car-card-specs .car-spec-item.car-spec-year::before {
+        content: "·";
+        margin: 0 4px !important;
+    }
+}
+
+
+
+
+/* =========================================
+   HOME MOBILE — PREMIUM CAR CARD
+   ========================================= */
+
+@media (max-width: 720px) {
+
+  .home-page .cars-section .car-card {
+    background: #ffffff !important;
+    border: 1px solid rgba(15, 23, 42, 0.06) !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+
+    box-shadow:
+      0 4px 14px rgba(15, 23, 42, 0.06) !important;
+
+    height: 100% !important;
+  }
+
+
+  
+
+}
+
+
+
+/* MOBILE CAR CARD — SIZE + PRICE FINAL */
+@media (max-width: 720px) {
+
+  /* Kartalar orasidagi masofani ixchamlashtirish */
+  .home-page .cars-section .cars-grid {
+    column-gap: 10px !important;
+    row-gap: 12px !important;
+  }
+
+  /* Kartaning ichki qismini biroz kichraytirish */
+  .home-page .cars-section .car-card-body {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    padding-bottom: 8px !important;
+  }
+
+  /* Narx */
+  .home-page .cars-section .car-card-price {
+    font-size: 15px !important;
+    line-height: 18px !important;
+    font-weight: 700 !important;
+  }
+
+  /* Batafsil */
+  .home-page .cars-section .car-details-link {
+    font-size: 12px !important;
+    line-height: 18px !important;
+    font-weight: 600 !important;
+  }
+
+  /* Narx + Batafsil qatori */
+  .home-page .cars-section .car-card-actions {
+    margin-top: 4px !important;
+    padding-top: 0 !important;
+  }
 }
