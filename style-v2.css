@@ -20568,7 +20568,7 @@ body:not(.cars-page) .cars-view-all {
         width: 100% !important;
         margin: 0 !important;
 
-        padding: 54px 20px 14px !important;
+        padding: 32px 20px 14px !important;
 
         background: #f7f8fa !important;
         color: #111111 !important;
@@ -21161,3 +21161,2229 @@ body:not(.cars-page) .cars-view-all {
 
 
 
+/* =====================================================
+   KUTILAYOTGAN AVTOMOBILLAR — NEW MOBILE HERO
+===================================================== */
+
+@media (max-width: 720px) {
+
+  /* ===== HEADER → HERO ORASINI 0 QILAMIZ ===== */
+
+  body.cars-page {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  body.cars-page .site-header {
+    margin-bottom: 0 !important;
+  }
+
+  body.cars-page #app {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+
+  /* ===== HERO ===== */
+
+  body.cars-page .expected-hero {
+    position: relative !important;
+
+    width: 100% !important;
+    height: 560px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: hidden !important;
+
+    background: #eef1f3 !important;
+  }
+
+
+  /* ===== BACKGROUND IMAGE ===== */
+
+  body.cars-page .expected-hero-bg {
+    position: absolute !important;
+    inset: 0 !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    z-index: 1 !important;
+  }
+
+  body.cars-page .expected-hero-image {
+    display: block !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+
+
+  /* ===== MATN O'QILISHI UCHUN YENGIL GRADIENT ===== */
+
+  body.cars-page .expected-hero-overlay {
+    position: absolute !important;
+    inset: 0 !important;
+
+    z-index: 2 !important;
+
+    pointer-events: none !important;
+
+    background:
+      linear-gradient(
+        180deg,
+        rgba(255,255,255,.96) 0%,
+        rgba(255,255,255,.91) 23%,
+        rgba(255,255,255,.63) 39%,
+        rgba(255,255,255,.10) 62%,
+        rgba(255,255,255,0) 100%
+      ) !important;
+  }
+
+
+  /* ===== HERO CONTENT ===== */
+
+  body.cars-page .expected-hero-content {
+    position: relative !important;
+    z-index: 5 !important;
+
+    width: 100% !important;
+
+    box-sizing: border-box !important;
+
+    margin: 0 !important;
+    padding: 38px 20px 0 !important;
+  }
+
+
+  /* SOON IN BBA CARS */
+
+  body.cars-page .expected-hero-eyebrow {
+    display: block !important;
+
+    margin: 0 0 10px !important;
+
+    color: #33495b !important;
+
+    font-size: 10px !important;
+    line-height: 1 !important;
+    font-weight: 700 !important;
+
+    letter-spacing: 2px !important;
+  }
+
+
+  /* TITLE */
+
+  body.cars-page .expected-hero-content h1 {
+    margin: 0 !important;
+
+    color: #080c10 !important;
+
+    font-size: 35px !important;
+    line-height: .98 !important;
+
+    font-weight: 800 !important;
+    letter-spacing: -1.6px !important;
+  }
+
+
+  /* DESCRIPTION */
+
+  body.cars-page .expected-hero-content p {
+    max-width: 355px !important;
+
+    margin: 15px 0 0 !important;
+
+    color: #52616d !important;
+
+    font-size: 12.5px !important;
+    line-height: 1.45 !important;
+
+    font-weight: 400 !important;
+  }
+
+
+  /* ===== PREMIUM NOTIFY BUTTON ===== */
+
+  body.cars-page .expected-hero-notify {
+    display: flex !important;
+
+    align-items: center !important;
+    justify-content: flex-start !important;
+
+    gap: 9px !important;
+
+    width: 100% !important;
+    height: 50px !important;
+
+    box-sizing: border-box !important;
+
+    margin: 19px 0 0 !important;
+    padding: 0 15px !important;
+
+    border: 1px solid rgba(255,255,255,.10) !important;
+    border-radius: 12px !important;
+
+    background:
+      linear-gradient(
+        135deg,
+        #071827 0%,
+        #06121d 100%
+      ) !important;
+
+    color: #fff !important;
+
+    box-shadow:
+      0 12px 28px rgba(5,20,32,.18),
+      inset 0 1px 0 rgba(255,255,255,.08) !important;
+
+    font-size: 11.5px !important;
+    font-weight: 650 !important;
+  }
+
+
+  /* PREMIUM BELL ICON */
+
+  body.cars-page .expected-hero-notify svg {
+    width: 17px !important;
+    height: 17px !important;
+
+    flex: 0 0 17px !important;
+
+    fill: none !important;
+    stroke: currentColor !important;
+
+    stroke-width: 1.7 !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
+  }
+
+
+  /* ARROW */
+
+  body.cars-page .expected-hero-arrow {
+    margin-left: auto !important;
+
+    font-size: 18px !important;
+    line-height: 1 !important;
+
+    font-weight: 400 !important;
+
+    opacity: .9 !important;
+  }
+
+
+  /* =============================================
+     TEZ ORADA — PREMIUM FLOATING BADGE
+  ============================================= */
+
+  body.cars-page .expected-hero-badge {
+    position: absolute !important;
+
+    right: 17px !important;
+    bottom: 27px !important;
+
+    z-index: 6 !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+    gap: 10px !important;
+
+    min-width: 166px !important;
+
+    box-sizing: border-box !important;
+
+    padding: 11px 13px !important;
+
+    border:
+      1px solid rgba(255,255,255,.82) !important;
+
+    border-radius: 13px !important;
+
+    background:
+      rgba(255,255,255,.91) !important;
+
+    -webkit-backdrop-filter: blur(14px) !important;
+    backdrop-filter: blur(14px) !important;
+
+    box-shadow:
+      0 12px 32px rgba(17,31,43,.14),
+      inset 0 1px 0 rgba(255,255,255,.85) !important;
+  }
+
+
+  /* CALENDAR ICON CONTAINER */
+
+  body.cars-page .expected-hero-badge-icon {
+    display: flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    width: 34px !important;
+    height: 34px !important;
+
+    flex: 0 0 34px !important;
+
+    border-radius: 9px !important;
+
+    background: #f1f5f8 !important;
+
+    color: #071b2c !important;
+
+    box-shadow:
+      inset 0 0 0 1px rgba(8,28,44,.05) !important;
+  }
+
+
+  /* CALENDAR SVG */
+
+  body.cars-page .expected-hero-badge-icon svg {
+    width: 17px !important;
+    height: 17px !important;
+
+    fill: none !important;
+    stroke: currentColor !important;
+
+    stroke-width: 1.7 !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
+  }
+
+
+  /* BADGE TITLE */
+
+  body.cars-page .expected-hero-badge strong {
+    display: block !important;
+
+    margin: 0 0 3px !important;
+
+    color: #0a1117 !important;
+
+    font-size: 11px !important;
+    line-height: 1.1 !important;
+
+    font-weight: 700 !important;
+  }
+
+
+  /* BADGE SUBTITLE */
+
+  body.cars-page .expected-hero-badge > div:last-child > span {
+    display: block !important;
+
+    color: #78848d !important;
+
+    font-size: 8.5px !important;
+    line-height: 1.2 !important;
+
+    font-weight: 400 !important;
+
+    white-space: nowrap !important;
+  }
+
+}
+
+
+@media (max-width: 720px) {
+
+  /* Hero pastga biroz uzunroq */
+  body.cars-page .expected-hero {
+    height: 680px !important;
+  }
+
+  /* Tepada yozuvlar biroz pastroqqa */
+  body.cars-page .expected-hero-content {
+    padding-top: 100px !important;
+  }
+
+}
+
+
+
+@media (max-width: 720px) {
+
+  /* ===== TEZ ORADA — PREMIUM LARGE BADGE ===== */
+
+  body.cars-page .expected-hero-badge {
+    right: 18px !important;
+    bottom: 30px !important;
+
+    min-width: 190px !important;
+    min-height: 72px !important;
+
+    padding: 12px 15px !important;
+
+    gap: 12px !important;
+
+    border-radius: 16px !important;
+
+    border: 1px solid rgba(255, 255, 255, 0.9) !important;
+
+    background: rgba(255, 255, 255, 0.92) !important;
+
+    -webkit-backdrop-filter: blur(18px) saturate(140%) !important;
+    backdrop-filter: blur(18px) saturate(140%) !important;
+
+    box-shadow:
+      0 16px 35px rgba(15, 30, 45, 0.14),
+      0 3px 10px rgba(15, 30, 45, 0.06),
+      inset 0 1px 0 rgba(255,255,255,1) !important;
+  }
+
+
+  /* Calendar premium container */
+
+  body.cars-page .expected-hero-badge-icon {
+    width: 42px !important;
+    height: 42px !important;
+
+    flex: 0 0 42px !important;
+
+    border-radius: 12px !important;
+
+    color: #071b2c !important;
+
+    background:
+      linear-gradient(
+        145deg,
+        #f7f9fb,
+        #edf2f6
+      ) !important;
+
+    box-shadow:
+      inset 0 0 0 1px rgba(7, 27, 44, 0.06),
+      0 4px 10px rgba(7, 27, 44, 0.06) !important;
+  }
+
+
+  /* Calendar */
+
+  body.cars-page .expected-hero-badge-icon svg {
+    width: 20px !important;
+    height: 20px !important;
+
+    stroke-width: 1.8 !important;
+  }
+
+
+  /* Tez orada */
+
+  body.cars-page .expected-hero-badge strong {
+    margin-bottom: 5px !important;
+
+    font-size: 13px !important;
+    line-height: 1.05 !important;
+
+    font-weight: 750 !important;
+
+    letter-spacing: -0.15px !important;
+
+    color: #09131b !important;
+  }
+
+
+  /* Siz kutgan avtomobillar */
+
+  body.cars-page .expected-hero-badge > div:last-child > span {
+    font-size: 9.5px !important;
+    line-height: 1.2 !important;
+
+    font-weight: 450 !important;
+
+    color: #75818a !important;
+  }
+
+}
+
+@media (max-width: 720px) {
+
+  body.cars-page .expected-hero-badge {
+    right: 25px !important;
+    bottom: 120px !important;
+  }
+
+}
+
+
+
+/* =====================================================
+   EXPECTED CARS — MOBILE BENEFITS
+===================================================== */
+
+@media (max-width: 720px) {
+
+  body.cars-page .expected-benefits {
+    width: 100%;
+    box-sizing: border-box;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    margin: 0;
+    padding: 18px 12px 20px;
+
+    background: #ffffff;
+
+    border-radius: 0 0 22px 22px;
+
+    box-shadow:
+      0 10px 30px rgba(18, 32, 44, 0.04);
+  }
+
+
+  /* HAR BIR ITEM */
+
+  body.cars-page .expected-benefit-item {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+  }
+
+
+  /* PREMIUM ICON CIRCLE */
+
+  body.cars-page .expected-benefit-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 8px;
+
+    border-radius: 50%;
+
+    color: #071827;
+
+    background:
+      linear-gradient(
+        145deg,
+        #f8fafc 0%,
+        #edf2f6 100%
+      );
+
+    border: 1px solid rgba(8, 28, 44, 0.05);
+
+    box-shadow:
+      0 5px 14px rgba(12, 30, 45, 0.05),
+      inset 0 1px 0 rgba(255,255,255,.95);
+  }
+
+
+  /* SVG ICON */
+
+  body.cars-page .expected-benefit-icon svg {
+    width: 20px;
+    height: 20px;
+
+    fill: none;
+    stroke: currentColor;
+
+    stroke-width: 1.65;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+
+  /* TEXT */
+
+  body.cars-page .expected-benefit-item > span {
+    display: block;
+
+    color: #15212b;
+
+    font-size: 9.5px;
+    line-height: 1.25;
+
+    font-weight: 550;
+
+    letter-spacing: -0.1px;
+  }
+
+}
+
+
+@media (max-width: 720px) {
+
+  body.cars-page .expected-benefits {
+    position: relative;
+    z-index: 10;
+
+    margin-top: -18px !important;
+
+    border-radius: 22px 22px 0 0 !important;
+
+    padding-top: 22px !important;
+    padding-bottom: 20px !important;
+
+    background: #ffffff !important;
+
+    box-shadow:
+      0 -8px 25px rgba(15, 30, 45, 0.04) !important;
+  }
+
+}
+
+
+
+
+
+/* =====================================================
+   EXPECTED CARS — MOBILE CATALOG HEADER
+===================================================== */
+
+@media (max-width: 720px) {
+
+  body.cars-page .expected-catalog {
+    width: 100%;
+    box-sizing: border-box;
+
+    margin: 0;
+    padding: 28px 16px 30px;
+
+    background: #f8f9fa;
+  }
+
+  body.cars-page .expected-catalog-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin: 0 0 18px;
+  }
+
+  body.cars-page .expected-catalog-header h2 {
+    margin: 0;
+
+    color: #0a0e12;
+
+    font-size: 19px;
+    line-height: 1.1;
+    font-weight: 750;
+
+    letter-spacing: -0.55px;
+  }
+
+  body.cars-page .expected-view-all {
+    flex: 0 0 auto;
+
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    padding: 0 12px;
+
+    border: 1px solid rgba(10, 25, 38, 0.06);
+    border-radius: 11px;
+
+    background: #ffffff;
+
+    color: #53616c;
+
+    font-size: 9.5px;
+    font-weight: 500;
+
+    box-shadow:
+      0 4px 14px rgba(15, 30, 45, 0.035),
+      inset 0 1px 0 rgba(255,255,255,.9);
+  }
+
+  body.cars-page .expected-view-all-arrow {
+    color: #142633;
+
+    font-size: 14px;
+    line-height: 1;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =====================================================
+   EXPECTED CARS — MOBILE CARDS
+===================================================== */
+
+@media (max-width: 720px) {
+
+  /* 2 USTUN */
+
+  body.cars-page .expected-cars-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+
+  /* CARD */
+
+  body.cars-page .expected-car-card {
+    min-width: 0;
+    overflow: hidden;
+
+    border: 1px solid rgba(12, 29, 42, 0.06);
+    border-radius: 15px;
+
+    background: #ffffff;
+
+    box-shadow:
+      0 8px 24px rgba(12, 28, 40, 0.055),
+      inset 0 1px 0 rgba(255,255,255,.9);
+  }
+
+
+  /* IMAGE AREA */
+
+  body.cars-page .expected-car-image-wrap {
+    position: relative;
+
+    width: 100%;
+    height: 112px;
+
+    overflow: hidden;
+
+    background: #eef1f3;
+  }
+
+  body.cars-page .expected-car-image {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    transition: transform .3s ease;
+  }
+
+
+  /* TEZ ORADA STATUS */
+
+  body.cars-page .expected-car-status {
+    position: absolute;
+
+    top: 8px;
+    left: 8px;
+
+    display: inline-flex;
+    align-items: center;
+
+    min-height: 22px;
+
+    padding: 0 8px;
+
+    border: 1px solid rgba(255,255,255,.65);
+    border-radius: 7px;
+
+    background: rgba(255,255,255,.90);
+
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+
+    color: #172631;
+
+    font-size: 8px;
+    line-height: 1;
+    font-weight: 650;
+
+    box-shadow: 0 4px 12px rgba(12, 28, 40, .07);
+  }
+
+
+  /* CARD BODY */
+
+  body.cars-page .expected-car-body {
+    padding: 11px;
+  }
+
+
+  /* MODEL */
+
+  body.cars-page .expected-car-body h3 {
+    min-height: 28px;
+
+    margin: 0;
+
+    color: #0b1116;
+
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: 700;
+
+    letter-spacing: -0.2px;
+  }
+
+
+  /* SPECS */
+
+  body.cars-page .expected-car-specs {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+
+    margin-top: 7px;
+
+    color: #7b858d;
+
+    font-size: 8.5px;
+    line-height: 1;
+
+    white-space: nowrap;
+  }
+
+  body.cars-page .expected-spec-dot {
+    width: 3px;
+    height: 3px;
+
+    flex: 0 0 3px;
+
+    border-radius: 50%;
+
+    background: #b3bbc1;
+  }
+
+
+  /* BATAFSIL */
+
+  body.cars-page .expected-car-details {
+    width: 100%;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 11px;
+    padding: 0 10px;
+
+    border: 0;
+    border-radius: 8px;
+
+    background: #071827;
+    color: #ffffff;
+
+    font-size: 9px;
+    font-weight: 600;
+
+    box-shadow:
+      0 6px 14px rgba(7,24,39,.10);
+  }
+
+  body.cars-page .expected-car-details span:last-child {
+    font-size: 13px;
+    font-weight: 400;
+  }
+
+}
+
+
+
+
+
+
+/* =====================================================
+   EXPECTED CARS — PREMIUM MOBILE CARD FINAL
+===================================================== */
+
+@media (max-width: 720px) {
+
+  body.cars-page .expected-car-card {
+    overflow: hidden !important;
+    border: 1px solid rgba(15, 32, 45, .07) !important;
+    border-radius: 15px !important;
+    background: #fff !important;
+
+    box-shadow:
+      0 7px 22px rgba(15, 32, 45, .045) !important;
+  }
+
+
+  /* RASM */
+
+  body.cars-page .expected-car-image-wrap {
+    position: relative !important;
+    height: 120px !important;
+    background: #f5f6f7 !important;
+    overflow: hidden !important;
+  }
+
+  body.cars-page .expected-car-image {
+    width: 100% !important;
+    height: 100% !important;
+
+    display: block !important;
+
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+
+
+  /* STATUS BADGE */
+
+  body.cars-page .expected-car-status {
+    position: absolute !important;
+    z-index: 3 !important;
+
+    top: 9px !important;
+    left: 9px !important;
+
+    min-height: 23px !important;
+    padding: 0 9px !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+
+    border: 0 !important;
+    border-radius: 7px !important;
+
+    background: #748ca9 !important;
+    color: #fff !important;
+
+    font-size: 8px !important;
+    font-weight: 650 !important;
+
+    box-shadow: 0 4px 12px rgba(36, 58, 78, .12) !important;
+  }
+
+
+  /* HEART */
+
+  body.cars-page .expected-car-favorite {
+    position: absolute !important;
+    z-index: 4 !important;
+
+    top: 9px !important;
+    right: 9px !important;
+
+    width: 27px !important;
+    height: 27px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    padding: 0 !important;
+    border: 0 !important;
+
+    border-radius: 50% !important;
+    background: rgba(255,255,255,.88) !important;
+
+    color: #172936 !important;
+
+    -webkit-backdrop-filter: blur(8px) !important;
+    backdrop-filter: blur(8px) !important;
+  }
+
+  body.cars-page .expected-car-favorite svg {
+    width: 14px !important;
+    height: 14px !important;
+
+    fill: none !important;
+    stroke: currentColor !important;
+    stroke-width: 1.7 !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
+  }
+
+
+  /* BODY */
+
+  body.cars-page .expected-car-body {
+    padding: 11px 10px 10px !important;
+  }
+
+  body.cars-page .expected-car-body h3 {
+    min-height: 0 !important;
+    margin: 0 !important;
+
+    color: #0b1116 !important;
+
+    font-size: 12px !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important;
+
+    letter-spacing: -.2px !important;
+  }
+
+
+  /* SPECS */
+
+  body.cars-page .expected-car-specs {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+
+    margin-top: 8px !important;
+
+    color: #84909a !important;
+
+    font-size: 8px !important;
+    line-height: 1 !important;
+  }
+
+
+  /* PASTKI QATOR */
+
+  body.cars-page .expected-car-footer {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+
+    gap: 5px !important;
+
+    margin-top: 12px !important;
+    padding-top: 9px !important;
+
+    border-top: 1px solid #f0f2f4 !important;
+  }
+
+
+  /* CALENDAR + TEZ ORADA */
+
+  body.cars-page .expected-car-arrival {
+    display: flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+
+    color: #596975 !important;
+
+    font-size: 7.8px !important;
+    font-weight: 500 !important;
+
+    white-space: nowrap !important;
+  }
+
+  body.cars-page .expected-car-arrival svg {
+    width: 11px !important;
+    height: 11px !important;
+
+    fill: none !important;
+    stroke: #253b4b !important;
+    stroke-width: 1.7 !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
+  }
+
+
+  /* BATAFSIL — ENDI QORA TUGMA EMAS */
+
+  body.cars-page .expected-car-details {
+    width: auto !important;
+    height: auto !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    border: 0 !important;
+    border-radius: 0 !important;
+
+    background: transparent !important;
+
+    color: #1473b9 !important;
+
+    font-size: 8px !important;
+    line-height: 1 !important;
+    font-weight: 600 !important;
+
+    text-decoration: underline !important;
+    text-underline-offset: 2px !important;
+
+    box-shadow: none !important;
+
+    white-space: nowrap !important;
+  }
+
+}
+
+
+@media (max-width: 720px) {
+
+  /* Avtomobil nomi */
+  body.cars-page .expected-car-body h3 {
+    font-size: 13.5px !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important;
+  }
+
+  /* Elektr / Gibrid / AWD */
+  body.cars-page .expected-car-specs {
+    font-size: 9.5px !important;
+    gap: 6px !important;
+  }
+
+  /* Pastdagi calendar + Tez orada */
+  body.cars-page .expected-car-arrival {
+    font-size: 9px !important;
+    font-weight: 500 !important;
+  }
+
+  body.cars-page .expected-car-arrival svg {
+    width: 12px !important;
+    height: 12px !important;
+  }
+
+  /* Batafsil */
+  body.cars-page .expected-car-details {
+    font-size: 9.5px !important;
+    font-weight: 600 !important;
+  }
+
+}
+
+@media (max-width: 720px) {
+  body.cars-page .expected-car-details {
+    text-decoration: none !important;
+  }
+}
+
+
+
+
+/* =====================================================
+   EXPECTED CARS — PREMIUM NOTIFICATION CTA
+===================================================== */
+
+@media (max-width: 720px) {
+
+  body.cars-page .expected-notify-section {
+    width: 100%;
+    box-sizing: border-box;
+
+    margin: 0;
+    padding: 8px 16px 32px;
+
+    background: #f8f9fa;
+  }
+
+
+  /* PREMIUM DARK BOX */
+
+  body.cars-page .expected-notify-box {
+    position: relative;
+    overflow: hidden;
+
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 22px 20px 20px;
+
+    border-radius: 18px;
+
+    background:
+      linear-gradient(
+        145deg,
+        #0c2131 0%,
+        #071724 55%,
+        #05121c 100%
+      );
+
+    border: 1px solid rgba(255,255,255,.06);
+
+    box-shadow:
+      0 15px 35px rgba(5,20,32,.14),
+      inset 0 1px 0 rgba(255,255,255,.06);
+  }
+
+
+  /* YENGIL PREMIUM GLOW */
+
+  body.cars-page .expected-notify-box::before {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    right: -80px;
+    top: -90px;
+
+    border-radius: 50%;
+
+    background: rgba(92, 137, 170, .16);
+
+    filter: blur(35px);
+
+    pointer-events: none;
+  }
+
+
+  /* BELL ICON */
+
+  body.cars-page .expected-notify-icon {
+    position: relative;
+    z-index: 2;
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 16px;
+
+    border-radius: 12px;
+
+    color: #ffffff;
+
+    background: rgba(255,255,255,.09);
+
+    border: 1px solid rgba(255,255,255,.10);
+
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.08);
+  }
+
+  body.cars-page .expected-notify-icon svg {
+    width: 20px;
+    height: 20px;
+
+    fill: none;
+    stroke: currentColor;
+
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+
+  /* CONTENT */
+
+  body.cars-page .expected-notify-content {
+    position: relative;
+    z-index: 2;
+  }
+
+
+  /* SMALL LABEL */
+
+  body.cars-page .expected-notify-label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #9fb2c1;
+
+    font-size: 8px;
+    line-height: 1;
+
+    font-weight: 700;
+
+    letter-spacing: 1.6px;
+  }
+
+
+  /* TITLE */
+
+  body.cars-page .expected-notify-content h2 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 23px;
+    line-height: 1.05;
+
+    font-weight: 750;
+
+    letter-spacing: -.6px;
+  }
+
+
+  /* DESCRIPTION */
+
+  body.cars-page .expected-notify-content p {
+    max-width: 300px;
+
+    margin: 12px 0 0;
+
+    color: rgba(255,255,255,.62);
+
+    font-size: 10px;
+    line-height: 1.5;
+
+    font-weight: 400;
+  }
+
+
+  /* CTA BUTTON */
+
+  body.cars-page .expected-notify-cta {
+    width: 100%;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 18px;
+    padding: 0 15px;
+
+    border: 0;
+    border-radius: 10px;
+
+    background: #ffffff;
+    color: #0b1c29;
+
+    font-size: 10px;
+    font-weight: 650;
+
+    box-shadow:
+      0 8px 20px rgba(0,0,0,.14);
+  }
+
+  body.cars-page .expected-notify-cta span:last-child {
+    font-size: 17px;
+    line-height: 1;
+    font-weight: 400;
+  }
+
+}
+
+@media (max-width: 720px) {
+  body.cars-page .expected-notify-section {
+    padding-top: 0 !important;
+  }
+
+  body.cars-page .expected-catalog {
+    padding-bottom: 18px !important;
+  }
+}
+
+
+
+
+/* =====================================================
+   EXPECTED CARS — WHY FOLLOW BBA CARS
+===================================================== */
+
+@media (max-width: 720px) {
+
+  body.cars-page .expected-why {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 34px 16px 38px;
+    background: #ffffff;
+  }
+
+  /* HEADER */
+
+  body.cars-page .expected-why-header {
+    margin-bottom: 22px;
+  }
+
+  body.cars-page .expected-why-label {
+    display: block;
+    margin-bottom: 8px;
+
+    color: #71808b;
+
+    font-size: 8px;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 1.7px;
+  }
+
+  body.cars-page .expected-why-header h2 {
+    margin: 0;
+
+    color: #0a0f14;
+
+    font-size: 23px;
+    line-height: 1.08;
+    font-weight: 750;
+    letter-spacing: -.7px;
+  }
+
+  body.cars-page .expected-why-header p {
+    max-width: 320px;
+
+    margin: 10px 0 0;
+
+    color: #77838c;
+
+    font-size: 10px;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+
+  /* CARDS */
+
+  body.cars-page .expected-why-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  body.cars-page .expected-why-card {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 14px;
+
+    border: 1px solid rgba(12, 29, 42, .06);
+    border-radius: 14px;
+
+    background: #f8fafb;
+
+    box-shadow:
+      0 5px 16px rgba(12, 28, 40, .035),
+      inset 0 1px 0 rgba(255,255,255,.95);
+  }
+
+
+  /* ICON */
+
+  body.cars-page .expected-why-icon {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #ffffff;
+    color: #0a2233;
+
+    border: 1px solid rgba(12,29,42,.055);
+
+    box-shadow: 0 4px 12px rgba(12,28,40,.045);
+  }
+
+  body.cars-page .expected-why-icon svg {
+    width: 19px;
+    height: 19px;
+
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.65;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+
+  /* TEXT */
+
+  body.cars-page .expected-why-text {
+    min-width: 0;
+  }
+
+  body.cars-page .expected-why-text h3 {
+    margin: 0 0 5px;
+
+    color: #101820;
+
+    font-size: 11.5px;
+    line-height: 1.15;
+    font-weight: 700;
+  }
+
+  body.cars-page .expected-why-text p {
+    margin: 0;
+
+    color: #7a858d;
+
+    font-size: 9px;
+    line-height: 1.4;
+    font-weight: 400;
+  }
+
+}
+
+
+@media (max-width: 720px) {
+
+  body.cars-page .expected-why {
+    padding-top: 30px !important;
+  }
+
+  body.cars-page .expected-why-grid {
+    gap: 11px !important;
+  }
+
+  body.cars-page .expected-why-card {
+    min-height: 78px !important;
+    padding: 14px 13px !important;
+    gap: 13px !important;
+
+    background: #ffffff !important;
+
+    border: 1px solid rgba(12, 29, 42, .08) !important;
+    border-radius: 14px !important;
+
+    box-shadow:
+      0 7px 20px rgba(12, 28, 40, .055) !important;
+  }
+
+  body.cars-page .expected-why-icon {
+    width: 44px !important;
+    height: 44px !important;
+    flex: 0 0 44px !important;
+
+    background: #f3f6f8 !important;
+  }
+
+  body.cars-page .expected-why-icon svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  body.cars-page .expected-why-text h3 {
+    margin-bottom: 5px !important;
+
+    font-size: 12.5px !important;
+    font-weight: 700 !important;
+  }
+
+  body.cars-page .expected-why-text p {
+    font-size: 9.5px !important;
+    line-height: 1.4 !important;
+  }
+
+}
+
+
+
+
+
+/* =====================================================
+   EXPECTED CARS — FINAL PREMIUM BANNER
+===================================================== */
+
+@media (max-width: 720px) {
+
+  body.cars-page .expected-final {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 8px 16px 38px;
+    background: #ffffff;
+  }
+
+  body.cars-page .expected-final-box {
+    position: relative;
+    overflow: hidden;
+
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 27px 21px 20px;
+
+    border-radius: 19px;
+
+    background:
+      linear-gradient(
+        145deg,
+        #102a3d 0%,
+        #081b2a 52%,
+        #05131e 100%
+      );
+
+    border: 1px solid rgba(255,255,255,.07);
+
+    box-shadow:
+      0 16px 38px rgba(6,22,34,.15),
+      inset 0 1px 0 rgba(255,255,255,.07);
+  }
+
+  /* premium glow */
+
+  body.cars-page .expected-final-box::before {
+    content: "";
+
+    position: absolute;
+
+    width: 210px;
+    height: 210px;
+
+    top: -120px;
+    right: -80px;
+
+    border-radius: 50%;
+
+    background: rgba(104, 151, 185, .18);
+    filter: blur(45px);
+
+    pointer-events: none;
+  }
+
+  body.cars-page .expected-final-label {
+    position: relative;
+    z-index: 2;
+
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: #a7bbc9;
+
+    font-size: 8px;
+    line-height: 1;
+
+    font-weight: 700;
+    letter-spacing: 1.8px;
+  }
+
+  body.cars-page .expected-final-box h2 {
+    position: relative;
+    z-index: 2;
+
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 25px;
+    line-height: 1.04;
+
+    font-weight: 750;
+    letter-spacing: -.8px;
+  }
+
+  body.cars-page .expected-final-box p {
+    position: relative;
+    z-index: 2;
+
+    max-width: 310px;
+
+    margin: 13px 0 0;
+
+    color: rgba(255,255,255,.62);
+
+    font-size: 10px;
+    line-height: 1.5;
+  }
+
+  /* BUTTON */
+
+  body.cars-page .expected-final-button {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 20px;
+    padding: 0 15px;
+
+    border: 0;
+    border-radius: 11px;
+
+    background: #ffffff;
+    color: #0a1c29;
+
+    font-size: 10.5px;
+    font-weight: 650;
+
+    box-shadow: 0 8px 22px rgba(0,0,0,.14);
+  }
+
+  body.cars-page .expected-final-arrow {
+    font-size: 18px;
+    line-height: 1;
+    font-weight: 400;
+  }
+
+  /* BOTTOM STATUS */
+
+  body.cars-page .expected-final-bottom {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    margin-top: 14px;
+
+    color: rgba(255,255,255,.48);
+
+    font-size: 8px;
+    line-height: 1.2;
+  }
+
+  body.cars-page .expected-final-dot {
+    width: 6px;
+    height: 6px;
+
+    flex: 0 0 6px;
+
+    border-radius: 50%;
+
+    background: #7ba0ba;
+
+    box-shadow: 0 0 8px rgba(123,160,186,.65);
+  }
+
+}
+
+
+
+@media (max-width: 720px) {
+
+  body.cars-page .expected-why-grid {
+    gap: 8px !important;
+  }
+
+  body.cars-page .expected-why-card {
+    min-height: 68px !important;
+    padding: 11px 13px !important;
+  }
+
+  body.cars-page .expected-why {
+    padding-bottom: 28px !important;
+  }
+
+}
+
+
+
+
+
+
+/* =====================================================
+   EXPECTED CARS — NOTIFICATION MODAL
+===================================================== */
+
+.expected-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease;
+}
+
+.expected-modal.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+
+/* BACKDROP */
+
+.expected-modal-backdrop {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(8, 14, 22, 0.68);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+}
+
+
+/* MODAL BOX */
+
+.expected-modal-box {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-width: 430px;
+
+    padding: 34px 28px 26px;
+
+    background: #ffffff;
+    border-radius: 22px;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.28);
+
+    transform: translateY(18px) scale(0.97);
+
+    transition: transform 0.28s ease;
+}
+
+.expected-modal.active .expected-modal-box {
+    transform: translateY(0) scale(1);
+}
+
+
+/* CLOSE */
+
+.expected-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 0;
+    border-radius: 50%;
+
+    background: #f2f4f6;
+    color: #111827;
+
+    font-size: 23px;
+    font-weight: 300;
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+
+/* LABEL */
+
+.expected-modal-label {
+    display: inline-block;
+
+    margin-bottom: 12px;
+
+    color: #7189a6;
+
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+
+/* TITLE */
+
+.expected-modal-box h2 {
+    margin: 0;
+
+    color: #111827;
+
+    font-size: 26px;
+    line-height: 1.12;
+    font-weight: 800;
+    letter-spacing: -0.7px;
+}
+
+
+/* DESCRIPTION */
+
+.expected-modal-box > p {
+    margin: 14px 0 24px;
+
+    color: #69717d;
+
+    font-size: 14px;
+    line-height: 1.55;
+}
+
+
+/* FORM */
+
+#expectedNotifyForm {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+#expectedNotifyForm label {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+#expectedNotifyForm label > span {
+    color: #313844;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+/* INPUT */
+
+#expectedNotifyForm input {
+    width: 100%;
+    height: 50px;
+
+    padding: 0 15px;
+
+    border: 1px solid #dfe3e8;
+    border-radius: 11px;
+    outline: none;
+
+    background: #f8f9fa;
+
+    color: #111827;
+
+    font-size: 14px;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+#expectedNotifyForm input:focus {
+    background: #ffffff;
+    border-color: #7a91ac;
+
+    box-shadow:
+        0 0 0 3px rgba(122, 145, 172, 0.12);
+}
+
+
+/* SUBMIT */
+
+.expected-modal-submit {
+    width: 100%;
+    height: 52px;
+
+    margin-top: 3px;
+    padding: 0 17px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border: 0;
+    border-radius: 11px;
+
+    background: #111b2a;
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 750;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.expected-modal-submit:active {
+    transform: scale(0.985);
+}
+
+
+/* NOTE */
+
+.expected-modal-note {
+    display: block;
+
+    margin-top: 16px;
+
+    color: #9aa1aa;
+
+    font-size: 10px;
+    line-height: 1.45;
+    text-align: center;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 720px) {
+
+    .expected-modal {
+        padding: 16px;
+    }
+
+    .expected-modal-box {
+        max-width: 390px;
+        padding: 30px 20px 22px;
+        border-radius: 18px;
+    }
+
+    .expected-modal-box h2 {
+        padding-right: 20px;
+        font-size: 22px;
+        line-height: 1.15;
+    }
+
+    .expected-modal-box > p {
+        margin: 12px 0 20px;
+        font-size: 12.5px;
+    }
+
+    #expectedNotifyForm input {
+        height: 48px;
+        font-size: 13px;
+    }
+
+    .expected-modal-submit {
+        height: 49px;
+    }
+}
+
+
+
+
+
+
+
+/* =========================================
+   EXPECTED CARS — LOADING SPINNER
+========================================= */
+
+.expected-modal-submit:disabled {
+    cursor: not-allowed;
+    opacity: 0.9;
+}
+
+.expected-modal-submit.expected-submit-loading {
+    justify-content: center;
+    gap: 10px;
+}
+
+.expected-submit-spinner {
+    width: 17px;
+    height: 17px;
+    flex: 0 0 17px;
+
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+
+    animation: expectedSpin 0.7s linear infinite;
+}
+
+@keyframes expectedSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================
+   EXPECTED CARS — SUCCESS MODAL
+========================================= */
+
+.expected-success-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10020;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease;
+}
+
+.expected-success-modal.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.expected-success-backdrop {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(8, 14, 22, 0.68);
+
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+}
+
+.expected-success-box {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-width: 390px;
+
+    padding: 34px 24px 24px;
+
+    background: #ffffff;
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.28);
+
+    transform: translateY(15px) scale(0.97);
+    transition: transform 0.25s ease;
+}
+
+.expected-success-modal.active .expected-success-box {
+    transform: translateY(0) scale(1);
+}
+
+.expected-success-icon {
+    width: 58px;
+    height: 58px;
+
+    margin: 0 auto 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #111b2a;
+    color: #ffffff;
+
+    font-size: 27px;
+    font-weight: 700;
+}
+
+.expected-success-box h2 {
+    margin: 0;
+
+    color: #111827;
+
+    font-size: 23px;
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+.expected-success-box p {
+    margin: 12px 0 22px;
+
+    color: #737b86;
+
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+.expected-success-close {
+    width: 100%;
+    height: 49px;
+
+    border: 0;
+    border-radius: 11px;
+
+    background: #111b2a;
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+body.cars-page .expected-car-favorite.active {
+    background: #111827 !important;
+    color: #ffffff !important;
+}
+
+body.cars-page .expected-car-favorite.active svg {
+    fill: currentColor !important;
+}
+
+
+@media (max-width: 720px) {
+    body.cars-page .mobile-cars-head {
+        padding-top: 75px !important;
+    }
+}
+
+
+
+@media (max-width: 720px) {
+    body.cars-page .site-footer {
+        padding-bottom: 80px !important;
+    }
+}
+
+
+@media (max-width: 720px) {
+    body.cars-page .cars-section {
+        min-height: calc(100vh - 430px) !important;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Expected Cars — faqat mobil */
+@media (min-width: 721px) {
+    body:has(.expected-hero) main,
+    body:has(.expected-hero) .site-footer {
+        display: none !important;
+    }
+}

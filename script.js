@@ -2885,6 +2885,10 @@ document.addEventListener("DOMContentLoaded", () => {
         currentPage = "cars";
     }
 
+    else if (path === "expected-cars.html") {
+    currentPage = "expected";
+}
+
     else if (path === "nasiya.html") {
         currentPage = "nasiya";
     }

@@ -1,10 +1,54 @@
 const API_URL = "https://api.bbacars.uz";
+const EXPECTED_CARS_KEY = "bbaExpectedCars";
+
+
+const expectedCarsDemo = [
+    {
+        id: "expected-1",
+        name: "Avtomobil modeli",
+        image: "./images/keladigan.PNG",
+        priceText: "Narxi tez orada",
+        arrival: "Tez orada",
+        type: "Gibrid",
+        drive: "AWD"
+    },
+    {
+        id: "expected-2",
+        name: "Avtomobil modeli",
+        image: "./images/keladigan.PNG",
+        priceText: "Narxi tez orada",
+        arrival: "Tez orada",
+        type: "Elektr",
+        drive: "AWD"
+    },
+    {
+        id: "expected-3",
+        name: "Avtomobil modeli",
+        image: "./images/keladigan.PNG",
+        priceText: "Narxi tez orada",
+        arrival: "Tez orada",
+        type: "Gibrid",
+        drive: "AWD"
+    },
+    {
+        id: "expected-4",
+        name: "Avtomobil modeli",
+        image: "./images/keladigan.PNG",
+        priceText: "Narxi tez orada",
+        arrival: "Tez orada",
+        type: "Elektr",
+        drive: "RWD"
+    }
+];
 
 
 function getCarImageUrl(image) {
     if (!image) return "";
 
     const url = String(image).trim();
+    if (url.startsWith("./") || url.startsWith("../")) {
+    return url;
+}
 
     if (
         url.startsWith("http://") ||
@@ -135,12 +179,37 @@ async function loadCarDetail() {
             new URLSearchParams(window.location.search);
 
         const carId = params.get("id");
+        const expectedId = params.get("expected");
 
-        if (!carId) {
-            throw new Error(
-                "Avtomobil ID topilmadi"
-            );
-        }
+        if (!carId && !expectedId) {
+    throw new Error(
+        "Avtomobil ID topilmadi"
+    );
+}
+
+if (expectedId) {
+    const expectedCar = expectedCarsDemo.find(
+        car => String(car.id) === String(expectedId)
+    );
+
+    if (!expectedCar) {
+        throw new Error("Kutilayotgan avtomobil topilmadi");
+    }
+
+    document.title = `${expectedCar.name} | BBA CARS`;
+
+    updateBreadcrumb(expectedCar);
+    renderCarDetail(expectedCar);
+    setupGallery(expectedCar);
+    setupTabs();
+    setupOrderModal(expectedCar);
+    setupInlineOrder(expectedCar);
+    setupExpectedNotify(expectedCar);
+setupPhoneInput(
+    document.getElementById("detailNotifyPhone")
+);
+    return;
+}
 
 
         const response = await fetch(
@@ -405,14 +474,16 @@ function renderCarDetail(car) {
                         </button>
 
 
-                        <button
-                            type="button"
-                            class="detail-compare-btn"
-                            id="detailCompareBtn"
-                        >
-                            ⇄
-                            Taqqoslash
-                        </button>
+                        ${car.id && String(car.id).startsWith("expected-") ? "" : `
+    <button
+        type="button"
+        class="detail-compare-btn"
+        id="detailCompareBtn"
+    >
+        ⇄
+        Taqqoslash
+    </button>
+`}
 
                     </div>
 
@@ -439,7 +510,7 @@ function renderCarDetail(car) {
                     </span>
 
                     <strong>
-                        ${formatPrice(car.price)}
+                        ${car.priceText || formatPrice(car.price)}
                     </strong>
 
                 </div>
@@ -521,11 +592,15 @@ function renderCarDetail(car) {
 
 
                     <a
-    href="#detailCredit"
+    href="${car.id && String(car.id).startsWith('expected-')
+    ? '#detailNotify'
+    : '#detailCredit'}"
     class="new-detail-credit-btn"
     id="detailCreditBtn"
 >
-    Nasiya hisoblash
+    ${car.id && String(car.id).startsWith("expected-")
+    ? "Kelganda xabar olish"
+    : "Nasiya hisoblash"}
 </a>
 
                 </div>
@@ -623,20 +698,17 @@ function renderCarDetail(car) {
                 </button>
 
 
-                <button
-                    class="detail-tab"
-                    data-tab="credit"
-                >
-                    Nasiya
-                </button>
+                ${car.id && String(car.id).startsWith("expected-") ? "" : `
+<button
+    class="detail-tab"
+    data-tab="credit"
+>
+    Nasiya
+</button>
+`}
 
 
-                <button
-                    class="detail-tab"
-                    data-tab="reviews"
-                >
-                    Sharhlar
-                </button>
+                
 
             </div>
 
@@ -796,6 +868,8 @@ function renderCarDetail(car) {
 
                 <!-- INLINE FORM -->
 
+                ${car.id && String(car.id).startsWith("expected-") ? "" : `
+
                 <div class="
                     detail-content-card
                     detail-lead-card
@@ -856,6 +930,8 @@ function renderCarDetail(car) {
                     </form>
 
                 </div>
+
+                `}
 
 
             </div>
@@ -1027,12 +1103,51 @@ function renderCarDetail(car) {
         <!-- =========================
              CREDIT TAB
         ========================= -->
+        ${car.id && String(car.id).startsWith("expected-") ? `
+<section id="detailNotify" class="detail-tab-panel">
+<div class="detail-credit-card">
+    <span class="detail-card-label">
+        BBA CARS
+    </span>
 
-        <section
-            class="detail-tab-panel"
-            data-panel="credit"
-            id="detailCredit"
-        >
+    <h2>
+        Kelganda xabar oling
+    </h2>
+
+    <p>
+        Ushbu avtomobil kelishi bilan sizga birinchilardan bo‘lib xabar beramiz.
+    </p>
+    <form class="detail-notify-form" id="detailNotifyForm">
+    <input
+        type="text"
+        id="detailNotifyName"
+        placeholder="Ismingiz"
+        required
+    >
+
+    <input
+        type="tel"
+        id="detailNotifyPhone"
+        value="+998 "
+        inputmode="numeric"
+        maxlength="17"
+        required
+    >
+
+    <button type="submit">
+        Xabar olish →
+    </button>
+</form>
+</div>
+</section>
+` : ""}
+
+       ${car.id && String(car.id).startsWith("expected-") ? "" : `
+<section
+    class="detail-tab-panel"
+    data-panel="credit"
+    id="detailCredit"
+>
 
             <div class="detail-credit-card">
 
@@ -1072,6 +1187,7 @@ function renderCarDetail(car) {
             </div>
 
         </section>
+        `}
 
 
 
@@ -1105,6 +1221,8 @@ function renderCarDetail(car) {
              RELATED
         ========================= -->
 
+        ${car.id && String(car.id).startsWith("expected-") ? "" : `
+
         <section class="detail-related-section">
 
             <div class="detail-related-heading">
@@ -1135,6 +1253,8 @@ function renderCarDetail(car) {
             ></div>
 
         </section>
+
+        `}
 
 
 
@@ -1502,11 +1622,16 @@ function setupFavorite(car) {
     const carId =
         String(car.id);
 
+        const isExpectedCar =
+    carId.startsWith("expected-");
+
 
     function getFavorites() {
         return JSON.parse(
             localStorage.getItem(
-                "favorites"
+                isExpectedCar
+    ? "bbaExpectedFavorites"
+    : "favorites"
             ) || "[]"
         ).map(String);
     }
@@ -1555,7 +1680,9 @@ function setupFavorite(car) {
 
 
             localStorage.setItem(
-                "favorites",
+                isExpectedCar
+    ? "bbaExpectedFavorites"
+    : "favorites",
                 JSON.stringify(
                     favorites
                 )
@@ -2124,6 +2251,63 @@ function setupInlineOrder(car) {
 }
 
 
+function setupExpectedNotify(car) {
+    const form =
+        document.getElementById("detailNotifyForm");
+
+    const nameInput =
+        document.getElementById("detailNotifyName");
+
+    const phoneInput =
+        document.getElementById("detailNotifyPhone");
+        const submitButton = form.querySelector('button[type="submit"]');
+
+    if (!form || !nameInput || !phoneInput) {
+        return;
+    }
+    form.addEventListener("submit", async event => {
+    event.preventDefault();
+   
+
+    const name = nameInput.value.trim();
+    const phone = phoneInput.value.trim();
+
+    if (name.length < 2) {
+        alert("Iltimos, ismingizni kiriting.");
+        nameInput.focus();
+        return;
+    }
+
+    const numbers = phone.replace(/\D/g, "");
+
+    if (numbers.length !== 12) {
+        alert("Telefon raqamingizni to‘liq kiriting.");
+        phoneInput.focus();
+        return;
+    }
+
+    submitButton.disabled = true;
+submitButton.innerHTML = `<span class="notify-spinner"></span> Yuborilmoqda...`;
+
+const loadingStart = Date.now();
+
+    await sendOrder({
+        car: `Kutilayotgan avtomobil: ${car.name}`,
+        name,
+        phone
+    });
+
+    const elapsed = Date.now() - loadingStart;
+
+if (elapsed < 2000) {
+    await new Promise(resolve =>
+        setTimeout(resolve, 2000 - elapsed)
+    );
+}
+    showSuccessModal();
+});
+}
+
 
 async function sendOrder(data) {
     const response =
@@ -2340,3 +2524,6 @@ document.addEventListener(
     "DOMContentLoaded",
     loadCarDetail
 );
+
+
+

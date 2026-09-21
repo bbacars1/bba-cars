@@ -760,6 +760,9 @@ img {
     display: block;
 }
 
+#detailNotify:target {
+    display: block;
+}
 
 /* ========================================
    MAIN GRID
@@ -3221,4 +3224,83 @@ img {
     }
 
     
+}
+
+
+
+
+
+
+
+/* Expected car — Kelganda xabar olish */
+.detail-notify-form {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 12px;
+}
+
+.detail-notify-form input {
+    height: 52px;
+    padding: 0 16px;
+    border: 1px solid #e2e2e2;
+    border-radius: 12px;
+    background: #fff;
+    font-size: 14px;
+    outline: none;
+}
+
+.detail-notify-form input:focus {
+    border-color: #111;
+}
+
+.detail-notify-form button {
+    height: 52px;
+    padding: 0 24px;
+    border: 0;
+    border-radius: 12px;
+    background: #111;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+@media (max-width: 720px) {
+    .detail-notify-form {
+        grid-template-columns: 1fr;
+    }
+
+    .detail-notify-form input,
+    .detail-notify-form button {
+        width: 100%;
+    }
+}
+
+
+
+
+.notify-spinner {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-top-color: #fff;
+    border-radius: 50%;
+    vertical-align: -2px;
+    animation: notifySpin 0.7s linear infinite;
+}
+
+@keyframes notifySpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+@media (max-width: 720px) {
+    .detail-page-container {
+        padding-bottom: 20px !important;
+    }
 }
