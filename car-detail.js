@@ -2326,98 +2326,15 @@ const related =
     }
 
 
-    container.innerHTML =
-        related
-            .map(
-                car => {
+    container.innerHTML = "";
 
-                    const image =
-                        getGalleryImages(
-                            car
-                        )[0] || "";
+related.forEach((car, index) => {
+    container.appendChild(
+        createCarCard(car, index)
+    );
+});
 
-
-                    return `
-                        <article
-                            class="related-car-card"
-                        >
-
-                            <a
-                                href="car.html?id=${car.id}"
-                                class="related-car-image"
-                            >
-
-                                <img
-                                    src="${image}"
-                                    alt="${car.name || "BBA CARS"}"
-                                    loading="lazy"
-                                >
-
-                            </a>
-
-
-                            <div
-                                class="related-car-info"
-                            >
-
-                                <span>
-                                    ${car.brand || "BBA CARS"}
-                                </span>
-
-
-                                <h3>
-                                    ${car.name || "Avtomobil"}
-                                </h3>
-
-
-                                <strong>
-                                    ${formatPrice(car.price)}
-                                </strong>
- 
-
-                                <div class="related-car-specs">
-
-    <span>
-        ${car.type === "electric"
-            ? "Elektr"
-            : car.type === "hybrid"
-            ? "Gibrid"
-            : car.type === "petrol"
-            ? "Benzin"
-            : car.type || "—"}
-    </span>
-
-    <span>
-        ${car.seats ? `${car.seats} o‘rin` : "—"}
-    </span>
-
-    <span>
-        ${car.range ? `${car.range} km` : "—"}
-    </span>
-
-</div>
-<div class="related-car-features">
-    ${car.camera360 === "yes" ? "<span>360° kamera</span>" : ""}
-    ${car.hud === "yes" ? "<span>HUD display</span>" : ""}
-    ${car.seatVentilation === "yes" ? "<span>Ventilyatsiya</span>" : ""}
-</div>
-
-                                <a
-                                    href="car.html?id=${car.id}"
-                                >
-                                    Batafsil →
-                                </a>
-
-                            </div>
-
-                        </article>
-                    `;
-                }
-            )
-            .join("");
 }
-
-
 
 document.addEventListener(
     "DOMContentLoaded",

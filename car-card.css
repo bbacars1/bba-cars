@@ -1,0 +1,1060 @@
+/* =========================================================
+   BBA CARS — UNIVERSAL MOBILE CAR CARD
+   Home / Avtomobillar / Nasiya / Favorites / Related
+========================================================= */
+
+@media (max-width: 720px) {
+
+  /* =======================================================
+     1. UNIVERSAL 2 COLUMN GRID
+  ======================================================= */
+
+  .home-page .cars-container,
+  .home-page .cars-grid,
+
+  .cars-page .cars-container,
+  .cars-page .cars-grid,
+
+  .nasiya-page .cars-container,
+  .nasiya-page .cars-grid,
+  .nasiya-page .nasiya-cars-grid,
+
+  .detail-related-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px 8px !important;
+    align-items: stretch !important;
+  }
+
+
+  /* =======================================================
+     2. CARD
+  ======================================================= */
+
+  .car-card {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+
+    height: 238px !important;
+    min-height: 238px !important;
+    max-height: 238px !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    background: #ffffff !important;
+
+    border: 1px solid rgba(15, 23, 42, 0.07) !important;
+    border-radius: 16px !important;
+
+    overflow: hidden !important;
+
+    box-shadow: 0 3px 12px rgba(15, 23, 42, 0.06) !important;
+
+    box-sizing: border-box !important;
+  }
+
+
+  /* =======================================================
+     3. IMAGE
+  ======================================================= */
+
+  .car-card-media {
+    position: relative !important;
+
+    width: 100% !important;
+
+    height: 118px !important;
+    min-height: 118px !important;
+    max-height: 118px !important;
+
+    flex: 0 0 118px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: hidden !important;
+
+    background: #f5f6f8 !important;
+  }
+
+  .car-card-image {
+    display: block !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+
+
+  /* =======================================================
+     4. BADGES
+  ======================================================= */
+
+  .car-card-badges {
+    position: absolute !important;
+
+    top: 8px !important;
+    left: 8px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    z-index: 2 !important;
+  }
+
+  .car-badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    min-height: 20px !important;
+
+    padding: 3px 7px !important;
+
+    border-radius: 6px !important;
+
+    font-size: 8px !important;
+    line-height: 1 !important;
+    font-weight: 700 !important;
+  }
+
+
+  /* =======================================================
+     5. FAVORITE HEART
+  ======================================================= */
+
+  .car-favorite-btn {
+    position: absolute !important;
+
+    top: 7px !important;
+    right: 7px !important;
+
+    width: 30px !important;
+    height: 30px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    border: 0 !important;
+    border-radius: 50% !important;
+
+    background: rgba(255, 255, 255, 0.94) !important;
+
+    font-size: 18px !important;
+    line-height: 1 !important;
+
+    cursor: pointer !important;
+
+    z-index: 3 !important;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+  }
+
+
+  /* =======================================================
+     6. CARD BODY
+  ======================================================= */
+
+  .car-card-body {
+    width: 100% !important;
+
+    height: 120px !important;
+    min-height: 120px !important;
+    max-height: 120px !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    margin: 0 !important;
+
+    padding: 9px 9px 7px !important;
+
+    box-sizing: border-box !important;
+  }
+
+
+  /* =======================================================
+     7. MODEL NAME
+  ======================================================= */
+
+  .car-card-title {
+    margin: 0 !important;
+    padding: 0 !important;
+
+    font-size: 11px !important;
+    line-height: 14px !important;
+    font-weight: 650 !important;
+
+    color: #111827 !important;
+
+    display: -webkit-box !important;
+
+    -webkit-line-clamp: 2 !important;
+    line-clamp: 2 !important;
+
+    -webkit-box-orient: vertical !important;
+
+    overflow: hidden !important;
+  }
+
+
+  /* =======================================================
+     8. FUEL TYPE + YEAR
+  ======================================================= */
+
+  .car-card-specs {
+    display: flex !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+
+    gap: 4px !important;
+
+    margin: 3px 0 0 !important;
+    padding: 0 !important;
+
+    font-size: 10px !important;
+    line-height: 13px !important;
+
+    color: #7a838c !important;
+  }
+
+  .car-spec-item {
+    display: inline-flex !important;
+    align-items: center !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    font-size: 10px !important;
+    line-height: 13px !important;
+
+    color: #7a838c !important;
+  }
+
+  .car-spec-icon {
+    margin-right: 3px !important;
+
+    font-size: 7px !important;
+    line-height: 1 !important;
+  }
+
+  .car-spec-year {
+    display: inline-flex !important;
+    align-items: center !important;
+  }
+
+  .car-spec-year::before {
+    content: "·";
+
+    margin: 0 4px 0 1px !important;
+
+    color: #9ca3af !important;
+  }
+
+
+  /* =======================================================
+     9. PRICE
+  ======================================================= */
+
+  .car-card-price {
+    margin: auto 0 0 !important;
+    padding: 0 !important;
+
+    font-size: 14px !important;
+    line-height: 17px !important;
+    font-weight: 700 !important;
+
+    color: #111827 !important;
+  }
+
+
+  /* =======================================================
+     10. ACTIONS
+  ======================================================= */
+
+  .car-card-actions {
+    width: 100% !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+
+    gap: 6px !important;
+
+    margin: 2px 0 0 !important;
+    padding: 0 !important;
+
+    box-sizing: border-box !important;
+  }
+
+
+  /* =======================================================
+     11. DETAILS
+  ======================================================= */
+
+  .car-details-link {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    gap: 3px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    border: 0 !important;
+    background: transparent !important;
+
+    font-size: 11.5px !important;
+    line-height: 17px !important;
+    font-weight: 600 !important;
+
+    color: #2563eb !important;
+
+    text-decoration: none !important;
+
+    white-space: nowrap !important;
+  }
+
+  .car-details-link span,
+  .car-details-arrow {
+    font-size: 13px !important;
+    line-height: 1 !important;
+  }
+
+
+  /* =======================================================
+     12. COMPARE
+     Only Avtomobillar page has this button in HTML
+  ======================================================= */
+
+  .cars-page .car-card-actions {
+    justify-content: space-between !important;
+  }
+
+  .cars-page .car-compare-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+
+    gap: 3px !important;
+
+    min-width: 0 !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    border: 0 !important;
+    background: transparent !important;
+
+    font-size: 9px !important;
+    line-height: 17px !important;
+    font-weight: 600 !important;
+
+    color: #6b7280 !important;
+
+    white-space: nowrap !important;
+
+    cursor: pointer !important;
+  }
+
+  .cars-page .car-compare-icon {
+    font-size: 11px !important;
+    line-height: 1 !important;
+  }
+
+
+  /* =======================================================
+     13. DETAIL — RELATED CARS
+  ======================================================= */
+
+  .detail-related-grid > .car-card {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+  }
+
+}
+
+
+
+
+
+
+
+
+/* =========================================================
+   CAR DETAIL — RELATED CARS MOBILE FINAL FIX
+========================================================= */
+
+@media (max-width: 720px) {
+
+  body .detail-related-section .detail-related-grid {
+    width: 100% !important;
+    max-width: 100% !important;
+
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+
+    gap: 10px 8px !important;
+
+    overflow: visible !important;
+  }
+
+  body .detail-related-section .detail-related-grid > .car-card {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+
+    height: 238px !important;
+    min-height: 238px !important;
+    max-height: 238px !important;
+  }
+
+}
+
+
+
+
+/* =========================================================
+   PREMIUM MOBILE CARD — COMPACT SIZE
+========================================================= */
+
+@media (max-width: 720px) {
+
+  .home-page .cars-container,
+  .home-page .cars-grid,
+  .cars-page .cars-container,
+  .cars-page .cars-grid,
+  .nasiya-page .cars-container,
+  .nasiya-page .cars-grid,
+  .nasiya-page .nasiya-cars-grid,
+  .detail-related-grid {
+    gap: 10px 8px !important;
+  }
+
+  .car-card {
+    height: 218px !important;
+    min-height: 218px !important;
+    max-height: 218px !important;
+
+    background: #fff !important;
+    border: 1px solid rgba(15, 23, 42, 0.06) !important;
+    border-radius: 15px !important;
+
+    overflow: hidden !important;
+
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.055) !important;
+  }
+
+  .car-card-media {
+    height: 112px !important;
+    min-height: 112px !important;
+    max-height: 112px !important;
+    flex: 0 0 112px !important;
+
+    border-radius: 15px 15px 0 0 !important;
+    overflow: hidden !important;
+  }
+
+  .car-card-image {
+    width: 100% !important;
+    height: 100% !important;
+
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+
+  .car-card-body {
+    height: 106px !important;
+    min-height: 106px !important;
+    max-height: 106px !important;
+
+    padding: 7px 9px 7px !important;
+  }
+
+  .car-favorite-btn {
+    top: 7px !important;
+    right: 7px !important;
+
+    width: 29px !important;
+    height: 29px !important;
+  }
+}
+
+
+
+/* =========================================================
+   BBA CARS — MOBILE CARD FINAL COMPACT DESIGN
+========================================================= */
+
+@media (max-width: 720px) {
+
+  /* KARTA */
+  .car-card {
+    height: 210px !important;
+    min-height: 210px !important;
+    max-height: 210px !important;
+
+    border-radius: 14px !important;
+  }
+
+  /* RASM */
+  .car-card-media {
+    height: 106px !important;
+    min-height: 106px !important;
+    max-height: 106px !important;
+    flex: 0 0 106px !important;
+  }
+
+  /* PASTKI QISM */
+  .car-card-body {
+    height: 104px !important;
+    min-height: 104px !important;
+    max-height: 104px !important;
+
+    padding: 7px 9px 7px !important;
+  }
+
+
+  /* =========================
+     NOM
+  ========================= */
+
+  .car-card-title {
+    margin: 0 0 4px 0 !important;
+
+    font-size: 12px !important;
+    line-height: 14px !important;
+    font-weight: 700 !important;
+
+    color: #111827 !important;
+
+    min-height: 14px !important;
+  }
+
+
+  /* =========================
+     ELEKTR / GIBRID + YIL
+  ========================= */
+
+  .car-card-specs {
+    margin: 0 !important;
+
+    gap: 3px !important;
+
+    font-size: 9.5px !important;
+    line-height: 12px !important;
+
+    color: #7b8490 !important;
+  }
+
+  .car-spec-item {
+    font-size: 9.5px !important;
+    line-height: 12px !important;
+  }
+
+
+  /* =========================
+     NARX
+  ========================= */
+
+  .car-card-price {
+    margin-top: auto !important;
+
+    font-size: 13.5px !important;
+    line-height: 17px !important;
+    font-weight: 750 !important;
+
+    color: #111827 !important;
+  }
+
+
+  /* =========================
+     NARX + BATAFSIL
+  ========================= */
+
+  .car-card-actions {
+    margin-top: -17px !important;
+
+    min-height: 17px !important;
+
+    justify-content: flex-end !important;
+  }
+
+  .car-details-link {
+    font-size: 10.5px !important;
+    line-height: 17px !important;
+    font-weight: 650 !important;
+
+    color: #1677e8 !important;
+  }
+
+
+  /* =========================
+     AVTOMOBILLAR
+     TAQQOSLASH
+  ========================= */
+
+  .cars-page .car-card-actions {
+    margin-top: 3px !important;
+
+    justify-content: space-between !important;
+  }
+
+  .cars-page .car-compare-btn {
+    height: 20px !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    gap: 3px !important;
+
+    padding: 0 6px !important;
+
+    border: 1px solid #111827 !important;
+    border-radius: 6px !important;
+
+    background: transparent !important;
+
+    color: #111827 !important;
+
+    font-size: 8px !important;
+    line-height: 18px !important;
+    font-weight: 600 !important;
+  }
+
+  .cars-page .car-compare-icon {
+    font-size: 9px !important;
+  }
+
+
+  /* YURAK HAM IXCHAM */
+  .car-favorite-btn {
+    width: 28px !important;
+    height: 28px !important;
+
+    top: 6px !important;
+    right: 6px !important;
+
+    font-size: 16px !important;
+  }
+
+}
+
+
+/* =========================================================
+   BBA CARS — MOBILE CARD COMPACT FINAL FIX
+========================================================= */
+
+@media (max-width: 720px) {
+
+  /* =========================
+     BARCHA KARTALAR
+  ========================= */
+
+  .car-card,
+  .detail-related-grid > .car-card {
+    height: 196px !important;
+    min-height: 196px !important;
+    max-height: 196px !important;
+
+    border-radius: 13px !important;
+  }
+
+
+  /* =========================
+     RASM
+  ========================= */
+
+  .car-card-media {
+    height: 100px !important;
+    min-height: 100px !important;
+    max-height: 100px !important;
+    flex: 0 0 100px !important;
+  }
+
+
+  /* =========================
+     PASTKI QISM
+  ========================= */
+
+  .car-card-body {
+    height: 96px !important;
+    min-height: 96px !important;
+    max-height: 96px !important;
+
+    padding: 7px 8px 7px !important;
+  }
+
+
+  /* =========================
+     MOSHINA NOMI
+  ========================= */
+
+  .car-card-title {
+    margin: 0 !important;
+    padding: 0 !important;
+
+    min-height: 15px !important;
+
+    font-size: 12px !important;
+    line-height: 15px !important;
+    font-weight: 700 !important;
+
+    color: #111827 !important;
+  }
+
+
+  /* =========================
+     ELEKTR / GIBRID + YIL
+  ========================= */
+
+  .car-card-specs {
+    margin: 5px 0 0 !important;
+    padding: 0 !important;
+
+    min-height: 12px !important;
+
+    display: flex !important;
+    align-items: center !important;
+
+    gap: 2px !important;
+
+    font-size: 9.5px !important;
+    line-height: 12px !important;
+
+    color: #7b8490 !important;
+  }
+
+  .car-spec-item {
+    font-size: 9.5px !important;
+    line-height: 12px !important;
+  }
+
+  .car-spec-year::before {
+    margin: 0 4px !important;
+  }
+
+
+  /* =========================
+     NARX + BATAFSIL
+  ========================= */
+
+  .car-card-price {
+    margin: auto 0 0 !important;
+    padding: 0 !important;
+
+    font-size: 15px !important;
+    line-height: 18px !important;
+    font-weight: 750 !important;
+
+    color: #111827 !important;
+  }
+
+  .car-card-actions {
+    min-height: 18px !important;
+
+    margin: -18px 0 0 !important;
+    padding: 0 !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+  }
+
+  .car-details-link {
+    font-size: 10.5px !important;
+    line-height: 18px !important;
+    font-weight: 650 !important;
+
+    white-space: nowrap !important;
+  }
+
+
+  /* =========================
+     AVTOMOBILLAR SAHIFASI
+  ========================= */
+
+  .cars-page .car-card {
+    height: 196px !important;
+    min-height: 196px !important;
+    max-height: 196px !important;
+  }
+
+  .cars-page .car-card-media {
+    height: 100px !important;
+    min-height: 100px !important;
+    max-height: 100px !important;
+    flex-basis: 100px !important;
+  }
+
+  .cars-page .car-card-body {
+    height: 96px !important;
+    min-height: 96px !important;
+    max-height: 96px !important;
+  }
+
+  /* Avto bo‘limida narx tepada qoladi */
+  .cars-page .car-card-price {
+    margin-top: auto !important;
+
+    font-size: 15px !important;
+    line-height: 18px !important;
+  }
+
+
+  /* =========================
+     TAQQOSLASH + BATAFSIL
+  ========================= */
+
+  .cars-page .car-card-actions {
+    min-height: 23px !important;
+
+    margin: 2px 0 0 !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+
+    gap: 5px !important;
+  }
+
+  .cars-page .car-compare-btn {
+    height: 22px !important;
+
+    padding: 0 7px !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    gap: 3px !important;
+
+    border: 1px solid #111827 !important;
+    border-radius: 6px !important;
+
+    background: #111827 !important;
+    color: #ffffff !important;
+
+    font-size: 8.5px !important;
+    line-height: 20px !important;
+    font-weight: 650 !important;
+
+    white-space: nowrap !important;
+  }
+
+  .cars-page .car-compare-icon {
+    font-size: 10px !important;
+    color: #ffffff !important;
+  }
+
+  .cars-page .car-details-link {
+    font-size: 10.5px !important;
+    line-height: 22px !important;
+  }
+
+
+  /* =========================
+     YURAK
+  ========================= */
+
+  .car-favorite-btn {
+    width: 27px !important;
+    height: 27px !important;
+
+    top: 6px !important;
+    right: 6px !important;
+
+    font-size: 15px !important;
+  }
+
+}
+
+
+@media (max-width: 720px) {
+
+  .car-card-title {
+    min-height: 30px !important;
+    max-height: 30px !important;
+
+    font-size: 12px !important;
+    line-height: 15px !important;
+
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+
+    overflow: hidden !important;
+  }
+
+  .car-card-specs {
+    margin-top: 3px !important;
+  }
+
+}
+
+
+/* =========================================
+   AVTOMOBILLAR — INNER SPACING FINAL FIX
+========================================= */
+
+@media (max-width: 720px) {
+
+  /* Elektr · 2025 */
+  .cars-page .car-card-specs {
+    margin-top: 2px !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* Narx */
+  .cars-page .car-card-price {
+    margin-top: 6px !important;
+
+    font-size: 15px !important;
+    line-height: 18px !important;
+    font-weight: 750 !important;
+  }
+
+  /* Taqqoslash + Batafsil */
+  .cars-page .car-card-actions {
+    margin-top: 5px !important;
+    margin-bottom: 0 !important;
+
+    min-height: 22px !important;
+  }
+
+}
+
+
+
+@media (max-width: 720px) {
+
+  /* Avtomobillar kartasining ichki qismini biroz tepaga yig'amiz */
+  .cars-page .car-card-body {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+  }
+
+  /* Elektr · 2025 */
+  .cars-page .car-card-specs {
+    margin-top: 2px !important;
+  }
+
+  /* Elektr/yil bilan narx orasini ochamiz */
+  .cars-page .car-card-price {
+    margin-top: 5px !important;
+    font-size: 15px !important;
+    line-height: 17px !important;
+  }
+
+  /* Narx bilan tugmalar orasini ochamiz */
+  .cars-page .car-card-actions {
+    margin-top: 4px !important;
+    min-height: 20px !important;
+  }
+
+  /* Taqqoslash */
+  .cars-page .car-compare-btn {
+    height: 20px !important;
+    padding: 0 7px !important;
+    font-size: 8px !important;
+    line-height: 18px !important;
+  }
+
+  /* Batafsil */
+  .cars-page .car-details-link {
+    line-height: 20px !important;
+  }
+}
+
+/* AVTOMOBILLAR — pastki ma'lumotlarni tepaga ko'tarish */
+@media (max-width: 720px) {
+
+  .cars-page .car-card-specs {
+    transform: translateY(-12px) !important;
+  }
+
+  .cars-page .car-card-price {
+    transform: translateY(-12px) !important;
+  }
+
+  .cars-page .car-card-actions {
+    transform: translateY(-10px) !important;
+  }
+
+}
+
+
+
+@media (max-width: 720px) {
+
+  .cars-page .car-compare-btn {
+    height: 23px !important;
+    padding: 0 9px !important;
+
+    font-size: 9px !important;
+    line-height: 21px !important;
+
+    border-radius: 6px !important;
+  }
+
+  .cars-page .car-compare-icon {
+    font-size: 10px !important;
+  }
+
+}
+
+
+
+
+/* DETAIL — kartaning o'zini ixchamlashtirish */
+@media (max-width: 720px) {
+
+  body .detail-related-section .detail-related-grid > .car-card {
+    height: 196px !important;
+    min-height: 196px !important;
+    max-height: 196px !important;
+
+    align-self: start !important;
+  }
+
+  body .detail-related-section .detail-related-grid > .car-card .car-card-media {
+    height: 100px !important;
+    min-height: 100px !important;
+    max-height: 100px !important;
+    flex: 0 0 100px !important;
+  }
+
+  body .detail-related-section .detail-related-grid > .car-card .car-card-body {
+    height: 96px !important;
+    min-height: 96px !important;
+    max-height: 96px !important;
+    flex: 0 0 96px !important;
+  }
+
+  body .detail-related-section .detail-related-grid {
+    align-items: start !important;
+    grid-auto-rows: 196px !important;
+  }
+
+}

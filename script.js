@@ -3,35 +3,7 @@
 // Admin paneldan avtomobillarni yuklash
 // ======================================================
 
-function getCarImageUrl(image) {
-    if (!image) return "";
 
-    const url = String(image).trim();
-
-    if (
-        url.startsWith("http://") ||
-        url.startsWith("https://")
-    ) {
-        return url;
-    }
-
-    return "https://api.bbacars.uz/" + url.replace(/^\/+/, "");
-}
-
-
-function getCardImageUrl(image) {
-    const url = getCarImageUrl(image);
-
-    if (!url) return "";
-
-    if (url.includes("ik.imagekit.io")) {
-        const width = window.innerWidth <= 720 ? 480 : 600;
-
-return url + `?tr=w-${width},q-75,f-auto`;
-    }
-
-    return url;
-}
 
 // ======================================================
 // O'ZBEKISTON TELEFON RAQAMI — GLOBAL FORMAT
@@ -172,6 +144,8 @@ function getCachedCars() {
 // AVTOMOBILLARNI API DAN OLISH
 // ======================================================
 
+
+
 function renderCars(cars) {
 
     const container = document.getElementById("carsContainer");
@@ -257,277 +231,13 @@ const visibleCars =
 
 visibleCars.forEach((car, index) => {
 
-            const card = document.createElement("article");
+    const card = createCarCard(car, index);
 
-            card.className = "car-card";
-
-            card.dataset.id = car.id || "";
-card.dataset.type = car.type || "";
-card.dataset.brand = car.brand || "";
-card.dataset.year = car.year || "";
-card.dataset.status = car.status || "";
-           card.innerHTML = `
-
-    <div class="car-card-media">
-
-       <img
-    src="${getCardImageUrl(car.image)}"
-    alt="${car.name || "BBA CARS"}"
-    loading="${index < 8 ? "eager" : "lazy"}"
-fetchpriority="${index < 8 ? "high" : "auto"}"
-decoding="async"
->
-
-        <div class="car-card-badges">
-
-            ${
-                car.status === "top"
-                    ? '<span class="car-badge badge-top">TOP</span>'
-                    : ""
-            }
-
-            ${
-                car.status === "new"
-                    ? '<span class="car-badge badge-new">YANGI</span>'
-                    : ""
-            }
-
-            ${
-                car.status === "discount"
-                    ? '<span class="car-badge badge-sale">CHEGIRMA</span>'
-                    : ""
-            }
-
-        </div>
-
-        <button
-            type="button"
-            class="car-favorite-btn"
-            aria-label="Sevimlilarga qo‘shish"
-        >
-            ♡
-        </button>
-
-    </div>
-
-
-    <div class="car-card-body">
-
-        <h3 class="car-card-title">
-            ${car.name || ""}
-        </h3>
-
-        <div class="car-card-price">
-            ${
-                Number(car.price || 0).toLocaleString("en-US")
-            } USD
-        </div>
-
-
-        <div class="car-card-specs">
-
-    <span class="car-spec-item">
-        <span class="car-spec-icon">◉</span>
-        ${
-            car.type === "electric"
-                ? "Elektr"
-                : car.type === "hybrid"
-                ? "Gibrid"
-                : "Benzin"
-        }
-    </span>
-
-   ${
-    car.year
-        ? `<span class="car-spec-item car-spec-year">${car.year}</span>`
-        : ""
-}
-
-    ${
-        car.seats
-            ? `
-                <span class="car-spec-item">
-                    <span class="car-spec-icon">♙</span>
-                    ${car.seats} o‘rin
-                </span>
-            `
-            : ""
-    }
-
-    ${
-        car.range
-            ? `
-                <span class="car-spec-item">
-                    <span class="car-spec-icon">◷</span>
-                    ${car.range} km
-                </span>
-            `
-            : ""
-    }
-
-</div>
-
-
-        <div class="car-card-features">
-
-            ${
-                car.camera360 === "yes"
-                    ? "<span>360° kamera</span>"
-                    : ""
-            }
-
-            ${
-                car.hud === "yes"
-                    ? "<span>HUD display</span>"
-                    : ""
-            }
-
-            ${
-                car.seatVentilation === "yes"
-                    ? "<span>Ventilyatsiya</span>"
-                    : ""
-            }
-
-            ${
-                car.airSuspension === "yes"
-                    ? "<span>Pnevma</span>"
-                    : ""
-            }
-
-        </div>
-
-
-       <div class="car-card-actions">
-
-    <button
-        type="button"
-        class="car-compare-btn"
-        data-car-id="${car.id}"
-    >
-        <span class="car-compare-icon">⇄</span>
-        Taqqoslash
-    </button>
-
-    <a
-        href="car.html?id=${car.id}"
-        class="car-details-link"
-    >
-        Batafsil
-        <span>→</span>
-    </a>
-
-</div>
-
-    </div>
-
-`;
-
-
-const favoriteBtn = card.querySelector(".car-favorite-btn");
-
-const favorites =
-    JSON.parse(localStorage.getItem("favorites") || "[]");
-
-const carId = String(car.id);
-
-if (favorites.includes(carId)) {
-    favoriteBtn.classList.add("active");
-    favoriteBtn.textContent = "♥";
-}
-
-favoriteBtn.addEventListener("click", (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-
-    let favorites =
-        JSON.parse(localStorage.getItem("favorites") || "[]");
-
-    if (favorites.includes(carId)) {
-        favorites = favorites.filter(id => id !== carId);
-
-        favoriteBtn.classList.remove("active");
-        favoriteBtn.textContent = "♡";
-    } else {
-        favorites.push(carId);
-
-        favoriteBtn.classList.add("active");
-        favoriteBtn.textContent = "♥";
-    }
-
-    localStorage.setItem(
-        "favorites",
-        JSON.stringify(favorites)
-    );
-});
-
-
-const compareBtn = card.querySelector(".car-compare-btn");
-
-let compareCars =
-    JSON.parse(localStorage.getItem("compareCars") || "[]")
-        .map(String);
-
-if (compareCars.includes(carId)) {
-    compareBtn.classList.add("active");
-    compareBtn.innerHTML = `
-        <span class="car-compare-icon">✓</span>
-        Tanlandi
-    `;
-}
-
-compareBtn.addEventListener("click", (event) => {
-
-    event.preventDefault();
-    event.stopPropagation();
-
-    let compareCars =
-        JSON.parse(localStorage.getItem("compareCars") || "[]")
-            .map(String);
-
-    if (compareCars.includes(carId)) {
-
-        compareCars =
-            compareCars.filter(id => id !== carId);
-
-        compareBtn.classList.remove("active");
-
-        compareBtn.innerHTML = `
-            <span class="car-compare-icon">⇄</span>
-            Taqqoslash
-        `;
-
-    } else {
-
-        if (compareCars.length >= 3) {
-    alert("Bir vaqtning o‘zida maksimum 3 ta avtomobilni taqqoslash mumkin.");
-    return;
-}
-
-        compareCars.push(carId);
-
-        compareBtn.classList.add("active");
-
-        compareBtn.innerHTML = `
-            <span class="car-compare-icon">✓</span>
-            Tanlandi
-        `;
-    }
-
-   localStorage.setItem(
-    "compareCars",
-    JSON.stringify(compareCars)
-);
-
-updateCompareBar();
+    container.appendChild(card);
 
 });
 
 updateCompareBar();
-
-
-            container.appendChild(card);
-
-        });
 
 
         const loadMoreBtn = document.getElementById("catalogLoadMoreBtn");
@@ -1067,7 +777,11 @@ const matchesFavorite =
     matchesFuel &&
     matchesFavorite;
 
-    card.style.display = isVisible ? "" : "none";
+    if (isVisible) {
+    card.style.removeProperty("display");
+} else {
+    card.style.setProperty("display", "none", "important");
+}
 
     if (isVisible) {
         visibleCount++;
@@ -1102,6 +816,23 @@ emptyState.style.display =
 
 
 // QIDIRUV — YOZGANDA DARHOL ISHLAYDI
+document.addEventListener("DOMContentLoaded", () => {
+
+    const mobileSearch =
+        document.getElementById("mobileCarSearch");
+
+    const desktopSearch =
+        document.getElementById("carSearch");
+
+    mobileSearch?.addEventListener("input", () => {
+        filterCatalogCars();
+    });
+
+    desktopSearch?.addEventListener("input", () => {
+        filterCatalogCars();
+    });
+
+});
 
 
 
@@ -1300,93 +1031,13 @@ async function loadNasiyaCars() {
 
         container.innerHTML = "";
 
-        carsToShow.forEach((car) => {
-            const card = document.createElement("article");
+        carsToShow.forEach((car, index) => {
 
-            card.className = "car-card";
+    const card = createCarCard(car, index);
 
-            card.innerHTML = `
-                <div class="car-card-media">
+    container.appendChild(card);
 
-                    <img
-                        src="${getCardImageUrl(car.image)}"
-                        alt="${car.name || "BBA CARS"}"
-                        loading="lazy"
-                    >
-
-                    <div class="car-card-badges">
-
-                        ${
-                            car.status === "top"
-                                ? '<span class="car-badge badge-top">TOP</span>'
-                                : ""
-                        }
-
-                        ${
-                            car.status === "new"
-                                ? '<span class="car-badge badge-new">YANGI</span>'
-                                : ""
-                        }
-
-                        ${
-                            car.status === "discount"
-                                ? '<span class="car-badge badge-sale">CHEGIRMA</span>'
-                                : ""
-                        }
-
-                    </div>
-
-                </div>
-
-                <div class="car-card-body">
-
-                    <h3 class="car-card-title">
-                        ${car.name || ""}
-                    </h3>
-
-                    <div class="car-card-price">
-                        ${Number(car.price || 0).toLocaleString("en-US")} USD
-                    </div>
-
-                    <div class="car-card-specs">
-
-                        <span class="car-spec-item">
-                            ${
-                                car.type === "electric"
-                                    ? "Elektr"
-                                    : car.type === "hybrid"
-                                    ? "Gibrid"
-                                    : "Benzin"
-                            }
-                        </span>
-
-                        ${
-                            car.seats
-                                ? `<span class="car-spec-item">${car.seats} o‘rin</span>`
-                                : ""
-                        }
-
-                        ${
-                            car.range
-                                ? `<span class="car-spec-item">${car.range} km</span>`
-                                : ""
-                        }
-
-                    </div>
-
-                    <a
-                        href="car.html?id=${car.id}"
-                        class="car-details-link"
-                    >
-                        Batafsil
-                        <span>→</span>
-                    </a>
-
-                </div>
-            `;
-
-            container.appendChild(card);
-        });
+});
 
     } catch (error) {
         console.error("Nasiya avtomobillari xatosi:", error);

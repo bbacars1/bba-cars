@@ -1486,118 +1486,7 @@ img {
 }
 
 
-/* CARD */
 
-.related-car-card {
-    overflow: hidden;
-
-    background: #ffffff;
-
-    border: 1px solid #e9e9e9;
-    border-radius: 15px;
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        border-color 0.2s ease;
-}
-
-.related-car-card:hover {
-    transform: translateY(-3px);
-
-    border-color: #d5d5d5;
-
-    box-shadow:
-        0 14px 34px rgba(0, 0, 0, 0.06);
-}
-
-
-/* IMAGE */
-
-.related-car-image {
-    display: block;
-
-    width: 100%;
-    height: 190px;
-
-    overflow: hidden;
-
-    background: #f5f5f3;
-}
-
-.related-car-image img { 
-    width: 100%;
-     height: 100%;
-object-fit: cover;
-object-position: center;
-
-padding: 0;
-
-transition:
-    transform 0.25s ease;
-}
-
-.related-car-card:hover
-.related-car-image img {
-    transform: scale(1.025);
-}
-
-
-/* INFO */
-
-.related-car-info {
-    padding: 16px 16px 17px;
-}
-
-.related-car-info > span {
-    display: block;
-
-    margin-bottom: 6px;
-
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.7px;
-    text-transform: uppercase;
-
-    color: #9c9c9c;
-}
-
-.related-car-info h3 {
-    margin: 0 0 11px;
-
-    min-height: 40px;
-
-    font-size: 15px;
-    line-height: 1.35;
-    font-weight: 650;
-
-    color: #111111;
-}
-
-.related-car-info strong {
-    display: block;
-
-    margin-bottom: 13px;
-
-    font-size: 18px;
-    line-height: 1.1;
-
-    color: #111111;
-}
-
-.related-car-info > a {
-    display: inline-flex;
-    align-items: center;
-
-    font-size: 11px;
-    font-weight: 600;
-
-    color: #555555;
-}
-
-.related-car-info > a:hover {
-    color: #111111;
-}
 
 
 /* EMPTY STATE */
@@ -1637,13 +1526,7 @@ transition:
         font-size: 26px;
     }
 
-    .detail-related-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .related-car-image {
-        height: 220px;
-    }
+    
 }
 
 
@@ -1999,13 +1882,7 @@ transition:
         font-size: 26px;
     }
 
-    .detail-related-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .related-car-image {
-        height: 210px;
-    }
+   
 }
 
 
@@ -2384,287 +2261,20 @@ transition:
 
 @media (max-width: 720px) {
 
-    .detail-related-grid {
-        grid-template-columns: 1fr !important;
-        gap: 16px !important;
-    }
+    
 
-    .related-car-card {
-        border-radius: 18px !important;
-        overflow: hidden !important;
-        background: #ffffff !important;
-    }
-
-    .related-car-image {
-        width: 100% !important;
-        height: 230px !important;
-    }
-
-    .related-car-image img {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important;
-        object-position: center !important;
-    }
-
-    .related-car-info {
-        padding: 13px 14px 15px !important;
-    }
+    
 
 }
 
 
 @media (max-width: 720px) {
 
-    .related-car-specs {
-        display: flex !important;
-        align-items: center !important;
-        flex-wrap: wrap !important;
-        gap: 6px 12px !important;
-        margin-top: 8px !important;
-        margin-bottom: 10px !important;
-    }
-
-    .related-car-specs span {
-        font-size: 11.5px !important;
-        line-height: 1.4 !important;
-        color: #66717c !important;
-        white-space: nowrap !important;
-    }
+   
 
 }
 
 
-
-@media (max-width: 720px) {
-
-    /* ===============================
-       RELATED — HOME CARD STYLE
-    =============================== */
-
-    .detail-related-grid {
-        display: grid !important;
-        grid-template-columns: 1fr !important;
-        gap: 16px !important;
-    }
-
-    .related-car-card {
-        width: 100% !important;
-        margin: 0 !important;
-
-        overflow: hidden !important;
-
-        background: #ffffff !important;
-
-        border: 1px solid rgba(30, 65, 100, 0.08) !important;
-        border-radius: 20px !important;
-
-        box-shadow:
-            0 10px 28px rgba(35, 70, 100, 0.07) !important;
-
-        transform: none !important;
-    }
-
-
-    /* RASM */
-
-    .related-car-image {
-        display: block !important;
-
-        width: 100% !important;
-        height: 230px !important;
-
-        overflow: hidden !important;
-
-        background: #f4f6f8 !important;
-    }
-
-    .related-car-image img {
-        width: 100% !important;
-        height: 100% !important;
-
-        display: block !important;
-
-        object-fit: cover !important;
-        object-position: center !important;
-
-        padding: 0 !important;
-
-        transform: none !important;
-    }
-
-
-    /* CONTENT */
-
-    .related-car-info {
-        padding: 13px 14px 15px !important;
-    }
-
-
-    /* BRAND */
-
-    .related-car-info > span {
-        display: block !important;
-
-        margin: 0 0 5px !important;
-
-        color: #8b949d !important;
-
-        font-size: 10px !important;
-        line-height: 1.3 !important;
-        font-weight: 700 !important;
-
-        letter-spacing: 0.6px !important;
-        text-transform: uppercase !important;
-    }
-
-
-    /* NOM */
-
-    .related-car-info h3 {
-        min-height: 0 !important;
-
-        margin: 0 !important;
-
-        color: #111111 !important;
-
-        font-size: 16px !important;
-        line-height: 1.25 !important;
-        font-weight: 700 !important;
-
-        letter-spacing: -0.2px !important;
-    }
-
-
-    /* NARX */
-
-    .related-car-info strong {
-        display: block !important;
-
-        margin: 7px 0 0 !important;
-
-        color: #111111 !important;
-
-        font-size: 15px !important;
-        line-height: 1.2 !important;
-        font-weight: 700 !important;
-    }
-
-
-    /* TEXNIK KO‘RSATKICHLAR */
-
-    .related-car-specs {
-        display: flex !important;
-        align-items: center !important;
-        flex-wrap: wrap !important;
-
-        gap: 5px 10px !important;
-
-        margin: 8px 0 0 !important;
-    }
-
-    .related-car-specs span {
-        position: relative !important;
-
-        color: #66717c !important;
-
-        font-size: 11.5px !important;
-        line-height: 1.4 !important;
-
-        white-space: nowrap !important;
-    }
-
-    .related-car-specs span:not(:last-child)::after {
-        content: "•";
-
-        margin-left: 10px;
-
-        color: #b2bac1;
-    }
-
-
-    /* QO‘SHIMCHA FUNKSIYALAR */
-
-    .related-car-features {
-        display: flex !important;
-        align-items: center !important;
-        flex-wrap: wrap !important;
-
-        gap: 4px 8px !important;
-
-        margin-top: 5px !important;
-    }
-
-    .related-car-features:empty {
-        display: none !important;
-    }
-
-    .related-car-features span {
-        color: #737d86 !important;
-
-        font-size: 11px !important;
-        line-height: 1.4 !important;
-    }
-
-    .related-car-features span:not(:last-child)::after {
-        content: "•";
-
-        margin-left: 8px;
-
-        color: #b2bac1;
-    }
-
-
-    /* BATAFSIL */
-
-    .related-car-info > a {
-        display: inline-flex !important;
-        align-items: center !important;
-
-        margin-top: 13px !important;
-
-        color: #111111 !important;
-
-        font-size: 13.5px !important;
-        line-height: 1.2 !important;
-        font-weight: 700 !important;
-
-        text-decoration: none !important;
-    }
-
-
-    /* TELEFONDA HOVER YO‘Q */
-
-    .related-car-card:hover {
-        transform: none !important;
-        box-shadow:
-            0 10px 28px rgba(35, 70, 100, 0.07) !important;
-    }
-
-    .related-car-card:hover .related-car-image img {
-        transform: none !important;
-    }
-
-    .related-car-card:active {
-        transform: scale(0.99) !important;
-    }
-
-}
-
-
-.related-car-info {
-    padding-bottom: 13px !important;
-}
-
-.related-car-info > a {
-    margin-top: 10px !important;
-    margin-bottom: 0 !important;
-}
-
-.related-car-card {
-    height: auto !important;
-    min-height: 0 !important;
-}
 
 
 
@@ -3517,127 +3127,7 @@ transition:
     }
 
 
-    /* =====================================================
-       RELATED CARD
-    ===================================================== */
-
-    .related-car-card {
-        width: 100% !important;
-
-        overflow: hidden !important;
-
-        background: #ffffff !important;
-
-        border: 1px solid #e5eaed !important;
-        border-radius: 18px !important;
-
-        box-shadow:
-            0 8px 24px rgba(20, 45, 65, 0.045) !important;
-
-        transform: none !important;
-    }
-
-    .related-car-image {
-        display: block !important;
-
-        width: 100% !important;
-        height: 220px !important;
-
-        overflow: hidden !important;
-
-        background: #f4f6f7 !important;
-    }
-
-    .related-car-image img {
-        width: 100% !important;
-        height: 100% !important;
-
-        display: block !important;
-
-        object-fit: cover !important;
-        object-position: center !important;
-
-        padding: 0 !important;
-
-        transform: none !important;
-    }
-
-    .related-car-info {
-        padding: 15px 16px 17px !important;
-    }
-
-    .related-car-info > span {
-        display: block !important;
-
-        margin-bottom: 5px !important;
-
-        font-size: 9px !important;
-        line-height: 1.2 !important;
-
-        font-weight: 800 !important;
-
-        letter-spacing: 0.7px !important;
-        text-transform: uppercase !important;
-
-        color: #8495a2 !important;
-    }
-
-    .related-car-info h3 {
-        min-height: 0 !important;
-
-        margin: 0 0 7px !important;
-
-        font-size: 16px !important;
-        line-height: 1.25 !important;
-
-        font-weight: 750 !important;
-
-        letter-spacing: -0.2px !important;
-
-        color: #15354d !important;
-    }
-
-    .related-car-info strong {
-        display: block !important;
-
-        margin: 0 0 8px !important;
-
-        font-size: 17px !important;
-        line-height: 1.2 !important;
-
-        font-weight: 750 !important;
-
-        color: #102c43 !important;
-    }
-
-    .related-car-specs {
-        display: flex !important;
-        align-items: center !important;
-        flex-wrap: wrap !important;
-
-        gap: 5px 10px !important;
-
-        margin: 7px 0 9px !important;
-    }
-
-    .related-car-specs span {
-        font-size: 10.5px !important;
-        line-height: 1.35 !important;
-
-        color: #71818d !important;
-
-        white-space: nowrap !important;
-    }
-
-    .related-car-info > a {
-        display: inline-flex !important;
-        align-items: center !important;
-
-        font-size: 12.5px !important;
-        font-weight: 750 !important;
-
-        color: #244e6c !important;
-    }
+    
 
 
     /* =====================================================
@@ -3664,88 +3154,7 @@ transition:
         gap: 18px !important;
     }
 
-    .related-car-card {
-        overflow: hidden !important;
-        background: #fff !important;
-        border: 1px solid rgba(18, 40, 60, 0.08) !important;
-        border-radius: 18px !important;
-        box-shadow: 0 8px 26px rgba(20, 45, 70, 0.05) !important;
-        transition: transform .25s ease, box-shadow .25s ease !important;
-    }
-
-    .related-car-card:hover {
-        transform: translateY(-4px) !important;
-        box-shadow: 0 16px 38px rgba(20, 45, 70, 0.10) !important;
-    }
-
-    .related-car-image {
-        display: block !important;
-        width: 100% !important;
-        height: 220px !important;
-        overflow: hidden !important;
-        background: #f5f7f8 !important;
-    }
-
-    .related-car-image img {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important;
-        object-position: center !important;
-        padding: 0 !important;
-        transition: transform .3s ease !important;
-    }
-
-    .related-car-card:hover .related-car-image img {
-        transform: scale(1.035) !important;
-    }
-
-    .related-car-info {
-        padding: 18px 18px 20px !important;
-    }
-
-    .related-car-info > span {
-        display: block !important;
-        margin-bottom: 7px !important;
-        font-size: 10px !important;
-        font-weight: 700 !important;
-        letter-spacing: .8px !important;
-        text-transform: uppercase !important;
-        color: #8d99a3 !important;
-    }
-
-    .related-car-info h3 {
-        margin: 0 0 14px !important;
-        font-size: 18px !important;
-        line-height: 1.25 !important;
-        font-weight: 700 !important;
-        color: #102438 !important;
-    }
-
-    .related-car-price {
-        margin-bottom: 12px !important;
-        font-size: 19px !important;
-        font-weight: 700 !important;
-        color: #102438 !important;
-    }
-
-    .related-car-features {
-        display: flex !important;
-        flex-wrap: wrap !important;
-        gap: 6px 10px !important;
-        margin-bottom: 14px !important;
-        font-size: 12px !important;
-        color: #71808d !important;
-    }
-
-    .related-car-info > a {
-        display: inline-flex !important;
-        align-items: center !important;
-        margin-top: 4px !important;
-        font-size: 13px !important;
-        font-weight: 700 !important;
-        color: #102438 !important;
-        text-decoration: none !important;
-    }
+    
 }
 
 
@@ -3771,28 +3180,7 @@ transition:
         overflow: visible !important;
     }
 
-    .related-car-card {
-        width: 100% !important;
-        min-width: 0 !important;
-        max-width: none !important;
-    }
-
-    .related-car-image {
-        width: 100% !important;
-        height: 190px !important;
-    }
-
-    .related-car-info {
-        padding: 15px 16px 17px !important;
-    }
-
-    .related-car-info h3 {
-        font-size: 16px !important;
-    }
-
-    .related-car-price {
-        font-size: 18px !important;
-    }
+    
 }
 
 
@@ -3832,21 +3220,5 @@ transition:
         overflow: visible !important;
     }
 
-    .related-car-card {
-        width: auto !important;
-        min-width: 0 !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-    }
-
-    .related-car-image {
-        width: 100% !important;
-        height: 180px !important;
-    }
-
-    .related-car-image img {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important;
-    }
+    
 }
