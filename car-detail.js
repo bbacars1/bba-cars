@@ -746,17 +746,14 @@ function renderCarDetail(car) {
 
 
                     <p>
-                        ${
-                            car.name || "Ushbu avtomobil"
-                        }
-                        zamonaviy texnologiyalar,
-                        qulay salon va kundalik
-                        foydalanish uchun kerakli
-                        imkoniyatlarni birlashtiradi.
-                        Batafsil texnik
-                        ko‘rsatkichlar avtomobil
-                        ma’lumotlarida keltirilgan.
-                    </p>
+    ${
+        (localStorage.getItem("bbaLanguage") || "uz") === "zh"
+            ? `${car.name || "该车型"}融合现代科技、舒适座舱以及日常使用所需的实用功能。详细技术参数请参阅车辆信息。`
+            : (localStorage.getItem("bbaLanguage") || "uz") === "ru"
+            ? `${car.name || "Автомобиль"} сочетает современные технологии, комфортный салон и необходимые возможности для повседневного использования. Подробные технические характеристики приведены в информации об автомобиле.`
+            : `${car.name || "Ushbu avtomobil"} zamonaviy texnologiyalar, qulay salon va kundalik foydalanish uchun kerakli imkoniyatlarni birlashtiradi. Batafsil texnik ko‘rsatkichlar avtomobil ma’lumotlarida keltirilgan.`
+    }
+</p>
 
                 </div>
 
@@ -812,7 +809,13 @@ function renderCarDetail(car) {
                             <strong>
                                 ${
                                     car.power
-                                    ? `${car.power} ot kuchi`
+                                    ? `${car.power} ${
+    (localStorage.getItem("bbaLanguage") || "uz") === "zh"
+        ? "马力"
+        : (localStorage.getItem("bbaLanguage") || "uz") === "ru"
+        ? "л.с."
+        : "ot kuchi"
+}`
                                     : "—"
                                 }
                             </strong>
@@ -827,7 +830,13 @@ function renderCarDetail(car) {
                             <strong>
                                 ${
                                     car.acceleration
-                                    ? `${car.acceleration} sek`
+                                    ? `${car.acceleration} ${
+    (localStorage.getItem("bbaLanguage") || "uz") === "zh"
+        ? "秒"
+        : (localStorage.getItem("bbaLanguage") || "uz") === "ru"
+        ? "сек"
+        : "sek"
+}`
                                     : "—"
                                 }
                             </strong>
@@ -842,7 +851,13 @@ function renderCarDetail(car) {
                             <strong>
                                 ${
                                     car.maxSpeed
-                                    ? `${car.maxSpeed} km/soat`
+                                    ? `${car.maxSpeed} ${
+    (localStorage.getItem("bbaLanguage") || "uz") === "zh"
+        ? "公里/小时"
+        : (localStorage.getItem("bbaLanguage") || "uz") === "ru"
+        ? "км/ч"
+        : "km/soat"
+}`
                                     : "—"
                                 }
                             </strong>
@@ -1170,9 +1185,13 @@ function renderCarDetail(car) {
 
 
                 <p>
-                    Nasiya shartlari va aniq
-                    hisob-kitob uchun ariza
-                    qoldiring.
+                    ${
+    (localStorage.getItem("bbaLanguage") || "uz") === "zh"
+        ? "提交申请以了解分期条件并获取准确的付款方案。"
+        : (localStorage.getItem("bbaLanguage") || "uz") === "ru"
+        ? "Оставьте заявку, чтобы узнать условия рассрочки и получить точный расчёт."
+        : "Nasiya shartlari va aniq hisob-kitob uchun ariza qoldiring"
+}
                 </p>
 
 
@@ -1729,10 +1748,21 @@ function setupCompare(car) {
             active
         );
 
-        button.innerHTML =
-            active
-                ? "✓ Taqqoslashga qo‘shildi"
-                : "⇄ Taqqoslash";
+        const lang =
+    localStorage.getItem("bbaLanguage") || "uz";
+
+button.innerHTML =
+    active
+        ? lang === "zh"
+            ? "✓ 已加入对比"
+            : lang === "ru"
+            ? "✓ Добавлено к сравнению"
+            : "✓ Taqqoslashga qo‘shildi"
+        : lang === "zh"
+            ? "⇄ 对比"
+            : lang === "ru"
+            ? "⇄ Сравнить"
+            : "⇄ Taqqoslash";
     }
 
 
@@ -2522,8 +2552,18 @@ related.forEach((car, index) => {
 
 document.addEventListener(
     "DOMContentLoaded",
-    loadCarDetail
-);
+    async () => {
+        await loadCarDetail();
 
+        const savedLang =
+            localStorage.getItem("bbaLanguage") || "uz";
+
+        if (
+            typeof setLanguage === "function"
+        ) {
+            setLanguage(savedLang);
+        }
+    }
+);
 
 

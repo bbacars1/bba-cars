@@ -216,11 +216,10 @@
             BBA CARS · PREMIUM COLLECTION
         </span>
 
-        <h1>
-            Premium avtomobillar.
-            <br>
-            Yangi darajadagi tanlov.
-        </h1>
+        <h1 data-i18n="heroTitle">
+    Premium avtomobillar.<br>
+    Yangi darajadagi tanlov.
+</h1>
 
         <p>
             Ishonchli avtomobillar, qulay nasiya
@@ -285,7 +284,7 @@
         <div class="home-cinematic-stats">
 
             <div>
-                <strong>100+</strong>
+                <strong>1500+</strong>
                 <span>Avtomobil</span>
             </div>
 
@@ -851,11 +850,11 @@
         <div class="home-nasiya-content">
             <span class="home-nasiya-label">NASIYA</span>
 
-            <h2>
-                Avtomobilni qulay
-                <br>
-                shartlarda oling
-            </h2>
+            <h2 data-i18n="Avtomobilni qulay shartlarda oling">
+    Avtomobilni qulay
+    <br>
+    shartlarda oling
+</h2>
 
             <p class="home-nasiya-text">
                 Sizga mos avtomobilni tanlang va qulay nasiya shartlari bo‘yicha
@@ -946,7 +945,7 @@
 
             <h2>
                 Avtomobil tanlashda
-                <br>
+                
                 ishonch muhim.
             </h2>
 
@@ -1027,7 +1026,7 @@
 
                 <h2>
                     Mashhur avtomobil
-                    <br>
+                    
                     brendlari.
                 </h2>
             </div>
@@ -1174,10 +1173,7 @@
                     BBA CARS
                 </a>
 
-                <p>
-                    Premium avtomobillar, ishonchli tanlov
-                    va professional xizmat.
-                </p>
+                <p>Premium avtomobillar, ishonchli tanlov va professional xizmat.</p>
 
                 <div class="footer-socials">
 
@@ -1419,6 +1415,22 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
 
 
+    <!-- MOBILE LANGUAGE SWITCHER -->
+<div class="mobile-language-switcher">
+    <button type="button" class="mobile-lang-btn active" data-lang="uz">
+        UZ
+    </button>
+
+    <button type="button" class="mobile-lang-btn" data-lang="ru">
+        RU
+    </button>
+
+    <button type="button" class="mobile-lang-btn" data-lang="zh">
+        中文
+    </button>
+</div>
+
+
     <!-- MENU LINKS -->
     <nav class="mobile-menu-links">
 
@@ -1432,7 +1444,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </svg>
             </span>
 
-            <span>Bosh sahifa</span>
+            <span data-i18n="home">Bosh sahifa</span>
 
         </a>
 
@@ -1449,7 +1461,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </svg>
             </span>
 
-            <span>Avtomobillar</span>
+            <span data-i18n="cars">Avtomobillar</span>
 
         </a>
 
@@ -1462,7 +1474,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </svg>
     </span>
 
-    <span>Kutilayotgan avtomobillar</span>
+    <span data-i18n="expected">Kutilayotgan avtomobillar</span>
 
 </a>
 
@@ -1480,7 +1492,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </svg>
             </span>
 
-            <span>Nasiya</span>
+           <span data-i18n="credit">Nasiya</span>
 
         </a>
 
@@ -1493,7 +1505,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </svg>
             </span>
 
-            <span>Xizmatlar</span>
+           <span data-i18n="services">Xizmatlar</span>
 
         </a>
 
@@ -1509,7 +1521,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </svg>
             </span>
 
-            <span>Blog</span>
+           <span data-i18n="blog">Blog</span>
 
         </a>
 
@@ -1523,7 +1535,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </svg>
             </span>
 
-            <span>Kontakt</span>
+          <span data-i18n="contact">Kontakt</span>
 
         </a>
 
@@ -1620,6 +1632,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <script src="car-card.js?v=20260920-1"></script>
     <script src="script.js?v=20260920-1"></script>
+    <script src="lang.js"></script>
 
     <script>
     lucide.createIcons();
