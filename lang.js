@@ -791,6 +791,11 @@ const translations = {
 
 "Biz bilan bog‘lanish": "Связаться с нами",
 
+"← Avtomobillarga qaytish": "← Вернуться к автомобилям",
+"Avtomobillarni taqqoslash": "Сравнение автомобилей",
+"Tanlangan avtomobillarning asosiy xususiyatlarini yonma-yon solishtiring.":
+    "Сравните основные характеристики выбранных автомобилей рядом.",
+
 
 
 
@@ -1580,7 +1585,12 @@ const translations = {
 "Avtomobil, narx va nasiya shartlari bo‘yicha menejerimizdan professional maslahat oling.":
     "关于车型、价格和分期条件，欢迎向我们的客户经理获取专业咨询。",
 
-"Biz bilan bog‘lanish": "联系我们"
+"Biz bilan bog‘lanish": "联系我们",
+
+"← Avtomobillarga qaytish": "← 返回汽车列表",
+"Avtomobillarni taqqoslash": "汽车对比",
+"Tanlangan avtomobillarning asosiy xususiyatlarini yonma-yon solishtiring.":
+    "并排比较所选汽车的主要参数。"
 
         
     }

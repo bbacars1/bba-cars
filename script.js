@@ -1823,19 +1823,44 @@ async function loadComparePage() {
         ).map(String);
 
    if (compareIds.length === 0) {
+
+    const lang =
+        localStorage.getItem("bbaLanguage") || "uz";
+
+    const emptyTitle =
+        lang === "zh"
+            ? "未选择汽车"
+            : lang === "ru"
+            ? "Автомобиль не выбран"
+            : "Avtomobil tanlanmagan";
+
+    const emptyText =
+        lang === "zh"
+            ? "请选择至少 2 辆汽车进行对比。"
+            : lang === "ru"
+            ? "Выберите минимум 2 автомобиля для сравнения."
+            : "Taqqoslash uchun kamida 2 ta avtomobil tanlang.";
+
+    const emptyButton =
+        lang === "zh"
+            ? "选择汽车"
+            : lang === "ru"
+            ? "Выбрать автомобиль"
+            : "Avtomobil tanlash";
+
     compareGrid.innerHTML = `
         <div class="compare-empty">
 
             <div class="compare-empty-icon">⇄</div>
 
-            <h3>Avtomobil tanlanmagan</h3>
+            <h3>${emptyTitle}</h3>
 
             <p>
-                Taqqoslash uchun kamida 2 ta avtomobil tanlang.
+                ${emptyText}
             </p>
 
             <a href="cars.html" class="compare-empty-btn">
-                Avtomobil tanlash
+                ${emptyButton}
             </a>
 
         </div>
@@ -1843,6 +1868,8 @@ async function loadComparePage() {
 
     return;
 }
+
+
 
     try {
 
