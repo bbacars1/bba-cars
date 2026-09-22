@@ -1727,13 +1727,14 @@ function setLanguage(lang) {
     localStorage.setItem(BBA_LANG_KEY, lang);
 
     document
-        .querySelectorAll(".mobile-lang-btn")
+        .querySelectorAll(".mobile-lang-btn, .desktop-lang-btn")
         .forEach(button => {
             button.classList.toggle(
                 "active",
                 button.dataset.lang === lang
             );
         });
+        document.documentElement.classList.add("bba-lang-ready");
 }
 
 
@@ -1749,13 +1750,13 @@ document.addEventListener("DOMContentLoaded", () => {
     setLanguage(savedLanguage);
 
     document
-        .querySelectorAll(".mobile-lang-btn")
-        .forEach(button => {
+    .querySelectorAll(".mobile-lang-btn, .desktop-lang-btn")
+    .forEach(button => {
 
-            button.addEventListener("click", () => {
-                setLanguage(button.dataset.lang);
-            });
-
+        button.addEventListener("click", () => {
+            setLanguage(button.dataset.lang);
         });
+
+    });
 
 });

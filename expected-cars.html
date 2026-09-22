@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="lang-init.js"></script>
+
+<style>
+    html[data-bba-lang="ru"] body,
+    html[data-bba-lang="zh"] body {
+        opacity: 0;
+    }
+
+    html.bba-lang-ready body {
+        opacity: 1;
+    }
+</style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BBA CARS</title>
@@ -81,6 +93,11 @@
 
         <!-- DESKTOP ACTIONS -->
         <div class="header-actions">
+            <div class="desktop-language-switcher">
+    <button type="button" class="desktop-lang-btn active" data-lang="uz">UZ</button>
+    <button type="button" class="desktop-lang-btn" data-lang="ru">RU</button>
+    <button type="button" class="desktop-lang-btn" data-lang="zh">中文</button>
+</div>
 
             <a
                 href="tel:+998712001020"
@@ -136,6 +153,7 @@
 
         <!-- MOBILE ACTIONS -->
         <div class="mobile-header-actions">
+            
 
             <a
                 href="cars.html"
