@@ -398,9 +398,105 @@ header button{
     🚗 Avtomobillar: <span id="carCount">0</span>
 </div>
 
+<div
+    class="card"
+    onclick="toggleExpectedCars()"
+    style="cursor:pointer;"
+>
+    ⏳ Kutilayotgan avtomobillar:
+    <span id="expectedCarCount">0</span>
+</div>
+
 <div class="card">
 👤 Administrator
 </div>
+
+<!-- KUTILAYOTGAN AVTOMOBILLAR -->
+<section id="expectedCarsSection" style="display:none;">
+
+    <h2>⏳ Kutilayotgan avtomobillar</h2>
+
+    <form id="expectedCarForm">
+
+        <input
+            type="text"
+            id="expectedName"
+            placeholder="Avtomobil nomi"
+            required
+        >
+
+        <input
+            type="text"
+            id="expectedBrand"
+            placeholder="Brend"
+        >
+
+        <input
+            type="file"
+            id="expectedImage"
+            accept="image/*"
+        >
+
+        <label>Taxminiy kelish sanasi va vaqti</label>
+
+        <input
+            type="datetime-local"
+            id="expectedArrival"
+            required
+        >
+
+        <input
+            type="text"
+            id="expectedType"
+            placeholder="Turi — masalan: Gibrid"
+        >
+
+        <input
+            type="text"
+            id="expectedDrive"
+            placeholder="Privod — masalan: AWD"
+        >
+
+        <input
+            type="text"
+            id="expectedPower"
+            placeholder="Quvvati"
+        >
+
+        <input
+            type="number"
+            id="expectedSortOrder"
+            placeholder="Tartib raqami"
+            value="0"
+        >
+
+        <label>
+            <input
+                type="checkbox"
+                id="expectedBannerEnabled"
+            >
+            Countdown reklamada ko‘rsatish
+        </label>
+
+        <label>
+            <input
+                type="checkbox"
+                id="expectedActive"
+                checked
+            >
+            Saytda ko‘rsatish
+        </label>
+
+        <button type="submit">
+            Kutilayotgan avtomobilni qo‘shish
+        </button>
+
+    </form>
+
+    <div id="expectedCarsList"></div>
+
+</section>
+
 <h2>🚗 Yangi avtomobil qo'shish</h2>
 <div class="add-car-grid">
 <input type="text" id="name" placeholder="Avtomobil nomi"><br><br>
@@ -1505,6 +1601,332 @@ if (data.success) {
     window.location.replace("login.html");
 }
 }
+
+function toggleExpectedCars() {
+    const section = document.getElementById("expectedCarsSection");
+
+    if (!section) return;
+
+    if (section.style.display === "none" || !section.style.display) {
+        section.style.display = "block";
+        loadExpectedCars();
+        section.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    } else {
+        section.style.display = "none";
+    }
+}
+
+
+
+document
+    .getElementById("expectedCarForm")
+    .addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const isEditing = currentExpectedCarEditId !== null;
+
+        const formData = new FormData();
+
+        formData.append(
+            "name",
+            document.getElementById("expectedName").value.trim()
+        );
+
+        formData.append(
+            "brand",
+            document.getElementById("expectedBrand").value.trim()
+        );
+
+        const image =
+            document.getElementById("expectedImage").files[0];
+
+        if (!image && !isEditing) {
+    alert("Avtomobil rasmini tanlang");
+    return;
+}
+
+        if (image) {
+    formData.append("image", image);
+}
+
+        formData.append(
+            "arrival_at",
+            document.getElementById("expectedArrival").value
+        );
+
+        formData.append(
+            "type",
+            document.getElementById("expectedType").value.trim()
+        );
+
+        formData.append(
+            "drive",
+            document.getElementById("expectedDrive").value.trim()
+        );
+
+        formData.append(
+            "power",
+            document.getElementById("expectedPower").value.trim()
+        );
+
+        formData.append(
+            "sort_order",
+            document.getElementById("expectedSortOrder").value || "0"
+        );
+
+        formData.append(
+            "banner_enabled",
+            document.getElementById("expectedBannerEnabled").checked
+                ? "1"
+                : "0"
+        );
+
+        formData.append(
+            "active",
+            document.getElementById("expectedActive").checked
+                ? "1"
+                : "0"
+        );
+
+        try {
+            const response = await fetch(
+    isEditing
+        ? `https://api.bbacars.uz/expected-cars/${currentExpectedCarEditId}`
+        : "https://api.bbacars.uz/expected-cars",
+    {
+        method: isEditing ? "PUT" : "POST",
+        credentials: "include",
+       body: formData
+    }
+);
+
+            const data = await response.json();
+
+            if (!response.ok || !data.success) {
+                throw new Error(
+                    data.message ||
+                    "Avtomobilni qo‘shishda xatolik"
+                );
+            }
+
+            alert(
+    isEditing
+        ? "Kutilayotgan avtomobil muvaffaqiyatli yangilandi!"
+        : "Kutilayotgan avtomobil muvaffaqiyatli qo‘shildi!"
+);
+
+            document
+                .getElementById("expectedCarForm")
+                .reset();
+
+            document.getElementById("expectedActive").checked = true;
+            currentExpectedCarEditId = null;
+            await loadExpectedCars();
+
+        } catch (error) {
+            console.error(error);
+            alert(error.message);
+        }
+    });
+
+
+let currentExpectedCarEditId = null;
+
+async function loadExpectedCars() {
+    try {
+        const response = await fetch(
+            "https://api.bbacars.uz/admin/expected-cars",
+            {
+                credentials: "include"
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error(
+                "Kutilayotgan avtomobillarni yuklab bo‘lmadi"
+            );
+        }
+
+        const cars = await response.json();
+
+        document.getElementById(
+            "expectedCarCount"
+        ).textContent = cars.length;
+
+        const list = document.getElementById(
+            "expectedCarsList"
+        );
+
+        list.innerHTML = cars.map(car => `
+            <div class="expected-admin-car">
+                <img
+                    src="${car.image}"
+                    alt="${car.name}"
+                >
+
+                <div>
+                    <strong>${car.name}</strong>
+                    <div>${car.brand || ""}</div>
+                    <div>
+                        Kelish vaqti:
+                        ${new Date(car.arrival_at).toLocaleString("uz-UZ")}
+                    </div>
+                
+                <div class="expected-admin-actions">
+    <button
+        type="button"
+        onclick="editExpectedCar(${car.id})"
+    >
+        ✏️ Tahrirlash
+    </button>
+
+    <button
+        type="button"
+        onclick="deleteExpectedCar(${car.id})"
+    >
+        🗑️ O‘chirish
+    </button>
+</div>
+            </div>
+        `).join("");
+
+    } catch (error) {
+        console.error(
+            "Expected cars yuklashda xato:",
+            error
+        );
+    }
+}
+
+
+async function editExpectedCar(id) {
+    try {
+        const response = await fetch(
+            "https://api.bbacars.uz/admin/expected-cars",
+            {
+                credentials: "include"
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error(
+                "Avtomobil ma’lumotlarini olib bo‘lmadi"
+            );
+        }
+
+        const cars = await response.json();
+
+        const car = cars.find(
+            item => Number(item.id) === Number(id)
+        );
+
+        if (!car) {
+            alert("Kutilayotgan avtomobil topilmadi");
+            return;
+        }
+
+        currentExpectedCarEditId = car.id;
+
+        document.getElementById("expectedName").value =
+            car.name || "";
+
+        document.getElementById("expectedBrand").value =
+            car.brand || "";
+
+        document.getElementById("expectedType").value =
+            car.type || "";
+
+        document.getElementById("expectedDrive").value =
+            car.drive || "";
+
+        document.getElementById("expectedPower").value =
+            car.power || "";
+
+        document.getElementById("expectedSortOrder").value =
+            car.sort_order || 0;
+
+        document.getElementById(
+            "expectedBannerEnabled"
+        ).checked = Number(car.banner_enabled) === 1;
+
+        document.getElementById(
+            "expectedActive"
+        ).checked = Number(car.active) === 1;
+
+        if (car.arrival_at) {
+            const date = new Date(car.arrival_at);
+
+            const localDate = new Date(
+                date.getTime() -
+                date.getTimezoneOffset() * 60000
+            );
+
+            document.getElementById(
+                "expectedArrival"
+            ).value = localDate
+                .toISOString()
+                .slice(0, 16);
+        }
+
+        document.getElementById(
+            "expectedCarForm"
+        ).scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    } catch (error) {
+        console.error(
+            "Expected car tahrirlashda xato:",
+            error
+        );
+
+        alert(error.message);
+    }
+}
+
+async function deleteExpectedCar(id) {
+    const confirmed = confirm(
+        "Bu kutilayotgan avtomobilni o‘chirmoqchimisiz?"
+    );
+
+    if (!confirmed) return;
+
+    try {
+        const response = await fetch(
+            `https://api.bbacars.uz/expected-cars/${id}`,
+            {
+                method: "DELETE",
+                credentials: "include"
+            }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+            throw new Error(
+                data.message ||
+                "Avtomobilni o‘chirishda xatolik"
+            );
+        }
+
+        alert("Kutilayotgan avtomobil o‘chirildi");
+
+        await loadExpectedCars();
+
+    } catch (error) {
+        console.error(
+            "Expected car o‘chirishda xato:",
+            error
+        );
+
+        alert(error.message);
+    }
+}
+
+
 </script>
 
 

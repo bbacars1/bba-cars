@@ -129,7 +129,30 @@ for (const [column, definition] of columns) {
     }
 }
 } catch (err) { console.error("Cars yangi ustunlarini yaratishda xato:", err); }
-})();
+try {
+    await db.query(`
+        CREATE TABLE IF NOT EXISTS expected_cars (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            name VARCHAR(255) NOT NULL,
+            brand VARCHAR(255) NULL,
+            image VARCHAR(500) NOT NULL,
+            arrival_at DATETIME NOT NULL,
+            type VARCHAR(50) NULL,
+            drive VARCHAR(50) NULL,
+            power VARCHAR(100) NULL,
+            banner_enabled TINYINT(1) NOT NULL DEFAULT 0,
+            active TINYINT(1) NOT NULL DEFAULT 1,
+            sort_order INT NOT NULL DEFAULT 0,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    `);
+
+    console.log("Expected cars table tayyor!");
+} catch (err) {
+    console.error("Expected cars table yaratishda xato:", err);
+}
+})
+();
 
 console.log("ADMIN_LOGIN:", process.env.ADMIN_LOGIN);
 console.log("ADMIN_PASSWORD:", process.env.ADMIN_PASSWORD ? "YUKLANDI" : "YUKLANMADI");
@@ -251,6 +274,309 @@ res.json(rows);
     });
   }
 });
+
+app.get("/expected-cars", async (req, res) => {
+    try {
+        const [rows] = await db.query(`
+            SELECT *
+            FROM expected_cars
+            WHERE active = 1
+            ORDER BY sort_order ASC, id DESC
+        `);
+
+        res.json(rows);
+    } catch (err) {
+        console.error("Expected cars olishda xato:", err);
+
+        res.status(500).json({
+            success: false,
+            message: err.message
+        });
+    }
+});
+
+
+app.get(
+    "/admin/expected-cars",
+    requireAdmin,
+    async (req, res) => {
+        try {
+            const [rows] = await db.query(`
+                SELECT *
+                FROM expected_cars
+                ORDER BY sort_order ASC, id DESC
+            `);
+
+            res.json(rows);
+
+        } catch (err) {
+            console.error(
+                "Admin expected cars olishda xato:",
+                err
+            );
+
+            res.status(500).json({
+                success: false,
+                message: err.message
+            });
+        }
+    }
+);
+
+
+app.post(
+    "/expected-cars",
+    requireAdmin,
+    upload.single("image"),
+    async (req, res) => {
+        try {
+            const {
+                name,
+                brand,
+                arrival_at,
+                type,
+                drive,
+                power,
+                banner_enabled,
+                active,
+                sort_order
+            } = req.body;
+
+            if (!name || !arrival_at) {
+                return res.status(400).json({
+                    success: false,
+                    message: "Avtomobil nomi va kelish vaqti majburiy"
+                });
+            }
+
+            if (!req.file) {
+                return res.status(400).json({
+                    success: false,
+                    message: "Avtomobil rasmini tanlang"
+                });
+            }
+
+            const uploadResponse = await imageKit.files.upload({
+                file: req.file.buffer.toString("base64"),
+                fileName: Date.now() + "-" + req.file.originalname,
+                folder: "/bba-expected-cars"
+            });
+
+            const image = uploadResponse.url;
+
+            const [result] = await db.query(
+                `INSERT INTO expected_cars
+                (
+                    name,
+                    brand,
+                    image,
+                    arrival_at,
+                    type,
+                    drive,
+                    power,
+                    banner_enabled,
+                    active,
+                    sort_order
+                )
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                [
+                    name,
+                    brand || null,
+                    image,
+                    arrival_at,
+                    type || null,
+                    drive || null,
+                    power || null,
+                    banner_enabled === "1" ? 1 : 0,
+                    active === "0" ? 0 : 1,
+                    Number(sort_order) || 0
+                ]
+            );
+
+            res.json({
+                success: true,
+                message: "Kutilayotgan avtomobil qo‘shildi",
+                id: result.insertId,
+                image
+            });
+
+        } catch (err) {
+            console.error(
+                "Expected car qo‘shishda xato:",
+                err
+            );
+
+            res.status(500).json({
+                success: false,
+                message: err.message
+            });
+        }
+    }
+);
+
+app.put(
+    "/expected-cars/:id",
+    requireAdmin,
+    upload.single("image"),
+    async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const {
+            name,
+            brand,
+            arrival_at,
+            type,
+            drive,
+            power,
+            banner_enabled,
+            active,
+            sort_order
+        } = req.body;
+
+        if (!name || !arrival_at) {
+            return res.status(400).json({
+                success: false,
+                message: "Avtomobil nomi va kelish vaqti majburiy"
+            });
+        }
+
+        let newImage = null;
+
+if (req.file) {
+    const uploadResponse = await imageKit.files.upload({
+        file: req.file.buffer.toString("base64"),
+        fileName: Date.now() + "-" + req.file.originalname,
+        folder: "/bba-expected-cars"
+    });
+
+    newImage = uploadResponse.url;
+}
+
+        const [result] = await db.query(
+            `UPDATE expected_cars SET
+                name = ?,
+                brand = ?,
+                image = COALESCE(?, image),
+                arrival_at = ?,
+                type = ?,
+                drive = ?,
+                power = ?,
+                banner_enabled = ?,
+                active = ?,
+                sort_order = ?
+            WHERE id = ?`,
+            [
+                name,
+                brand || null,
+                newImage,
+                arrival_at,
+                type || null,
+                drive || null,
+                power || null,
+                banner_enabled === "1" ? 1 : 0,
+active === "0" ? 0 : 1,
+                Number(sort_order) || 0,
+                id
+            ]
+        );
+
+        if (result.affectedRows === 0) {
+            return res.status(404).json({
+                success: false,
+                message: "Kutilayotgan avtomobil topilmadi"
+            });
+        }
+
+        res.json({
+            success: true,
+            message: "Kutilayotgan avtomobil yangilandi"
+        });
+
+    } catch (err) {
+        console.error(
+            "Expected car tahrirlashda xato:",
+            err
+        );
+
+        res.status(500).json({
+            success: false,
+            message: err.message
+        });
+    }
+});
+
+app.delete("/expected-cars/:id", requireAdmin, async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const [result] = await db.query(
+            "DELETE FROM expected_cars WHERE id = ?",
+            [id]
+        );
+
+        if (result.affectedRows === 0) {
+            return res.status(404).json({
+                success: false,
+                message: "Kutilayotgan avtomobil topilmadi"
+            });
+        }
+
+        res.json({
+            success: true,
+            message: "Kutilayotgan avtomobil o‘chirildi"
+        });
+
+    } catch (err) {
+        console.error(
+            "Expected car o‘chirishda xato:",
+            err
+        );
+
+        res.status(500).json({
+            success: false,
+            message: err.message
+        });
+    }
+});
+
+app.get("/expected-cars-banner", async (req, res) => {
+    try {
+        const [rows] = await db.query(`
+            SELECT *
+            FROM expected_cars
+            WHERE active = 1
+              AND banner_enabled = 1
+              AND arrival_at > NOW()
+            ORDER BY sort_order ASC, id DESC
+            LIMIT 1
+        `);
+
+        if (rows.length === 0) {
+            return res.json({
+                success: true,
+                car: null
+            });
+        }
+
+        res.json({
+            success: true,
+            car: rows[0]
+        });
+
+    } catch (err) {
+        console.error(
+            "Expected car banner olishda xato:",
+            err
+        );
+
+        res.status(500).json({
+            success: false,
+            message: err.message
+        });
+    }
+});
+
 app.post("/cars", requireAdmin, upload.array("images", 10), async (req, res) => {
   try {
     const {
