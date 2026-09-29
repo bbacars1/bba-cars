@@ -23502,3 +23502,608 @@ body.cars-page .expected-car-favorite.active svg {
         display: none !important;
     }
 }
+
+
+
+
+
+
+
+
+/* =========================================
+   BBA CARS — EXPECTED COUNTDOWN BANNER FINAL
+========================================= */
+
+.bba-countdown-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    background: rgba(15, 23, 32, 0.30);
+
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+
+    animation: bbaCountdownFadeIn .3s ease;
+}
+
+
+/* BANNER */
+
+.bba-countdown-banner {
+    position: relative;
+
+    width: min(1420px, 94vw);
+    min-height: 255px;
+
+    display: grid;
+    grid-template-columns: 30% 70%;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border: 1px solid rgba(16, 38, 59, 0.06);
+    border-radius: 32px;
+
+    box-shadow:
+        0 30px 90px rgba(12, 28, 43, 0.18);
+}
+
+
+/* CLOSE */
+
+.bba-countdown-close {
+    position: absolute;
+
+    top: 22px;
+    right: 24px;
+
+    z-index: 10;
+
+    width: 38px;
+    height: 38px;
+
+    display: grid;
+    place-items: center;
+
+    padding: 0;
+
+    border: 0;
+    border-radius: 50%;
+
+    background: transparent;
+
+    color: #687580;
+
+    font-size: 31px;
+    font-weight: 300;
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+
+/* IMAGE */
+
+.bba-countdown-image {
+    min-width: 0;
+    min-height: 255px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f8fafb 0%,
+            #f1f4f6 100%
+        );
+}
+
+.bba-countdown-image img {
+    width: 100%;
+    height: 255px;
+
+    display: block;
+
+    object-fit: cover;
+    object-position: center;
+}
+
+
+/* CONTENT */
+
+.bba-countdown-content {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 34px 48px 32px 42px;
+}
+
+
+/* TITLE */
+
+.bba-countdown-text h2 {
+    margin: 0 55px 5px 0;
+
+    color: #0b1118;
+
+    font-size: clamp(26px, 2.1vw, 36px);
+    line-height: 1.08;
+
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+
+/* DESCRIPTION */
+
+.bba-countdown-text p {
+    margin: 0;
+
+    color: #77828d;
+
+    font-size: 15px;
+    line-height: 1.45;
+}
+
+
+/* BOTTOM */
+
+.bba-countdown-bottom {
+    margin-top: 27px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+}
+
+
+/* TIME LABEL */
+
+.bba-countdown-label {
+    flex: 0 0 auto;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    color: #697682;
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.25;
+}
+
+.bba-countdown-clock {
+    width: 46px;
+    height: 46px;
+
+    flex: 0 0 46px;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid #e4e9ed;
+    border-radius: 50%;
+
+    background: #f5f7f9;
+
+    color: #65727d;
+
+    font-size: 25px;
+}
+
+
+/* COUNTDOWN */
+
+.bba-countdown-time {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+}
+
+.bba-countdown-time > div {
+    width: 78px;
+    height: 78px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #e8ecef;
+    border-radius: 13px;
+
+    background: #f7f8fa;
+}
+
+.bba-countdown-time strong {
+    color: #0d1520;
+
+    font-size: 29px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.bba-countdown-time span {
+    margin-top: 7px;
+
+    color: #7c8791;
+
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.bba-countdown-time > b {
+    color: #8d969e;
+
+    font-size: 22px;
+    font-weight: 500;
+}
+
+
+/* DETAILS BUTTON */
+
+.bba-countdown-details {
+    min-width: 245px;
+    height: 62px;
+
+    margin-left: auto;
+    padding: 0 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 20px;
+
+    border-radius: 15px;
+
+    background: #081827;
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.bba-countdown-details span {
+    font-size: 24px;
+    font-weight: 300;
+}
+
+
+/* CLOSING */
+
+.bba-countdown-overlay.closing {
+    opacity: 0;
+    transition: opacity .3s ease;
+}
+
+
+@keyframes bbaCountdownFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================
+   IPAD / SMALL DESKTOP
+========================================= */
+
+@media (max-width: 1180px) {
+
+    .bba-countdown-banner {
+        width: min(940px, 95vw);
+        min-height: 230px;
+
+        grid-template-columns: 31% 69%;
+    }
+
+    .bba-countdown-image,
+    .bba-countdown-image img {
+        min-height: 230px;
+        height: 230px;
+    }
+
+    .bba-countdown-content {
+        padding: 30px 34px;
+    }
+
+    .bba-countdown-text h2 {
+        font-size: 27px;
+    }
+
+    .bba-countdown-bottom {
+        gap: 13px;
+    }
+
+    .bba-countdown-clock {
+        width: 38px;
+        height: 38px;
+        flex-basis: 38px;
+
+        font-size: 21px;
+    }
+
+    .bba-countdown-label {
+        font-size: 11px;
+        gap: 8px;
+    }
+
+    .bba-countdown-time {
+        gap: 4px;
+    }
+
+    .bba-countdown-time > div {
+        width: 59px;
+        height: 64px;
+    }
+
+    .bba-countdown-time strong {
+        font-size: 23px;
+    }
+
+    .bba-countdown-time span {
+        font-size: 9px;
+        margin-top: 5px;
+    }
+
+    .bba-countdown-time > b {
+        font-size: 17px;
+    }
+
+    .bba-countdown-details {
+        min-width: 175px;
+        height: 52px;
+
+        padding: 0 18px;
+
+        gap: 12px;
+
+        font-size: 12px;
+    }
+}
+
+
+
+/* =========================================
+   BBA CARS COUNTDOWN — PREMIUM MOBILE
+========================================= */
+
+@media (max-width: 720px) {
+
+    .bba-countdown-overlay {
+        padding: 16px;
+        align-items: center;
+    }
+
+    .bba-countdown-banner {
+        width: 100%;
+        max-width: 390px;
+        min-height: 0;
+
+        display: flex;
+        flex-direction: column;
+
+        overflow: hidden;
+
+        border-radius: 24px;
+        background: #fff;
+
+        box-shadow:
+            0 25px 70px rgba(8, 24, 39, .22);
+    }
+
+    /* RASM */
+
+    .bba-countdown-image {
+        width: 100%;
+        height: 205px;
+        min-height: 205px;
+
+        background: #f4f6f7;
+    }
+
+    .bba-countdown-image img {
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+
+        object-fit: cover;
+        object-position: center;
+    }
+
+    /* X */
+
+    .bba-countdown-close {
+        top: 14px;
+        right: 14px;
+
+        width: 36px;
+        height: 36px;
+
+        border-radius: 50%;
+
+        background: rgba(255, 255, 255, .94);
+
+        color: #5f6b75;
+
+        font-size: 26px;
+
+        box-shadow: 0 4px 15px rgba(0, 0, 0, .08);
+    }
+
+    /* CONTENT */
+
+    .bba-countdown-content {
+        width: 100%;
+        min-width: 0;
+
+        padding: 24px 20px 20px;
+    }
+
+    .bba-countdown-text h2 {
+        margin: 0;
+
+        color: #0b1118;
+
+        font-size: 25px;
+        font-weight: 800;
+        line-height: 1.12;
+
+        letter-spacing: -.6px;
+    }
+
+    .bba-countdown-text p {
+        margin: 8px 0 0;
+
+        color: #78838d;
+
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+    /* KELISH VAQTI */
+
+    .bba-countdown-bottom {
+        margin-top: 20px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 14px;
+    }
+
+    .bba-countdown-label {
+        display: flex;
+        align-items: center;
+
+        gap: 9px;
+
+        color: #66737e;
+
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .bba-countdown-clock {
+        width: 32px;
+        height: 32px;
+
+        flex: 0 0 32px;
+
+        font-size: 18px;
+
+        background: #f4f6f8;
+        border: 1px solid #e6eaed;
+    }
+
+    /* TIMER */
+
+    .bba-countdown-time {
+        width: 100%;
+
+        display: grid;
+
+        grid-template-columns:
+            1fr auto
+            1fr auto
+            1fr auto
+            1fr;
+
+        align-items: center;
+
+        gap: 5px;
+    }
+
+    .bba-countdown-time > div {
+        width: 100%;
+        height: 70px;
+
+        border: 1px solid #e8ecef;
+        border-radius: 12px;
+
+        background: #f7f8fa;
+    }
+
+    .bba-countdown-time strong {
+        color: #0b1118;
+
+        font-size: 25px;
+        font-weight: 800;
+    }
+
+    .bba-countdown-time span {
+        margin-top: 5px;
+
+        color: #7c8791;
+
+        font-size: 10px;
+    }
+
+    .bba-countdown-time > b {
+        color: #89939b;
+
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    /* BUTTON */
+
+    .bba-countdown-details {
+        width: 100%;
+        min-width: 0;
+        height: 52px;
+
+        margin: 2px 0 0;
+        padding: 0 20px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        gap: 14px;
+
+        border-radius: 12px;
+
+        background: #081827;
+        color: #fff;
+
+        font-size: 13px;
+        font-weight: 700;
+    }
+
+    .bba-countdown-details span {
+        font-size: 20px;
+    }
+}
