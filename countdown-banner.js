@@ -6,10 +6,17 @@
     "use strict";
 
     const API_URL = "https://api.bbacars.uz/expected-banner";
-    const SESSION_KEY = "bbaExpectedBannerShown";
+
+    const SESSION_FIRST_KEY = "bbaExpectedBannerFirstShown";
+    const SESSION_SECOND_KEY = "bbaExpectedBannerSecondShown";
+
+    const FIRST_DELAY = 5000;
+    const SECOND_DELAY = 10000;
+    const DISPLAY_TIME = 15000;
 
     let countdownInterval = null;
     let autoCloseTimer = null;
+    let secondBannerTimer = null;
 
     /* =========================
        LANGUAGE
@@ -77,8 +84,6 @@
     function parseArrivalDate(value) {
         if (!value) return NaN;
 
-        // MySQL DATETIME:
-        // 2026-10-03 18:00:00
         if (
             typeof value === "string" &&
             /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/.test(value)
@@ -93,8 +98,11 @@
        CLOSE
     ========================= */
 
-    function closeExpectedBanner(banner) {
-        if (!banner) return;
+    function closeExpectedBanner(banner, onClosed) {
+        if (!banner) {
+            if (typeof onClosed === "function") onClosed();
+            return;
+        }
 
         if (countdownInterval) {
             clearInterval(countdownInterval);
@@ -106,10 +114,19 @@
             autoCloseTimer = null;
         }
 
+        if (banner.dataset.closing === "1") {
+            return;
+        }
+
+        banner.dataset.closing = "1";
         banner.classList.add("closing");
 
         setTimeout(() => {
             banner.remove();
+
+            if (typeof onClosed === "function") {
+                onClosed();
+            }
         }, 300);
     }
 
@@ -117,9 +134,22 @@
        SHOW BANNER
     ========================= */
 
-    function showExpectedCountdownBanner(car, arrivalTime) {
+    function showExpectedCountdownBanner(car, onClosed) {
+        if (!car || !car.id || !car.arrival_at) {
+            return false;
+        }
+
         if (document.querySelector(".bba-countdown-overlay")) {
-            return;
+            return false;
+        }
+
+        const arrivalTime = parseArrivalDate(car.arrival_at);
+
+        if (
+            !Number.isFinite(arrivalTime) ||
+            arrivalTime <= Date.now()
+        ) {
+            return false;
         }
 
         const texts = getTexts(car.name || "Avtomobil");
@@ -221,9 +251,6 @@
 
         document.body.appendChild(banner);
 
-        // Shu session davomida boshqa sahifada qayta chiqmaydi
-        sessionStorage.setItem(SESSION_KEY, "1");
-
         const daysElement =
             banner.querySelector('[data-countdown="days"]');
 
@@ -240,7 +267,7 @@
             const remaining = arrivalTime - Date.now();
 
             if (remaining <= 0) {
-                closeExpectedBanner(banner);
+                closeExpectedBanner(banner, onClosed);
                 return;
             }
 
@@ -283,15 +310,54 @@
         banner
             .querySelector(".bba-countdown-close")
             .addEventListener("click", () => {
-                closeExpectedBanner(banner);
+                closeExpectedBanner(banner, onClosed);
             });
 
-        // 15 soniya ko‘rinib turadi
         autoCloseTimer = setTimeout(() => {
             if (document.body.contains(banner)) {
-                closeExpectedBanner(banner);
+                closeExpectedBanner(banner, onClosed);
             }
-        }, 15000);
+        }, DISPLAY_TIME);
+
+        return true;
+    }
+
+    /* =========================
+       SECOND BANNER
+    ========================= */
+
+    function scheduleSecondBanner(car) {
+        if (!car) return;
+
+        if (
+            sessionStorage.getItem(SESSION_SECOND_KEY) === "1"
+        ) {
+            return;
+        }
+
+        if (secondBannerTimer) {
+            clearTimeout(secondBannerTimer);
+        }
+
+        secondBannerTimer = setTimeout(() => {
+
+            if (
+                sessionStorage.getItem(SESSION_SECOND_KEY) === "1"
+            ) {
+                return;
+            }
+
+            const shown =
+                showExpectedCountdownBanner(car);
+
+            if (shown) {
+                sessionStorage.setItem(
+                    SESSION_SECOND_KEY,
+                    "1"
+                );
+            }
+
+        }, SECOND_DELAY);
     }
 
     /* =========================
@@ -299,9 +365,9 @@
     ========================= */
 
     async function initExpectedCountdownBanner() {
-
-        // Shu browser sessionida ko‘rsatilgan
-        if (sessionStorage.getItem(SESSION_KEY) === "1") {
+        if (
+            sessionStorage.getItem(SESSION_FIRST_KEY) === "1"
+        ) {
             return;
         }
 
@@ -317,40 +383,43 @@
                 );
             }
 
-            const car = await response.json();
+            const cars = await response.json();
 
-            // Reklama uchun mashina yo‘q
-            if (!car || !car.id || !car.arrival_at) {
+            if (!Array.isArray(cars) || cars.length === 0) {
                 return;
             }
 
-            const arrivalTime =
-                parseArrivalDate(car.arrival_at);
+            const firstCar = cars[0];
+            const secondCar = cars[1] || null;
 
-            if (
-                !Number.isFinite(arrivalTime) ||
-                arrivalTime <= Date.now()
-            ) {
-                return;
-            }
-
-            // Sayt ochilgandan 5 soniya keyin
             setTimeout(() => {
 
-                // Shu 5 soniya ichida boshqa page banner
-                // ko‘rsatgan bo‘lsa, qayta chiqarmaymiz
                 if (
-                    sessionStorage.getItem(SESSION_KEY) === "1"
+                    sessionStorage.getItem(
+                        SESSION_FIRST_KEY
+                    ) === "1"
                 ) {
                     return;
                 }
 
-                showExpectedCountdownBanner(
-                    car,
-                    arrivalTime
-                );
+                const shown =
+                    showExpectedCountdownBanner(
+                        firstCar,
+                        () => {
+                            scheduleSecondBanner(
+                                secondCar
+                            );
+                        }
+                    );
 
-            }, 5000);
+                if (shown) {
+                    sessionStorage.setItem(
+                        SESSION_FIRST_KEY,
+                        "1"
+                    );
+                }
+
+            }, FIRST_DELAY);
 
         } catch (error) {
             console.error(

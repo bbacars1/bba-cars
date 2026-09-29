@@ -340,7 +340,7 @@ app.get("/expected-cars", async (req, res) => {
     }
 });
 
-// COUNTDOWN BANNER UCHUN AVTOMOBIL
+// COUNTDOWN BANNER UCHUN AVTOMOBILLAR
 app.get("/expected-banner", async (req, res) => {
     try {
         const [rows] = await db.query(`
@@ -350,10 +350,11 @@ app.get("/expected-banner", async (req, res) => {
               AND banner_enabled = 1
               AND arrival_at > NOW()
             ORDER BY sort_order ASC, id DESC
-            LIMIT 1
+            LIMIT 2
         `);
 
-        res.json(rows[0] || null);
+        res.json(rows);
+
     } catch (err) {
         console.error("Expected banner olishda xato:", err);
 
