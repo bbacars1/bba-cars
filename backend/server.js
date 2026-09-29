@@ -399,17 +399,34 @@ app.post(
     upload.single("image"),
     async (req, res) => {
         try {
-            const {
-                name,
-                brand,
-                arrival_at,
-                type,
-                drive,
-                power,
-                banner_enabled,
-                active,
-                sort_order
-            } = req.body;
+          const {
+    name,
+    brand,
+    arrival_at,
+    type,
+    drive,
+    power,
+    year,
+    range,
+    battery,
+    engine,
+    acceleration,
+    maxSpeed,
+    seats,
+    length,
+    wheelbase,
+    fridge,
+    hud,
+    faceId,
+    massage,
+    camera360,
+    seatHeating,
+    seatVentilation,
+    airSuspension,
+    banner_enabled,
+    active,
+    sort_order
+} = req.body;
 
             if (!name || !arrival_at) {
                 return res.status(400).json({
@@ -434,33 +451,71 @@ app.post(
             const image = uploadResponse.url;
 
             const [result] = await db.query(
-                `INSERT INTO expected_cars
-                (
-                    name,
-                    brand,
-                    image,
-                    arrival_at,
-                    type,
-                    drive,
-                    power,
-                    banner_enabled,
-                    active,
-                    sort_order
-                )
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-                [
-                    name,
-                    brand || null,
-                    image,
-                    arrival_at,
-                    type || null,
-                    drive || null,
-                    power || null,
-                    banner_enabled === "1" ? 1 : 0,
-                    active === "0" ? 0 : 1,
-                    Number(sort_order) || 0
-                ]
-            );
+    `INSERT INTO expected_cars
+    (
+        name,
+        brand,
+        image,
+        arrival_at,
+        type,
+        drive,
+        power,
+        year,
+        \`range\`,
+        battery,
+        engine,
+        acceleration,
+        maxSpeed,
+        seats,
+        length,
+        wheelbase,
+        fridge,
+        hud,
+        faceId,
+        massage,
+        camera360,
+        seatHeating,
+        seatVentilation,
+        airSuspension,
+        banner_enabled,
+        active,
+        sort_order
+    )
+    VALUES (
+        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+        ?, ?, ?, ?, ?, ?, ?
+    )`,
+    [
+        name,
+        brand || null,
+        image,
+        arrival_at,
+        type || null,
+        drive || null,
+        power || null,
+        year || null,
+        range || null,
+        battery || null,
+        engine || null,
+        acceleration || null,
+        maxSpeed || null,
+        seats || null,
+        length || null,
+        wheelbase || null,
+        fridge || null,
+        hud || null,
+        faceId || null,
+        massage || null,
+        camera360 || null,
+        seatHeating || null,
+        seatVentilation || null,
+        airSuspension || null,
+        banner_enabled === "1" ? 1 : 0,
+        active === "0" ? 0 : 1,
+        Number(sort_order) || 0
+    ]
+);
 
             res.json({
                 success: true,
@@ -492,16 +547,33 @@ app.put(
         const { id } = req.params;
 
         const {
-            name,
-            brand,
-            arrival_at,
-            type,
-            drive,
-            power,
-            banner_enabled,
-            active,
-            sort_order
-        } = req.body;
+    name,
+    brand,
+    arrival_at,
+    type,
+    drive,
+    power,
+    year,
+    range,
+    battery,
+    engine,
+    acceleration,
+    maxSpeed,
+    seats,
+    length,
+    wheelbase,
+    fridge,
+    hud,
+    faceId,
+    massage,
+    camera360,
+    seatHeating,
+    seatVentilation,
+    airSuspension,
+    banner_enabled,
+    active,
+    sort_order
+} = req.body;
 
         if (!name || !arrival_at) {
             return res.status(400).json({
@@ -523,32 +595,66 @@ if (req.file) {
 }
 
         const [result] = await db.query(
-            `UPDATE expected_cars SET
-                name = ?,
-                brand = ?,
-                image = COALESCE(?, image),
-                arrival_at = ?,
-                type = ?,
-                drive = ?,
-                power = ?,
-                banner_enabled = ?,
-                active = ?,
-                sort_order = ?
-            WHERE id = ?`,
-            [
-                name,
-                brand || null,
-                newImage,
-                arrival_at,
-                type || null,
-                drive || null,
-                power || null,
-                banner_enabled === "1" || banner_enabled === true ? 1 : 0,
-active === "0" || active === false ? 0 : 1,
-                Number(sort_order) || 0,
-                id
-            ]
-        );
+    `UPDATE expected_cars SET
+        name = ?,
+        brand = ?,
+        image = COALESCE(?, image),
+        arrival_at = ?,
+        type = ?,
+        drive = ?,
+        power = ?,
+        year = ?,
+        \`range\` = ?,
+        battery = ?,
+        engine = ?,
+        acceleration = ?,
+        maxSpeed = ?,
+        seats = ?,
+        length = ?,
+        wheelbase = ?,
+        fridge = ?,
+        hud = ?,
+        faceId = ?,
+        massage = ?,
+        camera360 = ?,
+        seatHeating = ?,
+        seatVentilation = ?,
+        airSuspension = ?,
+        banner_enabled = ?,
+        active = ?,
+        sort_order = ?
+    WHERE id = ?`,
+    [
+        name,
+        brand || null,
+        newImage,
+        arrival_at,
+        type || null,
+        drive || null,
+        power || null,
+        year || null,
+        range || null,
+        battery || null,
+        engine || null,
+        acceleration || null,
+        maxSpeed || null,
+        seats || null,
+        length || null,
+        wheelbase || null,
+        fridge || null,
+        hud || null,
+        faceId || null,
+        massage || null,
+        camera360 || null,
+        seatHeating || null,
+        seatVentilation || null,
+        airSuspension || null,
+        banner_enabled === "1" || banner_enabled === true ? 1 : 0,
+        active === "0" || active === false ? 0 : 1,
+        Number(sort_order) || 0,
+        id
+    ]
+);
 
         if (result.affectedRows === 0) {
             return res.status(404).json({

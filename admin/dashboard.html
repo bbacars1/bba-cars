@@ -356,6 +356,180 @@ header button{
 
 
 
+/* ===== KUTILAYOTGAN AVTOMOBILLAR ADMIN ===== */
+
+#expectedCarsSection{
+    margin-top:30px;
+    padding:26px;
+    background:#1f2937;
+    border:1px solid #374151;
+    border-radius:18px;
+    box-shadow:0 12px 35px rgba(0,0,0,.20);
+}
+
+#expectedCarsSection > h2{
+    margin:0 0 22px;
+    font-size:24px;
+}
+
+/* FORMA */
+#expectedCarForm{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0,1fr));
+    gap:14px 18px;
+    margin-bottom:30px;
+}
+
+#expectedCarForm input:not([type="checkbox"]),
+#expectedCarForm select{
+    width:100%;
+    min-width:0;
+    box-sizing:border-box;
+    background:#111827;
+    color:#fff;
+    border:1px solid #374151;
+    padding:13px 14px;
+    border-radius:10px;
+    font-size:14px;
+    outline:none;
+    transition:.2s ease;
+}
+
+#expectedCarForm input:not([type="checkbox"]):focus,
+#expectedCarForm select:focus{
+    border-color:#6b7280;
+    box-shadow:0 0 0 3px rgba(107,114,128,.12);
+}
+
+#expectedCarForm input::placeholder{
+    color:#9ca3af;
+}
+
+/* RASM TANLASH */
+#expectedImage{
+    padding:8px !important;
+}
+
+#expectedImage::file-selector-button{
+    background:#1f2937;
+    color:#fff;
+    border:1px solid #4b5563;
+    padding:8px 12px;
+    border-radius:8px;
+    cursor:pointer;
+    margin-right:10px;
+}
+
+/* KELISH SANASI LABEL */
+#expectedCarForm > label:first-of-type{
+    display:flex;
+    align-items:center;
+    color:#d1d5db;
+    font-size:14px;
+}
+
+/* CHECKBOXLAR */
+#expectedCarForm label:has(input[type="checkbox"]){
+    display:flex;
+    align-items:center;
+    gap:10px;
+    min-height:46px;
+    padding:0 14px;
+    box-sizing:border-box;
+    background:#111827;
+    border:1px solid #374151;
+    border-radius:10px;
+    color:#e5e7eb;
+    font-size:14px;
+    cursor:pointer;
+}
+
+#expectedCarForm input[type="checkbox"]{
+    width:18px;
+    height:18px;
+    margin:0;
+    accent-color:#2563eb;
+}
+
+/* SAQLASH / TAHRIRLASH TUGMASI */
+#expectedCarForm button[type="submit"]{
+    grid-column:1 / -1;
+    width:100%;
+    background:#2563eb;
+    color:#fff;
+    border:none;
+    padding:14px 20px;
+    border-radius:11px;
+    font-size:15px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.2s ease;
+}
+
+#expectedCarForm button[type="submit"]:hover{
+    background:#1d4ed8;
+    transform:translateY(-1px);
+}
+
+/* KUTILAYOTGAN AVTOMOBILLAR RO‘YXATI */
+#expectedCarsList{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+    gap:18px;
+    margin-top:24px;
+}
+
+#expectedCarsList > div{
+    background:#111827 !important;
+    border:1px solid #374151;
+    border-radius:14px;
+    padding:14px !important;
+    overflow:hidden;
+}
+
+#expectedCarsList img{
+    width:100% !important;
+    height:190px !important;
+    object-fit:cover;
+    border-radius:10px;
+    margin-bottom:12px;
+}
+
+#expectedCarsList button{
+    border:1px solid #4b5563;
+    background:#1f2937;
+    color:#fff;
+    padding:9px 12px;
+    border-radius:8px;
+    cursor:pointer;
+    margin-top:10px;
+    margin-right:6px;
+}
+
+#expectedCarsList button:hover{
+    background:#374151;
+}
+
+/* MOBILE */
+@media(max-width:700px){
+    #expectedCarsSection{
+        padding:18px;
+    }
+
+    #expectedCarForm{
+        grid-template-columns:1fr;
+        gap:12px;
+    }
+
+    #expectedCarForm button[type="submit"]{
+        grid-column:auto;
+    }
+
+    #expectedCarsList{
+        grid-template-columns:1fr;
+    }
+}
+
 </style>
 
 </head>
@@ -462,6 +636,112 @@ header button{
             id="expectedPower"
             placeholder="Quvvati"
         >
+
+        <!-- KUTILAYOTGAN AVTOMOBIL — TEXNIK MA'LUMOTLAR -->
+
+<input
+    type="number"
+    id="expectedYear"
+    placeholder="Yili — masalan: 2026"
+>
+
+<input
+    type="text"
+    id="expectedRange"
+    placeholder="Zapas xod — masalan: 545 km"
+>
+
+<input
+    type="text"
+    id="expectedBattery"
+    placeholder="Batareya — masalan: 87 kWh"
+>
+
+<input
+    type="text"
+    id="expectedEngine"
+    placeholder="Dvigatel — masalan: Elektr"
+>
+
+<input
+    type="text"
+    id="expectedAcceleration"
+    placeholder="0–100 km/soat — masalan: 6.9 s"
+>
+
+<input
+    type="text"
+    id="expectedMaxSpeed"
+    placeholder="Maksimal tezlik — masalan: 180 km/soat"
+>
+
+<input
+    type="number"
+    id="expectedSeats"
+    placeholder="O‘rindiqlar soni — masalan: 5"
+>
+
+<input
+    type="number"
+    id="expectedLength"
+    placeholder="Uzunligi (mm) — masalan: 4830"
+>
+
+<input
+    type="number"
+    id="expectedWheelbase"
+    placeholder="G‘ildirak bazasi (mm) — masalan: 2790"
+>
+
+<select id="expectedFridge">
+    <option value="">Sovutgich</option>
+    <option value="yes">Bor</option>
+    <option value="no">Yo‘q</option>
+</select>
+
+<select id="expectedHud">
+    <option value="">HUD displey</option>
+    <option value="yes">Bor</option>
+    <option value="no">Yo‘q</option>
+</select>
+
+<select id="expectedFaceId">
+    <option value="">Face ID</option>
+    <option value="yes">Bor</option>
+    <option value="no">Yo‘q</option>
+</select>
+
+<select id="expectedMassage">
+    <option value="">O‘rindiq massaji</option>
+    <option value="yes">Bor</option>
+    <option value="no">Yo‘q</option>
+</select>
+
+<select id="expectedCamera360">
+    <option value="">360° kamera</option>
+    <option value="yes">Bor</option>
+    <option value="no">Yo‘q</option>
+</select>
+
+<select id="expectedSeatHeating">
+    <option value="">O‘rindiq isitish</option>
+    <option value="yes">Bor</option>
+    <option value="no">Yo‘q</option>
+</select>
+
+<select id="expectedSeatVentilation">
+    <option value="">O‘rindiq ventilyatsiyasi</option>
+    <option value="yes">Bor</option>
+    <option value="no">Yo‘q</option>
+</select>
+
+<select id="expectedAirSuspension">
+    <option value="">Pnevmatik osma</option>
+    <option value="yes">Bor</option>
+    <option value="no">Yo‘q</option>
+</select>
+
+
 
         <input
             type="number"
@@ -1672,6 +1952,91 @@ document
         );
 
         formData.append(
+    "year",
+    document.getElementById("expectedYear").value || ""
+);
+
+formData.append(
+    "range",
+    document.getElementById("expectedRange").value.trim()
+);
+
+formData.append(
+    "battery",
+    document.getElementById("expectedBattery").value.trim()
+);
+
+formData.append(
+    "engine",
+    document.getElementById("expectedEngine").value.trim()
+);
+
+formData.append(
+    "acceleration",
+    document.getElementById("expectedAcceleration").value.trim()
+);
+
+formData.append(
+    "maxSpeed",
+    document.getElementById("expectedMaxSpeed").value.trim()
+);
+
+formData.append(
+    "seats",
+    document.getElementById("expectedSeats").value || ""
+);
+
+formData.append(
+    "length",
+    document.getElementById("expectedLength").value || ""
+);
+
+formData.append(
+    "wheelbase",
+    document.getElementById("expectedWheelbase").value || ""
+);
+
+formData.append(
+    "fridge",
+    document.getElementById("expectedFridge").value
+);
+
+formData.append(
+    "hud",
+    document.getElementById("expectedHud").value
+);
+
+formData.append(
+    "faceId",
+    document.getElementById("expectedFaceId").value
+);
+
+formData.append(
+    "massage",
+    document.getElementById("expectedMassage").value
+);
+
+formData.append(
+    "camera360",
+    document.getElementById("expectedCamera360").value
+);
+
+formData.append(
+    "seatHeating",
+    document.getElementById("expectedSeatHeating").value
+);
+
+formData.append(
+    "seatVentilation",
+    document.getElementById("expectedSeatVentilation").value
+);
+
+formData.append(
+    "airSuspension",
+    document.getElementById("expectedAirSuspension").value
+);
+
+        formData.append(
             "sort_order",
             document.getElementById("expectedSortOrder").value || "0"
         );
@@ -1843,6 +2208,57 @@ async function editExpectedCar(id) {
 
         document.getElementById("expectedPower").value =
             car.power || "";
+
+            document.getElementById("expectedYear").value =
+    car.year || "";
+
+document.getElementById("expectedRange").value =
+    car.range || "";
+
+document.getElementById("expectedBattery").value =
+    car.battery || "";
+
+document.getElementById("expectedEngine").value =
+    car.engine || "";
+
+document.getElementById("expectedAcceleration").value =
+    car.acceleration || "";
+
+document.getElementById("expectedMaxSpeed").value =
+    car.maxSpeed || "";
+
+document.getElementById("expectedSeats").value =
+    car.seats || "";
+
+document.getElementById("expectedLength").value =
+    car.length || "";
+
+document.getElementById("expectedWheelbase").value =
+    car.wheelbase || "";
+
+document.getElementById("expectedFridge").value =
+    car.fridge || "";
+
+document.getElementById("expectedHud").value =
+    car.hud || "";
+
+document.getElementById("expectedFaceId").value =
+    car.faceId || "";
+
+document.getElementById("expectedMassage").value =
+    car.massage || "";
+
+document.getElementById("expectedCamera360").value =
+    car.camera360 || "";
+
+document.getElementById("expectedSeatHeating").value =
+    car.seatHeating || "";
+
+document.getElementById("expectedSeatVentilation").value =
+    car.seatVentilation || "";
+
+document.getElementById("expectedAirSuspension").value =
+    car.airSuspension || "";
 
         document.getElementById("expectedSortOrder").value =
             car.sort_order || 0;
