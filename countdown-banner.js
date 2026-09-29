@@ -11,7 +11,7 @@
     const SESSION_SECOND_KEY = "bbaExpectedBannerSecondShown";
 
     const FIRST_DELAY = 5000;
-    const SECOND_DELAY = 10000;
+    const SECOND_DELAY = 120000;
     const DISPLAY_TIME = 15000;
 
     let countdownInterval = null;
