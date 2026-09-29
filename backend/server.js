@@ -295,6 +295,30 @@ app.get("/expected-cars", async (req, res) => {
     }
 });
 
+// COUNTDOWN BANNER UCHUN AVTOMOBIL
+app.get("/expected-banner", async (req, res) => {
+    try {
+        const [rows] = await db.query(`
+            SELECT *
+            FROM expected_cars
+            WHERE active = 1
+              AND banner_enabled = 1
+              AND arrival_at > NOW()
+            ORDER BY sort_order ASC, id DESC
+            LIMIT 1
+        `);
+
+        res.json(rows[0] || null);
+    } catch (err) {
+        console.error("Expected banner olishda xato:", err);
+
+        res.status(500).json({
+            success: false,
+            message: err.message
+        });
+    }
+});
+
 
 app.get(
     "/admin/expected-cars",
