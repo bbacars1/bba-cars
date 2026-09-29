@@ -151,6 +151,51 @@ try {
 } catch (err) {
     console.error("Expected cars table yaratishda xato:", err);
 }
+try {
+    const expectedColumns = [
+        ["year", "INT NULL"],
+        ["range", "VARCHAR(100) NULL"],
+        ["battery", "VARCHAR(100) NULL"],
+        ["engine", "VARCHAR(100) NULL"],
+        ["acceleration", "VARCHAR(100) NULL"],
+        ["maxSpeed", "VARCHAR(100) NULL"],
+        ["seats", "INT NULL"],
+        ["length", "INT NULL"],
+        ["wheelbase", "INT NULL"],
+        ["fridge", "VARCHAR(10) NULL"],
+        ["hud", "VARCHAR(10) NULL"],
+        ["faceId", "VARCHAR(10) NULL"],
+        ["massage", "VARCHAR(10) NULL"],
+        ["camera360", "VARCHAR(10) NULL"],
+        ["seatHeating", "VARCHAR(10) NULL"],
+        ["seatVentilation", "VARCHAR(10) NULL"],
+        ["airSuspension", "VARCHAR(10) NULL"]
+    ];
+
+    for (const [column, definition] of expectedColumns) {
+        try {
+            await db.query(
+                "ALTER TABLE expected_cars ADD COLUMN ?? " + definition,
+                [column]
+            );
+
+            console.log(`Expected cars ${column} ustuni qo‘shildi!`);
+        } catch (err) {
+            if (err.message.includes("Duplicate column name")) {
+                console.log(
+                    `Expected cars ${column} ustuni allaqachon mavjud!`
+                );
+            } else {
+                throw err;
+            }
+        }
+    }
+} catch (err) {
+    console.error(
+        "Expected cars texnik ustunlarini yaratishda xato:",
+        err
+    );
+}
 })
 ();
 
