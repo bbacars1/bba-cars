@@ -98,6 +98,20 @@ try {
         throw err;
     }
 }
+try {
+    await db.query(
+        "ALTER TABLE cars ADD COLUMN sale_status VARCHAR(20) NOT NULL DEFAULT 'available'"
+    );
+
+    console.log("Cars sale_status ustuni tayyor!");
+
+} catch (err) {
+    if (err.message.includes("Duplicate column name")) {
+        console.log("Cars sale_status ustuni allaqachon mavjud!");
+    } else {
+        throw err;
+    }
+}
 try { await db.query( "CREATE TABLE IF NOT EXISTS orders (id INT AUTO_INCREMENT PRIMARY KEY, car VARCHAR(255) NOT NULL, name VARCHAR(255) NOT NULL, phone VARCHAR(100) NOT NULL, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)" );
 console.log("Orders table tayyor!");
 } catch (err) { console.error("Orders table yaratishda xato:", err); }
@@ -762,6 +776,7 @@ app.post("/cars", requireAdmin, upload.array("images", 10), async (req, res) => 
     type,
     year,
     status,
+    sale_status,
     range,
     battery,
     engine,
@@ -802,29 +817,36 @@ const image = imageUrls[0];
 const images = JSON.stringify(imageUrls);
 
     // URL'ni MySQL'ga saqlash
-    await db.query(
-  "INSERT INTO cars (name, brand, price, image, images, type, year, status, `range`, battery, engine, drive, power, acceleration, maxSpeed, seats, length, wheelbase, fridge, hud, faceId, massage, camera360, seatHeating, seatVentilation, airSuspension) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-   [ name, brand, price, image, images, type, year,
-status || null,
-range || null,
-battery || null,
-engine || null,
-drive || null,
-power || null,
-acceleration || null,
-maxSpeed || null,
-seats || null,
-length || null,
-wheelbase || null,
-fridge || null,
-hud || null,
-faceId || null,
-massage || null,
-camera360 || null,
-seatHeating || null,
-seatVentilation || null,
-airSuspension || null
-]
+   const [result] = await db.query(
+    "UPDATE cars SET name = ?, brand = ?, price = ?, type = ?, year = ?, status = ?, sale_status = ?, `range` = ?, battery = ?, engine = ?, drive = ?, power = ?, acceleration = ?, maxSpeed = ?, seats = ?, length = ?, wheelbase = ?, fridge = ?, hud = ?, faceId = ?, massage = ?, camera360 = ?, seatHeating = ?, seatVentilation = ?, airSuspension = ? WHERE id = ?",
+    [
+        name,
+        brand,
+        price,
+        type,
+        year,
+        status || null,
+        sale_status || "available",
+        range || null,
+        battery || null,
+        engine || null,
+        drive || null,
+        power || null,
+        acceleration || null,
+        maxSpeed || null,
+        seats || null,
+        length || null,
+        wheelbase || null,
+        fridge || null,
+        hud || null,
+        faceId || null,
+        massage || null,
+        camera360 || null,
+        seatHeating || null,
+        seatVentilation || null,
+        airSuspension || null,
+        id
+    ]
 );
 
     res.json({
@@ -1085,6 +1107,7 @@ app.put("/cars/:id", requireAdmin, async (req, res) => {
     type,
     year,
     status,
+    sale_status,
     range,
     battery,
     engine,
@@ -1105,36 +1128,36 @@ app.put("/cars/:id", requireAdmin, async (req, res) => {
     airSuspension
 } = req.body;
 
-        const [result] = await db.query( "UPDATE cars SET name = ?, brand = ?, price = ?, type = ?, year = ?, status = ?, `range` = ?, battery = ?, engine = ?, drive = ?, power = ?, acceleration = ?, maxSpeed = ?, seats = ?, length = ?, wheelbase = ?, fridge = ?, hud = ?, faceId = ?, massage = ?, camera360 = ?, seatHeating = ?, seatVentilation = ?, airSuspension = ? WHERE id = ?", 
-          [
-  name,
-  brand,
-  price,
-  type,
-  year,
-
-  status || null,
-  range || null,
-  battery || null,
-  engine || null,
-  drive || null,
-  power || null,
-  acceleration || null,
-  maxSpeed || null,
-  seats || null,
-  length || null,
-  wheelbase || null,
-  fridge || null,
-  hud || null,
-  faceId || null,
-  massage || null,
-  camera360 || null,
-  seatHeating || null,
-  seatVentilation || null,
-  airSuspension || null,
-
-  id
-]
+        const [result] = await db.query(
+    "UPDATE cars SET name = ?, brand = ?, price = ?, type = ?, year = ?, status = ?, sale_status = ?, `range` = ?, battery = ?, engine = ?, drive = ?, power = ?, acceleration = ?, maxSpeed = ?, seats = ?, length = ?, wheelbase = ?, fridge = ?, hud = ?, faceId = ?, massage = ?, camera360 = ?, seatHeating = ?, seatVentilation = ?, airSuspension = ? WHERE id = ?",
+    [
+        name,
+        brand,
+        price,
+        type,
+        year,
+        status || null,
+        sale_status || "available",
+        range || null,
+        battery || null,
+        engine || null,
+        drive || null,
+        power || null,
+        acceleration || null,
+        maxSpeed || null,
+        seats || null,
+        length || null,
+        wheelbase || null,
+        fridge || null,
+        hud || null,
+        faceId || null,
+        massage || null,
+        camera360 || null,
+        seatHeating || null,
+        seatVentilation || null,
+        airSuspension || null,
+        id
+    ]
 );
 
         console.log("EDIT ID:", id);

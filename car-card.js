@@ -83,6 +83,7 @@ function createCarCard(car, index = 0) {
     card.dataset.brand = car.brand || "";
     card.dataset.year = car.year || "";
     card.dataset.status = car.status || "";
+    card.dataset.saleStatus = car.sale_status || "available";
 
     const carId = String(car.id || "");
 
@@ -120,7 +121,12 @@ function createCarCard(car, index = 0) {
         `;
     }
 
+const saleStatus = car.sale_status || "available";
 
+const saleStatusHTML =
+    saleStatus === "unavailable"
+        ? `<span class="car-sale-status car-sale-status-unavailable">Sotuvda yo‘q</span>`
+        : `<span class="car-sale-status car-sale-status-available">Sotuvda</span>`;
     /* =========================
        COMPARE
     ========================= */
@@ -161,6 +167,9 @@ function createCarCard(car, index = 0) {
             <div class="car-card-badges">
                 ${badgeHTML}
             </div>
+            <div class="car-sale-status-wrap">
+    ${saleStatusHTML}
+</div>
 
             <button
                 type="button"
