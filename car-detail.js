@@ -2,44 +2,7 @@ const API_URL = "https://api.bbacars.uz";
 const EXPECTED_CARS_KEY = "bbaExpectedCars";
 
 
-const expectedCarsDemo = [
-    {
-        id: "expected-1",
-        name: "Avtomobil modeli",
-        image: "./images/keladigan.PNG",
-        priceText: "Narxi tez orada",
-        arrival: "Tez orada",
-        type: "Gibrid",
-        drive: "AWD"
-    },
-    {
-        id: "expected-2",
-        name: "Avtomobil modeli",
-        image: "./images/keladigan.PNG",
-        priceText: "Narxi tez orada",
-        arrival: "Tez orada",
-        type: "Elektr",
-        drive: "AWD"
-    },
-    {
-        id: "expected-3",
-        name: "Avtomobil modeli",
-        image: "./images/keladigan.PNG",
-        priceText: "Narxi tez orada",
-        arrival: "Tez orada",
-        type: "Gibrid",
-        drive: "AWD"
-    },
-    {
-        id: "expected-4",
-        name: "Avtomobil modeli",
-        image: "./images/keladigan.PNG",
-        priceText: "Narxi tez orada",
-        arrival: "Tez orada",
-        type: "Elektr",
-        drive: "RWD"
-    }
-];
+
 
 
 function getCarImageUrl(image) {
@@ -188,7 +151,18 @@ async function loadCarDetail() {
 }
 
 if (expectedId) {
-    const expectedCar = expectedCarsDemo.find(
+    const expectedResponse = await fetch(
+        `${API_URL}/expected-cars`,
+        { cache: "no-store" }
+    );
+
+    if (!expectedResponse.ok) {
+        throw new Error("Kutilayotgan avtomobillar yuklanmadi");
+    }
+
+    const expectedCars = await expectedResponse.json();
+
+    const expectedCar = expectedCars.find(
         car => String(car.id) === String(expectedId)
     );
 
@@ -327,6 +301,8 @@ function updateBreadcrumb(car) {
 
 
 function renderCarDetail(car) {
+        const isExpectedCar =
+        new URLSearchParams(window.location.search).has("expected");
     const container =
         document.getElementById("carDetail");
 
@@ -474,7 +450,7 @@ function renderCarDetail(car) {
                         </button>
 
 
-                        ${car.id && String(car.id).startsWith("expected-") ? "" : `
+                       ${isExpectedCar ? "" : `
     <button
         type="button"
         class="detail-compare-btn"
@@ -591,16 +567,14 @@ function renderCarDetail(car) {
                     </button>
 
 
-                    <a
-    href="${car.id && String(car.id).startsWith('expected-')
-    ? '#detailNotify'
-    : '#detailCredit'}"
+    <a
+    href="${isExpectedCar ? "#detailNotify" : "#detailCredit"}"
     class="new-detail-credit-btn"
     id="detailCreditBtn"
 >
-    ${car.id && String(car.id).startsWith("expected-")
-    ? "Kelganda xabar olish"
-    : "Nasiya hisoblash"}
+    ${isExpectedCar
+        ? "Kelganda xabar olish"
+        : "Nasiya hisoblash"}
 </a>
 
                 </div>
@@ -698,7 +672,7 @@ function renderCarDetail(car) {
                 </button>
 
 
-                ${car.id && String(car.id).startsWith("expected-") ? "" : `
+                ${isExpectedCar ? "" : `
 <button
     class="detail-tab"
     data-tab="credit"
@@ -883,7 +857,7 @@ function renderCarDetail(car) {
 
                 <!-- INLINE FORM -->
 
-                ${car.id && String(car.id).startsWith("expected-") ? "" : `
+                ${isExpectedCar ? "" : `
 
                 <div class="
                     detail-content-card
@@ -1118,7 +1092,7 @@ function renderCarDetail(car) {
         <!-- =========================
              CREDIT TAB
         ========================= -->
-        ${car.id && String(car.id).startsWith("expected-") ? `
+        ${isExpectedCar ? `
 <section id="detailNotify" class="detail-tab-panel">
 <div class="detail-credit-card">
     <span class="detail-card-label">
@@ -1157,7 +1131,7 @@ function renderCarDetail(car) {
 </section>
 ` : ""}
 
-       ${car.id && String(car.id).startsWith("expected-") ? "" : `
+       ${isExpectedCar ? "" : `
 <section
     class="detail-tab-panel"
     data-panel="credit"
@@ -1240,7 +1214,7 @@ function renderCarDetail(car) {
              RELATED
         ========================= -->
 
-        ${car.id && String(car.id).startsWith("expected-") ? "" : `
+       ${isExpectedCar ? "" : `
 
         <section class="detail-related-section">
 
@@ -1641,8 +1615,8 @@ function setupFavorite(car) {
     const carId =
         String(car.id);
 
-        const isExpectedCar =
-    carId.startsWith("expected-");
+       const isExpectedCar =
+    new URLSearchParams(window.location.search).has("expected");
 
 
     function getFavorites() {
@@ -2290,11 +2264,12 @@ function setupExpectedNotify(car) {
 
     const phoneInput =
         document.getElementById("detailNotifyPhone");
-        const submitButton = form.querySelector('button[type="submit"]');
+        
 
     if (!form || !nameInput || !phoneInput) {
         return;
     }
+    const submitButton = form.querySelector('button[type="submit"]');
     form.addEventListener("submit", async event => {
     event.preventDefault();
    

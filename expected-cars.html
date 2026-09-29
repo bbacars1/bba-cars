@@ -1042,40 +1042,7 @@
 
 
 <script>
-const expectedCarsDemo = [
-    {
-        id: "expected-1",
-        name: "Avtomobil modeli",
-        image: "./images/keladigan.PNG",
-        arrival: "Tez orada",
-        type: "Gibrid",
-        drive: "AWD"
-    },
-    {
-        id: "expected-2",
-        name: "Avtomobil modeli",
-        image: "./images/keladigan.PNG",
-        arrival: "Tez orada",
-        type: "Elektr",
-        drive: "AWD"
-    },
-    {
-        id: "expected-3",
-        name: "Avtomobil modeli",
-        image: "./images/keladigan.PNG",
-        arrival: "Tez orada",
-        type: "Gibrid",
-        drive: "AWD"
-    },
-    {
-        id: "expected-4",
-        name: "Avtomobil modeli",
-        image: "./images/keladigan.PNG",
-        arrival: "Tez orada",
-        type: "Elektr",
-        drive: "RWD"
-    }
-];
+
 
 function renderExpectedCars(cars) {
 
@@ -1154,16 +1121,39 @@ function renderExpectedCars(cars) {
     });
 }
 
-renderExpectedCars(expectedCarsDemo);
+async function loadExpectedCarsFromApi() {
+    try {
+        const response = await fetch(
+            "https://api.bbacars.uz/expected-cars"
+        );
 
-document.querySelectorAll(".expected-car-details").forEach((button) => {
-    button.addEventListener("click", () => {
-        const carId = button.dataset.expectedId;
+        if (!response.ok) {
+            throw new Error("Kutilayotgan avtomobillar yuklanmadi");
+        }
 
-        window.location.href =
-    `car.html?expected=${encodeURIComponent(carId)}`;
+        const cars = await response.json();
+
+        renderExpectedCars(cars);
+        document
+    .querySelectorAll(".expected-car-details")
+    .forEach((button) => {
+        button.addEventListener("click", () => {
+            const carId = button.dataset.expectedId;
+
+            window.location.href =
+                `car.html?expected=${encodeURIComponent(carId)}`;
+        });
     });
-});
+    } catch (error) {
+        console.error(
+            "Kutilayotgan avtomobillarni yuklashda xato:",
+            error
+        );
+    }
+}
+loadExpectedCarsFromApi();
+
+
 
 // ==========================================
 // EXPECTED CARS — FAVORITES

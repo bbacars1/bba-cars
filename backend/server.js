@@ -474,8 +474,8 @@ if (req.file) {
                 type || null,
                 drive || null,
                 power || null,
-                banner_enabled === "1" ? 1 : 0,
-active === "0" ? 0 : 1,
+                banner_enabled === "1" || banner_enabled === true ? 1 : 0,
+active === "0" || active === false ? 0 : 1,
                 Number(sort_order) || 0,
                 id
             ]
