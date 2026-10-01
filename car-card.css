@@ -1070,14 +1070,14 @@
 
 
 /* =========================================
-   CAR SALE STATUS — PREMIUM
+   BBA CARS — SALE STATUS PREMIUM FINAL
 ========================================= */
 
 @media (max-width: 720px) {
 
   .car-sale-status-wrap {
     position: absolute !important;
-    left: 7px !important;
+    left: 8px !important;
     bottom: 7px !important;
     z-index: 4 !important;
 
@@ -1095,48 +1095,55 @@
 
     gap: 5px !important;
 
-    min-height: 22px !important;
-    padding: 0 9px !important;
+    height: 20px !important;
+    min-height: 20px !important;
+    padding: 0 8px !important;
 
     border-radius: 999px !important;
 
     color: #ffffff !important;
 
-    font-size: 8.5px !important;
-    line-height: 1 !important;
-    font-weight: 750 !important;
-    letter-spacing: 0.1px !important;
+    font-size: 8px !important;
+    line-height: 20px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.15px !important;
+
+    white-space: nowrap !important;
+
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
 
     box-shadow:
-      0 3px 10px rgba(0, 0, 0, 0.18),
-      inset 0 1px 0 rgba(255, 255, 255, 0.14) !important;
-
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+      0 2px 7px rgba(0, 0, 0, 0.16),
+      inset 0 1px 0 rgba(255, 255, 255, 0.16) !important;
   }
 
+  /* STATUS NUQTASI */
   .car-sale-status::before {
     content: "" !important;
 
     width: 5px !important;
     height: 5px !important;
-
-    flex: 0 0 5px !important;
+    min-width: 5px !important;
 
     border-radius: 50% !important;
 
     background: #ffffff !important;
 
-    box-shadow: 0 0 0 2px rgba(255,255,255,0.16) !important;
+    box-shadow:
+      0 0 0 2px rgba(255, 255, 255, 0.16),
+      0 0 5px rgba(255, 255, 255, 0.35) !important;
   }
 
+  /* SOTUVDA */
   .car-sale-status-available {
-    background: rgba(15, 118, 74, 0.94) !important;
-    border: 1px solid rgba(255,255,255,0.20) !important;
+    background: rgba(5, 122, 85, 0.94) !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
   }
 
+  /* SOTUVDA YO‘Q */
   .car-sale-status-unavailable {
-    background: rgba(153, 27, 27, 0.94) !important;
-    border: 1px solid rgba(255,255,255,0.20) !important;
+    background: rgba(170, 30, 35, 0.94) !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
   }
 }
