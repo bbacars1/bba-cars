@@ -1075,6 +1075,7 @@
 
 @media (max-width: 720px) {
 
+  /* STATUS JOYLASHUVI */
   .car-sale-status-wrap {
     position: absolute !important;
     left: 8px !important;
@@ -1088,17 +1089,21 @@
     padding: 0 !important;
   }
 
+
+  /* ASOSIY BADGE */
   .car-sale-status {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
 
-    gap: 5px !important;
+    gap: 6px !important;
 
     height: 20px !important;
     min-height: 20px !important;
-    padding: 0 8px !important;
 
+    padding: 0 9px !important;
+
+    border: none !important;
     border-radius: 999px !important;
 
     color: #ffffff !important;
@@ -1106,44 +1111,64 @@
     font-size: 8px !important;
     line-height: 20px !important;
     font-weight: 700 !important;
-    letter-spacing: 0.15px !important;
+    letter-spacing: 0.1px !important;
 
     white-space: nowrap !important;
 
-    backdrop-filter: blur(10px) !important;
-    -webkit-backdrop-filter: blur(10px) !important;
-
     box-shadow:
-      0 2px 7px rgba(0, 0, 0, 0.16),
-      inset 0 1px 0 rgba(255, 255, 255, 0.16) !important;
+      0 3px 8px rgba(0, 0, 0, 0.18) !important;
   }
 
-  /* STATUS NUQTASI */
+
+  /* LIVE / PULSE NUQTA */
   .car-sale-status::before {
     content: "" !important;
 
-    width: 5px !important;
-    height: 5px !important;
-    min-width: 5px !important;
-
-    border-radius: 50% !important;
+    width: 6px !important;
+    height: 6px !important;
+    min-width: 6px !important;
 
     background: #ffffff !important;
 
+    border-radius: 50% !important;
+
     box-shadow:
-      0 0 0 2px rgba(255, 255, 255, 0.16),
-      0 0 5px rgba(255, 255, 255, 0.35) !important;
+      0 0 0 0 rgba(255, 255, 255, 0.65);
+
+    animation:
+      saleStatusPulse 1.8s ease-out infinite !important;
   }
+
 
   /* SOTUVDA */
   .car-sale-status-available {
-    background: rgba(5, 122, 85, 0.94) !important;
-    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    background: #07865f !important;
   }
+
 
   /* SOTUVDA YO‘Q */
   .car-sale-status-unavailable {
-    background: rgba(170, 30, 35, 0.94) !important;
-    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    background: #b4232a !important;
   }
+
+
+  /* PULSE ANIMATSIYA */
+  @keyframes saleStatusPulse {
+
+    0% {
+      box-shadow:
+        0 0 0 0 rgba(255, 255, 255, 0.70);
+    }
+
+    65% {
+      box-shadow:
+        0 0 0 6px rgba(255, 255, 255, 0);
+    }
+
+    100% {
+      box-shadow:
+        0 0 0 6px rgba(255, 255, 255, 0);
+    }
+  }
+
 }
