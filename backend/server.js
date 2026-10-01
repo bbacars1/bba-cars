@@ -818,13 +818,43 @@ const images = JSON.stringify(imageUrls);
 
     // URL'ni MySQL'ga saqlash
    const [result] = await db.query(
-    "UPDATE cars SET name = ?, brand = ?, price = ?, type = ?, year = ?, status = ?, sale_status = ?, `range` = ?, battery = ?, engine = ?, drive = ?, power = ?, acceleration = ?, maxSpeed = ?, seats = ?, length = ?, wheelbase = ?, fridge = ?, hud = ?, faceId = ?, massage = ?, camera360 = ?, seatHeating = ?, seatVentilation = ?, airSuspension = ? WHERE id = ?",
+    `INSERT INTO cars (
+        name,
+        brand,
+        price,
+        image,
+        images,
+        type,
+        year,
+        status,
+        sale_status,
+        \`range\`,
+        battery,
+        engine,
+        drive,
+        power,
+        acceleration,
+        maxSpeed,
+        seats,
+        length,
+        wheelbase,
+        fridge,
+        hud,
+        faceId,
+        massage,
+        camera360,
+        seatHeating,
+        seatVentilation,
+        airSuspension
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     [
         name,
         brand,
         price,
+        image,
+        images,
         type,
-        year,
+        year || null,
         status || null,
         sale_status || "available",
         range || null,
@@ -844,8 +874,7 @@ const images = JSON.stringify(imageUrls);
         camera360 || null,
         seatHeating || null,
         seatVentilation || null,
-        airSuspension || null,
-        id
+        airSuspension || null
     ]
 );
 
